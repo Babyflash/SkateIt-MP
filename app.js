@@ -2,7 +2,7 @@ App({
   onLaunch: function () {
     // WX code
     let app = this;
-    let salmon2 = "mo2"
+    console.log('wtffff')
 
     wx.login({
       success: function (res) {
@@ -11,8 +11,8 @@ App({
         if (res.code) {
           // console.log("wanna eat salmon")
           app.getUserInfo((userInfoFromCallBackHell) => {
-            // console.log("Print userinfo callback hell:")
-            // console.log(userInfoFromCallBackHell)
+            console.log("Print userinfo callback hell:")
+            console.log(userInfoFromCallBackHell)
             wx.request({
               success: function (res) {
                 try {
@@ -26,11 +26,11 @@ App({
                   app.globalData.currentUserId = res.data.id
                   app.globalData.email = res.data.email
                   app.globalData.user = res.data
-                  // console.log("TEST Res store globalData >>>")
-                  // console.log(app.globalData.token)
-                  // console.log(app.globalData.currentUserId)
-                  // console.log(app.globalData.email)
-                  // console.log(app.globalData.user)
+                  console.log("TEST Res store globalData >>>")
+                  console.log(app.globalData.token)
+                  console.log(app.globalData.currentUserId)
+                  console.log(app.globalData.email)
+                  console.log(app.globalData.user)
                 } catch (e) {
                   console.log("Didn't set storage")
                 }
@@ -70,15 +70,15 @@ App({
         //     try {
         //       console.log("MMMINDEX API: ")
         //       // console.log(res)
-        //       app.globalData.items = res.data.items
-        //       console.log(app.globalData.items)
+        //       app.globalData.spots = res.data
+        //       console.log(app.globalData.spots)
         //       console.log("INDEX API SUCCESS")
         //     } catch (e) {
         //       console.log(e)
         //     }
         //   },
 
-        //   url: 'https://jinma.herokuapp.com/api/v1/items',
+        //   url: 'http://localhost:3000/api/v1/spots',
         //   method: "get"
         // })
         // ## Send request card to avoid asyc

@@ -1,6 +1,7 @@
 //index.js
 //获取应用实例
 const app = getApp()
+const myRequest = require('../../lib/api/request');
 
 Page({
   data: {
@@ -16,6 +17,17 @@ Page({
     })
   },
   onLoad: function () {
+    let page = this
+    //fetch items from rails api
+    myRequest.get({
+      path: 'spots',
+      success(res) {
+        console.log(res)
+        
+        page.setData({spots: res.data})
+        console.log('spots', page.data.spots)
+      }
+    })
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
