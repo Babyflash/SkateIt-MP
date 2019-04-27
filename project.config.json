@@ -13,7 +13,11 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.6.6",
+<<<<<<< HEAD
 	"appid": "wxb0870833465f95da",
+=======
+	"appid": "wx75eca27293884352",
+>>>>>>> updated with tencent
 	"projectname": "SkateIt-MP",
 	"debugOptions": {
 		"hidedInDevtools": []
