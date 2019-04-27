@@ -4,7 +4,7 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
@@ -13,18 +13,12 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.6.6",
-<<<<<<< HEAD
-	"appid": "wxb0870833465f95da",
-=======
 	"appid": "wx75eca27293884352",
->>>>>>> updated with tencent
-	"projectname": "SkateIt-MP",
+	"projectname": "miniprogram-test-4",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},
 	"isGameTourist": false,
-	"simulatorType": "wechat",
-	"simulatorPluginLibVersion": {},
 	"condition": {
 		"search": {
 			"current": -1,
