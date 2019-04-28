@@ -8,7 +8,15 @@ Page({
     motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    indicatorDots: true,
+    vertical: false,
+    autoplay: false,
+    circular: false,
+    interval: 2000,
+    duration: 500,
+    previousMargin: 0,
+    nextMargin: 0
   },
   //事件处理函数
   bindViewTap: function() {
@@ -29,10 +37,12 @@ Page({
     myRequest.get({
       path: 'spots',
       success(res) {
+
         // console.log(res)
         app.globalData.spots = res.data
-        page.setData({spots: res.data})
-        // console.log('spots', page.data.spots)
+
+        page.setData({ spotTypes: res.data})
+        console.log('spotTypes', page.data.spotTypes)
       }
     })
 
