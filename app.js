@@ -2,22 +2,20 @@ App({
   onLaunch: function () {
     // WX code
     let app = this;
-    console.log('wtffff')
-
     wx.login({
       success: function (res) {
-        console.log("RES from wechat:")
-        console.log(res)
+        // console.log("RES from wechat:")
+        // console.log(res)
         if (res.code) {
           // console.log("wanna eat salmon")
           app.getUserInfo((userInfoFromCallBackHell) => {
-            console.log("Print userinfo callback hell:")
-            console.log(userInfoFromCallBackHell)
+            // console.log("Print userinfo callback hell:")
+            // console.log(userInfoFromCallBackHell)
             wx.request({
               success: function (res) {
                 try {
-                  console.log("Result from server: ")
-                  console.log(res)
+                  // console.log("Result from server: ")
+                  // console.log(res)
 
                   wx.setStorageSync('token', res.data.authentication_token)
                   wx.setStorageSync('currentUserId', res.data.id)
@@ -26,11 +24,11 @@ App({
                   app.globalData.currentUserId = res.data.id
                   app.globalData.email = res.data.email
                   app.globalData.user = res.data
-                  console.log("TEST Res store globalData >>>")
-                  console.log(app.globalData.token)
-                  console.log(app.globalData.currentUserId)
-                  console.log(app.globalData.email)
-                  console.log(app.globalData.user)
+                  // console.log("TEST Res store globalData >>>")
+                  // console.log(app.globalData.token)
+                  // console.log(app.globalData.currentUserId)
+                  // console.log(app.globalData.email)
+                  // console.log(app.globalData.user)
                 } catch (e) {
                   console.log("Didn't set storage")
                 }
@@ -93,8 +91,8 @@ App({
       success: res => {
 
         that.globalData.userInfo = res.userInfo
-        console.log("Success get UserInfo")
-        console.log(that.globalData.userInfo)
+        // console.log("Success get UserInfo")
+        // console.log(that.globalData.userInfo)
         func(res.userInfo)
       }
     })
