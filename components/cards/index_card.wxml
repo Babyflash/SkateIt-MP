@@ -1,0 +1,9 @@
+
+  <view class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url({{spotImg}})">
+  <view class="info">
+      <slot name="before"></slot>
+  </view>
+  <view class="address">
+  <slot name="after"></slot>
+  </view>
+  </view>
