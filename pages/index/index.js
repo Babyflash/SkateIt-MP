@@ -24,17 +24,28 @@ Page({
       url: '../logs/logs'
     })
   },
+
+  bindHomeTap: function () {
+    wx.navigateTo({
+      url: '../home/home'
+    })
+  },
+
   onLoad: function () {
     let page = this
     //fetch items from rails api
     myRequest.get({
       path: 'spots',
       success(res) {
-        console.log(res)
+
+        // console.log(res)
+        app.globalData.spots = res.data
+
         page.setData({ spotTypes: res.data})
         console.log('spotTypes', page.data.spotTypes)
       }
     })
+
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -63,7 +74,7 @@ Page({
     }
   },
   getUserInfo: function(e) {
-    console.log(e)
+    // console.log(e)
     app.globalData.userInfo = e.detail.userInfo
     this.setData({
       userInfo: e.detail.userInfo,
