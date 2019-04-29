@@ -1,6 +1,6 @@
 {
   "component": true,
   "usingComponents": {
-    
+    "card": "../../components/cards/index_card"
   }
 }
