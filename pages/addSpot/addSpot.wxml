@@ -1,0 +1,3 @@
+<!--pages/addSpot/addSpot.wxml-->
+<text>pages/addSpot/addSpot.wxml</text>
+<view id='map'></view>

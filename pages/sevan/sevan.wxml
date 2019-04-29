@@ -2,4 +2,3 @@
 <accordian>
   <logic spotTypes='{{spotTypes}}'></logic>
 </accordian>
-
