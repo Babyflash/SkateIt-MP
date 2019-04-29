@@ -1,2 +1,20 @@
-<!--pages/sevan/sevan.wxml-->
-<text>pages/sevan/sevan.wxml</text>
+<view class="container">
+  <block wx:for="{{spotTypes}}" wx:for-item="type" wx:for-index="itemsIndex" wx:key="spotTypes">
+    <view>{{itemsIndex}}</view>
+    <view class="page-section page-section-spacing swiper">
+    <swiper
+        indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" circular="{{circular}}" vertical="{{vertical}}"
+        interval="{{interval}}" duration="{{duration}}" previous-margin="{{previousMargin}}px" next-margin="{{nextMargin}}px">
+
+    <block wx:for="{{type}}" wx:for-item="spot" wx:for-index="itemsIndex" wx:key="type">
+    <swiper-item>
+      <card spotImg='{{spot.default_image.url}}'>
+        <view slot="before">{{spot.difficulty_rating}}km</view>
+        <view slot="after">{{spot.address}}</view>
+      </card>
+      </swiper-item>
+    </block>
+    </swiper>
+    </view>
+  </block>
+</view>
