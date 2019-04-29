@@ -2,6 +2,9 @@
   "pages": [
     "pages/load/load",
     "pages/index/index",
+    "pages/sevan/sevan",
+    "pages/chinzoo/chinzoo",
+    "pages/home/home",
     "pages/logs/logs"
    
   ],
