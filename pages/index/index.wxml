@@ -1,4 +1,3 @@
-<!--index.wxml-->
 <view class="container">
   <block wx:for="{{spotTypes}}" wx:for-item="type" wx:for-index="itemsIndex" wx:key="spotTypes">
     <view>{{itemsIndex}}</view>
