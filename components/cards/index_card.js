@@ -14,7 +14,7 @@ Component({
 
   },
   created: function() {
-    console.log('What the shit mangg-----------------')
+    console.log('Card Component')
   },
   /**
    * Component initial data
