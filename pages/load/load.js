@@ -1,6 +1,6 @@
 // pages/load/load.js
 const app = getApp();
-
+const myRequest = require('../../lib/api/request');
 function onGetUserInfo () {
   console.log("GET USER INFO")
   wx.getUserInfo({
@@ -63,25 +63,6 @@ Page({
           console.log('error' + res.errMsg)
         }
 
-        // ## Send request card to avoid asyc
-        // wx.request({
-        //   success: function (res) {
-        //     try {
-        //       console.log("MMMINDEX API: ")
-        //       // console.log(res)
-        //       app.globalData.spots = res.data
-        //       console.log(app.globalData.spots)
-        //       console.log("INDEX API SUCCESS")
-        //     } catch (e) {
-        //       console.log(e)
-        //     }
-        //   },
-
-        //   url: 'http://localhost:3000/api/v1/spots',
-        //   method: "get"
-        // })
-        // ## Send request card to avoid asyc
-
       }
     })
   },
@@ -94,6 +75,7 @@ Page({
    */
   onLoad: function (options) {
 
+   
   },
 
   /**
@@ -111,7 +93,17 @@ Page({
    * Lifecycle function--Called when page show
    */
   onShow: function () {
+    myRequest.get({
+      path: 'spots',
+      success(res) {
 
+        console.log(res)
+        app.globalData.spotTypes = res.data
+
+        app.globalData.spotTypes = res.data
+        console.log('GlobalData', app.globalData.spotTypes)
+      }
+    })
   },
 
   /**
