@@ -25,8 +25,8 @@ function generateSpotsJson() {
 
 Page({
   data: {
-    lt: "31.232065",
-    lg: "121.470645",
+    lt: "-18.3626638089225",
+    lg: "-43.9443958876309",
     sc: '14',
     mk: [
       {
@@ -51,6 +51,12 @@ Page({
         console.log(res.accuracy)
         that.setData({ userLatitude: res.latitude, userLongitude: res.longitude })
       },
+    })
+  },
+
+  navigateToAddSpotPage: function() {
+    wx.navigateTo({
+      url: '../addSpot/addSpot'
     })
   },
 
