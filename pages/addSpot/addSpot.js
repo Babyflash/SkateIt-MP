@@ -1,4 +1,14 @@
 // pages/addSpot/addSpot.js
+const AV = require('../../utils/av-weapp-min.js')
+
+function uploadToLeanCloud(tempFilePath) {
+  new AV.File('file-name', { 
+      blob: { 
+        uri: tempFilePath, 
+      }, 
+    }).save().then(file => console.log(file.url())).catch(console.error); 
+}
+
 Page({
 
   /**
@@ -12,7 +22,20 @@ Page({
    * Lifecycle function--Called when page load
    */
   onLoad: function (options) {
-
+    wx.chooseImage({
+      count: 9, // Default 9
+      sizeType: ['original', 'compressed'], 
+      sourceType: ['album', 'camera'],
+      success: function (res) {
+        var tempFilePaths = res.tempFilePaths
+        console.log(tempFilePaths)
+        uploadToLeanCloud(tempFilePaths[0])
+        wx.previewImage({
+          current: tempFilePaths[0], // http link of the image currently displayed
+          urls: tempFilePaths // List of http links of images to be previewed
+        })
+      }
+    })
   },
 
   /**
@@ -40,7 +63,7 @@ Page({
    * Lifecycle function--Called when page unload
    */
   onUnload: function () {
-
+    
   },
 
   /**
