@@ -13,7 +13,9 @@ Component({
     }
 
   },
-
+  created: function() {
+    console.log('What the shit mangg-----------------')
+  },
   /**
    * Component initial data
    */
