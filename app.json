@@ -5,6 +5,7 @@
     "pages/sevan/sevan",
     "pages/chinzoo/chinzoo",
     "pages/home/home",
+    "pages/addSpot/addSpot",
     "pages/logs/logs"
    
   ],
