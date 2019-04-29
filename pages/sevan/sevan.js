@@ -8,14 +8,14 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    indicatorDots: true,
-    vertical: false,
-    autoplay: false,
-    circular: false,
-    interval: 2000,
-    duration: 500,
-    previousMargin: 0,
-    nextMargin: 0
+    // indicatorDots: true,
+    // vertical: false,
+    // autoplay: false,
+    // circular: false,
+    // interval: 2000,
+    // duration: 500,
+    // previousMargin: 0,
+    // nextMargin: 0
   },
   //事件处理函数
   bindViewTap: function () {
