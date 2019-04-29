@@ -1,0 +1,5 @@
+/* components/accordian/accordian.wxss */
+.title-bar{
+  background: red;
+  height: 15vh;
+}

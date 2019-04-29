@@ -1,6 +1,7 @@
 {
   "usingComponents": {
     "card": "../../components/cards/index_card",
-    "logic": "../../components/logic/logic"
+    "logic": "../../components/logic/logic",
+    "accordian": "../../components/accordian/accordian"
   }
 }
