@@ -1,5 +1,5 @@
 <!--pages/load/load.wxml-->
 <!--index.wxml-->
-<button open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">
+<button bindtap="index" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">
   获取用户信息
 </button>
