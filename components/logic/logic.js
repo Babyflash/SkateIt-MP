@@ -25,7 +25,8 @@ Component({
     interval: 2000,
     duration: 500,
     previousMargin: 0,
-    nextMargin: 0
+    nextMargin: 0,
+    scrollTop: 100
 
   },
 

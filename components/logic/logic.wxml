@@ -1,6 +1,5 @@
 <view class="container">
 <block wx:for="{{spotTypes}}" wx:for-item="type" wx:for-index="itemsIndex" wx:key="{{spotTypes}}">
-  
   <view class="page-section page-section-spacing swiper">
   <view>{{itemsIndex}}</view>
      <swiper
