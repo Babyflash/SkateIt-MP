@@ -12,6 +12,7 @@
         <view slot="after">{{spot.address}}</view>
       </card>
       </swiper-item>
+    
       </block>
     </swiper>
   </view>

@@ -1,2 +1,21 @@
-<view class="title-bar max">10 spots nearby</view>    
-<slot></slot>
+
+  <view class="title-bar">
+  
+    <view class="arrow">
+    <w-icon type='arrow-top'/>
+    </view>
+
+    <view class="spot-info">
+      <view class="info-title">Nearby</view>
+      <view class="info-des">Ledge, Stairs, Parks...</view>
+    </view>
+
+    <view class="spot-count">
+    18
+    </view>
+
+  </view>  
+
+  <slot></slot>
+
+
