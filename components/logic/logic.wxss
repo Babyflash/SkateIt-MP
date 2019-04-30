@@ -1,4 +1,8 @@
 /* components/logic/logic.wxss */
+.title{
+  color: red;
+}
+
 .swiper-item{
   height: 100px;
 }
