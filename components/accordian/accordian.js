@@ -17,7 +17,10 @@ Component({
   /**
    * Component methods
    */
+  ready: function() {
+    console.log('moved')
+  },
   methods: {
-
+    
   }
 })
