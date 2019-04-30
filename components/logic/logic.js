@@ -13,7 +13,6 @@ Component({
       value: ''
     }
   },
-
   /**
    * Component initial data
    */
@@ -37,7 +36,14 @@ Component({
     console.log('Logic Component')
   },
   methods: {
-    
-
+    spot: function (object) {
+      const data = object.currentTarget.dataset;
+      console.log(data.id)
+      const id = data.id.id
+      console.log(id)
+      // wx.redirectTo({
+      //   url: '/pages/spot/spot?id=' + id
+      // });
+    }
   }
 })
