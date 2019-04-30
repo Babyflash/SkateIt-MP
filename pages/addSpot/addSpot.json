@@ -1,3 +1,11 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "w-popup": "wuss-weapp/w-popup/index",
+    "w-button": "wuss-weapp/w-button/index",
+    "w-tag": "wuss-weapp/w-tag/index",
+    "w-cell-group": "wuss-weapp/w-cell-group/index",
+    "w-checkbox": "wuss-weapp/w-checkbox/index",
+    "w-range": "wuss-weapp/w-range/index",
+    "w-pane": "wuss-weapp/w-pane/index"
+  }
 }
