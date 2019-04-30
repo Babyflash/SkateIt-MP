@@ -41,9 +41,9 @@ Component({
       console.log(data.id)
       const id = data.id.id
       console.log(id)
-      // wx.redirectTo({
-      //   url: '/pages/spot/spot?id=' + id
-      // });
+      wx.redirectTo({
+        url: '/pages/spot/spot?id=' + id
+      });
     }
   }
 })
