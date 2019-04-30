@@ -151,3 +151,7 @@ button:last-child{
 .page-foot{
   margin-top: 50rpx;
 }
+
+.gradient-line {
+  background: linear-gradient(90deg, rgba(103,54,207,1) 16%, rgba(9,9,121,1) 52%, rgba(0,212,255,1) 100%);
+}
