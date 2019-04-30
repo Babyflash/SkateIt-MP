@@ -1,5 +1,5 @@
 <!--components/type-icon/type-icon.wxml-->
 <view bindtap='active' class="{{isClicked ? 'clicked_icon' : 'icon'}}" id="icon">
-  <image class='img' src="/lib/images/curb.png" ></image>
+  <image class='img' src="../../lib/images/{{image}}.png" ></image>
   <slot></slot>
 </view> 

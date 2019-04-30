@@ -4,7 +4,10 @@ Component({
    * Component properties
    */
   properties: {
-
+    image: {
+      type: String,
+      value: ''
+    }
   },
 
   /**
@@ -12,6 +15,7 @@ Component({
    */
   data: {
     isClicked: false
+
   },
 
   /**
