@@ -8,7 +8,9 @@
   background-color: #3ACCE1;
   width: 75px;
   height: 75px;
-  border-radius: 15px
+  border-radius: 15px;
+  transition: 1s ease;
+  
 }
 
 .img{
@@ -28,5 +30,6 @@
   font-size: 12px;
   width: 75px;
   height: 75px;
-  border-radius: 15px
+  border-radius: 15px;
+  transition: 1s ease;
 }
