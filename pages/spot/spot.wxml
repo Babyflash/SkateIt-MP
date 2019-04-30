@@ -17,7 +17,7 @@
   <view class="header">
     <view>
       <w-button class="btn" type="info">
-        <w-icon type='location' />
+        <w-icon type='location' class="location-icon" />
       </w-button>
     </view>
     <view>
@@ -29,6 +29,7 @@
     <w-icon type='add' class='icon' />
   </view>
 </view>
+
 
 
 
