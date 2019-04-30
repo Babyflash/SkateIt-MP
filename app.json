@@ -8,8 +8,14 @@
     "pages/addSpot/addSpot",
     "pages/spot/spot",
     "pages/logs/logs"
-   
   ],
+
+  "permission": {
+    "scope.userLocation": {
+      "desc": "Please share your location"
+    }
+  },
+  
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",

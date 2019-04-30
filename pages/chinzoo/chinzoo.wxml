@@ -16,7 +16,6 @@
     <button id = "addSpot" bindtap="navigateToAddSpotPage" >+</button>
    </view>
    <view class="btn-area">
-      
       <button bindtap="chooseLocation" >Search location</button>
       <button bindtap="getCenterLocation" >Get location</button>
       <button bindtap="moveToLocation" >Move Place</button>
@@ -26,7 +25,7 @@
       visible="{{ popup6 }}"
       maskCancel="{{ false }}"
       position="main"
-      height="50%"
+      height="72%"
       width="72%"
       padding="8"
       bind:onClose="handleClose"
@@ -37,7 +36,7 @@
           <w-checkbox options="{{ items1 }}" bind:onChange="handleChange" />
         </w-cell-group>
       
-        <w-button type="info" bind:onClick="handleClose">Save</w-button>
+        <w-button type="info" bind:onClick="handleClose">Add Spot</w-button>
         <view>{{ items1Str }}</view>
         
       </view>
