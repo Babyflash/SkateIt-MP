@@ -41,8 +41,13 @@ Component({
       console.log(data.id)
       const id = data.id.id
       console.log(id)
-      wx.redirectTo({
-        url: '/pages/spot/spot?id=' + id
+      console.log(data.id.spot_type)
+      const type = data.id.spot_type
+      const url = data.id.default_image.url
+      const address = data.id.address
+      console.log(address)
+      wx.navigateTo({
+        url: '/pages/spot/spot?id=' + id + '&type=' + type + '&url=' + url + '&address=' + address
       });
     }
   }
