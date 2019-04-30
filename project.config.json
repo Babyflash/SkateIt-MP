@@ -9,12 +9,13 @@
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
-		"autoAudits": false
+		"autoAudits": false,
+		"nodeModules": true
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.6.6",
 	"appid": "wx75eca27293884352",
-	"projectname": "miniprogram-test-4",
+	"projectname": "SkateIt-MP",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},

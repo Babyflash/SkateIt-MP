@@ -3,3 +3,13 @@
 <button bindtap="index" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">
   获取用户信息
 </button>
+
+<w-button
+ type="custom"
+ styles="border-color: #b643cd!important;"
+ bgColor="#b643cd"
+ color="#ffffff"
+>
+	Custom
+	Button
+</w-button>
