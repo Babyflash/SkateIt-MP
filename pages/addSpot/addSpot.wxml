@@ -7,7 +7,6 @@
  padding="8"
  bind:onClose="handleClose"
  wuss-class="wuss-popup"
-
 >
   <view class="demo-popup-6">
     <w-cell-group>
