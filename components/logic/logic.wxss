@@ -1,6 +1,4 @@
 /* components/logic/logic.wxss */
-
-
 .swiper-item{
   height: 100px;
 }
@@ -72,9 +70,10 @@ page {
   padding-left: 0;
   padding-right: 0;
 }
-.container{
+.logic-container{
   position: relative;
   z-index: 1;
+  background-color: white;
 }
 .demo-text-1{
   position: relative;
