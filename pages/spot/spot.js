@@ -12,7 +12,21 @@ Page({
    * Lifecycle function--Called when page load
    */
   onLoad: function (options) {
-
+    console.log(options.id)
+    // let that = this;
+    // wx.request({
+    //   url: `http://localhost:3000/api/v1/spots/${options.id}`,
+    //   method: 'GET',
+    //   success(res) {
+    //     const spot = res.data;
+    //     // Update local data
+    //     that.setData({
+    //       spot
+    //     });
+    //     console.log(spot)
+    //     wx.hideToast();
+    //   }
+    // });
   },
 
   /**
