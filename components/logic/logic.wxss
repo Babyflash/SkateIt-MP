@@ -1,6 +1,7 @@
 /* components/logic/logic.wxss */
 .title{
-  color: red;
+  color: white;
+  padding: 0px;
 }
 
 .swiper-item{
