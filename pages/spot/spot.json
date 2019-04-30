@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "w-card": "wuss-weapp/w-card/index"
+  }
+}

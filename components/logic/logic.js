@@ -13,7 +13,6 @@ Component({
       value: ''
     }
   },
-
   /**
    * Component initial data
    */
@@ -37,7 +36,19 @@ Component({
     console.log('Logic Component')
   },
   methods: {
-    
-
+    spot: function (object) {
+      const data = object.currentTarget.dataset;
+      console.log(data.id)
+      const id = data.id.id
+      console.log(id)
+      console.log(data.id.spot_type)
+      const type = data.id.spot_type
+      const url = data.id.default_image.url
+      const address = data.id.address
+      console.log(address)
+      wx.navigateTo({
+        url: '/pages/spot/spot?id=' + id + '&type=' + type + '&url=' + url + '&address=' + address
+      });
+    }
   }
 })
