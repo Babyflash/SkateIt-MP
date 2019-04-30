@@ -60,6 +60,7 @@ Page({
 
   getCenterLocation: function () {
     let that = this
+    console.log("GET LOCATION")
     wx.getLocation({
       success: function (res) {
         console.log(res.longitude)
@@ -89,7 +90,26 @@ Page({
           that.setData({
             popup6: true
           })
-          return res
+
+          let spot = {
+            "spot_rating": 5,
+            "difficulty_rating": 5,
+            "spot_type": "Ledge",
+            "default_image": res,
+            "user_id": app.globalData.currentUserId,
+            "geo_lat": that.data.userLatitude,
+            "geo_lng": that.data.userLongitude,
+            "address": "Mongolia"
+          }
+
+          myRequest.post({
+            path: 'spots',
+            data: spot,
+            success(res) {
+              console.log("ADD POST RESULT:", res)
+            }
+          })
+
         })
       }
     })
@@ -168,8 +188,11 @@ Page({
   uploadPromise: function (tempFilePath) { 
     let that = this
     that.showLoading();
-    return new Promise((resolve, reject) => { new AV.File('file-name', { 
-      blob: { uri: tempFilePath, }, 
+    return new Promise((resolve, reject) => { 
+      new AV.File('file-name', { 
+        blob: {
+           uri: tempFilePath, 
+        }, 
     }).save().then(file => resolve(file.url())).catch(e => reject(e)); }) 
   }
 })
