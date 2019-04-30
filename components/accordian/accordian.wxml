@@ -1,7 +1,2 @@
-<view id="card-container">
-  <view>
-    <view class="title-bar max">10 spots nearby</view>
-    <slot></slot>
-  </view>
- 
-</view>
+<view class="title-bar max">10 spots nearby</view>    
+<slot></slot>

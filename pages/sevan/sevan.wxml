@@ -1,10 +1,19 @@
-<view style="width: 100%; height: 85vh; background-color: blue;"></view>
-  
- 
-    <accordian style="">
-      <logic spotTypes='{{spotTypes}}'></logic>
-    </accordian>
+<view style="position: relative;">
+  <!-- this is where map should go -->
+  <view class="map">
+  <button type="primary" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}"
+		disabled="{{disabled}}" bindtap="primary"> Click to check if map is clickable</button>
+    I'm a fucking map!
+    </view>
 
+
+  <!-- holds the accordian down -->
+  <view style="width: 100%; height: 85vh;"></view>
+  <accordian>
+    <logic spotTypes='{{spotTypes}}'></logic>
+  </accordian>
+</view>
+  
  
      
       
