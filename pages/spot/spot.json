@@ -1,5 +1,7 @@
 {
   "usingComponents": {
-    "w-card": "wuss-weapp/w-card/index"
+    "w-icon": "wuss-weapp/w-icon/index",
+    "w-card": "wuss-weapp/w-card/index",
+      "w-button": "wuss-weapp/w-button/index"
   }
 }
