@@ -1,0 +1,26 @@
+{
+  "name": "skateit-mp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "dependencies": {
+    "wuss-weapp": "^2.1.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Babyflash/SkateIt-MP.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Babyflash/SkateIt-MP/issues"
+  },
+  "homepage": "https://github.com/Babyflash/SkateIt-MP#readme"
+}
