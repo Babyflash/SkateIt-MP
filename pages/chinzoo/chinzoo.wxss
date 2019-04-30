@@ -1,1 +1,12 @@
 /* pages/chinzoo/chinzoo.wxss */
+#map {
+  position: relative;
+}
+
+#addSpot {
+  position: absolute;
+  background-color: white;
+  top: 80vh;
+  right: 4px;
+  border-radius: 50%;
+}
