@@ -6,6 +6,7 @@
     "pages/chinzoo/chinzoo",
     "pages/home/home",
     "pages/addSpot/addSpot",
+    "pages/spot/spot",
     "pages/logs/logs"
    
   ],
