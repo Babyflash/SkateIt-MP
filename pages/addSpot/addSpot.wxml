@@ -1,3 +1,23 @@
-<!--pages/addSpot/addSpot.wxml-->
-<text>pages/addSpot/addSpot.wxml</text>
-<view id='map'></view>
+<w-popup
+ visible="{{ popup6 }}"
+ maskCancel="{{ false }}"
+ position="main"
+ height="50%"
+ width="72%"
+ padding="8"
+ bind:onClose="handleClose"
+ wuss-class="wuss-popup"
+
+>
+  <view class="demo-popup-6">
+    <w-cell-group>
+      <w-checkbox options="{{ items1 }}" bind:onChange="handleChange" />
+    </w-cell-group>
+   
+    <w-button type="info" bind:onClick="handleClose">Save</w-button>
+    <view>{{ items1Str }}</view>
+    
+  </view>
+</w-popup>
+
+<w-button type="info" bind:onClick="handleClick6">Main</w-button>

@@ -2,6 +2,15 @@
 const app = getApp()
 const myRequest = require('../../lib/api/request');
 const markerUrl = "https://www.topdraw.com/assets/uploads/2016/05/66255487_thumbnail-591x640.png"
+const AV = require('../../utils/av-weapp-min.js')
+
+function uploadToLeanCloud(tempFilePath) {
+  // new AV.File('file-name', {
+  //   blob: {
+  //     uri: tempFilePath,
+  //   },
+  // }).save().then(file => console.log(file.url())).catch(console.error);
+}
 
 function generateSpotsJson() {
   const spots = app.globalData.spotTypes.Ledge;
@@ -25,8 +34,8 @@ function generateSpotsJson() {
 
 Page({
   data: {
-    lt: "-18.3626638089225",
-    lg: "-43.9443958876309",
+    lt: "31.219614",
+    lg: "121.443877",
     sc: '14',
     mk: [
       {
@@ -55,9 +64,38 @@ Page({
   },
 
   navigateToAddSpotPage: function() {
-    wx.navigateTo({
-      url: '../addSpot/addSpot'
+    let that = this
+    // wx.navigateTo({
+    //   url: '../addSpot/addSpot'
+    // })
+    wx.chooseImage({
+      count: 9, // Default 9
+      sizeType: ['original', 'compressed'],
+      sourceType: ['album', 'camera'],
+      success: function (res) {
+        var tempFilePaths = res.tempFilePaths
+        console.log("Result: ", tempFilePaths)
+        // uploadToLeanCloud(tempFilePaths[0])
+        that.uploadPromise(tempFilePaths[0]).then( res => {
+          console.log('You can execute anything here');
+          that.handleClick1();
+          return res
+        })
+      }
     })
+  },
+
+  handleClick1() {
+    Loading.show({
+      content: 'Loading...',
+      hide: () => Alert({
+        title: '提示',
+        content: '手动调用Hide方法关闭',
+      }),
+    })
+    setTimeout(() => {
+      Loading.hide()
+    }, 3000);
   },
 
   moveToLocation: function () {
@@ -121,5 +159,11 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+
+  uploadPromise: function (tempFilePath) { 
+    return new Promise((resolve, reject) => { new AV.File('file-name', { 
+      blob: { uri: tempFilePath, }, 
+    }).save().then(file => resolve(file.url())).catch(e => reject(e)); }) 
   }
 })
