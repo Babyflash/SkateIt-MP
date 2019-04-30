@@ -38,7 +38,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 4,
+			"current": 5,
 			"list": [
 				{
 					"id": -1,
@@ -72,6 +72,13 @@
 					"id": -1,
 					"name": "map",
 					"pathName": "pages/chinzoo/chinzoo",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "spot",
+					"pathName": "pages/spot/spot",
 					"scene": null
 				}
 			]
