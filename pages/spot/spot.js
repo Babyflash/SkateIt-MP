@@ -12,7 +12,18 @@ Page({
    * Lifecycle function--Called when page load
    */
   onLoad: function (options) {
-    console.log(options.id)
+    // console.log(options)
+    const spotId = options.id
+    const spotType = options.type
+    const url = options.url
+    const address = options.address
+    this.setData({
+      spotType,
+      spotId,
+      url,
+      address
+    })
+    // console.log(getApp().globalData.spotTypes);
     // let that = this;
     // wx.request({
     //   url: `http://localhost:3000/api/v1/spots/${options.id}`,
