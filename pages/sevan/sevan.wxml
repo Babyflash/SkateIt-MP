@@ -1,4 +1,12 @@
 <view style="width: 100%; height: 85vh; background-color: blue;"></view>
-<accordian>
-  <logic spotTypes='{{spotTypes}}'></logic>
-</accordian>
+  
+ 
+    <accordian style="">
+      <logic spotTypes='{{spotTypes}}'></logic>
+    </accordian>
+
+ 
+     
+      
+     
+
