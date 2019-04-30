@@ -13,10 +13,13 @@
       show-location
       >
     </map>
-
+    <button id = "addSpot" bindtap="navigateToAddSpotPage" >+</button>
+    <w-pane title="Loading" desc="加载指示器" />
+    <w-loading id="wuss-loading" />
+    <w-alert id="wuss-alert" />
    </view>
    <view class="btn-area">
-      <button bindtap="navigateToAddSpotPage" >Add Spot</button>
+      
       <button bindtap="chooseLocation" >Search location</button>
       <button bindtap="getCenterLocation" >Get location</button>
       <button bindtap="moveToLocation" >Move Place</button>
