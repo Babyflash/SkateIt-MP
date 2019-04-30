@@ -47,7 +47,15 @@ Page({
         height: 56,
         callout: { content: "Shanghai, China", fontSize: 15, color: "#000000", padding: 10 }
       }
-    ]
+    ],
+    popup6: false,
+    items1: ['Fuck1', 'Fuck2', 'Fuck3', 'Fuck4', 'Fuck5'],
+  },
+
+  handleClose() {
+    this.setData({
+      popup6: false,
+    });
   },
 
   getCenterLocation: function () {
@@ -77,25 +85,21 @@ Page({
         console.log("Result: ", tempFilePaths)
         // uploadToLeanCloud(tempFilePaths[0])
         that.uploadPromise(tempFilePaths[0]).then( res => {
-          console.log('You can execute anything here');
-          that.handleClick1();
+          wx.hideLoading();
+          that.setData({
+            popup6: true
+          })
           return res
         })
       }
     })
   },
 
-  handleClick1() {
-    Loading.show({
-      content: 'Loading...',
-      hide: () => Alert({
-        title: '提示',
-        content: '手动调用Hide方法关闭',
-      }),
+  showLoading() {
+    wx.showLoading({
+      title: 'Uploading...',
+      mask: true
     })
-    setTimeout(() => {
-      Loading.hide()
-    }, 3000);
   },
 
   moveToLocation: function () {
@@ -162,6 +166,8 @@ Page({
   },
 
   uploadPromise: function (tempFilePath) { 
+    let that = this
+    that.showLoading();
     return new Promise((resolve, reject) => { new AV.File('file-name', { 
       blob: { uri: tempFilePath, }, 
     }).save().then(file => resolve(file.url())).catch(e => reject(e)); }) 
