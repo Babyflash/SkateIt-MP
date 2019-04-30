@@ -1,7 +1,7 @@
 <view class="logic-container">
 <block wx:for="{{spotTypes}}" wx:for-item="type" wx:for-index="itemsIndex" wx:key="{{spotTypes}}">
   <view class="page-section page-section-spacing swiper">
-  <view>{{itemsIndex}}</view>
+  <view class="title">{{itemsIndex}}</view>
      <swiper
         indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" circular="{{circular}}" vertical="{{vertical}}"
         interval="{{interval}}" duration="{{duration}}" previous-margin="{{previousMargin}}px" next-margin="{{nextMargin}}px">
