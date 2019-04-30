@@ -7,11 +7,31 @@
   z-index: 2;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0;
 }
 
 .card-container{
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
 }
+.arrow{
+  font-size: 30px;
+  color: white;
+}
+.spot-count{
+  color: white;
+  font-size: 48px;
+  text-align: center;
+}
 
+.info-title{
+  color: white;
+  font-weight: bolder;
+}
 
+.info-des{
+  color: white;
+}
