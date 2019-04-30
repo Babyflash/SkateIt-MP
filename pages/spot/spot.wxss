@@ -38,6 +38,7 @@
   border-radius: 3px;
   width: 54px;
   margin-left: 10px;
+  color: white;
 }
 .icon{
   font-size: 54px;
@@ -68,7 +69,12 @@
   
 }
 
-.btn{
+.btn > button{
   height: 32px;
-  width: 32px;
+  width: 42px;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+.location-icon{
+  color: white;
 }
