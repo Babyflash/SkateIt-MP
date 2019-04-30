@@ -1,11 +1,17 @@
 /* components/accordian/accordian.wxss */
 .title-bar{
-  background: red;
+  background: #2A2E44;
   height: 15vh;
   position: sticky; 
   top: 0;
   z-index: 2;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
 }
 
- 
+.card-container{
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
 
