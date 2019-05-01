@@ -194,5 +194,21 @@ Page({
            uri: tempFilePath, 
         }, 
     }).save().then(file => resolve(file.url())).catch(e => reject(e)); }) 
+  },
+
+  properties: {
+    image: {
+      type: String,
+      value: ''
+    }
+  },
+  
+  methods: {
+    active: function () {
+      this.setData({
+        isClicked: !this.data.isClicked
+      })
+    }
   }
+  
 })
