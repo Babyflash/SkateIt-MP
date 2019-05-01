@@ -4,14 +4,6 @@ const myRequest = require('../../lib/api/request');
 const markerUrl = "https://www.topdraw.com/assets/uploads/2016/05/66255487_thumbnail-591x640.png"
 const AV = require('../../utils/av-weapp-min.js')
 
-function uploadToLeanCloud(tempFilePath) {
-  // new AV.File('file-name', {
-  //   blob: {
-  //     uri: tempFilePath,
-  //   },
-  // }).save().then(file => console.log(file.url())).catch(console.error);
-}
-
 function generateSpotsJson() {
   const spots = app.globalData.spotTypes.Ledge;
   console.log("SPOTS===", spots)
@@ -77,25 +69,36 @@ Page({
     // wx.navigateTo({
     //   url: '../addSpot/addSpot'
     // })
+
+    wx.getLocation({
+      success: function (res) {
+        console.log(res.longitude)
+        console.log(res.latitude)
+        console.log(res.speed)
+        console.log(res.accuracy)
+        that.setData({ userLatitude: res.latitude, userLongitude: res.longitude })
+      },
+    })
+
     wx.chooseImage({
       count: 9, // Default 9
       sizeType: ['original', 'compressed'],
       sourceType: ['album', 'camera'],
       success: function (res) {
         var tempFilePaths = res.tempFilePaths
-        console.log("Result: ", tempFilePaths)
-        // uploadToLeanCloud(tempFilePaths[0])
+        
         that.uploadPromise(tempFilePaths[0]).then( res => {
           wx.hideLoading();
           that.setData({
             popup6: true
           })
-
+          console.log("Result: ", res)
           let spot = {
             "spot_rating": 5,
             "difficulty_rating": 5,
             "spot_type": "Ledge",
             "default_image": res,
+            "remote_default_image_url": res,
             "user_id": app.globalData.currentUserId,
             "geo_lat": that.data.userLatitude,
             "geo_lng": that.data.userLongitude,
@@ -103,6 +106,11 @@ Page({
           }
 
           myRequest.post({
+            header: {
+              'Content-Type': 'application/json',
+              'X-User-Email': wx.getStorageSync('userEmail'),
+              'X-User-Token': wx.getStorageSync('token')
+            },
             path: 'spots',
             data: spot,
             success(res) {
@@ -185,6 +193,14 @@ Page({
 
   },
 
+  // function uploadToLeanCloud(tempFilePath) {
+  //   new AV.File('file-name', {
+  //     blob: {
+  //       uri: tempFilePath,
+  //     },
+  //   }).save().then(file => console.log(file.url())).catch(console.error);
+  // }
+
   uploadPromise: function (tempFilePath) { 
     let that = this
     that.showLoading();
@@ -193,7 +209,8 @@ Page({
         blob: {
            uri: tempFilePath, 
         }, 
-    }).save().then(file => resolve(file.url())).catch(e => reject(e)); }) 
+      }).save().then(file => resolve(file.url())).catch(e => reject(e)); 
+    }) 
   },
 
   properties: {
