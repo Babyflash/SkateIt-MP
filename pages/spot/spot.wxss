@@ -23,7 +23,58 @@
 }
 .address{
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
-  color: red;
+  padding: 10px 15px;
+  color: #5873FF;
+}
+.address-string{
+  text-align: right;
+}
+.add-container{
+  max-height: 54px;
+  overflow: hidden;
+  position: relative;
+  border-radius: 3px;
+  width: 54px;
+  margin-left: 10px;
+  color: white;
+}
+.icon{
+  font-size: 54px;
+  max-height: 54px;
+  line-height: 54px;
+  background-color: #4C5373;
+  border-radius: 3px;
+  padding: 0;
+}
+.card{
+  width: 100%;
+  margin: 0 auto;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-radius: 3px;
+}
+.header{
+  padding: 10px 16px;
+   display: flex;
+  justify-content: space-between;
+  border: 1px solid #F8F8F8;
+}
+
+.content{
+  padding: 10px 16px;
+  border-bottom: 1px solid #F8F8F8;
+  border-right: 1px solid #F8F8F8;
+  border-left: 1px solid #F8F8F8;
+  
+}
+
+.btn > button{
+  height: 32px;
+  width: 42px;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+.location-icon{
+  color: white;
 }

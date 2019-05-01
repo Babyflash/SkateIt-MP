@@ -1,27 +1,37 @@
 <!--pages/spot/spot.wxml-->
 <view class="outer">
-   <view class="spot-img" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url({{url}})">
-   <view class="type">{{spotType}}</view>
-   </view>
+  <view class="spot-img" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url({{url}})">
+    <view class="type">{{spotType}}</view>
+  </view>
 
-   <w-card
- full
- shadow="{{ false }}"
- title="Description"
- extra="Rating"
- content="This is info about the spot and maybe the address and extra data"
- footer="Something here"
- footer-extra="last footer"
-/>
-<view class="address">
-<w-icon
-		 type="location-o"
-   />
+<view class="card">
+  <view class="header">
+    <view>描述</view>
+    <view>
+      <w-icon type='share' />
+    </view>
+  </view>
+  <view class="content">
+    This is info about the spot
+  </view>
+  <view class="header">
+    <view>
+      <w-button class="btn" type="info">
+        <w-icon type='location' class="location-icon" />
+      </w-button>
+    </view>
+    <view>
+      {{address}}
+    </view>
+  </view>
+</view>
+<view class='add-container'>
+    <w-icon type='add' class='icon' />
+  </view>
 </view>
 
 
 
-</view>
 
 
 <!-- <view>{{spotId}}</view> -->
