@@ -1,6 +1,6 @@
 /* components/accordian/accordian.wxss */
 .title-bar{
-  background: #2A2E44;
+  background: rgb(63, 71, 110);
   height: 15vh;
   position: sticky; 
   top: 0;

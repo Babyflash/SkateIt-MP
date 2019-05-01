@@ -19,16 +19,19 @@
 .type{
   position: absolute;
   bottom: 0;
-  left: 0;
+  left: 5%;
+  font-size: 12pt;
+  text-transform: uppercase;
 }
-.address{
+.addressbox{
   display: flex;
   justify-content: space-around;
   align-items: center;
   padding: 10px 15px;
-  color: #5873FF;
+  color: white;
+  font-size: 8pt;
 }
-.address-string{
+.address{
   text-align: right;
 }
 .add-container{
@@ -54,12 +57,12 @@
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   border-radius: 3px;
 }
-.header{
+/* .header{
   padding: 10px 16px;
    display: flex;
   justify-content: space-between;
   border: 1px solid #F8F8F8;
-}
+} */
 
 .content{
   padding: 10px 16px;
@@ -77,4 +80,16 @@
 }
 .location-icon{
   color: white;
+}
+
+.topspotbox{
+  width:100vw;
+  height: 80px;
+  position:relative;
+  top:0;
+  background-color: #2D324E;
+
+}
+.share{
+  color:white;
 }

@@ -1,3 +1,4 @@
+<view class="container">
 <button bindtap="sevan">
   Sevan
 </button>
@@ -5,3 +6,4 @@
 <button bindtap="chinzoo">
   Chinzoo
 </button>
+</view>
