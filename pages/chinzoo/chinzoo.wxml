@@ -13,7 +13,7 @@
       show-location
       >
     </map>
-    <button id = "addSpot" bindtap="navigateToAddSpotPage" >+</button>
+    <button class="add-spot-btn" id = "addSpot" bindtap="navigateToAddSpotPage" >+</button>
    </view>
    <view class="btn-area">
       <button bindtap="chooseLocation" >Search location</button>
