@@ -1,6 +1,7 @@
 /* pages/chinzoo/chinzoo.wxss */
-#map {
-  position: relative;
+#myMap {
+  position: absolute;
+  z-index: -1;
 }
 
 #addSpot {
@@ -68,6 +69,15 @@
   height: 15px;
 }
 
+.page-section{
+  position: relative;
+}
+.add-spot-btn{
+  color: red;
+  position: absolute;
+  top: 0;
 
-
-
+}
+.btn-area{
+  z-index: 1;
+}
