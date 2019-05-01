@@ -3,33 +3,27 @@
   <view class="spot-img" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url({{url}})">
     <view class="type">{{spotType}}</view>
   </view>
+  <view class="topspotbox">
+    <view class="addressbox">
+        <w-button class="btn" type="info">
+          <w-icon type='location' class="location-icon" />
+        </w-button>
+        <view class="address">{{address}}</view>
+    </view>
+  <view>
+      <w-icon class="share" type='share' />
+    </view>
+  </view>
+<view class="container">
 
-<view class="card">
-  <view class="header">
-    <view>描述</view>
-    <view>
-      <w-icon type='share' />
+  <view class="card">
+    <view class="content">
+      This is info about the spot
     </view>
+
   </view>
-  <view class="content">
-    This is info about the spot
-  </view>
-  <view class="header">
-    <view>
-      <w-button class="btn" type="info">
-        <w-icon type='location' class="location-icon" />
-      </w-button>
-    </view>
-    <view>
-      {{address}}
-    </view>
   </view>
 </view>
-<view class='add-container'>
-    <w-icon type='add' class='icon' />
-  </view>
-</view>
-
 
 
 

@@ -78,7 +78,7 @@ page {
 .logic-container{
   position: relative;
   z-index: 1;
-  background-color: white;
+  background-color: #2D324E;
 }
 .demo-text-1{
   position: relative;
@@ -155,4 +155,20 @@ button:last-child{
 
 .gradient-line {
   background: linear-gradient(90deg, rgba(103,54,207,1) 16%, rgba(9,9,121,1) 52%, rgba(0,212,255,1) 100%);
+}
+
+.typebox {
+  width: 30%;
+  height: 20%;
+  background-color: #3ACCE1;
+  border-radius: 5px 5px 0 0;
+  padding: 3px;
+}
+
+.title {
+  font-weight: bold;
+  color: white;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: center;
 }
