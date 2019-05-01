@@ -1,6 +1,7 @@
 // pages/load/load.js
 const app = getApp();
 const myRequest = require('../../lib/api/request');
+
 function onGetUserInfo () {
   console.log("GET USER INFO")
   wx.getUserInfo({
@@ -11,6 +12,7 @@ function onGetUserInfo () {
     }
   })
 }
+
 Page({
   onGotUserInfo: function() {
     let app = getApp();
@@ -21,10 +23,10 @@ Page({
             wx.request({
               success: function (res) {
                 try {
-                  console.log("Result from server: ")
-                  console.log(res)
                   wx.setStorageSync('token', res.data.authentication_token)
+                  console.log('Token from backend', wx.getStorageSync('token'))
                   wx.setStorageSync('currentUserId', res.data.id)
+                  wx.setStorageSync('userEmail', res.data.email)
                   app.globalData.token = res.data.authentication_token
                   app.globalData.currentUserId = res.data.id
                   app.globalData.email = res.data.email
@@ -50,19 +52,15 @@ Page({
                 }
               }
             })
-
           }
             , app)
           onGetUserInfo();
           //发起网络请求
           console.log("Yes..We got code from RES")
           console.log("Global Data before RES")
-
-
         } else {
           console.log('error' + res.errMsg)
         }
-
       }
     })
   },
@@ -70,73 +68,47 @@ Page({
 
   },
 
-  /**
-   * Lifecycle function--Called when page load
-   */
   onLoad: function (options) {
 
-   
   },
 
-  /**
-   * Lifecycle function--Called when page is initially rendered
-   */
   onReady: function () {
 
   },
+
   index: function(){
     wx.navigateTo({
       url: '../index/index'
     })
   },
-  /**
-   * Lifecycle function--Called when page show
-   */
+
   onShow: function () {
     myRequest.get({
       path: 'spots',
       success(res) {
-
         console.log(res)
-        app.globalData.spotTypes = res.data
-
         app.globalData.spotTypes = res.data
         console.log('GlobalData', app.globalData.spotTypes)
       }
     })
   },
 
-  /**
-   * Lifecycle function--Called when page hide
-   */
   onHide: function () {
 
   },
 
-  /**
-   * Lifecycle function--Called when page unload
-   */
   onUnload: function () {
 
   },
 
-  /**
-   * Page event handler function--Called when user drop down
-   */
   onPullDownRefresh: function () {
 
   },
 
-  /**
-   * Called when page reach bottom
-   */
   onReachBottom: function () {
 
   },
 
-  /**
-   * Called when user click on the top right corner to share
-   */
   onShareAppMessage: function () {
 
   }
