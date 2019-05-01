@@ -78,7 +78,7 @@ page {
 .logic-container{
   position: relative;
   z-index: 1;
-  background-color: white;
+  background-color: #2D324E;
 }
 .demo-text-1{
   position: relative;
