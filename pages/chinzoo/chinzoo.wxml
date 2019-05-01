@@ -8,7 +8,7 @@
       longitude="{{lg}}" 
       latitude="{{lt}}" 
       scale="{{sc}}" 
-      style="width: 100%; height: 100vh;" 
+      style="width: 100%; height: 40vh;" 
       markers="{{mk}}"
       show-location
       >
@@ -32,12 +32,29 @@
       wuss-class="wuss-popup"
     >
       <view class="demo-popup-6">
-        <w-cell-group>
+        <!-- <w-cell-group>
           <w-checkbox options="{{ items1 }}" bind:onChange="handleChange" />
-        </w-cell-group>
-      
+        </w-cell-group> -->
+        <view class="icon-wrapper">
+
+          <view class="grid-item">
+            <icon><logic image="{{image}}"></logic></icon>
+          </view>
+          
+          <view class="grid-item">
+               <icon><logic image="{{image}}"></logic></icon>
+          </view>
+
+          <view class="grid-item">
+          </view>
+            <slot></slot>
+        </view>
+        
+        <view>
+          <slider class="slider" bindchange="setDifficulty" min="1" max="5" show-value selected-color="#464490" color="#3ACCE1" block-size='15' block-color='#474491' />
+        </view>
         <w-button type="info" bind:onClick="handleClose">Add Spot</w-button>
-        <view>{{ items1Str }}</view>
+        <!-- <view>{{ items1Str }}</view> -->
         
       </view>
     </w-popup>

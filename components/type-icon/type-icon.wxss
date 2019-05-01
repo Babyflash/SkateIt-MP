@@ -1,4 +1,3 @@
-/* components/type-icon/type-icon.wxss */
 .icon{
   display: flex;
   flex-direction: column;
