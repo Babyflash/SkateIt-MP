@@ -8,18 +8,20 @@ function generateSpotsJson() {
   const spots = app.globalData.spotTypes.Ledge;
   console.log("SPOTS===", spots)
   let markers = []
-
-  spots.forEach(function (e) {
-    console.log(e)
-    markers.push({
-      iconPath: markerUrl,
-      id: e.id,
-      latitude: e.geo_lat,
-      longitude: e.geo_lng,
-      width: 56,
-      height: 56,
+  if(spots) {
+    spots.forEach(function (e) {
+      console.log(e)
+      markers.push({
+        iconPath: markerUrl,
+        id: e.id,
+        latitude: e.geo_lat,
+        longitude: e.geo_lng,
+        width: 56,
+        height: 56,
+      })
     })
-  })
+  }
+  
   console.log(spots);
   return markers;
 }
