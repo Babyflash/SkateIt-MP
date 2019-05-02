@@ -73,12 +73,13 @@
     
   <accordian show="{{show}}" bindlongpress="long" bindtouchend="handleTouchEnd" bindtouchend="move">
     <!-- <view slot="before" bindtap="accordion" class="handle"></view> -->
-    	<w-icon
+    	<!-- <w-icon
       slot="before"
   
       class="handle"
 		 type="{{show ? 'arrow-down' : 'location-o'}}"
-   />
+   /> -->
+    <image slot="before" class="handle" mode="aspectFit" style="width: 70px" src="../../lib/images/Skateboard-icon.png"></image>
     <logic slot="after" spotTypes='{{spotTypes}}'></logic>
   </accordian>
 </view>

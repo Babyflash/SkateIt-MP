@@ -48,7 +48,7 @@
 height:3px;
 background-color: lightgray;
 border-radius: 2px; */
-color: #d3d3d3;
+
 font-size: 35px;
 font-weight: bold;
 transition: 1 ease;
