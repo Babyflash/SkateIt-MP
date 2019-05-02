@@ -1,9 +1,9 @@
 //index.js
 //获取应用实例
 const app = getApp()
-
 Page({
   data: {
+    menuClick: false,
     motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
@@ -18,9 +18,15 @@ Page({
     nextMargin: 0,
     clicked: false,
     longpress: false,
-    show: false
-
+    show: false,
+    selectPerson: true,
+    firstPerson: '兴趣',
+    selectArea: false,
+    open: false,
+    first: false,
+    second: false,
   },
+
   //事件处理函数
   bindViewTap: function () {
     wx.navigateTo({
@@ -53,6 +59,14 @@ Page({
     console.log(this.data.show)
    
   },
+  move: function(){
+    console.log('grow and shrink')
+    // console.log(e.timeStamp)
+    this.setData({
+      clicked: this.data.clicked ? false : true,
+      show: !this.data.clicked
+    })
+  },
   bindHomeTap: function () {
     wx.navigateTo({
       url: '../home/home'
@@ -84,6 +98,21 @@ Page({
       // 在没有 open-type=getUserInfo 版本的兼容处理
 
     }
+  },
+  firstChoice: function(e){
+    console.log('first')
+    console.log(e.currentTarget)
+    this.setData({
+      first: !this.data.first,
+      second: false,
+    })
+  },
+  secondChoice: function () {
+    console.log('second')
+    this.setData({
+      first: false,
+      second: !this.data.second,
+    })
   },
   getUserInfo: function (e) {
     // console.log(e)

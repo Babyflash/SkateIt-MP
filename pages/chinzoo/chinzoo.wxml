@@ -15,6 +15,9 @@
     </map>
     <button class="add-spot-btn" id = "addSpot" bindtap="navigateToAddSpotPage" >+</button>
    </view>
+   <cover-view style="height: 500px; width: 500px; background-color: red; opacity: 0.4">
+   
+   </cover-view>
    <view class="btn-area">
       <button bindtap="chooseLocation" >Search location</button>
       <button bindtap="getCenterLocation" >Get location</button>
@@ -22,7 +25,7 @@
     </view>
 
     <w-popup
-      visible="{{ popup6 }}"
+      visible="{{popup6}}"
       maskCancel="{{ false }}"
       position="main"
       height="72%"

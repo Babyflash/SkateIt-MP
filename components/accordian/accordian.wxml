@@ -14,6 +14,7 @@
           <slot name="before"></slot>
         </view>
         
+        
         <view class="iconsbox">
           <icon></icon>
           <icon></icon>
@@ -30,7 +31,7 @@
     18
     </view> -->
 
-<scroll-view class="{{getApp().globalData.click ? 'show' : 'hide'}}" scroll-y="true" style="height: 35vh; transition: 0.5s ease; {{show ? '' : 'display: none'}}">
+<scroll-view class="{{getApp().globalData.click ? 'show' : 'hide'}}" scroll-y="true" style="height: 45vh; transition: 0.5s ease; {{show ? '' : 'display: none'}}">
   <slot name="after"></slot>
 </scroll-view>
 
