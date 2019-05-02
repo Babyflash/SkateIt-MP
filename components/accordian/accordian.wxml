@@ -1,20 +1,34 @@
 
-  <view class="title-bar">
-  
-    <view class="arrow">
+
+
+    <!-- <view class="arrow">
     <w-icon type='arrow-top'/>
-    </view>
+    </view> -->
+ 
 
     <view class="spot-info">
-    <view class="gradient-line"></view>
-      <view class="info-title">Nearby</view>
-      <view class="info-des">Ledge, Stairs, Parks...</view>
+
+      <view class="title-bar">
+        <view class="gradient-line"></view>
+        <view class="pull-line">
+          <view class="handle"></view>
+        </view>
+        
+        <view class="iconsbox">
+          <icon></icon>
+          <icon></icon>
+          <icon></icon>
+          <icon></icon>
+        </view>
+      </view> 
+
+      <!-- <view class="info-title">Nearby</view>
+      <view class="info-des">Ledge, Stairs, Parks...</view> -->
     </view>
 
-    <view class="spot-count">
+    <!-- <view class="spot-count">
     18
-    </view>
-
+    </view> -->
   </view>  
 <scroll-view class="{{getApp().globalData.click ? 'show' : 'hide'}}" scroll-y="true" style="height: 35vh; transition: 0.5s ease;">
   <slot></slot>
