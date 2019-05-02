@@ -1,16 +1,65 @@
 <view style="position: relative;">
-  <!-- this is where map should go -->
+  <cover-view class="menuBar">
+    <!-- first choice -->
+      <cover-view class="choice" bindtap='firstChoice' style="">
+        <cover-view>Type</cover-view>
+        <cover-image style="{{first ? 'display: none' : '' }}" class="filter-arrow" class="img" src="../../lib/images/down.png" />
+         <cover-image style="{{first ? '' : 'display: none'}}" class="filter-arrow" class="img" src="../../lib/images/up.png" />
+      </cover-view> 
+       <cover-view >
+        |
+      </cover-view> 
+       <!-- second choice -->
+      <cover-view class="choice" bindtap='secondChoice'>
+        <cover-view>Distance</cover-view>
+        <cover-image style="{{second ? 'display: none' : ''}}"class="filter-arrow" class="img" src="../../lib/images/down.png" />
+        <cover-image style="{{second ? '' : 'display: none'}}" class="filter-arrow" class="img" src="../../lib/images/up.png" />
+      </cover-view>
+  </cover-view>
+
+
    <map 
-      class="map" 
+      class="map"
       bindmarkertap="markertap" 
       longitude="{{lg}}" 
       latitude="{{lt}}" 
       scale="{{sc}}" 
-      style="width: 100%; height: {{clicked ? '50vh' : '75vh'}}; opacity: {{longpress ? '0.4' : '1'}};" 
+      style="width: 100%; height: {{clicked ? '50vh' : '85vh'}};" 
       markers="{{mk}}"
       show-location
       >
-    </map>
+        <!-- first choice dropdown -->
+  <cover-view class='dropdown' data="yooo" style="{{first ? '' : 'display: none'}}">
+    <cover-view class="drop-item">
+    Ledge
+    </cover-view>
+    <cover-view class="drop-item">
+    Stairs 
+    </cover-view>
+    <cover-view class="drop-item">
+    Park
+    </cover-view>
+    <cover-view class="drop-item">
+    Stairs
+    </cover-view>
+  </cover-view>
+  <!-- second choice dropdown -->
+  <cover-view class='dropdown' style="{{second ? '' : 'display: none'}}">
+    <cover-view class="drop-item">
+    1km
+    </cover-view>
+    <cover-view class="drop-item">
+    2km
+    </cover-view>
+    <cover-view class="drop-item">
+    3km
+    </cover-view>
+    <cover-view class="drop-item">
+    4km
+    </cover-view>
+  </cover-view>
+  </map>
+    
   <accordian show="{{show}}" bindlongpress="long" bindtouchend="handleTouchEnd">
     <!-- <view slot="before" bindtap="accordion" class="handle"></view> -->
     	<w-icon

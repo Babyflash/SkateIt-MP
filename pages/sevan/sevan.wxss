@@ -7,6 +7,10 @@
 
 .map{
   transition: 0.1s ease;
+ 
+}
+.hideMap{
+   display: none;
 }
 
 .handle{
@@ -18,3 +22,39 @@ color: lightgray;
 font-size: 35px;
 font-weight: bold;
 }
+.menuBar{
+  height: 5vh;
+  background-color: #FFFFFF;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.dropdown{
+  width: 100%;
+  background-color: white;
+  position: absolute;
+  z-index: 999;
+   border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  transition: transform 1s linear;
+}
+/* .dropdown .active{
+  transform: transitionY(300px);
+} */
+.drop-item{
+  margin: 16px 8px;
+}
+
+.choice{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: #78849F;
+}
+cover-image{
+  width: 10px;
+}
+
+
