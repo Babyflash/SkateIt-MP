@@ -134,3 +134,41 @@
 .submit{
   background-color: #3ACCE1;
 }
+
+.publishedcomment{
+  display: flex;
+  width:100vw;
+  height:150px;
+  margin-top: 10px;
+  align-items: center;
+}
+
+.commentimage{
+  position: relative;
+  left: 5px;
+  z-index: 1;
+
+}
+
+.commenttextbox{
+  border-radius: 5px;
+  width: 80vw;
+  height:150px;
+  background-color: white;
+  position:absolute;
+  left:45px;
+
+}
+
+.commenttext{
+  font-size: 10pt;
+  width: 45vw;
+  position: relative;
+  left: 125px;
+  word-wrap: break-word;
+  height: 150px;
+}
+
+.commentsarea{
+  height:100%;
+}

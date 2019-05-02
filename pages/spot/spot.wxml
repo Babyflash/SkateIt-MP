@@ -37,13 +37,46 @@
 
 <view class="container">
 
-  <view class="content">
+    <!-- comment textarea -->
     <view class="commentarea">
       <textarea placeholder='did you skate this?' auto-height class="commentbox"></textarea>
       <button class="submit">submit</button>    
     </view>
 
-  </view>
+    <!-- published comments -->
+    <view class="commentsarea">
+
+      <view class="publishedcomment">
+        <view class="commentimage">
+          <view class="picplaceholder"></view>
+        </view>
+        <view class="commenttextbox">
+          <view class="commenttext">this is a published comment. yay!</view>
+        </view>
+      </view>
+
+       <view class="publishedcomment">
+        <view class="commentimage">
+          <view class="picplaceholder"></view>
+        </view>
+        <view class="commenttextbox">
+          <view class="commenttext">this is a published comment. yay!</view>
+        </view>
+      </view>
+
+       <view class="publishedcomment">
+        <view class="commentimage">
+          <view class="picplaceholder"></view>
+        </view>
+        <view class="commenttextbox">
+          <view class="commenttext">this is a published comment. yay!</view>
+        </view>
+      </view>
+
+    </view>
+
+ 
+
   </view>
 </view>
 
