@@ -1,7 +1,6 @@
 //index.js
 //获取应用实例
 const app = getApp()
-
 Page({
   data: {
     menuClick: false,
@@ -59,6 +58,14 @@ Page({
     })
     console.log(this.data.show)
    
+  },
+  move: function(){
+    console.log('grow and shrink')
+    // console.log(e.timeStamp)
+    this.setData({
+      clicked: this.data.clicked ? false : true,
+      show: !this.data.clicked
+    })
   },
   bindHomeTap: function () {
     wx.navigateTo({
