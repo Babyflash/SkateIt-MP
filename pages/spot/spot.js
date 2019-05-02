@@ -1,4 +1,7 @@
 // pages/spot/spot.js
+const app = getApp()
+const myRequest = require('../../lib/api/request');
+
 Page({
 
   /**
@@ -13,78 +16,74 @@ Page({
    */
   onLoad: function (options) {
     // console.log(options)
+    let that = this
+    
     const spotId = options.id
     const spotType = options.type
     const url = options.url
     const address = options.address
     this.setData({
-      spotType,
-      spotId,
-      url,
-      address
+      spotType: spotType,
+      spotId: spotId,
+      url: url,
+      address: address
     })
-    // console.log(getApp().globalData.spotTypes);
-    // let that = this;
-    // wx.request({
-    //   url: `http://localhost:3000/api/v1/spots/${options.id}`,
-    //   method: 'GET',
-    //   success(res) {
-    //     const spot = res.data;
-    //     // Update local data
-    //     that.setData({
-    //       spot
-    //     });
-    //     console.log(spot)
-    //     wx.hideToast();
-    //   }
-    // });
+
+    myRequest.get({
+      path: `spots/${spotId}/posts`,
+      success(res) {
+        console.log(res)
+      }
+    })
   },
 
-  /**
-   * Lifecycle function--Called when page is initially rendered
-   */
+  addPostRequest: function () {
+    let that = this
+    let post = {
+      "description": "Cool place i have ever seen. AMAZING!!!",
+      "user_id": app.globalData.currentUserId,
+      "spot_id": that.data.spotId
+    }
+
+    myRequest.post({
+      header: {
+        'Content-Type': 'application/json',
+        'X-User-Email': wx.getStorageSync('userEmail'),
+        'X-User-Token': wx.getStorageSync('token')
+      },
+      path: `spots/${that.data.spotId}/posts`,
+      data: post,
+      success(res) {
+        console.log("CREATE POST RESULT:", res)
+      }
+    })
+  },
+
   onReady: function () {
 
   },
 
-  /**
-   * Lifecycle function--Called when page show
-   */
   onShow: function () {
-
+    let that = this
+    that.addPostRequest();
   },
 
-  /**
-   * Lifecycle function--Called when page hide
-   */
   onHide: function () {
 
   },
 
-  /**
-   * Lifecycle function--Called when page unload
-   */
   onUnload: function () {
 
   },
 
-  /**
-   * Page event handler function--Called when user drop down
-   */
   onPullDownRefresh: function () {
 
   },
 
-  /**
-   * Called when page reach bottom
-   */
   onReachBottom: function () {
 
   },
 
-  /**
-   * Called when user click on the top right corner to share
-   */
   onShareAppMessage: function () {
 
   }
