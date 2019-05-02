@@ -4,7 +4,10 @@ Component({
    * Component properties
    */
   properties: {
-
+      visible: {
+        type: Boolean,
+        value: getApp().globalData.click
+      }
   },
 
   /**
