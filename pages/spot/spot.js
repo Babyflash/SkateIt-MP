@@ -1,19 +1,13 @@
 // pages/spot/spot.js
 const app = getApp()
 const myRequest = require('../../lib/api/request');
+const chooseImg = require('../chinzoo/help');
 
 Page({
-
-  /**
-   * Page initial data
-   */
   data: {
 
   },
 
-  /**
-   * Lifecycle function--Called when page load
-   */
   onLoad: function (options) {
     // console.log(options)
     let that = this
@@ -39,6 +33,7 @@ Page({
 
   addPostRequest: function () {
     let that = this
+    let constent = []
     let post = {
       "description": "Cool place i have ever seen. AMAZING!!!",
       "user_id": app.globalData.currentUserId,
@@ -59,13 +54,18 @@ Page({
     })
   },
 
+  addImage: function () {
+    let paths = chooseImg();
+    console.log("IMAGES===", paths);
+  },
+
   onReady: function () {
 
   },
 
   onShow: function () {
-    let that = this
-    that.addPostRequest();
+    // let that = this
+    // that.addPostRequest();
   },
 
   onHide: function () {

@@ -5,7 +5,7 @@
   </view>
   <view class="topspotbox">
     <view class="addressbox">
-        <w-button class="btn" type="info">
+        <w-button class="btn" type="info" bindtap='addImage'>
           <w-icon type='location' class="location-icon" />
         </w-button>
         <view class="address">{{address}}</view>
