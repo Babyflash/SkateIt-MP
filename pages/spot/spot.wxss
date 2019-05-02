@@ -24,17 +24,18 @@
   text-transform: uppercase;
 }
 .addressbox{
+  width:90%;
   display: flex;
   justify-content: space-around;
   align-items: center;
   padding: 10px 15px;
   color: white;
-  font-size: 8pt;
+  font-size: 10pt;
 }
 .address{
-  text-align: right;
+  text-align: center;
 }
-.add-container{
+/* .add-container{
   max-height: 54px;
   overflow: hidden;
   position: relative;
@@ -42,7 +43,7 @@
   width: 54px;
   margin-left: 10px;
   color: white;
-}
+} */
 .icon{
   font-size: 54px;
   max-height: 54px;
@@ -65,11 +66,12 @@
 } */
 
 .content{
-  padding: 10px 16px;
-  border-bottom: 1px solid #F8F8F8;
-  border-right: 1px solid #F8F8F8;
-  border-left: 1px solid #F8F8F8;
-  
+  display: flex;
+  flex-direction: column;
+  width: 90vw;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;  
 }
 
 .btn > button{
@@ -77,19 +79,58 @@
   width: 42px;
   padding: 0 !important;
   margin: 0 !important;
+  background-color: #3ACCE1 !important;
+
 }
 .location-icon{
   color: white;
 }
 
 .topspotbox{
+  display: flex;
   width:100vw;
-  height: 80px;
+  height: 50px;
   position:relative;
   top:0;
   background-color: #2D324E;
-
 }
+
+.btnsbox{
+  display: flex;
+  justify-content: center;
+  margin-top:5px;
+  width:20%;
+}
+
 .share{
   color:white;
+}
+
+.spotpicscarousel{
+  display: flex;
+  justify-content: space-around;
+  background-color: #2D324E;
+}
+
+.picplaceholder{
+  background-color: rgb(31, 146, 146);
+  background-image: url('https://image.shutterstock.com/z/stock-photo-beautiful-young-skater-woman-riding-on-her-longboard-in-the-city-607147790.jpg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  border-radius: 5px;
+  height: 100px;
+  width: 150px;
+  margin: 5px;
+}
+
+.commentbox{
+  background-color: white;
+  width: 85vw;
+  padding: 20px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.submit{
+  background-color: #3ACCE1;
 }

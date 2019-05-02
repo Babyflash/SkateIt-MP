@@ -1,24 +1,46 @@
 <!--pages/spot/spot.wxml-->
 <view class="outer">
-  <view class="spot-img" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url({{url}})">
-    <view class="type">{{spotType}}</view>
+  <!-- <view class="spot-img" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url({{url}})"> -->
+  <view class="spot-img" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://nicershoes.com/wp-content/uploads/2015/07/Best-Skate-Shoes-skater-doing-an-ollie-in-a-skate-park.jpg)">
+    <!-- <view class="type">{{spotType}}</view> -->
+    <view class="type">Ledge</view>
   </view>
+
+ 
+  
   <view class="topspotbox">
-    <view class="addressbox">
-        <w-button class="btn" type="info">
-          <w-icon type='location' class="location-icon" />
-        </w-button>
-        <view class="address">{{address}}</view>
+
+    <view class="btnsbox">
+      <w-button class="btn" type="info">
+        <w-icon type='location' class="location-icon" />
+      </w-button>
     </view>
-  <view>
-      <w-icon class="share" type='share' />
+
+    <view class="addressbox"> 
+      <!-- <view class="address">{{address}}</view> -->
+      <view class="address">123 fake st. some, country</view>
     </view>
+
+    <view class="btnsbox">
+      <w-button class="btn" type="info">
+        <w-icon class="share" type='share' />
+      </w-button>
+    </view>
+
   </view>
+
+ <view class="spotpicscarousel">
+    <view class="picplaceholder"></view>
+    <view class="picplaceholder"></view>
+    <view class="picplaceholder"></view>
+  </view>
+
 <view class="container">
 
-  <view class="card">
-    <view class="content">
-      This is info about the spot
+  <view class="content">
+    <view class="commentarea">
+      <textarea placeholder='did you skate this?' auto-height class="commentbox"></textarea>
+      <button class="submit">submit</button>    
     </view>
 
   </view>
