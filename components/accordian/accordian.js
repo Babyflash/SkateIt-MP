@@ -3,11 +3,15 @@ Component({
   /**
    * Component properties
    */
+  options: {
+    multipleSlots: true
+  },
   properties: {
       visible: {
         type: Boolean,
         value: getApp().globalData.click
-      }
+      },
+      show: Boolean
   },
 
   /**

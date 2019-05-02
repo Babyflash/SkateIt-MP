@@ -17,7 +17,9 @@ Page({
     previousMargin: 0,
     nextMargin: 0,
     clicked: false,
-    longpress: false
+    longpress: false,
+    show: false
+
   },
   //事件处理函数
   bindViewTap: function () {
@@ -45,10 +47,11 @@ Page({
     // console.log(e.timeStamp)
     
     this.setData({
-      clicked: this.data.clicked ? false : true
+      clicked: this.data.clicked ? false : true,
+      show: !this.data.clicked
     })
-    getApp().globalData.click = this.data.clicked
-    console.log(getApp().globalData.click)
+    console.log(this.data.show)
+   
   },
   bindHomeTap: function () {
     wx.navigateTo({
