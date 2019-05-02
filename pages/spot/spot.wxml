@@ -9,11 +9,11 @@
  
   
   <view class="topspotbox">
-
-    <view class="btnsbox">
-      <w-button class="btn" type="info">
-        <w-icon type='location' class="location-icon" />
-      </w-button>
+    <view class="addressbox btnsbox">
+        <w-button class="btn" type="info" bindtap='addImage'>
+          <w-icon type='location' class="location-icon" />
+        </w-button>
+        <view class="address">{{address}}</view>
     </view>
 
     <view class="addressbox"> 
