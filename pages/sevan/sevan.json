@@ -3,6 +3,7 @@
     "card": "../../components/cards/index_card",
     "logic": "../../components/logic/logic",
     "accordian": "../../components/accordian/accordian",
-    "w-icon": "wuss-weapp/w-icon/index"
+    "w-icon": "wuss-weapp/w-icon/index",
+    "w-drop-menu": "wuss-weapp/w-drop-menu/index"
   }
 }
