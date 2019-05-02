@@ -1,10 +1,19 @@
 const app = getApp()
 const myRequest = require('../../lib/api/request');
+const AV = require('../../utils/av-weapp-min.js')
+
+
+function showLoading() {
+  wx.showLoading({
+    title: 'Uploading...',
+    mask: true
+  })
+}
 
 function chooseImg() {
-  new Promise(function (resolve, reject) {
+  // new Promise(function (resolve, reject) {
     
-  });
+  // });
 
   wx.chooseImage({
     count: 9,
@@ -72,3 +81,4 @@ function uploadPictures() {
 }
 
 module.exports = chooseImg;
+module.exports = uploadImgPromise;
