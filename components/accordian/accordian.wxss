@@ -29,6 +29,7 @@
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
 }
+
 .arrow{
   font-size: 30px;
   color: white;
@@ -59,13 +60,10 @@
 }
 
 .pull-line{
-  display:flex;
-  justify-content: center;
   margin: 0;
   /* height: 10px; */
+  color: white;
 }
-
-
 
 .iconsbox{
   display: none;
