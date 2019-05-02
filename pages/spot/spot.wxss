@@ -121,6 +121,9 @@
   height: 100px;
   width: 150px;
   margin: 5px;
+  box-shadow: rgba(0,0,0,0.2) 3px 3px 2px;
+
+
 }
 
 .commentbox{
@@ -128,12 +131,25 @@
   width: 85vw;
   padding: 20px;
   border-radius: 5px;
+  margin-top: 15px;
   margin-bottom: 10px;
 }
 
 .submit{
   background-color: #3ACCE1;
+  margin-bottom: 10px;
+  width: 25%;
+  height: 35px;
+  font-size: 12pt;
+  color: white;
 }
+
+.submitarea{
+  position: relative;
+  right: 0px;
+  width: 300px;
+  
+  }
 
 .publishedcomment{
   display: flex;
@@ -147,6 +163,7 @@
   position: relative;
   left: 5px;
   z-index: 1;
+  padding: 0px;
 
 }
 

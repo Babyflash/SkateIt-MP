@@ -40,7 +40,9 @@
     <!-- comment textarea -->
     <view class="commentarea">
       <textarea placeholder='did you skate this?' auto-height class="commentbox"></textarea>
-      <button class="submit">submit</button>    
+    </view>
+    <view class="submitarea">
+      <button class="submit">submit</button> 
     </view>
 
     <!-- published comments -->
