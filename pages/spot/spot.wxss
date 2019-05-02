@@ -152,7 +152,7 @@
 
 .commenttextbox{
   border-radius: 5px;
-  width: 80vw;
+  width: 85vw;
   height:150px;
   background-color: white;
   position:absolute;
