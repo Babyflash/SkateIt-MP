@@ -8,7 +8,7 @@
 
 
   <!-- holds the accordian down -->
-  <view style="width: 100%; height: 85vh; padding: 0px;"></view>
+  <view style="width: 100%; height: 75vh; padding: 0px;"></view>
   <accordian>
     <logic spotTypes='{{spotTypes}}'></logic>
   </accordian>
