@@ -13,8 +13,15 @@
   padding: 0;
   display:flex;
   flex-direction: column;
-}
+  transition: 0.5s ease;
 
+}
+.show{
+
+}
+.hide{
+  
+}
 .card-container{
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
