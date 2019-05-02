@@ -2,10 +2,13 @@
 const app = getApp()
 const myRequest = require('../../lib/api/request');
 const chooseImg = require('../chinzoo/help');
+const uploadImgPromise = require('../chinzoo/help');
+const AV = require('../../utils/av-weapp-min.js')
 
 Page({
   data: {
-
+    popup6 : false,
+    imgs: []
   },
 
   onLoad: function (options) {
@@ -31,32 +34,87 @@ Page({
     })
   },
 
-  addPostRequest: function () {
+  chooseImage: function () {
     let that = this
-    let constent = []
-    let post = {
-      "description": "Cool place i have ever seen. AMAZING!!!",
-      "user_id": app.globalData.currentUserId,
-      "spot_id": that.data.spotId
-    }
 
-    myRequest.post({
-      header: {
-        'Content-Type': 'application/json',
-        'X-User-Email': wx.getStorageSync('userEmail'),
-        'X-User-Token': wx.getStorageSync('token')
-      },
-      path: `spots/${that.data.spotId}/posts`,
-      data: post,
-      success(res) {
-        console.log("CREATE POST RESULT:", res)
+    wx.chooseImage({
+      count: 9,
+      sizeType: ['original', 'compressed'],
+      sourceType: ['album', 'camera'],
+      success: function (res) {
+        console.log(res.tempFilePaths)
+        res.tempFilePaths.forEach(function (e) {
+          that.data.imgs.push(e);
+        })
       }
     })
   },
 
-  addImage: function () {
-    let paths = chooseImg();
-    console.log("IMAGES===", paths);
+  addPostRequest: function () {
+    let that = this
+
+    wx.showLoading({
+      title: 'Uploading...',
+      mask: true
+    })
+
+    const checkImage = path =>
+      new Promise(resolve => {
+        new AV.File('file-name', {
+          blob: {
+            uri: path,
+          },
+        }).save().then(file => resolve(file.url())).catch(e => reject(e));
+      });
+
+    const loadImg = paths => Promise.all(paths.map(checkImage))
+
+    let res = loadImg(that.data.imgs).then(result => {
+      console.log("ALL PROMISES RESULT=", result)
+      
+      let post = {
+        "description": "Cool place i have ever seen. AMAZING!!!",
+        "user_id": app.globalData.currentUserId,
+        "spot_id": that.data.spotId,
+        "content": result
+      }
+
+      myRequest.post({
+        header: {
+          'Content-Type': 'application/json',
+          'X-User-Email': wx.getStorageSync('userEmail'),
+          'X-User-Token': wx.getStorageSync('token')
+        },
+        path: `spots/${that.data.spotId}/posts`,
+        data: post,
+        success(res) {
+          wx.hideLoading();
+          that.data.imgs = []
+          console.log("CREATE POST RESULT:", res)
+          that.handleClose();
+        },
+        fail: function (res) {
+          wx.hideLoading();
+          that.data.imgs = []
+          console.log(res.data);
+          console.log('failed!' + res.statusCode);
+        }
+      })
+    })
+  },
+
+  showAddPostPopUp: function () {
+    let that = this
+    that.setData({
+      popup6: true,
+    });
+  },
+
+  handleClose() {
+    this.setData({
+      popup6: false,
+      imgs: []
+    });
   },
 
   onReady: function () {

@@ -1,16 +1,38 @@
 <!--pages/spot/spot.wxml-->
 <view class="outer">
-  <!-- <view class="spot-img" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url({{url}})"> -->
-  <view class="spot-img" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://nicershoes.com/wp-content/uploads/2015/07/Best-Skate-Shoes-skater-doing-an-ollie-in-a-skate-park.jpg)">
+  <view class="spot-img" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), ur(https://nicershoes.com/wp-content/uploads/2015/07/Best-Skate-Shoes-skater-doing-an-ollie-in-a-skate-park.jpg)">
     <!-- <view class="type">{{spotType}}</view> -->
     <view class="type">Ledge</view>
   </view>
 
- 
-  
   <view class="topspotbox">
+  
+<w-popup
+  visible="{{ popup6 }}"
+  maskCancel="{{ false }}"
+  position="main"
+  height="72%"
+  width="72%"
+  padding="8"
+  bind:onClose="handleClose"
+  wuss-class="wuss-popup"
+>
+  <view class="demo-popup-6">
+    <w-input
+				 clear
+				 type="textarea"
+				 label=""
+				 name="address"
+				 placeholder="What's on your mind?"
+				/>
+    <w-button type="primary" bindtap='chooseImage'>Add picture</w-button>
+    <w-button type="primary" bindtap='addPostRequest'>Share</w-button>
+    <w-button type="primary" bindtap='handleClose'>Cancel</w-button>
+  </view>
+</w-popup>
+
     <view class="addressbox btnsbox">
-        <w-button class="btn" type="info" bindtap='addImage'>
+        <w-button class="btn" type="info" bindtap='showAddPostPopUp'>
           <w-icon type='location' class="location-icon" />
         </w-button>
         <view class="address">{{address}}</view>
@@ -36,7 +58,6 @@
   </view>
 
 <view class="container">
-
     <!-- comment textarea -->
     <view class="commentarea">
       <textarea placeholder='did you skate this?' auto-height class="commentbox"></textarea>
@@ -47,7 +68,6 @@
 
     <!-- published comments -->
     <view class="commentsarea">
-
       <view class="publishedcomment">
         <view class="commentimage">
           <view class="picplaceholder"></view>
@@ -74,17 +94,7 @@
           <view class="commenttext">this is a published comment. yay!</view>
         </view>
       </view>
-
     </view>
-
- 
 
   </view>
 </view>
-
-
-
-
-<!-- <view>{{spotId}}</view> -->
-
-
