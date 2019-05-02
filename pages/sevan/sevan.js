@@ -15,7 +15,9 @@ Page({
     interval: 2000,
     duration: 500,
     previousMargin: 0,
-    nextMargin: 0
+    nextMargin: 0,
+    clicked: false,
+    longpress: false
   },
   //事件处理函数
   bindViewTap: function () {
@@ -23,7 +25,31 @@ Page({
       url: '../logs/logs'
     })
   },
+  handleTouchEnd: function(){
+    console.log('end')
+    this.setData({
+      longpress: false
+    })
+  },
+  long: function (e) {
+    let that = this;
 
+    that.setData({
+      touch_start: e.timeStamp,
+      longpress: true
+    })
+    console.log(e.timeStamp + '- touch-start')
+  }, 
+  accordion: function(e){
+    console.log('grow and shrink')
+    // console.log(e.timeStamp)
+    
+    this.setData({
+      clicked: this.data.clicked ? false : true
+    })
+    getApp().globalData.click = this.data.clicked
+    console.log(getApp().globalData.click)
+  },
   bindHomeTap: function () {
     wx.navigateTo({
       url: '../home/home'
