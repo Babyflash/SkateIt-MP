@@ -11,7 +11,7 @@
       <view class="title-bar">
         <view class="gradient-line"></view>
         <view class="pull-line">
-          <view class="handle"></view>
+          <slot name="before"></slot>
         </view>
         
         <view class="iconsbox">
@@ -29,9 +29,9 @@
     <!-- <view class="spot-count">
     18
     </view> -->
-  </view>  
-<scroll-view class="{{getApp().globalData.click ? 'show' : 'hide'}}" scroll-y="true" style="height: 35vh; transition: 0.5s ease;">
-  <slot></slot>
+
+<scroll-view class="{{getApp().globalData.click ? 'show' : 'hide'}}" scroll-y="true" style="height: 35vh; transition: 0.5s ease; {{show ? '' : 'display: none'}}">
+  <slot name="after"></slot>
 </scroll-view>
 
 
