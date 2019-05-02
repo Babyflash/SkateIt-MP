@@ -16,7 +16,8 @@
     </view>
 
   </view>  
-
+<scroll-view class="{{getApp().globalData.click ? 'show' : 'hide'}}" scroll-y="true" style="height: 35vh; transition: 0.5s ease;">
   <slot></slot>
+</scroll-view>
 
 

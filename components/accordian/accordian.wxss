@@ -11,8 +11,14 @@
   justify-content: space-around;
   align-items: center;
   padding: 0;
+  transition: 0.5s ease;
 }
+.show{
 
+}
+.hide{
+  
+}
 .card-container{
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
