@@ -8,3 +8,13 @@
 .map{
   transition: 0.1s ease;
 }
+
+.handle{
+/* width:20px;
+height:3px;
+background-color: lightgray;
+border-radius: 2px; */
+color: lightgray;
+font-size: 35px;
+font-weight: bold;
+}

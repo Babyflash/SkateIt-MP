@@ -2,6 +2,7 @@
   "usingComponents": {
     "card": "../../components/cards/index_card",
     "logic": "../../components/logic/logic",
-    "accordian": "../../components/accordian/accordian"
+    "accordian": "../../components/accordian/accordian",
+    "w-icon": "wuss-weapp/w-icon/index"
   }
 }

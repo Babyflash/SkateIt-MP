@@ -58,14 +58,11 @@
 .pull-line{
   display:flex;
   justify-content: center;
+  margin: 0;
+  /* height: 10px; */
 }
 
-.handle{
-width:20px;
-height:3px;
-background-color: lightgray;
-border-radius: 2px;
-}
+
 
 .iconsbox{
   display: flex;

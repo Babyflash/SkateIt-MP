@@ -6,13 +6,20 @@
       longitude="{{lg}}" 
       latitude="{{lt}}" 
       scale="{{sc}}" 
-      style="width: 100%; height: {{clicked ? '50vh' : '85vh'}}; opacity: {{longpress ? '0.4' : '1'}};" 
+      style="width: 100%; height: {{clicked ? '50vh' : '75vh'}}; opacity: {{longpress ? '0.4' : '1'}};" 
       markers="{{mk}}"
       show-location
       >
     </map>
-  <accordian bindtap="accordion" bindlongpress="long" bindtouchend="handleTouchEnd">
-    <logic spotTypes='{{spotTypes}}'></logic>
+  <accordian show="{{show}}" bindlongpress="long" bindtouchend="handleTouchEnd">
+    <!-- <view slot="before" bindtap="accordion" class="handle"></view> -->
+    	<w-icon
+      slot="before"
+      bindtap='accordion'
+      class="handle"
+		 type="arrow-top"
+   />
+    <logic slot="after" spotTypes='{{spotTypes}}'></logic>
   </accordian>
 </view>
   
