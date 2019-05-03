@@ -42,6 +42,7 @@ page {
   font-size: 32rpx;
   line-height: 1.6;
 }
+
 .page-body{
   padding-top: 60rpx;
 }
