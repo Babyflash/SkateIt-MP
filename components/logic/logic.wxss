@@ -5,10 +5,11 @@
 }
 
 .swiper-item{
-  height: 100px;
+  height: 100%;
 }
 swiper{
-  height: 100px;
+  height: 30vh;
+  margin-top: 10px;
 }
 page {
 
@@ -36,7 +37,7 @@ page {
 }
 
 page {
-  background-color: #F8F8F8;
+  background-color: #2D324E;
   height: 100%;
   font-size: 32rpx;
   line-height: 1.6;
@@ -157,13 +158,13 @@ button:last-child{
   background: linear-gradient(90deg, rgba(103,54,207,1) 16%, rgba(9,9,121,1) 52%, rgba(0,212,255,1) 100%);
 }
 
-.typebox {
+/* .typebox {
   width: 30%;
   height: 20%;
   background-color: #3ACCE1;
   border-radius: 5px 5px 0 0;
   padding: 3px;
-}
+} */
 
 .title {
   font-weight: bold;
