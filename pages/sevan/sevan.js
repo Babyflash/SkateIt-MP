@@ -26,7 +26,12 @@ Page({
     first: false,
     second: false,
   },
-
+  closefilters: function(){
+    this.setData({
+      first: false,
+      second: false
+    })
+  },
   //事件处理函数
   bindViewTap: function () {
     wx.navigateTo({
