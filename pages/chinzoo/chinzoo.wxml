@@ -8,23 +8,143 @@
       longitude="{{lg}}" 
       latitude="{{lt}}" 
       scale="{{sc}}" 
-      style="width: 100%; height: 40vh;" 
+      style="width: 100%; height: 100vh;" 
       markers="{{mk}}"
       show-location
       >
     </map>
-    <button class="add-spot-btn" id = "addSpot" bindtap="navigateToAddSpotPage" >+</button>
+    <!-- <button class="add-spot-btn" id = "addSpot" bindtap="navigateToAddSpotPage" >+</button> -->
    </view>
-   <cover-view style="height: 500px; width: 500px; background-color: red; opacity: 0.4">
+   <!-- <cover-view style="height: 500px; width: 500px; background-color: red; opacity: 0.4">
    
-   </cover-view>
-   <view class="btn-area">
+   </cover-view> -->
+
+        <!-- <w-cell-group>
+          <w-checkbox options="{{ items1 }}" bind:onChange="handleChange" />
+        </w-cell-group> -->
+        <cover-view  class="add-spot-pop">
+
+          <cover-view class="flex-wrp" style="flex-direction:row;"> 
+            <cover-view class="flex-item bc_green">
+              <cover-view data-id='1' bindtap='active' class="share {{isClicked ? 'clicked' : ''}}">
+              <cover-image src='../../lib/images/Ledge.png'></cover-image>
+              <cover-view>Ledge</cover-view>
+              <button open-type='share'></button>
+            </cover-view>
+            </cover-view>
+            <cover-view class="flex-item bc_red">
+              <cover-view data-id='2' bindtap='active' class="share {{isClicked ? 'clicked' : ''}}">
+                <cover-image src='../../lib/images/Stair set.png'></cover-image>
+                <cover-view>Stair set</cover-view>
+                <button open-type='share'></button>
+              </cover-view>
+            </cover-view>
+            <cover-view class="flex-item bc_blue">
+              <cover-view data-id='3' bindtap='active' class="share {{isClicked ? 'clicked' : ''}}">
+              <cover-image src='../../lib/images/Transition.png'></cover-image>
+              <cover-view>Transition</cover-view>
+              <button open-type='share'></button>
+            </cover-view>
+            </cover-view>
+          </cover-view>
+          <cover-view class="flex-wrp" style="flex-direction:row;"> 
+            <cover-view class="flex-item bc_green">
+              <cover-view data-id='1' bindtap='active' class="share {{isClicked ? 'clicked' : ''}}">
+              <cover-image src='../../lib/images/Rail.png'></cover-image>
+              <cover-view>Rail</cover-view>
+              <button open-type='share'></button>
+            </cover-view>
+            </cover-view>
+            <cover-view class="flex-item bc_red">
+              <cover-view data-id='2' bindtap='active' class="share {{isClicked ? 'clicked' : ''}}">
+                <cover-image src='../../lib/images/handrail.png'></cover-image>
+                <cover-view>Hand Rail</cover-view>
+                <button open-type='share'></button>
+              </cover-view>
+            </cover-view>
+            <cover-view class="flex-item bc_blue">
+              <cover-view data-id='3' bindtap='active' class="share {{isClicked ? 'clicked' : ''}}">
+              <cover-image src='../../lib/images/Manual pad.png'></cover-image>
+              <cover-view>Manual Pad</cover-view>
+              <button open-type='share'></button>
+            </cover-view>
+            </cover-view>
+          </cover-view>
+          <cover-view class="flex-wrp" style="flex-direction:row;"> 
+            <cover-view class="flex-item bc_green">
+              <cover-view data-id='1' bindtap='active' class="share {{isClicked ? 'clicked' : ''}}">
+              <cover-image src='../../lib/images/Ledge.png'></cover-image>
+              <cover-view>分享</cover-view>
+              <button open-type='share'></button>
+            </cover-view>
+            </cover-view>
+            <cover-view class="flex-item bc_red">
+              <cover-view data-id='2' bindtap='active' class="share {{isClicked ? 'clicked' : ''}}">
+                <cover-image src='../../lib/images/Stair set.png'></cover-image>
+                <cover-view>分享</cover-view>
+                <button open-type='share'></button>
+              </cover-view>
+            </cover-view>
+            <cover-view class="flex-item bc_blue">
+              <cover-view data-id='3' bindtap='active' class="share {{isClicked ? 'clicked' : ''}}">
+              <cover-image src='../../lib/images/Transition.png'></cover-image>
+              <cover-view>分享</cover-view>
+              <button open-type='share'></button>
+            </cover-view>
+            </cover-view>
+          </cover-view>
+          <cover-view class="flex-wrp" style="flex-direction:row;"> 
+            <cover-view class="flex-item bc_green">
+              <cover-view data-id='1' bindtap='active' class="share {{isClicked ? 'clicked' : ''}}">
+              <cover-image src='../../lib/images/Ledge.png'></cover-image>
+              <cover-view>分享</cover-view>
+              <button open-type='share'></button>
+            </cover-view>
+            </cover-view>
+            <cover-view class="flex-item bc_red">
+              <cover-view data-id='2' bindtap='active' class="share {{isClicked ? 'clicked' : ''}}">
+                <cover-image src='../../lib/images/Stair set.png'></cover-image>
+                <cover-view>分享</cover-view>
+                <button open-type='share'></button>
+              </cover-view>
+            </cover-view>
+            <cover-view class="flex-item bc_blue">
+              <cover-view data-id='3' bindtap='active' class="share {{isClicked ? 'clicked' : ''}}">
+              <cover-image src='../../lib/images/Transition.png'></cover-image>
+              <cover-view>分享</cover-view>
+              <button open-type='share'></button>
+            </cover-view>
+            </cover-view>
+          </cover-view>
+
+          <cover-view class="difficulty">
+            <cover-view class="easy">Easy</cover-view>
+            <cover-view class="med">Medium</cover-view>
+            <cover-view class="hard">Hard</cover-view>
+          </cover-view>
+
+          <button style="margin-top: 10vh;" type="primary">Submit</button>
+
+          <cover-view>
+
+          
+        
+          </cover-view>
+        </cover-view>
+        
+        <!-- <cover-view>
+          <slider class="slider" bindchange="setDifficulty" min="1" max="5" show-value selected-color="#464490" color="#3ACCE1" block-size='15' block-color='#474491' />
+        </cover-view> -->
+        <!-- <button type="primary" bind:onClick="handleClose">Add Spot</button> -->
+        <!-- <view>{{ items1Str }}</view> -->
+ 
+   <!-- <view class="btn-area">
       <button bindtap="chooseLocation" >Search location</button>
       <button bindtap="getCenterLocation" >Get location</button>
       <button bindtap="moveToLocation" >Move Place</button>
-    </view>
+    </view> -->
 
-    <w-popup
+    <!-- <w-popup
       visible="{{popup6}}"
       maskCancel="{{ false }}"
       position="main"
@@ -34,33 +154,33 @@
       bind:onClose="handleClose"
       wuss-class="wuss-popup"
     >
-      <view class="demo-popup-6">
+      <cover-view class="demo-popup-6">
         <!-- <w-cell-group>
           <w-checkbox options="{{ items1 }}" bind:onChange="handleChange" />
         </w-cell-group> -->
-        <view class="icon-wrapper">
+        <!-- <cover-view class="icon-wrapper">
 
-          <view class="grid-item">
+          <cover-view class="grid-item">
             <icon><logic image="{{image}}"></logic></icon>
-          </view>
+          </cover-view>
           
-          <view class="grid-item">
+          <cover-view class="grid-item">
                <icon><logic image="{{image}}"></logic></icon>
-          </view>
+          </cover-view>
 
-          <view class="grid-item">
-          </view>
+          <cover-view class="grid-item">
+          </cover-view>
             <slot></slot>
-        </view>
-        
-        <view>
+        </cover-view> --> 
+<!--         
+        <cover-view>
           <slider class="slider" bindchange="setDifficulty" min="1" max="5" show-value selected-color="#464490" color="#3ACCE1" block-size='15' block-color='#474491' />
-        </view>
-        <w-button type="info" bind:onClick="handleClose">Add Spot</w-button>
+        </cover-view>
+        <button type="primary" bind:onClick="handleClose">Add Spot</button> -->
         <!-- <view>{{ items1Str }}</view> -->
         
-      </view>
-    </w-popup>
+      <!-- </cover-view>
+    </w-popup> -->
 
 </view>
 

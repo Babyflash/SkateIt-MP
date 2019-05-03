@@ -30,6 +30,74 @@
   display: grid;
   grid-template-columns: 50% 50%;
 }
+/* sevans popup */
+.add-spot-pop{
+  background-color: #292C40;
+  opacity: 0.95;
+  height: 100vh;
+}
+.pop-item{
+  color: red;
+  width: 100%;
+}
+.flex-wrp {display: flex; justify-content: space-around}
+/* sevan button */
+.share { 
+  margin: 8rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 24rpx;
+  background-color: #3ACCE1;
+  z-index: 10;
+  width: 75px;
+  height: 75px;
+  border-radius: 15px;
+  opacity: 1 !important;
+} 
+.clicked {
+  background-color: #6736cf;
+}
+.share cover-image {
+  height: 65%;
+  width: 65%;
+}
+.share cover-view {
+  color: #fff;  
+}
+.row{
+  display: flex;
+  justify-content: space-around;
+}
+.share button {
+  opacity: 0.1;
+  z-index: 99;
+}
+/* sevan button ^ */
+
+/* difficulty buttons */
+.difficulty{
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  width: 65vw;
+  margin-top: 10vh;
+}
+.easy{
+  background-color: #FE9051;
+  padding: 8px;
+}
+.med{
+  background-color: #3697FF;
+  padding: 8px;
+}
+.hard{
+  background-color: #FE6B6C;
+  padding: 8px;
+}
+/* difficulty buttons ^ */
+/* sevans popup ^ */
 
 .grid-item{
   display: inline-flex;
@@ -38,13 +106,12 @@
 }
 
 .img{
-  height: 65%;
-  width: 65%;
+  height: 50%;
+  width: 50%;
   margin-top:10%;
 }
 
 .clicked_icon {
-  background-color: #6736cf;
   display: flex;
   flex-direction: column;
   align-items: center;
