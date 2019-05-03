@@ -1,192 +1,67 @@
 /* pages/spot/spot.wxss */
-.spot-img {
-  position: relative;
-  background-size: cover;
-  background-position: center;
-  width: 100%;
-  height: 25vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.container {
   color: white;
-  font-size: 24px;
-  font-weight: bold;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  z-index: -1 !important;
-  object-fit: cover;
+ 
 }
 
-.type{
+.div-banner {
+  position: relative;
+}
+
+.div-favourite {
   position: absolute;
-  bottom: 0;
-  left: 5%;
-  font-size: 12pt;
-  text-transform: uppercase;
-}
-.addressbox{
-  width:90%;
   display: flex;
-  justify-content: space-around;
-  align-items: center;
-  padding: 10px 15px;
-  color: white;
-  font-size: 10pt;
-}
-.address{
-  text-align: center;
-}
-/* .add-container{
-  max-height: 54px;
-  overflow: hidden;
-  position: relative;
-  border-radius: 3px;
-  width: 54px;
-  margin-left: 10px;
-  color: white;
-} */
-.icon{
-  font-size: 54px;
-  max-height: 54px;
-  line-height: 54px;
-  background-color: #4C5373;
-  border-radius: 3px;
-  padding: 0;
-}
-.card{
-  width: 100%;
-  margin: 0 auto;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  border-radius: 3px;
-}
-/* .header{
-  padding: 10px 16px;
-   display: flex;
   justify-content: space-between;
-  border: 1px solid #F8F8F8;
-} */
-
-.content{
-  display: flex;
-  flex-direction: column;
-  width: 90vw;
-  justify-content: center;
+  background-color: white;
+  border-radius: 8px;
   align-items: center;
-  padding: 10px;  
+  padding: 8px;
+  padding-left: 14px;
+  padding-right: 14px;
+  width: 64px;
+  top: 16px;
+  right: 16px;
 }
 
-.btn > button{
-  height: 32px;
-  width: 42px;
-  padding: 0 !important;
-  margin: 0 !important;
-  background-color: #3ACCE1 !important;
-
+.spot-type {
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
 }
-.location-icon{
+
+.img-24 {
+  height: 24px;
+  width: 24px;
+}
+
+.container .favourite {
   color: white;
 }
 
-.topspotbox{
+.container-info {
   display: flex;
-  width:100vw;
-  height: 50px;
-  position:relative;
-  top:0;
-  background-color: #2D324E;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 8px;
+  margin-right: 8px;
 }
 
-.btnsbox{
+.div-address {
   display: flex;
-  justify-content: center;
-  margin-top:5px;
-  width:20%;
-}
-
-.share{
-  color:white;
-}
-
-.spotpicscarousel{
-  display: flex;
-  justify-content: space-around;
-  background-color: #2D324E;
-}
-
-.picplaceholder{
-  background-color: rgb(31, 146, 146);
-  background-image: url('https://image.shutterstock.com/z/stock-photo-beautiful-young-skater-woman-riding-on-her-longboard-in-the-city-607147790.jpg');
-  background-size: contain;
-  background-repeat: no-repeat;
-  border-radius: 5px;
-  height: 100px;
-  width: 150px;
-  margin: 5px;
-  box-shadow: rgba(0,0,0,0.2) 3px 3px 2px;
-
-
-}
-
-.commentbox{
-  background-color: white;
-  width: 85vw;
-  padding: 20px;
-  border-radius: 5px;
-  margin-top: 15px;
-  margin-bottom: 10px;
-}
-
-.submit{
-  background-color: #3ACCE1;
-  margin-bottom: 10px;
-  width: 25%;
-  height: 35px;
-  font-size: 12pt;
-  color: white;
-}
-
-.submitarea{
-  position: relative;
-  right: 0px;
-  width: 300px;
-  
-  }
-
-.publishedcomment{
-  display: flex;
-  width:100vw;
-  height:150px;
-  margin-top: 10px;
   align-items: center;
 }
 
-.commentimage{
-  position: relative;
-  left: 5px;
-  z-index: 1;
-  padding: 0px;
-
+.img-location {
+  height: 24px;
+  width: 24px;
 }
 
-.commenttextbox{
-  border-radius: 5px;
-  width: 85vw;
-  height:150px;
-  background-color: white;
-  position:absolute;
-  left:45px;
-
+.user-avatar {
+  /* border-color: red; */
 }
 
-.commenttext{
-  font-size: 10pt;
-  width: 45vw;
-  position: relative;
-  left: 125px;
-  word-wrap: break-word;
-  height: 150px;
+.div-tags {
+  margin-left: 8px;
+  margin-right: 8px;
 }
 
-.commentsarea{
-  height:100%;
-}

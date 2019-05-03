@@ -8,11 +8,12 @@ const AV = require('../../utils/av-weapp-min.js')
 Page({
   data: {
     popup6 : false,
-    imgs: []
+    imgs: ['../../lib/images/spot.jpg']
+      
   },
 
   onLoad: function (options) {
-    // console.log(options)
+    console.log(options)
     let that = this
     
     const spotId = options.id
@@ -23,6 +24,7 @@ Page({
       spotType: spotType,
       spotId: spotId,
       url: url,
+      imgs: this.data.imgs.push(url),
       address: address
     })
 
