@@ -61,16 +61,18 @@
   
   <cover-view class="add-btn-container" style="top: {{clicked ? '30vh' : '60vh'}};">
       <button class="add-btn"  loading="{{loading}}" plain="{{plain}}"
-		disabled="{{disabled}}" bindtap="default" over-class="other-button-hover">
+		disabled="{{disabled}}" bindtap="navigateToAddSpotPage" over-class="other-button-hover">
     <!-- <cover-image class="loc-img" src="../../lib/images/getloc.png" /> -->
     +
     </button>
   </cover-view>
-   <cover-view class="loc-btn-container" style="top: {{clicked ? '30vh' : '73vh'}}; {{clicked ? 'left: 5vw' : 'right: 5vw'}};">
-      <button class="loc-btn"  loading="{{loading}}" plain="{{plain}}"
-		disabled="{{disabled}}" bindtap="default" hover-class="other-button-hover"> o </button>
+   <cover-view 
+   class="loc-btn-container" 
+   style="top: {{clicked ? '30vh' : '73vh'}}; {{clicked ? 'left: 5vw' : 'right: 5vw'}};"
+   >
+      <button class="loc-btn" bindtap='_hanldeLocation' loading="{{loading}}" plain="{{plain}}"
+		disabled="{{disabled}}" hover-class="other-button-hover"> o </button>
   </cover-view>
-  
     
   <accordian show="{{show}}" bindlongpress="long" >
     <!-- <view slot="before" bindtap="accordion" class="handle"></view> --> -->
