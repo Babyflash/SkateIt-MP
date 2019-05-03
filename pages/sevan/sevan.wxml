@@ -27,6 +27,7 @@
       markers="{{mk}}"
       show-location
       >
+   
         <!-- first choice dropdown -->
   <cover-view class='dropdown' data="yooo" style="{{first ? '' : 'display: none'}}">
     <cover-view bindtap="selectItem" class="drop-item {{selecteditem ? 'active' : ''}}">
@@ -57,33 +58,31 @@
     4km
     </cover-view>
   </cover-view>
+ 
   </map>
-  
+    
   <cover-view class="add-btn-container" style="top: {{clicked ? '30vh' : '60vh'}};">
-      <button class="add-btn"  loading="{{loading}}" plain="{{plain}}"
-		disabled="{{disabled}}" bindtap="navigateToAddSpotPage" over-class="other-button-hover">
-    <!-- <cover-image class="loc-img" src="../../lib/images/getloc.png" /> -->
-    +
-    </button>
+    <cover-view class="add-btn"  loading="{{loading}}" plain="{{plain}}" disabled="{{disabled}}" bindtap="navigateToAddSpotPage" over-class="other-button-hover">
+      <cover-image style="width: 50%; height: 50%; margin: 0 auto;" src="../../lib/images/addspot.png" />
+    </cover-view>
   </cover-view>
-   <cover-view 
-   class="loc-btn-container" 
-   style="top: {{clicked ? '30vh' : '73vh'}}; {{clicked ? 'left: 5vw' : 'right: 5vw'}};"
-   >
-      <button class="loc-btn" bindtap='_hanldeLocation' loading="{{loading}}" plain="{{plain}}"
-		disabled="{{disabled}}" hover-class="other-button-hover"> o </button>
+  <cover-view class="loc-btn-container" style="top: {{clicked ? '30vh' : '73vh'}}; {{clicked ? 'left: 5vw' : 'right: 5vw'}};">
+    <cover-view class="loc-btn" bindtap='_hanldeLocation' loading="{{loading}}" plain="{{plain}}"
+		disabled="{{disabled}}" hover-class="other-button-hover">
+    <cover-image style="width: 50%; height: 50%; margin: 0 auto;" src="../../lib/images/getloc.png" /></cover-view>
   </cover-view>
     
   <accordian show="{{show}}" bindlongpress="long" >
-    <!-- <view slot="before" bindtap="accordion" class="handle"></view> --> -->
+    <!-- <view slot="before" bindtap="accordion" class="handle"></view> -->
     <w-icon
-      slot="before"
+      slot="arrow"
       bindtouchend="move"
       class="handle"
 		 type="{{show ? 'arrow-down' : 'arrow-top'}}"
    />
-    <!-- <image slot="before" class="handle" mode="aspectFit" style="width: 70px" src="../../lib/images/Skateboard-icon.png"></image> -->
-    <logic slot="after" spotTypes='{{spotTypes}}'></logic>
+  
+    <!-- <logic slot="after" spotTypes='{{spotTypes}}'></logic> -->
+    <spot-card-list slot="after" spotTypes='{{spotTypes}}'></spot-card-list>
   </accordian>
 </view>
 <!-- popup -->

@@ -89,10 +89,16 @@
 					"query": "",
 					"scene": null
 				},
-				{
+        {
 					"id": -1,
 					"name": "Post",
 					"pathName": "components/post/post",
+					"scene": null
+				},
+        	{
+					"id": -1,
+					"name": "info-card",
+					"pathName": "pages/info-card/info-card",
 					"scene": null
 				}
 			]

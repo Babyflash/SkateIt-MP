@@ -1,0 +1,19 @@
+<view class="wrapper">
+<view class="user-details-container">
+  <view class="avatar-container">
+  <w-avatar size="large" src='{{avatar}}' />
+  </view>
+  <view class="user-details">
+    <view class="name">
+      <slot name="name"></slot>
+    </view>
+    <view class="date">
+      <slot name="date"></slot>
+    </view>
+  </view>
+</view>
+<view class="content-body">
+ <slot name="content-body"></slot>
+</view>
+</view>
+<view class="line"></view>

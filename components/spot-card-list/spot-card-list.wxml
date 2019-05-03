@@ -1,0 +1,11 @@
+<view class="logic-container container">
+  <block wx:for="{{spotTypes}}" wx:for-item="type" wx:for-index="itemsIndex" wx:key="{{spotTypes}}">
+    <block wx:for="{{type}}" wx:for-item="spot" wx:for-index="itemsIndex" wx:key="type">
+      <info-card spotImg='{{spot.default_image.url}}'>
+        <view slot="type">{{spot.spot_type}}</view>
+        <view slot="address">{{spot.address}}</view>
+        <view slot="distance">{{spot.difficulty_rating}}</view>
+      </info-card>
+    </block>
+  </block>
+</view>

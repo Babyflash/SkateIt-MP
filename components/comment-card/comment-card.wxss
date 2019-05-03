@@ -1,0 +1,35 @@
+/* components/comment-card/comment-card.wxss */
+.wrapper{
+  padding: 20px;
+}
+.user-details-container{
+  display: flex;
+  margin-bottom: 20px;
+  align-items: center;
+}
+
+.avatar-container{
+  margin-right: 20px;
+}
+.user-details{
+  color: white;
+  height: 100%;
+}
+.name{
+  font-size: 18px;
+}
+.date{
+  font-size: 14px;
+}
+.content-body{
+  text-align: left;
+  font-size: 14;
+  color: white;
+}
+
+.line{
+  width: 100%;
+  border: 0.05px solid rgba(221,221,221,0.05);
+  margin-top: 24px;
+  margin-bottom: 16px;
+}

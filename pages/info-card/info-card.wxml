@@ -1,0 +1,13 @@
+<view style="background-color: #2D324F; height: 100vh;">
+  <comment-card avatar="https://kitt.lewagon.com/placeholder/users/ClaraMorgen">
+    <view slot="name">Mira Tohme</view>
+    <view slot="date">
+      Jan 12, 2019
+    </view>
+    <view slot="content-body"> 
+      This is a nice comment with multiple lines 
+      For this to be cool we need to start working 
+      Very soon.
+    </view>
+  </comment-card>
+</view>
