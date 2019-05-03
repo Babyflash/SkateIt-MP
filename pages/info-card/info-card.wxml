@@ -1,18 +1,13 @@
-<!-- <view style="height: 100vh; width: 100vw; padding-top: 50px; background-color: #2D324F;">
-<info-card spotImg="{{spotImg}}">
-  <view slot="type">{{type}}</view>
-  <view slot="address">{{address}}</view>
-   <view slot="distance">{{distance}}km</view>
-</info-card>
-
-<info-card spotImg="{{spotImg}}">
-  <view slot="type">{{type}}</view>
-  <view slot="address">{{address}}</view>
-   <view slot="distance">{{distance}}km</view>
-</info-card>
+<view style="background-color: #2D324F; height: 100vh;">
+  <comment-card avatar="https://kitt.lewagon.com/placeholder/users/ClaraMorgen">
+    <view slot="name">Mira Tohme</view>
+    <view slot="date">
+      Jan 12, 2019
+    </view>
+    <view slot="content-body"> 
+      This is a nice comment with multiple lines 
+      For this to be cool we need to start working 
+      Very soon.
+    </view>
+  </comment-card>
 </view>
-
-
-
-
- -->
