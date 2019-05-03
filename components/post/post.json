@@ -1,0 +1,9 @@
+{
+  "component": true,
+  "usingComponents": {
+    "w-input": "wuss-weapp/w-input/index",
+    "w-button": "wuss-weapp/w-button/index",
+    "w-avatar": "wuss-weapp/w-avatar/index",
+    "card": "../../components/cards/index_card"
+  }
+}
