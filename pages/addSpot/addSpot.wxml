@@ -1,24 +1,25 @@
-<view class="container">
-<w-popup
- visible="{{ popup6 }}"
- maskCancel="{{ false }}"
- position="main"
- height="50%"
- width="72%"
- padding="8"
- bind:onClose="handleClose"
- wuss-class="wuss-popup"
->
-  <view class="demo-popup-6">
-    <w-cell-group>
-      <w-checkbox options="{{ items1 }}" bind:onChange="handleChange" />
-    </w-cell-group>
-   
-    <w-button type="info" bind:onClick="handleClose">Save</w-button>
-    <view>{{ items1Str }}</view>
-    
-  </view>
-</w-popup>
+<view class="container bg" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url({{spotImg}}); object-fit: scale-down;">
 
-<w-button type="info" bind:onClick="handleClick6">Main</w-button>
+
+      <view class="popup">
+
+       <view class="section">
+          <view class="section__title">Types</view>
+          <view wx:for="{{types}}" wx:for-index="idx" wx:for-item="type">
+          <view class="flex-wrp" style="flex-direction:row;">
+            <view  class="flex-item">
+            <!-- <button bindtap='handleClick{{idx + 1}}' type="primary">{{type}}</button> -->
+              <icon bindtap='handleClick{{idx + 1}}' data-id='{{type}}' type="{{type}}" img="{{type}}">{{type}}</icon>
+            </view>
+          </view>
+          </view>
+        </view>
+        
+        <view>
+          <slider class="slider" bindchange="setDifficulty" min="1" max="5" show-value selected-color="#464490" color="#3ACCE1" block-size='15' block-color='#474491' />
+        </view>
+        <button type="primary" bind:onClick="handleClose">Add Spot</button>
+        <view>{{ items1Str }}</view>
+      </view>
+
 </view>

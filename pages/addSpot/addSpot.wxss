@@ -7,3 +7,25 @@
 .scroll-view-y {
   height: 100%;
 }
+.bg{
+background-repeat: no-repeat;
+background-attachment: fixed;
+background-position: center center;
+background-clip: border-box;
+background-origin: padding-box;
+-moz-background-size: cover;
+background-size: cover;
+}
+.flex-wrp {display: flex;}
+
+.popup{
+  margin-top: 10px;
+  padding:5%;
+  width: 75vw;
+  background-color: white;
+  opacity: 0.89;
+}
+
+.page-section{
+  margin-bottom: 20rpx;
+}

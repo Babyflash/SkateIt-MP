@@ -7,6 +7,10 @@ Component({
     image: {
       type: String,
       value: ''
+    },
+    type: {
+      type: String,
+      value: ''
     }
   },
 
@@ -22,7 +26,7 @@ Component({
    * Component methods
    */
   methods: {
-    active: function() {
+    active: function(e) {
       this.setData({
         isClicked: !this.data.isClicked
       })
