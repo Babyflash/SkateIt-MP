@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "w-avatar": "wuss-weapp/w-avatar/index"
+  }
+}
