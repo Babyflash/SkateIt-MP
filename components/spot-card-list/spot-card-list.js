@@ -25,6 +25,11 @@ Component({
    * Component methods
    */
   methods: {
+    
+  },
+  ready: function() {
+    console.log('ready')
+    let count = 0;
 
   }
 })
