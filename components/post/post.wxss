@@ -1,0 +1,56 @@
+/* components/post/post.wxss */
+.container-main {
+  padding-top: 8px;
+}
+
+.container-top {
+  display: flex;
+  justify-content: space-between;
+  border: 1px;
+  padding-left: 8px;
+  align-items: center;
+}
+
+.container-user {
+  display: flex;
+  align-items: center;
+}
+
+.container-top > .avatar {
+  
+}
+
+.user-name {
+  font-size: 16px;
+  margin-left: 4px;
+}
+
+.container-bottom {
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  padding-left: 8px;
+  justify-content: space-between;
+}
+
+.upload-photo {
+  display: flex;
+  align-items: center;
+}
+
+.img-upload {
+  height: 16px;
+  width: 16px;
+  margin-right: 4px;
+}
+
+.clear-photo {
+  display: flex;
+  padding-right: 8px;
+  align-items: center;
+}
+
+.img-clear {
+  height: 16px;
+  width: 16px;
+}

@@ -1,100 +1,45 @@
 <!--pages/spot/spot.wxml-->
-<view class="outer">
-  <view class="spot-img" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url({{url}})">
-    <!-- <view class="type">{{spotType}}</view> -->
-    <view class="type">Ledge</view>
+
+<view class = 'container'>
+  <view class="div-banner">
+    <swiper
+      indicator-dots="{{indicatorDots}}" 
+      autoplay="{{autoplay}}" 
+      circular="{{circular}}" 
+      vertical="{{vertical}}"
+      interval="{{interval}}" 
+      duration="{{duration}}" 
+      previous-margin="{{previousMargin}}px" 
+      next-margin="{{nextMargin}}px"
+    >
+      <block wx:for="{{imgs}}" wx:for-item="img" wx:for-index="itemsIndex" wx:key="{{spotTypes}}">
+        <swiper-item  style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url({{img}})">
+          <view class="swiper-item {{itemsIndex}}">
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
+
+    <view class = 'div-favourite'>
+      <image class = 'img-24 favourite' src='../../lib/images/love1.svg'></image>
+      <image class = 'img-24 share' src='../../lib/images/share2.svg'></image>
+    </view>
+    <view class = 'spot-type'>Ledge</view>
   </view>
 
-  <view class="topspotbox">
+  <view class = "container-info">
+    <view class = "div-address">
+      <image class = 'img-location' src='../../lib/images/location2.png'></image>
+      <view>124 Chengdu, Sichuan</view>
+    </view>
+    <w-avatar size="large" class = 'user-avatar'>W</w-avatar>
+  </view>
+
+  <view class = 'div-tags'>
+    <w-tag tagStyle="color:black;background-color:white;border-color:blue;">12 comments</w-tag>
+    <w-tag tagStyle="color:black;background-color:white;border-color:blue;">100 likes</w-tag>
+    <w-tag tagStyle="color:black;background-color:white;border-color:blue;">3 km</w-tag>
+  </view>
+
   
-<w-popup
-  visible="{{ popup6 }}"
-  maskCancel="{{ false }}"
-  position="main"
-  height="72%"
-  width="72%"
-  padding="8"
-  bind:onClose="handleClose"
-  wuss-class="wuss-popup"
->
-  <view class="demo-popup-6">
-    <w-input
-				 clear
-				 type="textarea"
-				 label=""
-				 name="address"
-				 placeholder="What's on your mind?"
-				/>
-    <w-button type="primary" bindtap='chooseImage'>Add picture</w-button>
-    <w-button type="primary" bindtap='addPostRequest'>Share</w-button>
-    <w-button type="primary" bindtap='handleClose'>Cancel</w-button>
-  </view>
-</w-popup>
-
-    <view class="addressbox btnsbox">
-        <w-button class="btn" type="info" bindtap='showAddPostPopUp'>
-          <w-icon type='location' class="location-icon" />
-        </w-button>
-        <view class="address">{{address}}</view>
-    </view>
-
-    <view class="addressbox"> 
-      <!-- <view class="address">{{address}}</view> -->
-      <view class="address">123 fake st. some, country</view>
-    </view>
-
-    <view class="btnsbox">
-      <w-button class="btn" type="info">
-        <w-icon class="share" type='share' />
-      </w-button>
-    </view>
-
-  </view>
-
- <view class="spotpicscarousel">
-    <view class="picplaceholder"></view>
-    <view class="picplaceholder"></view>
-    <view class="picplaceholder"></view>
-  </view>
-
-<view class="container">
-    <!-- comment textarea -->
-    <view class="commentarea">
-      <textarea placeholder='did you skate this?' auto-height class="commentbox"></textarea>
-    </view>
-    <view class="submitarea">
-      <button class="submit">submit</button> 
-    </view>
-
-    <!-- published comments -->
-    <view class="commentsarea">
-      <view class="publishedcomment">
-        <view class="commentimage">
-          <view class="picplaceholder"></view>
-        </view>
-        <view class="commenttextbox">
-          <view class="commenttext">this is a published comment. yay!</view>
-        </view>
-      </view>
-
-       <view class="publishedcomment">
-        <view class="commentimage">
-          <view class="picplaceholder"></view>
-        </view>
-        <view class="commenttextbox">
-          <view class="commenttext">this is a published comment. yay!</view>
-        </view>
-      </view>
-
-       <view class="publishedcomment">
-        <view class="commentimage">
-          <view class="picplaceholder"></view>
-        </view>
-        <view class="commenttextbox">
-          <view class="commenttext">this is a published comment. yay!</view>
-        </view>
-      </view>
-    </view>
-
-  </view>
 </view>
