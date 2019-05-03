@@ -2,7 +2,7 @@
   <cover-view class="menuBar">
     <!-- first choice -->
       <cover-view class="choice" bindtap='firstChoice' style="">
-        <cover-view>Type</cover-view>
+        <cover-view class="{{first ? 'active' : ''}}">Type</cover-view>
         <cover-image style="{{first ? 'display: none' : '' }}" class="filter-arrow" class="img" src="../../lib/images/down.png" />
          <cover-image style="{{first ? '' : 'display: none'}}" class="filter-arrow" class="img" src="../../lib/images/up.png" />
       </cover-view> 
@@ -11,7 +11,7 @@
       </cover-view> 
        <!-- second choice -->
       <cover-view class="choice" bindtap='secondChoice'>
-        <cover-view>Distance</cover-view>
+        <cover-view class="{{second ? 'active' : ''}}">Distance</cover-view>
         <cover-image style="{{second ? 'display: none' : ''}}"class="filter-arrow" class="img" src="../../lib/images/down.png" />
         <cover-image style="{{second ? '' : 'display: none'}}" class="filter-arrow" class="img" src="../../lib/images/up.png" />
       </cover-view>
@@ -29,11 +29,11 @@
       >
         <!-- first choice dropdown -->
   <cover-view class='dropdown' data="yooo" style="{{first ? '' : 'display: none'}}">
-    <cover-view class="drop-item">
+    <cover-view bindtap="selectItem" class="drop-item {{selecteditem ? 'active' : ''}}">
     Ledge
     </cover-view>
     <cover-view class="drop-item">
-    Stairs 
+    Stairs
     </cover-view>
     <cover-view class="drop-item">
     Park

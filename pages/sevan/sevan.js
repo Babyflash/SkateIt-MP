@@ -295,5 +295,13 @@ Page({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
-  }
+  },
+  selectItem: function (e) {
+    console.log('item selected')
+    console.log(e.currentTarget)
+    this.setData({
+      selecteditem: !this.data.selecteditem,
+      unselecteditem: false,
+    })
+  },
 })

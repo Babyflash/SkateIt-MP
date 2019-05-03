@@ -16,6 +16,7 @@
   z-index: -1 !important;
   object-fit: cover;
 }
+
 .type{
   position: absolute;
   bottom: 0;
