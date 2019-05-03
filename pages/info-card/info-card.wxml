@@ -1,4 +1,10 @@
-<view style="height: 100vh; width: 100vw; background-color: #2D324F;">
+<!-- <view style="height: 100vh; width: 100vw; padding-top: 50px; background-color: #2D324F;">
+<info-card spotImg="{{spotImg}}">
+  <view slot="type">{{type}}</view>
+  <view slot="address">{{address}}</view>
+   <view slot="distance">{{distance}}km</view>
+</info-card>
+
 <info-card spotImg="{{spotImg}}">
   <view slot="type">{{type}}</view>
   <view slot="address">{{address}}</view>
@@ -8,3 +14,5 @@
 
 
 
+
+ -->

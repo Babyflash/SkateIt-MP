@@ -1,0 +1,8 @@
+{
+  "component": true,
+  "usingComponents": {
+    "card": "../../components/cards/index_card",
+    "icon": "../../components/type-icon/type-icon",
+    "info-card": "../../components/info-card/info-card"
+  }
+}

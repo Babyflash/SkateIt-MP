@@ -82,8 +82,9 @@
       class="handle"
 		 type="{{show ? 'arrow-down' : 'arrow-top'}}"
    />
-    <!-- <image slot="before" class="handle" mode="aspectFit" style="width: 70px" src="../../lib/images/Skateboard-icon.png"></image> -->
-    <logic slot="after" spotTypes='{{spotTypes}}'></logic>
+  
+    <!-- <logic slot="after" spotTypes='{{spotTypes}}'></logic> -->
+    <spot-card-list slot="after" spotTypes='{{spotTypes}}'></spot-card-list>
   </accordian>
 </view>
 <!-- popup -->
