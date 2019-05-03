@@ -3,6 +3,8 @@
 const app = getApp()
 Page({
   data: {
+    // pop item click sevan
+    isClicked: false,
     menuClick: false,
     motto: 'Hello World',
     userInfo: {},
@@ -42,6 +44,12 @@ Page({
     console.log('end')
     this.setData({
       longpress: false
+    })
+  },
+  active: function (e) {
+    console.log(e.currentTarget.dataset)
+    this.setData({
+      isClicked: !this.data.isClicked
     })
   },
   long: function (e) {

@@ -42,10 +42,18 @@ Page({
         callout: { content: "Shanghai, China", fontSize: 15, color: "#000000", padding: 10 }
       }
     ],
+    // filter click sevan
+    isClicked: false,
     popup6: false,
     items1: ['Fuck1', 'Fuck2', 'Fuck3', 'Fuck4', 'Fuck5'],
   },
-
+  //active click sevan
+  active: function (e) {
+    console.log(e.currentTarget.dataset)
+    this.setData({
+      isClicked: !this.data.isClicked
+    })
+  },
   handleClose() {
     this.setData({
       popup6: false,
