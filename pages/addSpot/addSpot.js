@@ -24,12 +24,10 @@ Page({
    * Page initial data
    */
   data: {
-    popup1: false,
-    popup2: false,
-    popup3: false,
-    popup4: false,
-    popup5: false,
-    popup6: false,
+    spotImg: 'https://res.cloudinary.com/doe2rb42f/image/upload/v1556766724/i2akfplvygrf8gmvenoy.jpg',
+    types: ['Ledge', 'Manual pad', 'Rail', 'Stair set', 'Transition', 'handrail'],
+    isVisible: true,
+    isClicked: false,
     items1Str: '',
     items1: [
       {
@@ -59,23 +57,35 @@ Page({
     });
   },
 
-  handleClick1() {
-    this.setData({ popup1: true });
+  handleClick1(e) {
+    this.setData({ popup1: !this.data.popup1 });
+    console.log(this.data.popup1)
+    console.log(e.currentTarget.dataset.id)
   },
-  handleClick2() {
+  handleClick2(e) {
     this.setData({ popup2: true });
+    console.log(this.data.popup2)
+    console.log(e.currentTarget.dataset.id)
   },
-  handleClick3() {
+  handleClick3(e) {
     this.setData({ popup3: true });
+    console.log(this.data.popup3)
+    console.log(e.currentTarget.dataset.id)
   },
-  handleClick4() {
+  handleClick4(e) {
+    console.log(this.data.popup4)
     this.setData({ popup4: true });
+    console.log(e.currentTarget.dataset.id)
   },
-  handleClick5() {
+  handleClick5(e) {
     this.setData({ popup5: true });
+    console.log(this.data.popup5)
+    console.log(e.currentTarget.dataset.id)
   },
-  handleClick6() {
+  handleClick6(e) {
     this.setData({ popup6: true });
+    console.log(this.data.popup6)
+    console.log(e.currentTarget.dataset.id)
   },
   /**
    * Lifecycle function--Called when page load

@@ -6,6 +6,7 @@
     "w-cell-group": "wuss-weapp/w-cell-group/index",
     "w-checkbox": "wuss-weapp/w-checkbox/index",
     "w-range": "wuss-weapp/w-range/index",
-    "w-pane": "wuss-weapp/w-pane/index"
+    "w-pane": "wuss-weapp/w-pane/index",
+    "icon": "../../components/type-icon/type-icon"
   }
 }
