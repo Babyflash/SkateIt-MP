@@ -4,8 +4,7 @@
       <slot name="before"></slot>
   </view>
   <view class="address">
-  <slot name="after"></slot>
-  <view class="type">Ledge</view>
-
+  <slot name="before"></slot>
+  <view class="type"><slot name="after"></slot></view>
   </view>
   </view>

@@ -87,7 +87,7 @@
   </accordian>
 </view>
 <!-- popup -->
-<cover-view  style="display: none" class="add-spot-pop">
+<!-- <cover-view  style="display: none" class="add-spot-pop">
 
           <cover-view class="flex-wrp" style="flex-direction:row;"> 
             <cover-view class="flex-item bc_green">
@@ -195,4 +195,4 @@
           
         
           </cover-view>
-        </cover-view>
+        </cover-view> -->
