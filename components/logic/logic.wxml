@@ -10,10 +10,9 @@
         
       <card spotImg='{{spot.default_image.url}}'>
         <view slot="before">{{spot.difficulty_rating}}km</view>
-        <!-- <view slot="after">{{spot.address}}</view> -->
+        <view slot="after">{{spot.spot_type}}</view>
       </card>
       </swiper-item>
-    
       </block>
     </swiper>
   </view>
