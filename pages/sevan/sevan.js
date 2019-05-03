@@ -1,6 +1,8 @@
 //index.js
 //获取应用实例
 const markerUrl = "../../lib/images/Marker1.png"
+const AV = require('../../utils/av-weapp-min.js')
+const myRequest = require('../../lib/api/request');
 
 function generateSpotsJson() {
   const spots = app.globalData.spotTypes.Ledge;
@@ -14,7 +16,7 @@ function generateSpotsJson() {
         id: e.id,
         latitude: e.geo_lat,
         longitude: e.geo_lng,
-        width: 40,
+        width: 56,
         height: 56,
         callout: { content: e.address, fontSize: 15, color: "#000000", padding: 10 }
       })
@@ -121,13 +123,20 @@ Page({
     }
   },
 
-  navigateToAddSpotPage: function () {
+  updateUserCurrentLocation: function () {
     let that = this
     wx.getLocation({
       success: function (res) {
+        console.log("USER LOCATION = ", res)
         that.setData({ userLatitude: res.latitude, userLongitude: res.longitude })
       },
     })
+  },
+
+  navigateToAddSpotPage: function () {
+    let that = this
+    
+    that.updateUserCurrentLocation();
 
     wx.chooseImage({
       count: 9, // Default 9
@@ -138,7 +147,11 @@ Page({
         // that.setData({
           //   popup6: true
           // })
-          
+        wx.showLoading({
+          title: 'Uploading...',
+          mask: true
+        })
+
         that.uploadPromise(tempFilePaths[0]).then(res => {
           wx.hideLoading();
           
@@ -164,7 +177,12 @@ Page({
             path: 'spots',
             data: spot,
             success(res) {
+              wx.hideLoading();
               console.log("ADD POST RESULT:", res)
+            },
+            fail(res) {
+              wx.hideLoading();
+              console.log("ADD POST REQUEST FAILED!!!:", res)
             }
           })
 
@@ -175,7 +193,6 @@ Page({
 
   uploadPromise: function (tempFilePath) {
     let that = this
-    that.showLoading();
     return new Promise((resolve, reject) => {
       new AV.File('file-name', {
         blob: {
