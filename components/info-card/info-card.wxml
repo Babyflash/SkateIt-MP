@@ -1,7 +1,9 @@
 <!--components/info-card/info-card.wxml-->
 <view class="wrapper">
   <view class="card-product">
-    <image src="{{spotImg}}"></image>
+  <view class="img-container" style="width: 100px; height: 100px;">
+  <image style="width: 100px; height: 100px;" mode="aspectFill" src="{{spotImg}}"></image>
+  </view>
     <view class="card-product-infos">
       <view class="type">
          <slot name="type"></slot>
@@ -17,5 +19,8 @@
     <view class="go-btn">
       Go there
     </view>
+
   </view>
+
 </view>
+    <view class="line"></view>
