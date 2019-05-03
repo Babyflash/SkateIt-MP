@@ -1,6 +1,6 @@
 <!--pages/spot/spot.wxml-->
 <view class="outer">
-  <view class="spot-img" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), ur(https://nicershoes.com/wp-content/uploads/2015/07/Best-Skate-Shoes-skater-doing-an-ollie-in-a-skate-park.jpg)">
+  <view class="spot-img" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url({{url}})">
     <!-- <view class="type">{{spotType}}</view> -->
     <view class="type">Ledge</view>
   </view>
