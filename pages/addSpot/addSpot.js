@@ -24,12 +24,9 @@ Page({
    * Page initial data
    */
   data: {
-    popup1: false,
-    popup2: false,
-    popup3: false,
-    popup4: false,
-    popup5: false,
-    popup6: false,
+    spotImg: 'https://res.cloudinary.com/doe2rb42f/image/upload/v1556766724/i2akfplvygrf8gmvenoy.jpg',
+    types: ['Ledge', 'Manual pad', 'Rail', 'Stair set', 'Transition', 'handrail'],
+    isVisible: true,
     items1Str: '',
     items1: [
       {
