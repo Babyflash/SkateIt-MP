@@ -7,8 +7,9 @@
           <view class="section__title">Types</view>
           <view wx:for="{{types}}" wx:for-index="idx" wx:for-item="type">
           <view class="flex-wrp" style="flex-direction:row;">
-            <view class="flex-item idx">
-              <icon img="{{type}}">{{type}}</icon>
+            <view  class="flex-item">
+            <!-- <button bindtap='handleClick{{idx + 1}}' type="primary">{{type}}</button> -->
+              <icon bindtap='handleClick{{idx + 1}}' data-id='{{type}}' type="{{type}}" img="{{type}}">{{type}}</icon>
             </view>
           </view>
           </view>
