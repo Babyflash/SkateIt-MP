@@ -55,6 +55,9 @@
               <button open-type='share'></button>
             </cover-view>
             </cover-view>
+
+
+            
             <cover-view class="flex-item bc_red">
               <cover-view data-id='2' bindtap='active' class="share {{isClicked ? 'clicked' : ''}}">
                 <cover-image src='../../lib/images/handrail.png'></cover-image>
