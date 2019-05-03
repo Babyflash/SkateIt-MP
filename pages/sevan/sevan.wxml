@@ -18,7 +18,8 @@
   </cover-view>
    <map 
       class="map"
-      bindmarkertap="markertap" 
+      bindmarkertap="markertap"
+      bindtap='closefilters'
       longitude="{{lg}}" 
       latitude="{{lt}}" 
       scale="{{sc}}" 
@@ -65,20 +66,21 @@
     +
     </button>
   </cover-view>
-   <cover-view class="loc-btn-container" style="top: {{clicked ? '30vh' : '75vh'}}; {{clicked ? 'left: 5vw' : 'right: 5vw'}};">
+   <cover-view class="loc-btn-container" style="top: {{clicked ? '30vh' : '73vh'}}; {{clicked ? 'left: 5vw' : 'right: 5vw'}};">
       <button class="loc-btn"  loading="{{loading}}" plain="{{plain}}"
 		disabled="{{disabled}}" bindtap="default" hover-class="other-button-hover"> o </button>
   </cover-view>
   
     
-  <accordian show="{{show}}" bindlongpress="long" bindtouchend="handleTouchEnd" bindtouchend="move">
-    <!-- <view slot="before" bindtap="accordion" class="handle"></view> -->
-    	<w-icon
+  <accordian show="{{show}}" bindlongpress="long" >
+    <!-- <view slot="before" bindtap="accordion" class="handle"></view> --> -->
+    <w-icon
       slot="before"
-  
+      bindtouchend="move"
       class="handle"
-		 type="{{show ? 'arrow-down' : 'location-o'}}"
+		 type="{{show ? 'arrow-down' : 'arrow-top'}}"
    />
+    <!-- <image slot="before" class="handle" mode="aspectFit" style="width: 70px" src="../../lib/images/Skateboard-icon.png"></image> -->
     <logic slot="after" spotTypes='{{spotTypes}}'></logic>
   </accordian>
 </view>
