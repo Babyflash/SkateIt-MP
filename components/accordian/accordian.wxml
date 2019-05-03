@@ -10,7 +10,7 @@
 
       <view class="title-bar">
         <view class="gradient-line"></view>
-        <view class="pull-line">
+        <view class="pull-line" style='overflow: hidden;'>
           <slot name="before"></slot>
         </view>
         
@@ -22,13 +22,9 @@
           <icon></icon>
         </view>
       </view> 
-
-      <!-- <view class="info-title">Nearby</view>
-      <view class="info-des">Ledge, Stairs, Parks...</view> -->
     </view>
 
     <!-- <view class="spot-count">
-    18
     </view> -->
 
 <scroll-view class="{{getApp().globalData.click ? 'show' : 'hide'}}" scroll-y="true" style="height: 45vh; transition: 0.5s ease; {{show ? '' : 'display: none'}}">
