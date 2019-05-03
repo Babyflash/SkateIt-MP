@@ -1,0 +1,21 @@
+<!--components/info-card/info-card.wxml-->
+<view class="wrapper">
+  <view class="card-product">
+    <image src="{{spotImg}}"></image>
+    <view class="card-product-infos">
+      <view class="type">
+         <slot name="type"></slot>
+      </view>
+      <view class='address'>
+         <slot name="address"></slot>
+      </view>
+      <view class='distance'>
+         <slot name="distance"></slot>
+      </view>
+     
+    </view>
+    <view class="go-btn">
+      Go there
+    </view>
+  </view>
+</view>

@@ -1,0 +1,44 @@
+/* components/info-card/info-card.wxss */
+.card-product {
+  overflow: hidden;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  color: white;
+  font: sans-serif;
+}
+
+image {
+  height: 100%;
+  width: 120px;
+  object-fit: fit;
+  border-radius: 6px;
+  margin: 8px;
+}
+
+.card-product-infos {
+  align-self: flex-start;
+}
+.type{
+  font-size: 18px;
+}
+.address{
+  margin-top: 4px;
+  font-size: 14px;
+  width: 70%;
+}
+.distance{
+  font-size: 14px;
+  margin-top: 4px;
+}
+.go-btn{
+  border: 0.6px solid white;
+  color: white;
+  font-size: 12px;
+  text-align: center;
+  border-radius: 12px;
+  align-self: flex-start;
+  margin-right: 8px;
+  margin-left: auto;
+  padding: 4px 8px;
+}
