@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "comment-card": "../../components/comment-card/comment-card"
+  }
+}

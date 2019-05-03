@@ -4,6 +4,7 @@
     "logic": "../../components/logic/logic",
     "accordian": "../../components/accordian/accordian",
     "w-icon": "wuss-weapp/w-icon/index",
-    "w-drop-menu": "wuss-weapp/w-drop-menu/index"
+    "w-drop-menu": "wuss-weapp/w-drop-menu/index",
+    "spot-card-list": "../../components/spot-card-list/spot-card-list"
   }
 }

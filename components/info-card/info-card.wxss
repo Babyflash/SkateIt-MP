@@ -1,0 +1,63 @@
+/* components/info-card/info-card.wxss */
+.card-product {
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  color: white;
+  font: sans-serif;
+  margin: 10px;
+  position: relative;
+
+}
+
+image {
+  /* height: 175px;
+  width: 175px;
+  object-fit: fit; */
+  border-radius: 6px;
+  /* margin: 8px; */
+
+}
+.img-container{
+  align-self: flex-start;
+}
+.card-product-infos {
+  align-self: flex-start;
+  margin-left: 8px;
+}
+.type{
+  font-size: 18px;
+  line-height: 15px;
+}
+.address{
+  margin-top: 8px;
+  font-size: 14px;
+  width: 70%;
+}
+.distance{
+  font-size: 14px;
+  position: absolute;
+  top: 23px;
+  right: 10px;
+
+}
+.go-btn{
+  color: white;
+  font-size: 12px;
+  text-align: center;
+  border: 0.5px solid white;
+  border-radius: 12px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 70px;
+  padding: 0 4px;
+
+}
+
+.line{
+  width: 100%;
+  border: 0.05px solid rgba(221,221,221,0.05);
+  margin-top: 24px;
+  margin-bottom: 16px;
+}
