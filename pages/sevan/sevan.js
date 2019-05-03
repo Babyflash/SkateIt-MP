@@ -1,5 +1,30 @@
 //index.js
 //获取应用实例
+const markerUrl = "../../lib/images/Marker1.png"
+
+function generateSpotsJson() {
+  const spots = app.globalData.spotTypes.Ledge;
+  console.log("SPOTS===", spots)
+  let markers = []
+  if (spots) {
+    spots.forEach(function (e) {
+      console.log(e)
+      markers.push({
+        iconPath: markerUrl,
+        id: e.id,
+        latitude: e.geo_lat,
+        longitude: e.geo_lng,
+        width: 40,
+        height: 56,
+        callout: { content: e.address, fontSize: 15, color: "#000000", padding: 10 }
+      })
+    })
+  }
+
+  console.log(spots);
+  return markers;
+}
+
 const app = getApp()
 Page({
   data: {
@@ -25,7 +50,139 @@ Page({
     open: false,
     first: false,
     second: false,
+    lt: "39.90469",
+    lg: "116.40717",
+    sc: '14',
+    mk: [
+      {
+        iconPath: markerUrl,
+        id: 0,
+        latitude: 31.219614,
+        longitude: 121.443877,
+        width: 48,
+        height: 36,
+        callout: { content: "Shanghai, China", fontSize: 15, color: "#000000", padding: 10 }
+      }
+    ]
   },
+
+  locating: false,
+  locationCount: 0,
+
+  _hanldeLocation: function () {
+    let that = this
+    if (that.mapCtx) {
+      if (!that.locating) {
+        wx.showLoading({
+          title: 'Get Location',
+          mask: true
+        })
+      }
+      wx.getLocation({
+        type: 'gcj02',
+        success: res => {
+          console.log(res);
+          if (res.latitude && res.longitude) {
+            that.setData({
+              lt: res.latitude,
+              lg: res.longitude
+            })
+            that.mapCtx.moveToLocation();
+            wx.hideLoading();
+            that.locating = false;
+            that.locationCount = 0;
+          } else {
+            console.log(res);
+            if (that.locationCount < 5) {
+              that.locationCount++;
+              that._hanldeLocation();
+            } else {
+              that.locationCount = 0;
+              wx.hideLoading();
+              that.locating = false;
+              wx.showToast({
+                title: 'Failed to get location, please try again',
+                icon: 'none'
+              })
+            }
+          }
+        },
+        fail: err => {
+          wx.hideLoading();
+          that.locating = false;
+          wx.showToast({
+            title: 'Failed to get location, please try again',
+            icon: 'none'
+          })
+        }
+      });
+    }
+  },
+
+  navigateToAddSpotPage: function () {
+    let that = this
+    wx.getLocation({
+      success: function (res) {
+        that.setData({ userLatitude: res.latitude, userLongitude: res.longitude })
+      },
+    })
+
+    wx.chooseImage({
+      count: 9, // Default 9
+      sizeType: ['original', 'compressed'],
+      sourceType: ['album', 'camera'],
+      success: function (res) {
+        var tempFilePaths = res.tempFilePaths
+        // that.setData({
+          //   popup6: true
+          // })
+          
+        that.uploadPromise(tempFilePaths[0]).then(res => {
+          wx.hideLoading();
+          
+          console.log("Result: ", res)
+          let spot = {
+            "spot_rating": 5,
+            "difficulty_rating": 5,
+            "spot_type": "Ledge",
+            "default_image": res,
+            "remote_default_image_url": res,
+            "user_id": app.globalData.currentUserId,
+            "geo_lat": that.data.userLatitude,
+            "geo_lng": that.data.userLongitude,
+            "address": "Mongolia"
+          }
+
+          myRequest.post({
+            header: {
+              'Content-Type': 'application/json',
+              'X-User-Email': wx.getStorageSync('userEmail'),
+              'X-User-Token': wx.getStorageSync('token')
+            },
+            path: 'spots',
+            data: spot,
+            success(res) {
+              console.log("ADD POST RESULT:", res)
+            }
+          })
+
+        })
+      }
+    })
+  },
+
+  uploadPromise: function (tempFilePath) {
+    let that = this
+    that.showLoading();
+    return new Promise((resolve, reject) => {
+      new AV.File('file-name', {
+        blob: {
+          uri: tempFilePath,
+        },
+      }).save().then(file => resolve(file.url())).catch(e => reject(e));
+    })
+  },
+
   closefilters: function(){
     this.setData({
       first: false,
@@ -52,7 +209,8 @@ Page({
       longpress: true
     })
     console.log(e.timeStamp + '- touch-start')
-  }, 
+  },
+
   accordion: function(e){
     console.log('grow and shrink')
     // console.log(e.timeStamp)
@@ -79,9 +237,12 @@ Page({
   },
 
   onLoad: function () {
+    this.mapCtx = wx.createMapContext('map', this)
     this.setData({
-      spotTypes: app.globalData.spotTypes
+      spotTypes: app.globalData.spotTypes,
+      mk: generateSpotsJson()
     })
+    
     let page = this
     //fetch items from rails api
 
