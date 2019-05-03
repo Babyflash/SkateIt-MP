@@ -4,6 +4,7 @@
     "w-icon": "wuss-weapp/w-icon/index",
     "w-card": "wuss-weapp/w-card/index",
     "w-input": "wuss-weapp/w-input/index",
+    "w-tag": "wuss-weapp/w-tag/index",
     "w-button": "wuss-weapp/w-button/index"
   }
 }
