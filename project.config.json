@@ -38,7 +38,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 7,
+			"current": 9,
 			"list": [
 				{
 					"id": -1,
@@ -89,16 +89,24 @@
 					"query": "",
 					"scene": null
 				},
-        {
+				{
 					"id": -1,
 					"name": "Post",
 					"pathName": "components/post/post",
+					"query": "",
 					"scene": null
 				},
-        	{
+				{
 					"id": -1,
 					"name": "info-card",
 					"pathName": "pages/info-card/info-card",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "user",
+					"pathName": "pages/user/user",
 					"scene": null
 				}
 			]

@@ -5,20 +5,23 @@
  <view class = 'container-top'>
    <view class = 'container-user'>
      <w-avatar size="large" class = 'user-avatar'>W</w-avatar>
-     <view class = 'user-name'>Chinzorig Purevjal</view>
+     <view class='user-name'>Chinzorig Purevjal</view>
    </view>
-    <w-button inline slot="content" loading="{{false}}" type="default" bindtap = 'uploadPhotos'>
+    <view class="post-btn" slot="content" loading="{{false}}" bindtap = 'uploadPhotos'>
        Post
-     </w-button>
+    </view>
  </view>
- <view class = ''>
-   <w-input clear count="250" type="textarea" placeholder="What's on your mind?"/>
+
+ <view class = 'input'>
+   <w-input clear count="250" type="textarea"  placeholder="What's on your mind?"/>
  </view>
+
  <view class = 'container-bottom'>
    <view class = 'upload-photo' bindtap='selectImg'>
      <image class = 'img-upload' src='../../lib/images/upload1.png'></image>
-     <view>Upload a photo/video</view>
-   </view>
+    <view>Upload a photo/video</view>
+  </view>
+
    <view class = 'clear-photo' hidden='{{bHiddenClearPhoto}}' bindtap='clearPhotos'>
      <view>Clear</view>
      <image class = 'img-clear' src='../../lib/images/clear.png'></image>
