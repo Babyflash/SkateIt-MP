@@ -1,7 +1,6 @@
 /* pages/spot/spot.wxss */
 .container {
   color: white;
- 
 }
 
 .div-banner {
