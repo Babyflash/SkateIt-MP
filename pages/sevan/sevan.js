@@ -71,7 +71,7 @@ Page({
   },
 
   locating: false,
-  locationCount: 0,
+  spotCount: 0,
 
   _hanldeLocation: function () {
     let that = this
@@ -287,6 +287,7 @@ Page({
       // 在没有 open-type=getUserInfo 版本的兼容处理
 
     }
+   
   },
   firstChoice: function(e){
     this.setData({
@@ -378,5 +379,14 @@ Page({
   },
   onReady: function () {
     this.animation = wx.createAnimation()
+    let spotCount = 0;
+    let object = getApp().globalData.spotTypes
+    for (let key in object) {
+      spotCount += object[key].length
+    }
+    this.setData({
+      spotCount: spotCount
+    })
+    console.log(spotCount)
   },
 })

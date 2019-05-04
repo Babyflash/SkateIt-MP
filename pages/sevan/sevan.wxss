@@ -20,6 +20,7 @@
 .active{
   color:#3F476F;
   font-weight: bold
+  
 }
 .add-btn{
   background-color: white;
@@ -95,6 +96,7 @@ transition: 1 ease;
   height: 40vh;
   top: -40vh;
   text-align: center;
+  color: #818CA6;
 }
 .left{
     width: 50%;
@@ -105,9 +107,7 @@ transition: 1 ease;
   width: 50%;
   right: 0;
 }
-/* .dropdown .active{
-  transform: transitionY(300px);
-} */
+
 .drop-item{
   margin: 16px 8px;
 }

@@ -1,26 +1,25 @@
 <!--components/info-card/info-card.wxml-->
 <view class="wrapper">
   <view class="card-product">
-  <view class="img-container" style="width: 100px; height: 100px;">
-  <image style="width: 100px; height: 100px;" mode="aspectFill" src="{{spotImg}}"></image>
-  </view>
-    <view class="card-product-infos">
-      <view class="type">
+    <view  class="img-container" style="width: 100px; height: 100px;">
+      <image bindtap="spot" style="width: 100px; height: 100px;" mode="aspectFill" src="{{spotObject.default_image.url}}">
+      </image>
+    </view>
+    <view  class="card-product-infos">
+      <view bindtap="spot" class="type">
          <slot name="type"></slot>
       </view>
-      <view class='address'>
-         <slot name="address"></slot>
+      <view bindtap="spot" class='address'>
+        <slot name="address"></slot>
       </view>
       <view class='distance'>
-         <slot name="distance"></slot>
+        <slot name="distance"></slot>
       </view>
-     
     </view>
+
     <view class="go-btn">
       Go there
     </view>
-
   </view>
-
 </view>
-    <view class="line"></view>
+<view class="line"></view>
