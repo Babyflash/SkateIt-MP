@@ -72,13 +72,28 @@
 
   </scroll-view>
 
+  <view class="input" bindtap='showPostWindow'>
+    <view class = 'div-comment'>
+      <image class = 'img-comment' src='../../lib/images/comment1.svg'></image>
+      <input class="weui-input comment-input" auto-focus placeholder="Leave a comment"/>
+    </view>
+  </view>
 
- 
-  <view class="input">
-  <view class="comment-icon">
-    <w-icon type="comment-o"/>
-  </view>
-    <input class="weui-input" auto-focus placeholder="Leave a comment"/>
-  </view>
+  <w-popup
+    visible="{{ popup6 }}"
+    maskCancel="{{ false }}"
+    position="main"
+
+    width="100%"
+    height = '77%'
+    padding="8"
+    bind:onClose="handleClose"
+    wuss-class="wuss-popup"
+    class = 'div-popup'
+  >
+    <view class="demo-popup-6">
+      <post bind:myevent="toggleToast"></post>
+    </view>
+  </w-popup>
 
 </view>

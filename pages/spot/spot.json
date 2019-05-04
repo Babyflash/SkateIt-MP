@@ -7,6 +7,7 @@
     "w-tag": "wuss-weapp/w-tag/index",
     "w-button": "wuss-weapp/w-button/index",
     "w-avatar": "wuss-weapp/w-avatar/index",
-    "comment-card": "../../components/comment-card/comment-card"
+    "comment-card": "../../components/comment-card/comment-card",
+    "post": "../../components/post/post"
   }
 }

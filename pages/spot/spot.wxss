@@ -85,18 +85,38 @@ display: flex;
   margin-top: 24px;
   margin-bottom: 16px;
 }
+
 .input{
   width: 100%;
+  /* width: 90vw; */
   border: 1px solid white;
+  /* border-radius: 8px; */
+  /* margin-left: 4px; */
+  /* margin-right: 4px; */
+  align-items: center;
   background-color: white;
   text-align: center;
   position: absolute;
   bottom: 0;
-  z-index: 998;
+  padding-left: 17px;
 }
-.comment-icon{
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  z-index: 999;
+
+.div-comment {
+  display: flex;
+  align-content: center;
+  align-items: center;
+}
+
+.img-comment {
+  height: 24px;
+  width: 24px;
+}
+
+.div-popup {
+  height: 50vh;
+}
+
+.demo-popup-6 {
+  height: 40vh;
+  background-color: red;
 }
