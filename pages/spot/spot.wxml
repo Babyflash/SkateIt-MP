@@ -12,10 +12,9 @@
       previous-margin="{{previousMargin}}px" 
       next-margin="{{nextMargin}}px"
     >
-      <block wx:for="{{imgs}}" wx:for-item="img" wx:for-index="itemsIndex" wx:key="{{spotTypes}}">
-        <swiper-item  style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url({{img}})">
-          <view class="swiper-item {{itemsIndex}}">
-          </view>
+      <block wx:for="{{imgs}}" wx:for-item="img" wx:for-index="itemsIndex" wx:key="type">
+        <swiper-item >
+          <image class = 'div-swiper' src='{{img}}'></image>
         </swiper-item>
       </block>
     </swiper>
@@ -23,7 +22,7 @@
       <image class = 'img-icon fav' src='../../lib/images/love1.svg'></image>
       <image class = 'img-icon share' src='../../lib/images/share2.svg'></image>
     </view>
-  <view class = 'spot-type'>Ledge</view>
+  <view class = 'spot-type'>{{spotType}}</view>
 </view>
 
 <!-- spot info -->
@@ -32,44 +31,35 @@
     <view class="loc-icon">
     <image class = 'img-location' src='../../lib/images/location2.png'></image>
     </view>
-    <view class="address">124 Chengdu, Sichuan, China</view>
+    <view class="address">{{address}}</view>
   </view>
   <view class="avatar-container">
     <w-avatar size="large" src="https://kitt.lewagon.com/placeholder/users/ClaraMorgen" class = 'user-avatar'></w-avatar>
   </view>
 </view>
 <view class = 'div-tags'>
-  <w-tag tagStyle="color:black;background-color:white;">12 comments</w-tag>
+  <w-tag tagStyle="color:black;background-color:white;">{{spots.length}} comments</w-tag>
   <w-tag tagStyle="color:black;background-color:white;">100 likes</w-tag>
   <w-tag tagStyle="color:black;background-color:white;;">3 km</w-tag>
 </view>
 <view class="line"></view>
 
 <!-- comment vertical scroll -->
-  <scroll-view scroll-y style="height: 45vh;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
-   <comment-card avatar="https://kitt.lewagon.com/placeholder/users/eschults">
-    <view slot="name">Chinzoo</view>
-    <view slot="date">
-      Jan 12, 2019
-    </view>
-    <view slot="content-body"> 
-      This is a nice comment with multiple lines 
-      For this to be cool we need to start working 
-      Very soon.
-    </view>
-  </comment-card>
-    <comment-card avatar="https://kitt.lewagon.com/placeholder/users/krokrob">
-    <view slot="name">Sevan</view>
-    <view slot="date">
-      April 7, 2019
-    </view>
-    <view slot="content-body"> 
-      This is a nice comment with multiple lines 
-      For this to be cool we need to start working 
-      Very soon.
-    </view>
-  </comment-card>
-
+  <scroll-view 
+    scroll-y style="height: 45vh;" 
+    bindscrolltoupper="upper" 
+    bindscrolltolower="lower" 
+    bindscroll="scroll" 
+    scroll-into-view="{{toView}}" 
+    scroll-top="{{scrollTop}}"
+  >
+    <block wx:for="{{spots}}" wx:for-item="spot" wx:for-index="itemsIndex" wx:key="spot">
+      <comment-card avatar="https://kitt.lewagon.com/placeholder/users/eschults">
+        <view slot="name">Chinzoo</view>
+        <view slot="date">{{spot.created_at}}</view>
+        <view slot="content-body">{{spot.description}}</view>
+      </comment-card>
+    </block>
   </scroll-view>
 
   <view class="input" bindtap='showPostWindow'>
@@ -92,7 +82,7 @@
     class = 'div-popup'
   >
     <view class="demo-popup-6">
-      <post bind:myevent="toggleToast"></post>
+      <post bind:myevent="toggleToast" spot = '{{spot}}'></post>
     </view>
   </w-popup>
 

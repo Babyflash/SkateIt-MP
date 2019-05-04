@@ -31,6 +31,7 @@ Page({
                   app.globalData.currentUserId = res.data.id
                   app.globalData.email = res.data.email
                   app.globalData.user = res.data
+                  app.globalData.userAvatarUrl = userInfoFromCallBackHell.avatarUrl
                 } catch (e) {
                   console.log("Didn't set storage")
                 }
