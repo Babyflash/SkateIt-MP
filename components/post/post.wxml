@@ -4,15 +4,23 @@
 
  <view class = 'container-top'>
    <view class = 'container-user'>
-     <w-avatar size="large" class = 'user-avatar'>W</w-avatar>
-     <view class = 'user-name'>Chinzorig Purevjal</view>
+     <w-avatar size="large" class = 'user-avatar' src = '{{userAvatarUrl}}'></w-avatar>
+     <view class = 'user-name'>{{userName}}</view>
    </view>
-    <w-button inline slot="content" loading="{{false}}" type="default" bindtap = 'uploadPhotos'>
-       Post
-     </w-button>
+   <view class = 'div-buttons'>
+    <w-button class = 'btn-cancel' inline slot="content" loading="{{false}}" type="default" bindtap = 'cancelWindow'>
+        Cancel
+    </w-button>
+    <w-button class = 'btn-post' inline slot="content" loading="{{false}}" type="default" bindtap = 'uploadPhotos'>
+        Post
+    </w-button>
+   </view>
  </view>
+ 
  <view class = ''>
-   <w-input clear count="250" type="textarea" placeholder="What's on your mind?"/>
+ <w-cell-group>
+   <w-input bindchange="iChange" class = 'post-input'clear count="250" type="textarea" placeholder="What's on your mind?"/>
+</w-cell-group>
  </view>
  <view class = 'container-bottom'>
    <view class = 'upload-photo' bindtap='selectImg'>
