@@ -8,7 +8,11 @@ const AV = require('../../utils/av-weapp-min.js')
 Page({
   data: {
     popup6 : false,
-    imgs: ['../../lib/images/spot.jpg']
+    imgs: ['../../lib/images/spot.jpg', '../../lib/images/spot.jpg', '../../lib/images/spot.jpg'],
+    indicatorDots: false,
+    autoplay: false,
+    interval: 5000,
+    duration: 1000
       
   },
 
