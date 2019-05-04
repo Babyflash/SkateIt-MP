@@ -60,7 +60,6 @@
   </cover-view>
  
   </map>
-    
   <cover-view class="add-btn-container" style="top: {{clicked ? '35vh' : '70vh'}};">
     <cover-view class="add-btn"  loading="{{loading}}" plain="{{plain}}" disabled="{{disabled}}" bindtap="navigateToAddSpotPage" over-class="other-button-hover">
       <cover-image style="width: 50%; height: 50%;  margin: 0 auto;" src="../../lib/images/camera2.png" />
@@ -72,7 +71,7 @@
     <cover-image style="width: 50%; height: 50%; margin: 0 auto;" src="../../lib/images/location2.png" /></cover-view>
   </cover-view>
     
-  <accordian show="{{show}}" bindlongpress="long" >
+  <accordian bindtap="test" show="{{show}}" bindlongpress="long" >
     <!-- <view slot="before" bindtap="accordion" class="handle"></view> -->
     <w-icon
       slot="arrow"
