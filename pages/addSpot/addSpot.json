@@ -7,6 +7,9 @@
     "w-checkbox": "wuss-weapp/w-checkbox/index",
     "w-range": "wuss-weapp/w-range/index",
     "w-pane": "wuss-weapp/w-pane/index",
-    "icon": "../../components/type-icon/type-icon"
+    "icon": "../../components/type-icon/type-icon",
+    "w-row": "wuss-weapp/w-row/index",
+    "w-col": "wuss-weapp/w-col/index",
+    "title": "../../components/accordian/accordian"
   }
 }
