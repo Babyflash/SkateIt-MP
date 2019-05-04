@@ -82,16 +82,28 @@ transition: 1 ease;
   display: flex;
   justify-content: space-around;
   align-items: center;
+  font-size: 17px;
 }
 
 .dropdown{
-  width: 100%;
   background-color: white;
   position: absolute;
   z-index: 999;
-   border-bottom-left-radius: 10px;
+  border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
   transition: transform 1s linear;
+  height: 40vh;
+  top: -40vh;
+  text-align: center;
+}
+.left{
+    width: 50%;
+
+}
+
+.right{
+  width: 50%;
+  right: 0;
 }
 /* .dropdown .active{
   transform: transitionY(300px);

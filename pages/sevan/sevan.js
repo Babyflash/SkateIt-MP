@@ -205,12 +205,7 @@ Page({
     })
   },
 
-  closefilters: function(){
-    this.setData({
-      first: false,
-      second: false
-    })
-  },
+ 
   //事件处理函数
   bindViewTap: function () {
     wx.navigateTo({
@@ -294,19 +289,76 @@ Page({
     }
   },
   firstChoice: function(e){
-    console.log('first')
-    console.log(e.currentTarget)
     this.setData({
-      first: !this.data.first,
-      second: false,
+      first: !this.data.first
     })
+    if (this.data.first) {
+      this.slideDownType()
+    } else {
+      this.slideUpType()
+    }
   },
   secondChoice: function () {
-    console.log('second')
     this.setData({
-      first: false,
       second: !this.data.second,
     })
+    if (this.data.second) {
+      this.slideDownDistance()
+    } else {
+      this.slideUpDistance()
+    }
+  },
+   closefilters: function(){
+     if(this.data.first){
+       this.slideUpType()
+     }
+     if(this.data.second){
+       this.slideUpDistance()
+     }
+    this.setData({
+      first: false,
+      second: false
+    })
+  },
+  slideUpDistance: function () {
+    let height = 0;
+    wx.getSystemInfo({
+      success: function (res) {
+        height += res.windowHeight
+      }
+    });
+    this.animation.translateY(-1 * height * .40).step()
+    this.setData({ distance: this.animation.export() })
+  },
+  slideDownDistance: function () {
+    let height = 0;
+    wx.getSystemInfo({
+      success: function (res) {
+        height += res.windowHeight
+      }
+    });
+    this.animation.translateY(height * .40).step()
+    this.setData({ distance: this.animation.export() })
+  },
+  slideUpType: function(){
+    let height = 0;
+    wx.getSystemInfo({
+      success: function (res) {
+        height += res.windowHeight
+      }
+    });
+    this.animation.translateY(-1 * height * .40).step()
+    this.setData({ type: this.animation.export() })
+  },
+  slideDownType: function(){
+    let height = 0;
+    wx.getSystemInfo({
+      success: function (res) {
+        height += res.windowHeight
+      }
+    });
+    this.animation.translateY(height * .40).step()
+    this.setData({ type: this.animation.export() })
   },
   getUserInfo: function (e) {
     // console.log(e)
@@ -323,5 +375,8 @@ Page({
       selecteditem: !this.data.selecteditem,
       unselecteditem: false,
     })
+  },
+  onReady: function () {
+    this.animation = wx.createAnimation()
   },
 })
