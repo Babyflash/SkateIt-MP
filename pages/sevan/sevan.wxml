@@ -1,7 +1,7 @@
 <view style="position: relative;">
   <cover-view class="menuBar">
     <!-- first choice -->
-      <cover-view class="choice" bindtap='firstChoice' style="">
+      <cover-view class="choice" bindtap='firstChoice'>
         <cover-view class="{{first ? 'active' : ''}}">Type</cover-view>
         <cover-image style="{{first ? 'display: none' : '' }}" class="filter-arrow" class="img" src="../../lib/images/down.png" />
          <cover-image style="{{first ? '' : 'display: none'}}" class="filter-arrow" class="img" src="../../lib/images/up.png" />
@@ -29,7 +29,7 @@
       >
    
         <!-- first choice dropdown -->
-  <cover-view class='dropdown' data="yooo" style="{{first ? '' : 'display: none'}}">
+  <cover-view class='dropdown left' animation="{{type}}" data="yooo">
     <cover-view bindtap="selectItem" class="drop-item {{selecteditem ? 'active' : ''}}">
     Ledge
     </cover-view>
@@ -44,7 +44,7 @@
     </cover-view>
   </cover-view>
   <!-- second choice dropdown -->
-  <cover-view class='dropdown' style="{{second ? '' : 'display: none'}}">
+  <cover-view class='dropdown right' animation="{{distance}}">
     <cover-view class="drop-item">
     1km
     </cover-view>
