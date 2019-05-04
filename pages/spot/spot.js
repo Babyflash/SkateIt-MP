@@ -16,6 +16,11 @@ Page({
       
   },
 
+  toggleToast(e) {
+    console.log("CLICKED YESSSS")
+    console.log(e.detail)
+  },
+
   onLoad: function (options) {
     console.log(options)
     let that = this
@@ -54,6 +59,18 @@ Page({
         })
       }
     })
+  },
+
+  showPostWindow: function () {
+    let that = this
+
+    that.setData({
+      popup6: true
+    })
+  },
+
+  toggleToast(e) {
+    console.log("SHIT")
   },
 
   addPostRequest: function () {
