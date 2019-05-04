@@ -61,18 +61,18 @@
  
   </map>
     
-  <cover-view class="add-btn-container" style="top: {{clicked ? '30vh' : '60vh'}};">
+  <cover-view class="add-btn-container" style="top: {{clicked ? '30vh' : '70vh'}};">
     <cover-view class="add-btn"  loading="{{loading}}" plain="{{plain}}" disabled="{{disabled}}" bindtap="navigateToAddSpotPage" over-class="other-button-hover">
-      <cover-image style="width: 50%; height: 50%; margin: 0 auto;" src="../../lib/images/addspot.png" />
+      <cover-image style="width: 50%; height: 50%; margin: 0 auto;" src="../../lib/images/addspoticon.png" />
     </cover-view>
   </cover-view>
-  <cover-view class="loc-btn-container" style="top: {{clicked ? '30vh' : '73vh'}}; {{clicked ? 'left: 5vw' : 'right: 5vw'}};">
+  <cover-view class="loc-btn-container" style="top: {{clicked ? '30vh' : '80vh'}}; {{clicked ? 'left: 5vw' : 'right: 5vw'}};">
     <cover-view class="loc-btn" bindtap='_hanldeLocation' loading="{{loading}}" plain="{{plain}}"
 		disabled="{{disabled}}" hover-class="other-button-hover">
-    <cover-image style="width: 50%; height: 50%; margin: 0 auto;" src="../../lib/images/getloc.png" /></cover-view>
+    <cover-image style="width: 50%; height: 50%; margin: 0 auto;" src="../../lib/images/centerlocation.png" /></cover-view>
   </cover-view>
     
-  <accordian show="{{show}}" bindlongpress="long" >
+  <accordian bindtap="test" show="{{show}}" bindlongpress="long" >
     <!-- <view slot="before" bindtap="accordion" class="handle"></view> -->
     <w-icon
       slot="arrow"
