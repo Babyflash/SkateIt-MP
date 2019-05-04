@@ -85,6 +85,9 @@ Page({
       wx.getLocation({
         type: 'gcj02',
         success: res => {
+          wx.vibrateShort({
+            
+          })
           console.log(res);
           if (res.latitude && res.longitude) {
             that.setData({
