@@ -1,12 +1,4 @@
 /* pages/addSpot/addSpot.wxss */
-.scroll-view-x {
-  height: 250px;
-  width: 100%;
-}
-
-.scroll-view-y {
-  height: 100%;
-}
 .bg{
 background-repeat: no-repeat;
 background-attachment: fixed;
@@ -16,16 +8,65 @@ background-origin: padding-box;
 -moz-background-size: cover;
 background-size: cover;
 }
-.flex-wrp {display: flex;}
 
 .popup{
-  margin-top: 10px;
-  padding:5%;
-  width: 75vw;
-  background-color: white;
-  opacity: 0.89;
+  width: 100%;
+  height: 75vh;
+  background-color: #2D324F;
+  opacity: 0.;
+  position: absolute;
+  top: 100vh;
 }
+.title-bar{
+  background: rgb(63, 71, 110);
+  height: 10vh;
+  position: sticky; 
+  top: 0;
+  z-index: 2;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0;
+  display:flex;
+  flex-direction: column;
+  transition: 0.5s ease;
 
-.page-section{
-  margin-bottom: 20rpx;
+}
+.gradient-line {
+  background: linear-gradient(90deg, rgba(103,54,207,1) 16%, rgba(9,9,121,1) 52%, rgba(0,212,255,1) 100%);
+  height: 5px;
+  width: 100vw;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 15rpx 15rpx 0 0;
+}
+.title-header{
+  color: white;
+}
+.spot-type-header{
+  text-align: left;
+  color: white;
+
+}
+.difficulty{
+  color: lightgray;
+  margin-right: 8px;
+  text-align: center;
+  margin-top: 5%;
+}
+.w-layout-col::before {
+  content: '';
+  display: table;
+  clear: both;
+  overflow: hidden;
+}
+.btn-container{
+  position: absolute;
+  width: 100%;
+  margin: 0 auto;
+  bottom: 8px;
+
 }
