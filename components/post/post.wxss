@@ -2,16 +2,23 @@
 .container-main {
   padding-top: 8px;
 }
-
+.post-btn{
+  color: #2B55A8;
+  font-size: 16px;
+}
 .container-top {
   display: flex;
   justify-content: space-between;
   border: 1px;
-  padding-left: 8px;
+  padding: 0 16px;
   align-items: center;
 }
-
-.container-user {
+.input{
+  width: 100vw;
+  margin: 0 auto;
+  text-align: left;
+}
+.container-user { 
   display: flex;
   align-items: center;
   color: black;
@@ -30,13 +37,14 @@
   padding-right: 0px;
 }
 
-.container-top > .avatar {
-  
+.user-avatar {
+  margin-right: 16px;
 }
 
 .user-name {
   font-size: 16px;
-  margin-left: 4px;
+
+  color: black;
 }
 
 .container-bottom {
