@@ -11,6 +11,13 @@
 swiper{
   height: 30vh;
 }
+
+.div-swiper {
+  width: 100%;
+  object-fit: contain;
+  /* margin: auto 0; */
+}
+
 .icon-tab {
   position: absolute;
   display: flex;
@@ -113,9 +120,4 @@ display: flex;
 }
 
 .div-popup {
-  height: 50vh;
-}
-
-.demo-popup-6 {
-  height: 40vh;
 }

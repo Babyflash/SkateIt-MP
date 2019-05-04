@@ -5,7 +5,10 @@ const myRequest = require('../../lib/api/request');
 
 Component({
   properties: {
-    
+    spot: {
+      type: Object,
+      value: ''
+    },
   },
 
   data: {
@@ -21,7 +24,16 @@ Component({
     duration: 500,
     previousMargin: 0,
     nextMargin: 0,
-    spotId: 1
+    spotId: 1,
+    userAvatarUrl: app.globalData.userAvatarUrl,
+    postInput: "",
+    userName: "Chinzoo"
+  },
+
+  iChange(e) {
+    console.log('BICHEED L BN', e.detail.value);
+    var that = this;
+    that.setData({ postInput: e.detail.value })
   },
 
   changeProperty: function (e) {
@@ -58,6 +70,11 @@ Component({
    * Component methods
    */
   methods: {
+    iChange(e) {
+      console.log('BICHEED L BN', e.detail.value);
+      var that = this;
+      that.setData({ postInput: e.detail.value })
+    },
     cancelBut: function (e) {
       var that = this;
       var myEventDetail = { pickerShow: false, type: 'cancel' } // detail对象，提供给事件监听函数
@@ -65,6 +82,12 @@ Component({
       that.setData({
         yes: "true"
       })
+    },
+
+    cancelWindow: function () {
+      var that = this;
+      that.clearPhotos();
+      that.cancelBut();
     },
 
     uploadPhotos: function () {
@@ -107,7 +130,9 @@ Component({
           success(res) {
             wx.hideLoading();
             that.data.imgs = []
+            that.clearPhotos();
             console.log("CREATE POST RESULT:", res)
+            that.cancelBut();
           },
           fail: function (res) {
             wx.hideLoading();
@@ -157,17 +182,25 @@ Component({
   },
 
   created: function () {
-    console.log("created");
+    
   },
 
   attached: function () {
 
   },
 
+ 
   ready: function () {
+    console.log("USER AVATAR: ", app.globalData.user.name)
+    const spot = this.properties.spot
+    console.log("---created---", this.properties.spot.id);
     this.setData({
-      imgs: []
+      imgs: [],
+      spotId: spot.id,
+      userAvatarUrl: app.globalData.userAvatarUrl,
+      userName: app.globalData.user.name
     })
+    
     console.log("ready");
   }
 })

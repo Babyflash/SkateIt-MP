@@ -8,12 +8,17 @@ const AV = require('../../utils/av-weapp-min.js')
 Page({
   data: {
     popup6 : false,
-    imgs: ['../../lib/images/spot.jpg', '../../lib/images/spot.jpg', '../../lib/images/spot.jpg'],
-    indicatorDots: false,
-    autoplay: false,
-    interval: 5000,
-    duration: 1000
-      
+    imgs: [],
+    indicatorDots: true,
+    vertical: false,
+    autoplay: true,
+    circular: true,
+    interval: 2000,
+    duration: 500,
+    previousMargin: 0,
+    nextMargin: 0,
+    spots: [],
+    postCount: 0
   },
 
   toggleToast(e) {
@@ -22,26 +27,45 @@ Page({
   },
 
   onLoad: function (options) {
-    
     let spot = JSON.parse(options.spot);
     console.log(spot)
     let that = this
-    const spotId = options.id
-    const spotType = options.type
-    const url = options.url
-    const address = options.address
+    const spotId = spot.id
+    const spotType = spot.spot_type
+    const url = spot.default_image.url
+    console.log("URL: ", url)
+    const address = spot.address
+    const allImg = that.data.imgs;
+    allImg.push(url)
+    console.log("CARAOUSEL IMAGE", allImg)
     this.setData({
+      spot: spot,
       spotType: spotType,
       spotId: spotId,
       url: url,
-      imgs: this.data.imgs.push(url),
+      imgs: allImg,
       address: address
+    })
+    
+    that.updateComments();
+  },
+
+  updateComments: function () {
+    let that = this
+
+    wx.showLoading({
+      title: 'Loading...',
+      mask: true
     })
 
     myRequest.get({
-      path: `spots/${spotId}/posts`,
+      path: `spots/${that.data.spotId}/posts`,
       success(res) {
-        console.log(res)
+        wx.hideLoading();
+        that.setData({
+          spots: res.data,
+        })
+        console.log("ALL POSTS HERE: ", res.data)
       }
     })
   },
@@ -71,7 +95,12 @@ Page({
   },
 
   toggleToast(e) {
-    console.log("SHIT")
+    console.log("FROM POST PAGE: ", e)
+    let that = this
+    that.setData({
+      popup6: false
+    })
+    that.updateComments();
   },
 
   addPostRequest: function () {
@@ -136,8 +165,7 @@ Page({
 
   handleClose() {
     this.setData({
-      popup6: false,
-      imgs: []
+      popup6: false
     });
   },
 
