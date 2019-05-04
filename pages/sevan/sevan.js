@@ -135,7 +135,14 @@ Page({
       },
     })
   },
-
+  navigateToUserPage: function(){
+    wx.navigateTo({
+      url: '../user/user',
+      success: function(res) {},
+      fail: function(res) {},
+      complete: function(res) {},
+    })
+  },
   navigateToAddSpotPage: function () {
     let that = this
     

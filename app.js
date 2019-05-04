@@ -7,14 +7,12 @@ App({
     // WX code
   },
   getUserInfo: (func, app) => {
-    // console.log("Salmonnnnnnnnnn")
     let that = app
     wx.getUserInfo({
       success: res => {
-
         that.globalData.userInfo = res.userInfo
-        // console.log("Success get UserInfo")
-        // console.log(that.globalData.userInfo)
+        console.log("User info")
+        console.log(that.globalData.userInfo)
         func(res.userInfo)
       }
     })
