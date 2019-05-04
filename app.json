@@ -9,6 +9,7 @@
     "pages/spot/spot",
     "pages/info-card/info-card",
     "pages/user/user",
+    "pages/splash/splash",
     "pages/logs/logs"
   ],
   "permission": {
