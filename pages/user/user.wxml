@@ -1,0 +1,60 @@
+<!--pages/spot/spot.wxml-->
+
+<view class = 'container'>
+  <view class="div-banner">
+    <view  class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url({{img}})">
+
+     </view>
+
+    <view class = 'icon-tab'>
+      <image class = 'img-icon share' src='../../lib/images/share2.svg'></image>
+    </view>
+</view>
+<!-- spot info -->
+<view class = "container-info">
+  <view class = "div-address">
+    <view class="loc-icon">
+      <image class = 'img-location' src='../../lib/images/location2.png'></image>
+    </view>
+    <view class="address">{{city}}</view>
+  </view>
+  <view class="avatar-container">
+    <w-avatar size="large" src="{{userAvatar}}" class = 'user-avatar'></w-avatar>
+  </view>
+</view>
+<view class = 'div-tags'>
+  <w-tag tagStyle="color:black;background-color:white;">12 comments</w-tag>
+  <w-tag tagStyle="color:black;background-color:white;">31 favorites</w-tag>
+</view>
+<view class="line"></view>
+
+<!-- comment vertical scroll -->
+  <scroll-view scroll-y style="height: 45vh;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+     <spot-card-list slot="after" spotTypes='{{spotTypes}}'></spot-card-list>
+  </scroll-view>
+
+  <view class="input" bindtap='showPostWindow'>
+    <view class = 'div-comment'>
+      <image class = 'img-comment' src='../../lib/images/comment1.svg'></image>
+      <input class="weui-input comment-input" auto-focus placeholder="Leave a comment"/>
+    </view>
+  </view>
+
+  <w-popup
+    visible="{{ popup6 }}"
+    maskCancel="{{ false }}"
+    position="main"
+
+    width="100%"
+    height = '77%'
+    padding="8"
+    bind:onClose="handleClose"
+    wuss-class="wuss-popup"
+    class = 'div-popup'
+  >
+    <view class="demo-popup-6">
+      <post bind:myevent="toggleToast"></post>
+    </view>
+  </w-popup>
+
+</view>

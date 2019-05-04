@@ -1,0 +1,15 @@
+<view class="container">
+  <view class="icon-container">
+    <view   class="img-container" style="width: 100px; height: 100px;">
+        <image style="width: 100px; height: 100px;" mode="aspectFill" src="../../lib/images/marker3.png">
+        </image>
+      </view>
+    <view  class="img-container" style="width: 100px; height: 100px;">
+        <image style="width: 100px; height: 100px;" mode="aspectFill" src="../../lib/images/trucks.png">
+        </image>
+      </view>
+  </view>
+  <w-icon
+		 type="{{ icon }}"
+   />
+</view>
