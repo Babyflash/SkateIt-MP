@@ -2,7 +2,6 @@
 .container {
   color: white;
   position: relative;
- 
 }
 
 .div-banner {
