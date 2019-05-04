@@ -1,9 +1,22 @@
 <view class="spot-info">
       <view class="title-bar">
         <view class="gradient-line"></view>
-        <view class="pull-line" style='overflow: hidden;'>
-        <slot name="arrow"></slot>  
+        
+        
+        <view class="title-content-container">
+          <view class="spot-count">
+            <view style="display: flex;">
+              <text>Nearby</text>
+            </view>
+          </view>
+          <view style='position: absolute; left: 50%;'>
+            <slot name="arrow"></slot>  
+          </view>
+          <view class="spot-count count">
+            <slot name="spotCount"></slot>
+          </view>
         </view>
+       
         <view class="iconsbox">
           <icon></icon>
           <icon></icon>

@@ -110,19 +110,24 @@ Page({
       }
     })
   },
-
   /**
    * Lifecycle function--Called when page is initially rendered
    */
   onReady: function () {
-
+    this.animation = wx.createAnimation()
   },
-
   /**
    * Lifecycle function--Called when page show
    */
   onShow: function () {
-
+    let height = 0;
+    wx.getSystemInfo({
+      success: function (res) {
+        height += res.windowHeight
+      }
+    });
+      this.animation.translateY(-1 * height * 0.75).step()
+      this.setData({ animation: this.animation.export() })
   },
 
   /**

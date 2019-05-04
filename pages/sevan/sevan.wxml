@@ -1,7 +1,7 @@
 <view style="position: relative;">
   <cover-view class="menuBar">
     <!-- first choice -->
-      <cover-view class="choice" bindtap='firstChoice' style="">
+      <cover-view class="choice" bindtap='firstChoice'>
         <cover-view class="{{first ? 'active' : ''}}">Type</cover-view>
         <cover-image style="{{first ? 'display: none' : '' }}" class="filter-arrow" class="img" src="../../lib/images/down.png" />
          <cover-image style="{{first ? '' : 'display: none'}}" class="filter-arrow" class="img" src="../../lib/images/up.png" />
@@ -29,7 +29,7 @@
       >
    
         <!-- first choice dropdown -->
-  <cover-view class='dropdown' data="yooo" style="{{first ? '' : 'display: none'}}">
+  <cover-view class='dropdown left' animation="{{type}}" data="yooo">
     <cover-view bindtap="selectItem" class="drop-item {{selecteditem ? 'active' : ''}}">
     Ledge
     </cover-view>
@@ -44,7 +44,7 @@
     </cover-view>
   </cover-view>
   <!-- second choice dropdown -->
-  <cover-view class='dropdown' style="{{second ? '' : 'display: none'}}">
+  <cover-view class='dropdown right' animation="{{distance}}">
     <cover-view class="drop-item">
     1km
     </cover-view>
@@ -71,15 +71,15 @@
     <cover-image style="width: 50%; height: 50%; margin: 0 auto;" src="../../lib/images/location2.png" /></cover-view>
   </cover-view>
     
-  <accordian bindtap="test" show="{{show}}" bindlongpress="long" >
+  <accordian show="{{show}}" bindlongpress="long" >
     <!-- <view slot="before" bindtap="accordion" class="handle"></view> -->
+    <view class="spotCount" slot="spotCount">{{spotCount}}</view>
     <w-icon
       slot="arrow"
       bindtouchend="move"
       class="handle"
 		 type="{{show ? 'arrow-down' : 'arrow-top'}}"
    />
-  
     <!-- <logic slot="after" spotTypes='{{spotTypes}}'></logic> -->
     <spot-card-list slot="after" spotTypes='{{spotTypes}}'></spot-card-list>
   </accordian>

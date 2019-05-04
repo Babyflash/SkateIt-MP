@@ -22,9 +22,10 @@ Page({
   },
 
   onLoad: function (options) {
-    console.log(options)
-    let that = this
     
+    let spot = JSON.parse(options.spot);
+    console.log(spot)
+    let that = this
     const spotId = options.id
     const spotType = options.type
     const url = options.url
