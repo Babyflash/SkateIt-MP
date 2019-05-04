@@ -26,6 +26,7 @@
 }
 
 .container-bottom {
+  color: black;
   font-size: 12px;
   display: flex;
   align-items: center;
@@ -53,4 +54,16 @@
 .img-clear {
   height: 16px;
   width: 16px;
+}
+
+.container-swiper {
+  height: 100%;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+}
+
+.div-swiper {
+  width: 100%;
+  object-fit: cover;
+  /* margin: auto 0; */
 }

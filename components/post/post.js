@@ -1,58 +1,154 @@
 // components/post/post.js
+const app = getApp()
+const AV = require('../../utils/av-weapp-min.js')
+const myRequest = require('../../lib/api/request');
+
 Component({
-  /**
-   * Component properties
-   */
   properties: {
     
   },
 
-  /**
-   * Component initial data
-   */
   data: {
     imgs: [],
     comment: "",
-    bClearPhoto: true,
+    bHiddenClearPhoto: true,
     background: ['demo-text-1', 'demo-text-2', 'demo-text-3'],
     indicatorDots: true,
     vertical: false,
-    autoplay: false,
-    circular: false,
+    autoplay: true,
+    circular: true,
     interval: 2000,
     duration: 500,
     previousMargin: 0,
-    nextMargin: 0
+    nextMargin: 0,
+    spotId: 1
+  },
+
+  changeProperty: function (e) {
+    var propertyName = e.currentTarget.dataset.propertyName
+    var newData = {}
+    newData[propertyName] = e.detail.value
+    this.setData(newData)
+  },
+
+  changeIndicatorDots: function (e) {
+    this.setData({
+      indicatorDots: !this.data.indicatorDots
+    })
+  },
+
+  changeAutoplay: function (e) {
+    this.setData({
+      autoplay: !this.data.autoplay
+    })
+  },
+
+  intervalChange: function (e) {
+    this.setData({
+      interval: e.detail.value
+    })
+  },
+  durationChange: function (e) {
+    this.setData({
+      duration: e.detail.value
+    })
   },
 
   /**
    * Component methods
    */
   methods: {
+    cancelBut: function (e) {
+      var that = this;
+      var myEventDetail = { pickerShow: false, type: 'cancel' } // detail对象，提供给事件监听函数
+      this.triggerEvent('myevent', myEventDetail) //myevent自定义名称事件，父组件中使用
+      that.setData({
+        yes: "true"
+      })
+    },
+
+    uploadPhotos: function () {
+      var that = this;
+
+      wx.showLoading({
+        title: 'Uploading...',
+        mask: true
+      })
+
+      const checkImage = path =>
+        new Promise(resolve => {
+          new AV.File('file-name', {
+            blob: {
+              uri: path,
+            },
+          }).save().then(file => resolve(file.url())).catch(e => reject(e));
+        });
+
+      const loadImg = paths => Promise.all(paths.map(checkImage))
+
+      let res = loadImg(that.data.imgs).then(result => {
+        console.log("IMAGE ALL PROMISES RESULT=", result)
+
+        let post = {
+          "description": "Cool place i have ever seen. AMAZING!!!",
+          "user_id": app.globalData.currentUserId,
+          "spot_id": that.data.spotId,
+          "content": result
+        }
+
+        myRequest.post({
+          header: {
+            'Content-Type': 'application/json',
+            'X-User-Email': wx.getStorageSync('userEmail'),
+            'X-User-Token': wx.getStorageSync('token')
+          },
+          path: `spots/${that.data.spotId}/posts`,
+          data: post,
+          success(res) {
+            wx.hideLoading();
+            that.data.imgs = []
+            console.log("CREATE POST RESULT:", res)
+          },
+          fail: function (res) {
+            wx.hideLoading();
+            that.data.imgs = []
+            console.log(res.data);
+            console.log('failed!' + res.statusCode);
+          }
+        })
+      })
+    },
+
+    clearPhotos: function () {
+      var that = this;
+      that.setData({
+        imgs: [],
+        bHiddenClearPhoto: true
+      })
+    },
 
     selectImg: function () {
+      var that = this;
       wx.chooseImage({
         count: 9, // Default 9
         sizeType: ['original', 'compressed'],
         sourceType: ['album', 'camera'],
         success: function(res) {
-          
-          this.setData({
-            imgs: res.tempFilePaths
-          })
-          console.log(tempFilePaths)
           var tempFilePaths = res.tempFilePaths
-          // if (res.tempFilePaths.count < 9) {
-            
-          // // bClearPhoto = true;
-          // }
-          // else {
-          //   wx.showToast({
-          //     title: 'You can upload maximium 9 images!',
-          //     icon: 'none',
-          //     duration: 2000
-          //   });
-          // }
+          
+          if (tempFilePaths.length < 9) {
+            that.setData({
+              imgs: tempFilePaths,
+              bHiddenClearPhoto: false
+            })
+          }
+          else {
+            wx.showToast({
+              title: 'You can upload maximium 9 images!',
+              icon: 'none',
+              duration: 2000
+            });
+          }
         },
         fail: function(res) {},
         complete: function(res) {},
