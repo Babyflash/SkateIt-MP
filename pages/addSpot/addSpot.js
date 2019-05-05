@@ -1,14 +1,7 @@
 // pages/addSpot/addSpot.js
 const AV = require('../../utils/av-weapp-min.js')
-
-const MOCK_DATA = {
-  productName: 'iphone X max',
-  total: 1,
-  num: 642135,
-  id: 2143324234,
-  price: 12700.0,
-  desc: 'iphone is good',
-};
+const app = getApp()
+const myRequest = require('../../lib/api/request');
 
 function uploadToLeanCloud(tempFilePath) {
   new AV.File('file-name', { 
@@ -19,31 +12,11 @@ function uploadToLeanCloud(tempFilePath) {
 }
 
 Page({
-
-  /**
-   * Page initial data
-   */
   data: {
-    spotImg: 'https://res.cloudinary.com/doe2rb42f/image/upload/v1556766724/i2akfplvygrf8gmvenoy.jpg',
+    spotImg: '',
     types: ['Ledge', 'Manual pad', 'Rail', 'Stair set', 'Transition', 'handrail'],
     isVisible: true,
-    isClicked: false,
-    items1Str: '',
-    items1: [
-      {
-        text: '复选框1',
-        ...MOCK_DATA,
-      },
-      {
-        text: '复选框2',
-        ...MOCK_DATA,
-      },
-      {
-        text: '复选框3',
-        ...MOCK_DATA,
-      },
-    ],
-    items3: ['测试1', '测试2', '测试3', '测试4', '测试5'],
+    isClicked: false
   },
 
   handleClose() {
@@ -87,9 +60,7 @@ Page({
     console.log(this.data.popup6)
     console.log(e.currentTarget.dataset.id)
   },
-  /**
-   * Lifecycle function--Called when page load
-   */
+
   onLoad: function (options) {
     let page = this
     wx.chooseImage({
@@ -101,7 +72,8 @@ Page({
         console.log(tempFilePaths)
         uploadToLeanCloud(tempFilePaths[0])
         page.setData({
-          popup6: true
+          popup6: true,
+          spotImg: tempFilePaths[0]
         })
         // wx.previewImage({
         //   current: tempFilePaths[0], // http link of the image currently displayed
@@ -110,15 +82,77 @@ Page({
       }
     })
   },
-  /**
-   * Lifecycle function--Called when page is initially rendered
-   */
+  
+  uploadPromise: function (tempFilePath) {
+    let that = this
+    return new Promise((resolve, reject) => {
+      new AV.File('file-name', {
+        blob: {
+          uri: tempFilePath,
+        },
+      }).save().then(file => resolve(file.url())).catch(e => reject(e));
+    })
+  },
+
+  addSpot: function () {
+    let that = this
+
+    wx.showLoading({
+      title: 'Uploading...',
+      mask: true
+    })
+
+    wx.getLocation({
+      success: function (res) {
+        that.setData({ userLatitude: res.latitude, userLongitude: res.longitude })
+
+        that.uploadPromise(that.data.spotImg).then(res => {
+          
+          that.setData({
+            popup6: true
+          })
+          console.log("Result: ", res)
+          let spot = {
+            "spot_rating": 5,
+            "difficulty_rating": 5,
+            "spot_type": "Ledge",
+            "default_image": res,
+            "remote_default_image_url": res,
+            "user_id": app.globalData.currentUserId,
+            "geo_lat": that.data.userLatitude,
+            "geo_lng": that.data.userLongitude,
+            "address": "Mongolia"
+          }
+
+          myRequest.post({
+            header: {
+              'Content-Type': 'application/json',
+              'X-User-Email': wx.getStorageSync('userEmail'),
+              'X-User-Token': wx.getStorageSync('token')
+            },
+            path: 'spots',
+            data: spot,
+            success(res) {
+              console.log("ADD POST RESULT:", res)
+              wx.hideLoading();
+              spot = res.data;
+              spot.default_image.url = that.data.spotImg
+              console.log("ADDED SPOT",spot)
+              wx.navigateTo({
+                url: '/pages/spot/spot?spot=' + JSON.stringify(spot)
+                // url: '/pages/servan/sevan'
+              });
+            }
+          })
+        })
+      },
+    })
+  },
+ 
   onReady: function () {
     this.animation = wx.createAnimation()
   },
-  /**
-   * Lifecycle function--Called when page show
-   */
+ 
   onShow: function () {
     let height = 0;
     wx.getSystemInfo({
@@ -126,41 +160,26 @@ Page({
         height += res.windowHeight
       }
     });
-      this.animation.translateY(-1 * height * 0.75).step()
-      this.setData({ animation: this.animation.export() })
+    this.animation.translateY(-1 * height * 0.75).step()
+    this.setData({ animation: this.animation.export() })
   },
 
-  /**
-   * Lifecycle function--Called when page hide
-   */
   onHide: function () {
 
   },
 
-  /**
-   * Lifecycle function--Called when page unload
-   */
   onUnload: function () {
     
   },
 
-  /**
-   * Page event handler function--Called when user drop down
-   */
   onPullDownRefresh: function () {
 
   },
 
-  /**
-   * Called when page reach bottom
-   */
   onReachBottom: function () {
 
   },
 
-  /**
-   * Called when user click on the top right corner to share
-   */
   onShareAppMessage: function () {
 
   }
