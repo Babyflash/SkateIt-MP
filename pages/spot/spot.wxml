@@ -19,7 +19,7 @@
       </block>
     </swiper>
     <view class = 'icon-tab'>
-      <image class = 'img-icon fav' src='../../lib/images/love1.svg'></image>
+      <image class = 'img-icon fav' src='../../lib/images/love1.svg' bindtap='doFavourite'></image>
       <button style="height: 50%; width: 50%;" open-type='share'> <image  class = 'img-icon share' src='../../lib/images/share2.svg'></image></button>
     </view>
   <view class = 'spot-type'>{{spotType}}</view>
@@ -34,7 +34,7 @@
     <view class="address">{{address}}</view>
   </view>
   <view class="avatar-container">
-    <w-avatar size="large" src="https://kitt.lewagon.com/placeholder/users/ClaraMorgen" class = 'user-avatar'></w-avatar>
+    <w-avatar size="large" src="{{createdUserAvatar}}" class = 'user-avatar'></w-avatar>
   </view>
 </view>
 <view class = 'div-tags'>

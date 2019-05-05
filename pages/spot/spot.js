@@ -19,7 +19,9 @@ Page({
     previousMargin: 0,
     nextMargin: 0,
     spots: [],
-    postCount: 0
+    postCount: 0,
+    bFavourite: false,
+    createdUserAvatar: 'https://kitt.lewagon.com/placeholder/users/ClaraMorgen'
   },
   onShareAppMessage: function (res) {
     if (res.from === 'button') {
@@ -40,17 +42,22 @@ Page({
     let that = this
     let spot = JSON.parse(options.spot);
     const spotId = spot.id
-
+    console.log("Spot page's spot instance: ", spot)
     that.setData({
       defaultImage: spot.default_image.url,
       spot: spot,
       spotType: spot.spot_type,
       spotId: spotId,
       url: spot.default_image.url,
-      address: spot.address
+      address: spot.address,
+      createdUserAvatar: spot.user.avatar_url
     })
     
     that.updateComments();
+  },
+
+  doFavourite: function () {
+    let that = this
   },
 
   updateComments: function () {
