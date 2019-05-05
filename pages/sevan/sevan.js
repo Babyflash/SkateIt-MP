@@ -143,61 +143,10 @@ Page({
       complete: function(res) {},
     })
   },
+
   navigateToAddSpotPage: function () {
-    let that = this
-    
-    that.updateUserCurrentLocation();
-
-    wx.chooseImage({
-      count: 9, // Default 9
-      sizeType: ['original', 'compressed'],
-      sourceType: ['album', 'camera'],
-      success: function (res) {
-        var tempFilePaths = res.tempFilePaths
-        // that.setData({
-          //   popup6: true
-          // })
-        wx.showLoading({
-          title: 'Uploading...',
-          mask: true
-        })
-
-        that.uploadPromise(tempFilePaths[0]).then(res => {
-          wx.hideLoading();
-          
-          console.log("Result: ", res)
-          let spot = {
-            "spot_rating": 5,
-            "difficulty_rating": 5,
-            "spot_type": "Ledge",
-            "default_image": res,
-            "remote_default_image_url": res,
-            "user_id": app.globalData.currentUserId,
-            "geo_lat": that.data.userLatitude,
-            "geo_lng": that.data.userLongitude,
-            "address": "Mongolia"
-          }
-
-          myRequest.post({
-            header: {
-              'Content-Type': 'application/json',
-              'X-User-Email': wx.getStorageSync('userEmail'),
-              'X-User-Token': wx.getStorageSync('token')
-            },
-            path: 'spots',
-            data: spot,
-            success(res) {
-              wx.hideLoading();
-              console.log("ADD POST RESULT:", res)
-            },
-            fail(res) {
-              wx.hideLoading();
-              console.log("ADD POST REQUEST FAILED!!!:", res)
-            }
-          })
-
-        })
-      }
+    wx.navigateTo({
+      url: '../addSpot/addSpot'
     })
   },
 
@@ -243,7 +192,6 @@ Page({
 
   accordion: function(e){
     console.log('grow and shrink')
-    // console.log(e.timeStamp)
     
     this.setData({
       clicked: this.data.clicked ? false : true,

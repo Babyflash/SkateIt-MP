@@ -75,6 +75,7 @@ Component({
       var that = this;
       that.setData({ postInput: e.detail.value })
     },
+    
     cancelBut: function (e) {
       var that = this;
       var myEventDetail = { pickerShow: false, type: 'cancel' } // detail对象，提供给事件监听函数
