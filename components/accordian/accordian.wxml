@@ -1,30 +1,23 @@
 <view class="spot-info">
-      <view class="title-bar">
-        <view class="gradient-line"></view>
-        
-        
+  <view class="title-bar" bindtouchend="active">
+    <view class="gradient-line"></view>
         <view class="title-content-container">
-          <view class="spot-count">
-            <view style="display: flex;">
-              <text>Nearby</text>
+          <view style="display: flex; align-items: center; justify-content: space-between;">
+            <view style="margin-right: 8px;">
+              <text class="nearby">Nearby</text>
+            </view>
+            <view style='margin-top: 3px;'>
+              <slot name="arrow"></slot>  
             </view>
           </view>
-          <view style='position: absolute; left: 50%;'>
-            <slot name="arrow"></slot>  
-          </view>
-          <view class="spot-count count">
+          <view class="spot-count">
             <slot name="spotCount"></slot>
           </view>
+          <view class="bar"></view>
         </view>
-       
-        <view class="iconsbox">
-          <icon></icon>
-          <icon></icon>
-          <icon></icon>
-          <icon></icon>
-        </view>
-      </view> 
-    </view>
+  </view> 
+</view>
+
 <scroll-view class="{{getApp().globalData.click ? 'show' : 'hide'}}" scroll-y="true" style="height: 45vh; transition: 0.5s ease; {{show ? '' : 'display: none'}}">
   <slot name="after"></slot>
 </scroll-view>

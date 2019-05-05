@@ -27,14 +27,11 @@ Component({
     spotId: 1,
     userAvatarUrl: app.globalData.userAvatarUrl,
     postInput: "",
-    userName: "Chinzoo"
+    userName: app.globalData.nickName,
+    focus: false
   },
 
-  iChange(e) {
-    console.log('BICHEED L BN', e.detail.value);
-    var that = this;
-    that.setData({ postInput: e.detail.value })
-  },
+  
 
   changeProperty: function (e) {
     var propertyName = e.currentTarget.dataset.propertyName
@@ -70,6 +67,11 @@ Component({
    * Component methods
    */
   methods: {
+    handleFocus() {
+      this.setData({
+        focus: !this.data.focus,
+      });
+    },
     iChange(e) {
       console.log('BICHEED L BN', e.detail.value);
       var that = this;
@@ -83,7 +85,6 @@ Component({
         yes: "true"
       })
     },
-
     cancelWindow: function () {
       var that = this;
       that.clearPhotos();
@@ -113,7 +114,7 @@ Component({
         console.log("IMAGE ALL PROMISES RESULT=", result)
 
         let post = {
-          "description": "Cool place i have ever seen. AMAZING!!!",
+          "description": that.data.postInput,
           "user_id": app.globalData.currentUserId,
           "spot_id": that.data.spotId,
           "content": result
