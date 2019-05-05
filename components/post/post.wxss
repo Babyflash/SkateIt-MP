@@ -46,7 +46,9 @@
 
   color: black;
 }
-
+.form{
+  color: black;
+}
 .container-bottom {
   color: black;
   font-size: 12px;

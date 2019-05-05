@@ -20,7 +20,7 @@
     </swiper>
     <view class = 'icon-tab'>
       <image class = 'img-icon fav' src='../../lib/images/love1.svg'></image>
-      <image class = 'img-icon share' src='../../lib/images/share2.svg'></image>
+      <button style="height: 50%; width: 50%;" open-type='share'> <image  class = 'img-icon share' src='../../lib/images/share2.svg'></image></button>
     </view>
   <view class = 'spot-type'>{{spotType}}</view>
 </view>
