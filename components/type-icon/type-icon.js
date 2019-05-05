@@ -27,6 +27,7 @@ Component({
    */
   methods: {
     active: function(e) {
+      console.log('im a componenet: ', this.properties.type)
       this.setData({
         isClicked: !this.data.isClicked
       })

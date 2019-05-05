@@ -13,10 +13,8 @@
     <w-row gutter="10">
       <block wx:for="{{ 6 }}" wx:key="index">
         <w-col span="8">
-          <view style="padding: 10px 0;font-size:14px;text-align:center;{{  index%2 == 0 ? .8 : .6 }});">
+          <view type="{{types[index]}}" bindtap='handleClick{{index + 1}}'  data-id='{{index}}'  style="padding: 10px 0;font-size:14px;text-align:center;{{  index%2 == 0 ? .8 : .6 }});">
             <icon 
-              bindtap='handleClick{{idx + 1}}' 
-              data-id='{{types[index]}}' 
               type="{{types[index]}}" 
               image="{{types[index]}}"
             >
