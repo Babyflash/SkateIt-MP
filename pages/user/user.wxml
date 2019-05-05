@@ -3,11 +3,9 @@
 <view class = 'container'>
   <view class="div-banner">
     <view  class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url({{img}})">
-
      </view>
-
     <view class = 'icon-tab'>
-      <image class = 'img-icon share' src='../../lib/images/share2.svg'></image>
+      <image width="25px" height="25px" mode="aspectFit" class = 'share' src='../../lib/images/share2.svg'></image>
     </view>
 </view>
 <!-- spot info -->
