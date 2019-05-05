@@ -252,8 +252,8 @@ Page({
     console.log(this.data.show)
    
   },
-  move: function(){
-    console.log('grow and shrink')
+  move: function(e){
+    console.log('from child', e)
     // console.log(e.timeStamp)
     this.setData({
       clicked: this.data.clicked ? false : true,
