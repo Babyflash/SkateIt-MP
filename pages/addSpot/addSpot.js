@@ -1,4 +1,6 @@
 // pages/addSpot/addSpot.js
+let keys = "IFXBZ-M4YWI-DUDG7-5UUEX-Q3J4K-X5FZG"
+let address = ''
 const AV = require('../../utils/av-weapp-min.js')
 const app = getApp()
 const myRequest = require('../../lib/api/request');
@@ -13,52 +15,61 @@ function uploadToLeanCloud(tempFilePath) {
 
 Page({
   data: {
+    customItem: '全部',
     spotImg: '',
     types: ['Ledge', 'Manual pad', 'Rail', 'Stair set', 'Transition', 'handrail'],
     isVisible: true,
-    isClicked: false
+    isClicked: false,
+    type: '',
+    isClicked: false,
+    difficulty_rating: '',
+    address: ''
   },
 
-  handleClose() {
+  // handleClose() {
+  //   this.setData({
+  //     popup1: false,
+  //     popup2: false,
+  //     popup3: false,
+  //     popup4: false,
+  //     popup5: false,
+  //     popup6: false,
+  //   });
+  // },
+  setDifficulty: function(e){
     this.setData({
-      popup1: false,
-      popup2: false,
-      popup3: false,
-      popup4: false,
-      popup5: false,
-      popup6: false,
-    });
+      difficulty_rating: e.detail.value
+    })
   },
-
   handleClick1(e) {
-    this.setData({ popup1: !this.data.popup1 });
-    console.log(this.data.popup1)
-    console.log(e.currentTarget.dataset.id)
+    this.setData({
+      type: this.data.types[e.currentTarget.dataset.id],
+      isClicked: !this.data.isClicked
+      });
+    console.log(this.data.type)
+    
   },
   handleClick2(e) {
-    this.setData({ popup2: true });
-    console.log(this.data.popup2)
-    console.log(e.currentTarget.dataset.id)
+    this.setData({ type: this.data.types[e.currentTarget.dataset.id],
+    isClicked: !this.data.isClicked
+    });
+    console.log(this.data.type)
   },
   handleClick3(e) {
-    this.setData({ popup3: true });
-    console.log(this.data.popup3)
-    console.log(e.currentTarget.dataset.id)
+    this.setData({ type: this.data.types[e.currentTarget.dataset.id] });
+    console.log(this.data.type)
   },
   handleClick4(e) {
-    console.log(this.data.popup4)
-    this.setData({ popup4: true });
-    console.log(e.currentTarget.dataset.id)
+    this.setData({ type: this.data.types[e.currentTarget.dataset.id] });
+    console.log(this.data.type)
   },
   handleClick5(e) {
-    this.setData({ popup5: true });
-    console.log(this.data.popup5)
-    console.log(e.currentTarget.dataset.id)
+    this.setData({ type: this.data.types[e.currentTarget.dataset.id] });
+    console.log(this.data.type)
   },
   handleClick6(e) {
-    this.setData({ popup6: true });
-    console.log(this.data.popup6)
-    console.log(e.currentTarget.dataset.id)
+    this.setData({ type: this.data.types[e.currentTarget.dataset.id] });
+    console.log(this.data.type)
   },
 
   onLoad: function (options) {
@@ -87,7 +98,22 @@ Page({
       }
     })
   },
-  
+  getDistrict(lat, lon){
+    wx.request({
+      url: `https://apis.map.qq.com/ws/geocoder/v1/?location=${lat},${lon}&key=${keys}`,
+      header: {
+        'Content-Type': 'application/json'
+      },
+      success: function (res) {
+        console.log(res.data.result.address_component.district, res.data.result.address)
+        this.setData({
+          address: this.data.address
+        })
+        //province
+      
+      }
+    })
+  },
   uploadPromise: function (tempFilePath) {
     let that = this
     return new Promise((resolve, reject) => {
@@ -98,7 +124,7 @@ Page({
       }).save().then(file => resolve(file.url())).catch(e => reject(e));
     })
   },
-
+  
   addSpot: function () {
     let that = this
 
@@ -110,7 +136,7 @@ Page({
     wx.getLocation({
       success: function (res) {
         that.setData({ userLatitude: res.latitude, userLongitude: res.longitude })
-
+        that.getDistrict(res.latitude, res.longitude)
         that.uploadPromise(that.data.spotImg).then(res => {
           console.log("LEANCLOUND RESULT: ", res)
           that.setData({
@@ -119,14 +145,14 @@ Page({
           
           let spot = {
             "spot_rating": 5,
-            "difficulty_rating": 5,
-            "spot_type": "Ledge",
+            "difficulty_rating": that.data.difficulty_rating,
+            "spot_type": that.data.type,
             "default_image": res,
             "remote_default_image_url": res,
             "user_id": app.globalData.currentUserId,
             "geo_lat": that.data.userLatitude,
             "geo_lng": that.data.userLongitude,
-            "address": "Mongolia"
+            "address": that.data.address
           }
 
           myRequest.post({
