@@ -45,16 +45,8 @@ Component({
    */
   methods: {
     spot: function () {
-      
       let spot = JSON.stringify(this.properties.spotObject);
 
-      // console.log(spot)
-      // const id = spot.id
-      // const type = spot.spot_type
-      // const difficulty = spot.difficulty_rating
-      // const img = spot.default_image.url
-
-      // const address = this.properties.address
       wx.navigateTo({
         url: '/pages/spot/spot?spot=' + spot
       });

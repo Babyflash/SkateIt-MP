@@ -68,5 +68,5 @@ background-size: cover;
   width: 100%;
   margin: 0 auto;
   bottom: 8px;
-
+  padding-bottom: 8px;
 }

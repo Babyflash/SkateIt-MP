@@ -54,8 +54,8 @@
     scroll-top="{{scrollTop}}"
   >
     <block wx:for="{{spots}}" wx:for-item="spot" wx:for-index="itemsIndex" wx:key="spot">
-      <comment-card avatar="https://kitt.lewagon.com/placeholder/users/eschults">
-        <view slot="name">Chinzoo</view>
+      <comment-card avatar="{{spot.user.avatar_url}}">
+        <view slot="name">{{spot.user.name}}</view>
         <view slot="date">{{spot.created_at}}</view>
         <view slot="content-body">{{spot.description}}</view>
       </comment-card>
