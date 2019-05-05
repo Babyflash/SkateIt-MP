@@ -29,8 +29,10 @@ swiper{
   top: 16px;
   right: 16px;
 }
-.fav{
+
+.fav {
   margin-right: 12px;
+  color: red;
 }
 .spot-type {
   position: absolute;
