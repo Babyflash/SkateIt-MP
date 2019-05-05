@@ -13,7 +13,7 @@ Component({
       },
       show: Boolean
   },
-
+ 
   /**
    * Component initial data
    */
@@ -28,6 +28,8 @@ Component({
     console.log('moved')
   },
   methods: {
-    
+    active: function () {
+      this.triggerEvent('myevent', 'test')
+    },
   }
 })

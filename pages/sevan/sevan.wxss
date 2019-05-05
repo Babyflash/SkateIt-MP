@@ -113,7 +113,7 @@ transition: 1 ease;
 .choice{
   width: 100%;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   color: #78849F;
 }

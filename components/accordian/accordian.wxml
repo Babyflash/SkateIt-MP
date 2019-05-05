@@ -1,8 +1,6 @@
 <view class="spot-info">
-  <view class="title-bar">
+  <view class="title-bar" bindtouchend="active">
     <view class="gradient-line"></view>
-        
-        
         <view class="title-content-container">
           <view style="display: flex; align-items: center; justify-content: space-between;">
             <view style="margin-right: 8px;">
@@ -17,7 +15,6 @@
           </view>
           <view class="bar"></view>
         </view>
-
   </view> 
 </view>
 
