@@ -68,8 +68,7 @@ height:3px;
 background-color: lightgray;
 border-radius: 2px; */
 
-font-size: 35px;
-font-weight: bold;
+font-size: 16px;
 transition: 1 ease;
 }
 .get-loc{
