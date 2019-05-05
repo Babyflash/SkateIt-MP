@@ -8,6 +8,7 @@ const AV = require('../../utils/av-weapp-min.js')
 Page({
   data: {
     popup6 : false,
+    defaultImage: '',
     imgs: [],
     indicatorDots: true,
     vertical: false,
@@ -36,24 +37,17 @@ Page({
   },
 
   onLoad: function (options) {
-    let spot = JSON.parse(options.spot);
-    console.log(spot)
     let that = this
+    let spot = JSON.parse(options.spot);
     const spotId = spot.id
-    const spotType = spot.spot_type
-    const url = spot.default_image.url
-    console.log("URL: ", url)
-    const address = spot.address
-    const allImg = that.data.imgs;
-    allImg.push(url)
-    console.log("CARAOUSEL IMAGE", allImg)
-    this.setData({
+
+    that.setData({
+      defaultImage: spot.default_image.url,
       spot: spot,
-      spotType: spotType,
+      spotType: spot.spot_type,
       spotId: spotId,
-      url: url,
-      imgs: allImg,
-      address: address
+      url: spot.default_image.url,
+      address: spot.address
     })
     
     that.updateComments();
@@ -70,11 +64,23 @@ Page({
     myRequest.get({
       path: `spots/${that.data.spotId}/posts`,
       success(res) {
+        const datas = res.data;
+        const imgs = []
+        imgs.push(that.data.defaultImage);
+        console.log("GET POST RESPONSE: ",res.data)
         wx.hideLoading();
         that.setData({
-          spots: res.data,
+          spots: datas,
         })
-        console.log("ALL POSTS HERE: ", res.data)
+        
+        if(datas) {
+          datas.forEach(function (e) {
+            e.post_contents.forEach(function(img) {
+              imgs.push(img.media_url.url);
+            })
+          })
+        }
+        that.setData({ imgs: imgs })
       }
     })
   },
