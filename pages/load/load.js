@@ -3,19 +3,23 @@ const app = getApp();
 const myRequest = require('../../lib/api/request');
 
 function onGetUserInfo () {
-  console.log("GET USER INFO")
   wx.getUserInfo({
     success: res => {
+      console.log("GET USER INFO", res)
       app.globalData.userInfo = res.userInfo
-      console.log('global data: ')
-      console.log(app)
     }
   })
 }
 
 Page({
+  data: {
+    readyToStart: false
+  },
+
   onGotUserInfo: function() {
     let app = getApp();
+    let that = this;
+
     wx.login({
       success: function (res) {
         if (res.code) {
@@ -32,7 +36,12 @@ Page({
                   app.globalData.email = res.data.email
                   app.globalData.user = res.data
                   app.globalData.userAvatarUrl = userInfoFromCallBackHell.avatarUrl
+                  that.setData({
+                    readyToStart: true
+                  })
+                  wx.hideLoading();
                 } catch (e) {
+                  wx.hideLoading();
                   console.log("Didn't set storage")
                 }
               },
@@ -55,43 +64,51 @@ Page({
             })
           }
             , app)
+
           onGetUserInfo();
-          //发起网络请求
+          
           console.log("Yes..We got code from RES")
-          console.log("Global Data before RES")
         } else {
           console.log('error' + res.errMsg)
         }
       }
     })
   },
-  data: {
-
-  },
-
+ 
   onLoad: function (options) {
-
+    let that = this;
+    that.onGotUserInfo();
   },
 
   onReady: function () {
 
   },
 
-  index: function(){
-    wx.navigateTo({
-      url: '../index/index'
-    })
-  },
-
   onShow: function () {
     myRequest.get({
       path: 'spots',
       success(res) {
-        console.log(res)
         app.globalData.spotTypes = res.data
-        console.log('GlobalData', app.globalData.spotTypes)
+        console.log('GlobalData', res.data)
       }
     })
+  },
+
+  index: function () {
+    let that = this;
+
+    if (that.data.readyToStart === true) {
+      wx.navigateTo({
+        url: '../index/index'
+      })
+    }
+    else {
+      wx.showLoading({
+        title: 'Loading...',
+        mask: true
+      })
+    }
+
   },
 
   onHide: function () {

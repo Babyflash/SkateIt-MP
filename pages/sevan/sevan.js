@@ -18,7 +18,7 @@ function generateSpotsJson() {
         longitude: e.geo_lng,
         width: 56,
         height: 56,
-        callout: { content: e.address, fontSize: 15, color: "#000000", padding: 10 }
+        callout: { content: e.address, fontSize: 14, color: "#000000", padding: 10 }
       })
     })
   }
@@ -30,7 +30,6 @@ function generateSpotsJson() {
 const app = getApp()
 Page({
   data: {
-    // pop item click sevan
     isClicked: false,
     menuClick: false,
     motto: 'Hello World',
@@ -68,6 +67,16 @@ Page({
         callout: { content: "Shanghai, China", fontSize: 15, color: "#000000", padding: 10 }
       }
     ]
+  },
+
+  updateSpots: function() {
+    myRequest.get({
+      path: 'spots',
+      success(res) {
+        app.globalData.spotTypes = res.data
+        generateSpotsJson();
+      }
+    })
   },
 
   locating: false,
@@ -109,6 +118,7 @@ Page({
               that.locating = false;
               wx.showToast({
                 title: 'Failed to get location, please try again',
+                duration: 2000,
                 icon: 'none'
               })
             }
@@ -119,6 +129,7 @@ Page({
           that.locating = false;
           wx.showToast({
             title: 'Failed to get location, please try again',
+            duration: 2000,
             icon: 'none'
           })
         }
@@ -135,6 +146,7 @@ Page({
       },
     })
   },
+
   navigateToUserPage: function(){
     wx.navigateTo({
       url: '../user/user',
@@ -161,8 +173,6 @@ Page({
     })
   },
 
- 
-  //事件处理函数
   bindViewTap: function () {
     wx.navigateTo({
       url: '../logs/logs'

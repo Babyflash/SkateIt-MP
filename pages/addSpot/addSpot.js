@@ -69,16 +69,21 @@ Page({
       sourceType: ['album', 'camera'],
       success: function (res) {
         var tempFilePaths = res.tempFilePaths
-        console.log(tempFilePaths)
-        uploadToLeanCloud(tempFilePaths[0])
+        console.log("CHOOSE IMAGE", res)
         page.setData({
           popup6: true,
           spotImg: tempFilePaths[0]
         })
+
         // wx.previewImage({
         //   current: tempFilePaths[0], // http link of the image currently displayed
         //   urls: tempFilePaths // List of http links of images to be previewed
         // })
+      },
+      fail: ex => {
+        wx.navigateTo({
+          url: '/pages/sevan/sevan'
+        });
       }
     })
   },
@@ -107,11 +112,11 @@ Page({
         that.setData({ userLatitude: res.latitude, userLongitude: res.longitude })
 
         that.uploadPromise(that.data.spotImg).then(res => {
-          
+          console.log("LEANCLOUND RESULT: ", res)
           that.setData({
             popup6: true
           })
-          console.log("Result: ", res)
+          
           let spot = {
             "spot_rating": 5,
             "difficulty_rating": 5,
@@ -138,14 +143,37 @@ Page({
               spot = res.data;
               spot.default_image.url = that.data.spotImg
               console.log("ADDED SPOT",spot)
+              myRequest.get({
+                path: 'spots',
+                success(res) {
+                  app.globalData.spotTypes = res.data
+                  console.log('ALL SPOTS RESPONSE SAVE INTO GLOBALDATA', res.data)
+                }
+              })
               wx.navigateTo({
                 url: '/pages/spot/spot?spot=' + JSON.stringify(spot)
                 // url: '/pages/servan/sevan'
               });
+            },
+            fail: err => {
+              wx.hideLoading();
+              wx.showToast({
+                title: 'Failed to add spot, check internet connection!',
+                duration: 2000,
+                icon: 'none'
+              })
             }
           })
         })
       },
+      fail: e => {
+        wx.showToast({
+          title: 'Failed to add spot, check internet connection!',
+          duration: 2000,
+          icon: 'none'
+        })
+        wx.hideLoading();
+      }
     })
   },
  
