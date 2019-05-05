@@ -20,7 +20,16 @@ Page({
     spots: [],
     postCount: 0
   },
-
+  onShareAppMessage: function (res) {
+    if (res.from === 'button') {
+      // From the forward button within the page
+      console.log(res.target)
+    }
+    return {
+      title: "Hello world",
+      path: '/page/user?id=123'
+    }
+  },
   toggleToast(e) {
     console.log("CLICKED YESSSS")
     console.log(e.detail)
