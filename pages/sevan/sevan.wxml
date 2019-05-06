@@ -30,17 +30,20 @@
    
         <!-- first choice dropdown -->
   <cover-view class='dropdown left' animation="{{type}}" data="yooo">
-    <cover-view bindtap="selectItem" class="drop-item {{selecteditem ? 'active' : ''}}">
+    <cover-view data-id='0' bindtap="selectItem" class="drop-item {{selecteditem0 ? 'active' : ''}}">
     Ledge
     </cover-view>
-    <cover-view class="drop-item">
+    <cover-view data-id='1' bindtap="selectItem" class="drop-item" class="drop-item {{selecteditem1 ? 'active' : ''}}">
     Stairs
     </cover-view>
-    <cover-view class="drop-item">
-    Park
+    <cover-view data-id='2' bindtap="selectItem" class="drop-item" class="drop-item {{selecteditem2 ? 'active' : ''}}">
+    Parks
     </cover-view>
-    <cover-view class="drop-item">
-    Stairs
+    <cover-view data-id='3' bindtap="selectItem" class="drop-item" class="drop-item {{selecteditem3 ? 'active' : ''}}">
+    Rails
+    </cover-view>
+     <cover-view data-id='4' bindtap="selectItem" class="drop-item" class="drop-item {{selecteditem4 ? 'active' : ''}}">
+    All
     </cover-view>
   </cover-view>
   <!-- second choice dropdown -->
@@ -88,113 +91,3 @@
     <spot-card-list slot="after" spotTypes='{{spotTypes}}'></spot-card-list>
   </accordian>
 </view>
-<!-- popup -->
-<!-- <cover-view  style="display: none" class="add-spot-pop">
-
-          <cover-view class="flex-wrp" style="flex-direction:row;"> 
-            <cover-view class="flex-item bc_green">
-              <cover-view data-id='1' bindtap='active' class="share {{isClicked ? 'clicked' : ''}}">
-              <cover-image src='../../lib/images/Ledge.png'></cover-image>
-              <cover-view>Ledge</cover-view>
-              <button open-type='share'></button>
-            </cover-view>
-            </cover-view>
-            <cover-view class="flex-item bc_red">
-              <cover-view data-id='2' bindtap='active' class="share {{isClicked ? 'clicked' : ''}}">
-                <cover-image src='../../lib/images/Stair set.png'></cover-image>
-                <cover-view>Stair set</cover-view>
-                <button open-type='share'></button>
-              </cover-view>
-            </cover-view>
-            <cover-view class="flex-item bc_blue">
-              <cover-view data-id='3' bindtap='active' class="share {{isClicked ? 'clicked' : ''}}">
-              <cover-image src='../../lib/images/Transition.png'></cover-image>
-              <cover-view>Transition</cover-view>
-              <button open-type='share'></button>
-            </cover-view>
-            </cover-view>
-          </cover-view>
-          <cover-view class="flex-wrp" style="flex-direction:row;"> 
-            <cover-view class="flex-item bc_green">
-              <cover-view data-id='1' bindtap='active' class="share {{isClicked ? 'clicked' : ''}}">
-              <cover-image src='../../lib/images/Rail.png'></cover-image>
-              <cover-view>Rail</cover-view>
-              <button open-type='share'></button>
-            </cover-view>
-            </cover-view>
-            <cover-view class="flex-item bc_red">
-              <cover-view data-id='2' bindtap='active' class="share {{isClicked ? 'clicked' : ''}}">
-                <cover-image src='../../lib/images/handrail.png'></cover-image>
-                <cover-view>Hand Rail</cover-view>
-                <button open-type='share'></button>
-              </cover-view>
-            </cover-view>
-            <cover-view class="flex-item bc_blue">
-              <cover-view data-id='3' bindtap='active' class="share {{isClicked ? 'clicked' : ''}}">
-              <cover-image src='../../lib/images/Manual pad.png'></cover-image>
-              <cover-view>Manual Pad</cover-view>
-              <button open-type='share'></button>
-            </cover-view>
-            </cover-view>
-          </cover-view>
-          <cover-view class="flex-wrp" style="flex-direction:row;"> 
-            <cover-view class="flex-item bc_green">
-              <cover-view data-id='1' bindtap='active' class="share {{isClicked ? 'clicked' : ''}}">
-              <cover-image src='../../lib/images/Ledge.png'></cover-image>
-              <cover-view>分享</cover-view>
-              <button open-type='share'></button>
-            </cover-view>
-            </cover-view>
-            <cover-view class="flex-item bc_red">
-              <cover-view data-id='2' bindtap='active' class="share {{isClicked ? 'clicked' : ''}}">
-                <cover-image src='../../lib/images/Stair set.png'></cover-image>
-                <cover-view>分享</cover-view>
-                <button open-type='share'></button>
-              </cover-view>
-            </cover-view>
-            <cover-view class="flex-item bc_blue">
-              <cover-view data-id='3' bindtap='active' class="share {{isClicked ? 'clicked' : ''}}">
-              <cover-image src='../../lib/images/Transition.png'></cover-image>
-              <cover-view>分享</cover-view>
-              <button open-type='share'></button>
-            </cover-view>
-            </cover-view>
-          </cover-view>
-          <cover-view class="flex-wrp" style="flex-direction:row;"> 
-            <cover-view class="flex-item bc_green">
-              <cover-view data-id='1' bindtap='active' class="share {{isClicked ? 'clicked' : ''}}">
-              <cover-image src='../../lib/images/Ledge.png'></cover-image>
-              <cover-view>分享</cover-view>
-              <button open-type='share'></button>
-            </cover-view>
-            </cover-view>
-            <cover-view class="flex-item bc_red">
-              <cover-view data-id='2' bindtap='active' class="share {{isClicked ? 'clicked' : ''}}">
-                <cover-image src='../../lib/images/Stair set.png'></cover-image>
-                <cover-view>分享</cover-view>
-                <button open-type='share'></button>
-              </cover-view>
-            </cover-view>
-            <cover-view class="flex-item bc_blue">
-              <cover-view data-id='3' bindtap='active' class="share {{isClicked ? 'clicked' : ''}}">
-              <cover-image src='../../lib/images/Transition.png'></cover-image>
-              <cover-view>分享</cover-view>
-              <button open-type='share'></button>
-            </cover-view>
-            </cover-view>
-          </cover-view>
-
-          <cover-view class="difficulty">
-            <cover-view class="easy">Easy</cover-view>
-            <cover-view class="med">Medium</cover-view>
-            <cover-view class="hard">Hard</cover-view>
-          </cover-view>
-
-          <button style="margin-top: 10vh;" type="primary">Submit</button>
-
-          <cover-view>
-
-          
-        
-          </cover-view>
-        </cover-view> -->
