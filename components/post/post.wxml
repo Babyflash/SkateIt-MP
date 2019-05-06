@@ -20,7 +20,7 @@
  <view class = 'form'>
  <w-cell-group>
    <!-- <w-input focus="false" bindinput="iChange" class='post-input'clear count="250" type="textarea" placeholder="What's on your mind?"/> -->
-     <textarea focus="false" bindinput="iChange" placeholder="textarea in the form" name="textarea"/>
+     <textarea focus="false" class='post-input' bindinput="iChange" placeholder="What's on your mind?" name="textarea"/>
 </w-cell-group>
  </view>
 
