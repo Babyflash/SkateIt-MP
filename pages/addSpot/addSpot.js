@@ -166,8 +166,7 @@ Page({
                 "user_id": app.globalData.currentUserId,
                 "geo_lat": that.data.userLatitude,
                 "geo_lng": that.data.userLongitude,
-                "address": that.data.address,
-                "createdUserUrl": getApp().globalData.userInfo.avatarUrl
+                "address": that.data.address
               }
 
               myRequest.post({
@@ -183,6 +182,7 @@ Page({
                   wx.hideLoading();
                   spot = res.data;
                   spot.default_image.url = that.data.spotImg
+                  spot["createdUserUrl"] = getApp().globalData.userInfo.avatarUrl
                   console.log("ADDED SPOT", spot)
                   myRequest.get({
                     path: 'spots',
@@ -199,24 +199,24 @@ Page({
                 fail: err => {
                   wx.hideLoading();
                   wx.showToast({
-                    title: 'Failed to add spot, check internet connection!',
-                    duration: 2000,
+                    title: 'Failed, check internet connection!',
+                    duration: 3000,
                     icon: 'none'
                   })
                 }
+              })
+            }).catch( e => {
+              wx.hideLoading();
+              wx.showToast({
+                title: 'Failed, check internet connection!',
+                duration: 3000,
+                icon: 'none'
               })
             })
           }
         })
       },
-      catch: e => {
-        wx.showToast({
-          title: 'Failed to add spot, check internet connection!',
-          duration: 2000,
-          icon: 'none'
-        })
-        wx.hideLoading();
-      }
+      
     })
   },
  
