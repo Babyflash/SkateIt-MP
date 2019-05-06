@@ -58,6 +58,26 @@ Page({
 
   doFavourite: function () {
     let that = this
+    let spot = {
+      "user_id": app.globalData.currentUserId,
+      "spot_id": that.data.spotId
+    }
+
+    myRequest.post({
+      header: {
+        'Content-Type': 'application/json',
+        'X-User-Email': wx.getStorageSync('userEmail'),
+        'X-User-Token': wx.getStorageSync('token')
+      },
+      path: 'users/favorites',
+      data: spot,
+      success(res) {
+        console.log('Favourite Post Response: ', res)
+        that.setData({
+          bFavourite: (res.data.status === 'unliked') ? false : true
+        })
+      }
+    })
   },
 
   updateComments: function () {
@@ -133,14 +153,15 @@ Page({
       mask: true
     })
 
-    const checkImage = path =>
-      new Promise(resolve => {
+    const checkImage = (path) =>{
+      console.log(333, path)
+      return new Promise(resolve => {
         new AV.File('file-name', {
           blob: {
             uri: path,
           },
         }).save().then(file => resolve(file.url())).catch(e => reject(e));
-      });
+      });}
 
     const loadImg = paths => Promise.all(paths.map(checkImage))
 
