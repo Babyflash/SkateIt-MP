@@ -17,7 +17,7 @@
       </view>
     </view>
 
-    <view class="go-btn">
+    <view class="go-btn" bindtap='goThere'>
       Go there
     </view>
   </view>

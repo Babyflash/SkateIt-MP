@@ -95,9 +95,20 @@ Page({
   },
 
   onReady: function () {
+    var animation = wx.createAnimation({
+      duration: 30000,
+      timingFunction: "linear",
+    });
+    this.animation = animation;
+    animation.rotate(45).step();
+    this.setData({
+      animationData: animation.export()
+    })
+  
+  },
+  onUpdate: function(){
 
   },
-
   onShow: function () {
     myRequest.get({
       path: 'spots',
