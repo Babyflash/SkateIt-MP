@@ -3,6 +3,7 @@
   position: absolute;
   animation: headRotate 6s linear infinite;
   transition: 1s ease-in;
+  
 }
 
 /* 头像旋转效果  */
@@ -13,19 +14,100 @@
 }
 .getUserInfo{
   position: absolute;
-  width: 50vw;
-  bottom: 10vh;
+  width: 100vw;
+  height: 20vh;
+  bottom: 0vh;
   left: 0; 
   right: 0; 
   margin-left: auto; 
   margin-right: auto; 
-  background-color: #3CCCE2;
+  background-color: #6735D3;
   color: white;
   font-weight: bold;
-
+  font-size: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .container{
-  background-size:     cover;       
-  background-repeat:   no-repeat;
+  background-size: cover;       
+  background-repeat: no-repeat;
   background-position: center center;          
+}
+.window{
+  position: absolute;
+  top: 20vh;
+  background: rgb(45,50,79);
+  background: linear-gradient(0deg, rgba(45,50,79,1) 33%, rgba(42,47,77,0) 100%);
+  width: 100vh;
+  height: 80vh;
+
+}
+.swiper-item{
+  display: block;
+  height: 150px;
+}
+.page-section{
+  width: 100%;
+  margin-bottom: 60rpx;
+}
+.page-section_center{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.page-section:last-child{
+  margin-bottom: 0;
+}
+.page-section-gap{
+  box-sizing: border-box;
+  padding: 0 30rpx;
+}
+.page-section-spacing{
+  box-sizing: border-box;
+  padding: 0 80rpx;
+}
+.demo-text-1{
+  position: relative;
+  align-items: center;
+  justify-content: center;
+
+  color: #FFFFFF;
+  font-size: 48rpx;
+}
+.demo-text-1:before{
+  content: 'Create Spots';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.demo-text-2{
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+  font-size: 48rpx;
+}
+.demo-text-2:before{
+  content: 'Find Spots';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.demo-text-3{
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  color: #353535;
+  font-size: 48rpx;
+}
+.demo-text-3:before{
+  content: 'Share Spots';
+  position: absolute;
+  color: white;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
