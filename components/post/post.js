@@ -102,23 +102,24 @@ Component({
 
       const checkImage = (path) =>{
         console.log(333, path)
-        return new Promise(resolve => {
+        return new Promise((resolve, reject) => {
           new AV.File('file-name', {
             blob: {
               uri: path,
             },
           }).save()
           .then((file) => {
-            console.log(444,file.url()) 
+            console.log(444,file.url())
             return resolve(file.url())
           })
           .catch((e) => {
             console.log(666, e) 
-            return reject(e)
+            reject(e)
           });
         });}
 
       const loadImg = (paths) => {
+        console.log(paths)
         return Promise.all(paths.map(checkImage))
       }
 
