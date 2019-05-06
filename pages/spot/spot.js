@@ -41,8 +41,17 @@ Page({
   onLoad: function (options) {
     let that = this
     let spot = JSON.parse(options.spot);
-    const spotId = spot.id
     console.log("Spot page's spot instance: ", spot)
+    const spotId = spot.id
+    console.log(111,spotId)
+    let userAvatarUrl = ''
+    if(spot.user){
+      userAvatarUrl = spot.user.avatar_url
+    }
+    else if (spot.createdUserUrl) {
+      userAvatarUrl = spot.createdUserUrl
+    }
+
     that.setData({
       defaultImage: spot.default_image.url,
       spot: spot,
@@ -50,7 +59,7 @@ Page({
       spotId: spotId,
       url: spot.default_image.url,
       address: spot.address,
-      createdUserAvatar: spot.user.avatar_url
+      createdUserAvatar: userAvatarUrl
     })
     
     that.updateComments();

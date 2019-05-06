@@ -98,7 +98,10 @@ Page({
       }
     })
   },
+
   getDistrict(lat, lon){
+  const that = this
+  
     wx.request({
       url: `https://apis.map.qq.com/ws/geocoder/v1/?location=${lat},${lon}&key=${keys}`,
       header: {
@@ -106,14 +109,13 @@ Page({
       },
       success: function (res) {
         console.log(res.data.result.address_component.district, res.data.result.address)
-        this.setData({
-          address: this.data.address
+        that.setData({
+          address: res.data.address
         })
-        //province
-      
       }
     })
   },
+
   uploadPromise: function (tempFilePath) {
     let that = this
     return new Promise((resolve, reject) => {
@@ -136,63 +138,78 @@ Page({
     wx.getLocation({
       success: function (res) {
         that.setData({ userLatitude: res.latitude, userLongitude: res.longitude })
-        that.getDistrict(res.latitude, res.longitude)
-        that.uploadPromise(that.data.spotImg).then(res => {
-          console.log("LEANCLOUND RESULT: ", res)
-          that.setData({
-            popup6: true
-          })
-          
-          let spot = {
-            "spot_rating": 5,
-            "difficulty_rating": that.data.difficulty_rating,
-            "spot_type": that.data.type,
-            "default_image": res,
-            "remote_default_image_url": res,
-            "user_id": app.globalData.currentUserId,
-            "geo_lat": that.data.userLatitude,
-            "geo_lng": that.data.userLongitude,
-            "address": that.data.address
-          }
+        // that.getDistrict(res.latitude, res.longitude)
+        wx.request({
+          url: `https://apis.map.qq.com/ws/geocoder/v1/?location=${res.latitude},${res.longitude}&key=${keys}`,
+          header: {
+            'Content-Type': 'application/json'
+          },
+          success: function (res) {
+            console.log(6666,res)
+            console.log(res.data.result.address_component.district, res.data.result.address)
+            that.setData({
+              address: res.data.result.address
+            })
 
-          myRequest.post({
-            header: {
-              'Content-Type': 'application/json',
-              'X-User-Email': wx.getStorageSync('userEmail'),
-              'X-User-Token': wx.getStorageSync('token')
-            },
-            path: 'spots',
-            data: spot,
-            success(res) {
-              console.log("ADD POST RESULT:", res)
-              wx.hideLoading();
-              spot = res.data;
-              spot.default_image.url = that.data.spotImg
-              console.log("ADDED SPOT",spot)
-              myRequest.get({
+            that.uploadPromise(that.data.spotImg).then(res => {
+              console.log("LEANCLOUND RESULT: ", res)
+              that.setData({
+                popup6: true
+              })
+
+              let spot = {
+                "spot_rating": 5,
+                "difficulty_rating": that.data.difficulty_rating,
+                "spot_type": that.data.type,
+                "default_image": res,
+                "remote_default_image_url": res,
+                "user_id": app.globalData.currentUserId,
+                "geo_lat": that.data.userLatitude,
+                "geo_lng": that.data.userLongitude,
+                "address": that.data.address,
+                "createdUserUrl": getApp().globalData.userInfo.avatarUrl
+              }
+
+              myRequest.post({
+                header: {
+                  'Content-Type': 'application/json',
+                  'X-User-Email': wx.getStorageSync('userEmail'),
+                  'X-User-Token': wx.getStorageSync('token')
+                },
                 path: 'spots',
+                data: spot,
                 success(res) {
-                  app.globalData.spotTypes = res.data
-                  console.log('ALL SPOTS RESPONSE SAVE INTO GLOBALDATA', res.data)
+                  console.log("ADD POST RESULT:", res)
+                  wx.hideLoading();
+                  spot = res.data;
+                  spot.default_image.url = that.data.spotImg
+                  console.log("ADDED SPOT", spot)
+                  myRequest.get({
+                    path: 'spots',
+                    success(res) {
+                      app.globalData.spotTypes = res.data
+                      console.log('ALL SPOTS RESPONSE SAVE INTO GLOBALDATA', res.data)
+                    }
+                  })
+                  wx.navigateTo({
+                    url: '/pages/spot/spot?spot=' + JSON.stringify(spot)
+                    // url: '/pages/servan/sevan'
+                  });
+                },
+                fail: err => {
+                  wx.hideLoading();
+                  wx.showToast({
+                    title: 'Failed to add spot, check internet connection!',
+                    duration: 2000,
+                    icon: 'none'
+                  })
                 }
               })
-              wx.navigateTo({
-                url: '/pages/spot/spot?spot=' + JSON.stringify(spot)
-                // url: '/pages/servan/sevan'
-              });
-            },
-            fail: err => {
-              wx.hideLoading();
-              wx.showToast({
-                title: 'Failed to add spot, check internet connection!',
-                duration: 2000,
-                icon: 'none'
-              })
-            }
-          })
+            })
+          }
         })
       },
-      fail: e => {
+      catch: e => {
         wx.showToast({
           title: 'Failed to add spot, check internet connection!',
           duration: 2000,

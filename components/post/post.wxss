@@ -18,6 +18,11 @@
   margin: 0 auto;
   text-align: left;
 }
+
+.post-input {
+  padding: 8px;
+}
+
 .container-user { 
   display: flex;
   align-items: center;
