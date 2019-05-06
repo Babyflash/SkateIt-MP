@@ -31,7 +31,7 @@
     <view class="loc-icon">
     <image class = 'img-location' src='../../lib/images/location2.png'></image>
     </view>
-    <view class="address">{{address}}</view>
+    <view class="address" bindtap='navigateToMap'>{{address}}</view>
   </view>
   <view class="avatar-container">
     <w-avatar size="large" src="{{createdUserAvatar}}" class = 'user-avatar'></w-avatar>
