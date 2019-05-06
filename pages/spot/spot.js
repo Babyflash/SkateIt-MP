@@ -72,7 +72,7 @@ Page({
       path: 'users/favorites',
       data: spot,
       success(res) {
-        console.log('Favourite Post Response: ', res)
+        console.log('Favourite Post Response: ', res.data.status)
         that.setData({
           bFavourite: (res.data.status === 'unliked') ? false : true
         })
