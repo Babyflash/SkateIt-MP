@@ -38,7 +38,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 10,
+			"current": 11,
 			"list": [
 				{
 					"id": -1,
@@ -114,6 +114,13 @@
 					"id": -1,
 					"name": "splash",
 					"pathName": "pages/splash/splash",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "User profile",
+					"pathName": "pages/load/load",
 					"scene": null
 				}
 			]
