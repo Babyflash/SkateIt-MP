@@ -225,10 +225,14 @@ Page({
       url: '../home/home'
     })
   },
-  onUpdate: function(){
-    console.log('Updating')
-  },
-  onLoad: function () {
+  onLoad: function (e) {
+    console.log('ONLOAD MAP: ', e)
+    if (e) {
+      this.setData({
+        lt: e.lat,
+        lg: e.lng
+      })
+    }
     this.mapCtx = wx.createMapContext('map', this)
     this.setData({
       spotTypes: app.globalData.spotTypes,
