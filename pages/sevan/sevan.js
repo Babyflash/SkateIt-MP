@@ -56,6 +56,8 @@ Page({
     lt: "39.90469",
     lg: "116.40717",
     sc: '14',
+    typeFilter: 'All',
+    filteredSpots: '',
     mk: [
       {
         iconPath: markerUrl,
@@ -223,7 +225,6 @@ Page({
       url: '../home/home'
     })
   },
-
   onLoad: function (e) {
     console.log('ONLOAD MAP: ', e)
     if (e) {
@@ -232,15 +233,11 @@ Page({
         lg: e.lng
       })
     }
-    
     this.mapCtx = wx.createMapContext('map', this)
     this.setData({
       spotTypes: app.globalData.spotTypes,
       mk: generateSpotsJson()
     })
-
-    
-    
     let page = this
     //fetch items from rails api
 
@@ -313,7 +310,7 @@ Page({
         height += res.windowHeight
       }
     });
-    this.animation.translateY(height * .40).step()
+    this.animation.translateY(height * .30).step()
     this.setData({ distance: this.animation.export() })
   },
   slideUpType: function(){
@@ -323,7 +320,7 @@ Page({
         height += res.windowHeight
       }
     });
-    this.animation.translateY(-1 * height * .40).step()
+    this.animation.translateY(-1 * height * .30).step()
     this.setData({ type: this.animation.export() })
   },
   slideDownType: function(){
@@ -333,7 +330,7 @@ Page({
         height += res.windowHeight
       }
     });
-    this.animation.translateY(height * .40).step()
+    this.animation.translateY(height * .30).step()
     this.setData({ type: this.animation.export() })
   },
   getUserInfo: function (e) {
@@ -344,13 +341,77 @@ Page({
       hasUserInfo: true
     })
   },
+
   selectItem: function (e) {
-    console.log('item selected')
-    console.log(e.currentTarget)
+    const target = e.currentTarget.dataset.id
+    let object = { 
+      spotType: app.globalData.spotTypes.Ledge
+      }
+    if(target === '0'){
+      this.setData({
+        selecteditem0: !this.data.selecteditem0,
+        selecteditem4: false,
+        typeFilter: 'Ledge',
+        spotTypes: object
+      })
+        // load markers for object ^
+    console.log(this.data.filteredSpots)
+    } else if(target === '1'){
+      let object = {
+        spotType: app.globalData.spotTypes.Stair
+      }
+      this.setData({
+        selecteditem1: !this.data.selecteditem1,
+        selecteditem4: false,
+        typeFilter: 'Stair',
+        spotTypes: object
+      })
+         // load markers for object ^
+    } else if(target === '2'){
+      let object = {
+        spotType: app.globalData.spotTypes.Park
+      }
+      this.setData({
+        selecteditem2: !this.data.selecteditem2,
+        selecteditem4: false,
+        typeFilter: 'Park',
+        spotTypes: object
+      })
+      // load markers for object ^
+    } else if(target === '3'){
+      let object = {
+        spotType: app.globalData.spotTypes.Rail
+      }
+      this.setData({
+        selecteditem3: !this.data.selecteditem3,
+        selecteditem4: false,
+        typeFilter: 'Rail',
+        spotTypes: object
+      })
+      // load markers for object ^
+    } else{
+      this.setData({
+        selecteditem4: !this.data.selecteditem4,
+        selecteditem0: false,
+        selecteditem1: false,
+        selecteditem2: false,
+        selecteditem3: false,
+        typeFilter: 'All',
+        spotTypes: app.globalData.spotTypes
+      })
+    }
+    console.log('filter', this.data.typeFilter)
+    let spotCount = 0;
+    let total = this.data.spotTypes
+    for (let key in total) {
+      spotCount += total[key].length
+    }
     this.setData({
-      selecteditem: !this.data.selecteditem,
-      unselecteditem: false,
+      spotCount: spotCount
     })
+  },
+  loadType: function(type){
+
   },
   onReady: function () {
     this.animation = wx.createAnimation()

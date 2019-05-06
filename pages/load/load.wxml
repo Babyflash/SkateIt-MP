@@ -1,11 +1,16 @@
 <!--pages/load/load.wxml-->
 <!--index.wxml-->
-<view class="container">
-  <button bindtap="index" open-type="getUserInfo" lang="zh_CN">
-    获取用户信息
+<view class="container" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(http://images.fineartamerica.com/images-medium-large/1-cityscape-of-los-angeles-eric-lo.jpg">
+  <view style="display: flex; justify-content: space-around; height: 60vh;">
+    <image class="image-rotate" style="margin-top: 10vh;" width="125px!important;" height='125px!important;' src='../../lib/images/splashicon.svg'></image>
+  </view>
+  
+  
+  <button class="getUserInfo" bindtap="index" open-type="getUserInfo" lang="zh_CN">
+    Skate It!
   </button>
 
-  <w-button
+  <!-- <w-button
     type="custom"
     styles="border-color: #b643cd!important;"
     bgColor="#b643cd"
@@ -13,5 +18,5 @@
   >
     Custom
     Button
-  </w-button>
+  </w-button> -->
 </view>
