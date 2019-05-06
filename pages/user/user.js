@@ -1,11 +1,13 @@
 // pages/user/user.js
+const app = getApp();
+const myRequest = require('../../lib/api/request');
 Page({
 
   /**
    * Page initial data
    */
   data: {
-
+    spots: []
   },
 
   /**
@@ -21,11 +23,34 @@ Page({
     })
   },
 
+  doFavourite: function () {
+    let that = this
+    let spot = {
+      "user_id": app.globalData.currentUserId
+    }
+
+    myRequest.get({
+      header: {
+        'Content-Type': 'application/json',
+        'X-User-Email': wx.getStorageSync('userEmail'),
+        'X-User-Token': wx.getStorageSync('token')
+      },
+      path: 'users/profile',
+      data: spot,
+      success(res) {
+        console.log('Profile Response: ', res)
+        that.setData({
+          spots: res.data
+        })
+      }
+    })
+  },
   /**
    * Lifecycle function--Called when page is initially rendered
    */
   onReady: function () {
-
+    const that = this
+    that.doFavourite();
   },
 
   /**
