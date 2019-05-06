@@ -1,1 +1,31 @@
 /* pages/load/load.wxss */
+.image-rotate {
+  position: absolute;
+  animation: headRotate 6s linear infinite;
+  transition: 1s ease-in;
+}
+
+/* 头像旋转效果  */
+@keyframes headRotate{
+  0% {transform: rotate(0deg);}
+  50% {transform: rotate(180deg);}
+  100% {transform: rotate(360deg);}
+}
+.getUserInfo{
+  position: absolute;
+  width: 50vw;
+  bottom: 10vh;
+  left: 0; 
+  right: 0; 
+  margin-left: auto; 
+  margin-right: auto; 
+  background-color: #3CCCE2;
+  color: white;
+  font-weight: bold;
+
+}
+.container{
+  background-size:     cover;       
+  background-repeat:   no-repeat;
+  background-position: center center;          
+}
