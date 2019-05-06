@@ -80,6 +80,14 @@ Page({
     })
   },
 
+  navigateToMap: function () {
+    const that = this
+
+    wx.navigateTo({
+      url: '/pages/sevan/sevan?lat=' + that.data.spot.geo_lat + '&lng=' + that.data.spot.geo_lng
+    })
+  },
+
   updateComments: function () {
     let that = this
 
