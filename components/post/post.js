@@ -100,16 +100,27 @@ Component({
         mask: true
       })
 
-      const checkImage = path =>
-        new Promise(resolve => {
+      const checkImage = (path) =>{
+        console.log(333, path)
+        return new Promise(resolve => {
           new AV.File('file-name', {
             blob: {
               uri: path,
             },
-          }).save().then(file => resolve(file.url())).catch(e => reject(e));
-        });
+          }).save()
+          .then((file) => {
+            console.log(444,file.url()) 
+            return resolve(file.url())
+          })
+          .catch((e) => {
+            console.log(666, e) 
+            return reject(e)
+          });
+        });}
 
-      const loadImg = paths => Promise.all(paths.map(checkImage))
+      const loadImg = (paths) => {
+        return Promise.all(paths.map(checkImage))
+      }
 
       let res = loadImg(that.data.imgs).then(result => {
         console.log("IMAGE ALL PROMISES RESULT=", result)
@@ -144,6 +155,18 @@ Component({
           }
         })
       })
+      .catch((err) => {
+        console.log("RESULT ERROR =", err)
+        wx.hideLoading();
+        that.data.imgs = []
+        console.log(res.data);
+        console.log('failed!' + res.statusCode);
+      })
+
+      setTimeout(function () {
+        console.log("Promise log: ", res)
+      }, 1000 * 60);
+      
     },
 
     clearPhotos: function () {
