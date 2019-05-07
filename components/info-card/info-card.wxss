@@ -36,9 +36,6 @@ image {
 }
 .distance{
   font-size: 14px;
-  position: absolute;
-  top: 23px;
-  right: 10px;
 
 }
 .go-btn{
@@ -47,9 +44,6 @@ image {
   text-align: center;
   border: 0.5px solid white;
   border-radius: 12px;
-  position: absolute;
-  top: 0;
-  right: 0;
   width: 70px;
   padding: 0 4px;
 
@@ -57,7 +51,12 @@ image {
 
 .line{
   width: 100%;
-  border: 0.05px solid rgba(221,221,221,0.05);
+  border: 0.05px solid rgba(221, 221, 221, 0.1);
   margin-top: 24px;
   margin-bottom: 16px;
+}
+.gps-wrapper{
+  position: absolute;
+  top: 0;
+  right: 0;
 }

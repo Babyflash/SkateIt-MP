@@ -3,7 +3,15 @@
   color: white;
   position: relative;
 }
-
+.share-btn{
+  margin: 0;
+  margin-top: 5px;
+  padding: 0;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
 .div-banner {
   position: relative;
 }
@@ -11,7 +19,6 @@
 swiper{
   height: 30vh;
 }
-
 .div-swiper {
   width: 100%;
   object-fit: contain;
@@ -22,7 +29,6 @@ swiper{
   position: absolute;
   display: flex;
   justify-content: space-around;
-  background-color: white;
   border-radius: 8px;
   align-items: center;
   padding: 8px 16px;
@@ -75,6 +81,10 @@ display: flex;
 .div-tags {
   margin-left: 8px;
   margin-right: 8px;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
 }
 .loc-icon{
   display: flex;
@@ -82,15 +92,25 @@ display: flex;
   justify-content: center;
   align-items: center;
 }
+.avatar-share-container{
+
+}
+
 .avatar-container{
   display: flex;
-   align-content: center;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
+.share{
+  display: flex;
+  align-content: center;
   justify-content: center;
   align-items: center;
 }
 .line{
   width: 100%;
-  border: 0.05px solid rgba(221,221,221,0.05);
+  border: 0.05px solid rgba(221, 221, 221, 0.1);
   margin-top: 24px;
   margin-bottom: 16px;
 }
@@ -122,4 +142,30 @@ display: flex;
 }
 
 .div-popup {
+}
+
+.share-tags{
+  display: flex;
+  align-items: center;
+}
+
+.ball {
+  animation: bounce 1s infinite alternate;
+  -webkit-animation: bounce 1s infinite alternate;
+}
+@keyframes bounce {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(-5px);
+  }
+}
+@-webkit-keyframes bounce {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(-5px);
+  }
 }
