@@ -31,17 +31,17 @@
         bindchange="setDifficulty" 
         min="1" 
         max="5" 
-        show-value selected-color="#464490" 
-        color="#3ACCE1" 
+        show-value selected-color="#F15403"
+        color="#464490"
         block-size='15'
-        block-color='#474491' 
+        block-color="#F15403"
       />
     </view>
       <view class="btn-container">
         <w-button
           type="custom"
-          styles="border-color: #464492!important; border-radius: 8px!important; width: 200px; margin: 0 auto;"
-          bgColor="#464492"
+          styles="border-color: #F15403!important; border-radius: 8px!important; width: 200px; margin: 0 auto;"
+          bgColor="#F15403"
           color="#ffffff"
           bindtap='addSpot'
         >

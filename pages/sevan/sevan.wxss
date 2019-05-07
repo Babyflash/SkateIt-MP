@@ -18,7 +18,7 @@
   right: 5vw;
 }
 .active{
-  color:#3F476F;
+  color:#F25517!important;
   font-weight: bold
   
 }
@@ -78,15 +78,16 @@ transition: 1 ease;
 }
 .menuBar{
   height: 5vh;
-  background-color: #FFFFFF;
+  background-color: #2A2E45;
   display: flex;
   justify-content: space-around;
   align-items: center;
   font-size: 17px;
+  color: white;
 }
 
 .dropdown{
-  background-color: white;
+  background-color: #2D324F;
   position: absolute;
   z-index: 999;
   border-bottom-left-radius: 10px;
@@ -95,7 +96,7 @@ transition: 1 ease;
   height: 30vh;
   top: -30vh;
   text-align: center;
-  color: #818CA6;
+  color: white;
 }
 .left{
     width: 50%;
@@ -115,7 +116,6 @@ transition: 1 ease;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #78849F;
 }
 cover-image{
   width: 10px;
