@@ -5,8 +5,10 @@
 .post-btn{
   color: #2B55A8;
   font-size: 16px;
+  margin: 0!important;
 }
 .container-top {
+  position: relative;
   display: flex;
   justify-content: space-between;
   border: 1px;
@@ -20,7 +22,6 @@
 }
 
 .post-input {
-  padding: 8px;
 }
 
 .container-user { 
@@ -28,18 +29,23 @@
   align-items: center;
   color: black;
 }
+button{
 
+}
 .div-buttons {
+  position: absolute;
+  right: 0;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  margin-left: 0px;
+  margin-top: 4px;
+  margin-right: 16px;
   padding-left: 0px;
 }
 
 .btn-cancel {
-  margin-right: 0px;
+  margin-right: 16px;
   padding-right: 0px;
+  margin: 0!important;
 }
 
 .user-avatar {
@@ -53,13 +59,16 @@
 }
 .form{
   color: black;
+  display: flex;
+  padding-top: 16px;
+  padding-left: 16px;
 }
 .container-bottom {
   color: black;
   font-size: 12px;
   display: flex;
   align-items: center;
-  padding-left: 8px;
+  padding-left: 16px;
   justify-content: space-between;
 }
 
@@ -95,4 +104,12 @@
   width: 100%;
   object-fit: contain;
   /* margin: auto 0; */
+}
+
+.line{
+  width: 100%;
+  border: black;
+  margin-top: 24px;
+  z-index: 999;
+  margin-bottom: 16px;
 }

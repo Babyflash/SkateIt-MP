@@ -15,19 +15,21 @@
         Post
     </w-button>
    </view>
+<view class="line"></view>
+   <!-- line -->
  </view>
  
  <view class = 'form'>
  <w-cell-group>
    <!-- <w-input focus="false" bindinput="iChange" class='post-input'clear count="250" type="textarea" placeholder="What's on your mind?"/> -->
-     <textarea focus="false" class='post-input' bindinput="iChange" placeholder="What's on your mind?" name="textarea"/>
+     <textarea focus="false" class='post-input' bindinput="iChange" placeholder="What's happening at this spot?" name="textarea"/>
 </w-cell-group>
  </view>
 
  <view class = 'container-bottom'>
-   <view class = 'upload-photo' bindtap='selectImg'>
+   <view class = 'upload-photo' bindtap='selectImg' style="border: 1px solid rgb(233, 233, 233); padding: 4px 8px; border-radius: 3px;">
      <image class = 'img-upload' src='../../lib/images/upload1.png'></image>
-    <view>Upload a photo/video</view>
+    <view style="font-size: 16px; color: rgb(51, 51, 51);">Upload photos</view>
   </view>
 
    <view class = 'clear-photo' hidden='{{bHiddenClearPhoto}}' bindtap='clearPhotos'>
@@ -48,7 +50,7 @@
     >
       <block wx:for="{{imgs}}" wx:key="*this">
         <swiper-item >
-          <image class = 'div-swiper' src='{{item}}'></image>
+          <image mode="aspectFit" class = 'div-swiper' src='{{item}}'></image>
         </swiper-item>
       </block>
     </swiper>

@@ -1,27 +1,41 @@
 //index.js
 //获取应用实例
-const markerUrl = "../../lib/images/Marker1.png"
+const markerUrl = "https://img.icons8.com/color/48/000000/marker.png"
 const AV = require('../../utils/av-weapp-min.js')
 const myRequest = require('../../lib/api/request');
 
 function generateSpotsJson() {
-  const spots = app.globalData.spotTypes.Ledge;
-  console.log("SPOTS===", spots)
+  const spots = app.globalData.spotTypes
   let markers = []
-  if (spots) {
-    spots.forEach(function (e) {
-      console.log(e)
-      markers.push({
+  for(let key in spots){
+    spots[key].forEach((e) =>{
+        markers.push({
         iconPath: markerUrl,
         id: e.id,
         latitude: e.geo_lat,
         longitude: e.geo_lng,
-        width: 40,
-        height: 56,
+        width: 36,
+        height: 36,
         callout: { content: e.address, fontSize: 14, color: "#000000", padding: 10 }
       })
     })
   }
+  console.log("SPOTS===", spots)
+
+  // if (spots) {
+  //   spots.forEach(function (e) {
+  //     console.log(e)
+  //     markers.push({
+  //       iconPath: markerUrl,
+  //       id: e.id,
+  //       latitude: e.geo_lat,
+  //       longitude: e.geo_lng,
+  //       width: 36,
+  //       height: 36,
+  //       callout: { content: e.address, fontSize: 14, color: "#000000", padding: 10 }
+  //     })
+  //   })
+  // }
 
   console.log(spots);
   return markers;
@@ -234,8 +248,12 @@ Page({
         lt: e.lat,
         lg: e.lng
       })
+      console.log('Spot location -------------------------------------')
+      console.log(e.lat)
+      console.log(e.lng)
     }
     this.mapCtx = wx.createMapContext('map', this)
+    console.log('------------------generate spots json----------------',generateSpotsJson())
     this.setData({
       spotTypes: app.globalData.spotTypes,
       mk: generateSpotsJson()
