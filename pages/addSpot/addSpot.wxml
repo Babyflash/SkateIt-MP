@@ -40,8 +40,8 @@
       <view class="btn-container">
         <w-button
           type="custom"
-          styles="border-color: #464492!important; border-radius: 8px!important; width: 200px; margin: 0 auto;"
-          bgColor="#464492"
+          styles="border-color: #F15403!important; border-radius: 8px!important; width: 200px; margin: 0 auto;"
+          bgColor="#F15403"
           color="#ffffff"
           bindtap='addSpot'
         >
