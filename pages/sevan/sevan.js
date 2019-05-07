@@ -227,6 +227,9 @@ Page({
   },
   onLoad: function (e) {
     console.log('ONLOAD MAP: ', e)
+    if(e.lat === undefined){
+      //get current location SEVAN
+    }
     if (e) {
       this.setData({
         lt: e.lat,

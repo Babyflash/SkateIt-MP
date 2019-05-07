@@ -91,7 +91,7 @@ Page({
                 }
               },
 
-              url: 'http://localhost:3000' + '/api/v1/users',
+              url: 'https://skateit.wogengapp.cn/api/v1/users',
               method: "post",
               header: {
                 'content-type': 'application/json'
