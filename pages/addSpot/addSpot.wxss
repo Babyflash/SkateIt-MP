@@ -18,7 +18,7 @@ background-size: cover;
   top: 100vh;
 }
 .title-bar{
-  background: rgb(63, 71, 110);
+  background: #2A2E45;
   height: 10vh;
   position: sticky; 
   top: 0;
@@ -35,7 +35,7 @@ background-size: cover;
 
 }
 .gradient-line {
-  background: linear-gradient(90deg, rgba(103,54,207,1) 16%, rgba(9,9,121,1) 52%, rgba(0,212,255,1) 100%);
+ background-image: linear-gradient(to right, #f25517, #e03448, #bb2d64, #8b346f, #5a3767, #5a3767, #5a3767, #5a3767, #8b346f, #bb2d64, #e03448, #f25517);
   height: 5px;
   width: 100vw;
   position: absolute;
