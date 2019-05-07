@@ -2,7 +2,7 @@
 <!--index.wxml-->
 <view class="container">
   <view style="display: flex; justify-content: space-around; height: 60vh;">
-    <image class="image-rotate" style="margin-top: 5vh; z-index: 999;" width="125px!important;" height='125px!important;' src='../../lib/images/splashicon.svg'></image>
+    <image class="image-rotate" style="margin-top: 5vh; z-index: 999; width:175px!important; height:175px!important;" src='../../lib/images/splashicon.svg'></image>
   </view>
   <view class="window">
   </view>

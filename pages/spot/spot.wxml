@@ -14,33 +14,43 @@
     >
       <block wx:for="{{imgs}}" wx:for-item="img" wx:for-index="itemsIndex" wx:key="type">
         <swiper-item >
-          <image class = 'div-swiper' src='{{img}}'></image>
+          <image mode="aspectFit" class = 'div-swiper' src='{{img}}'></image>
         </swiper-item>
       </block>
     </swiper>
-    <view class = 'icon-tab'>
-      <image class = 'img-icon fav' src="{{bFavourite ? '../../lib/images/likered.png' : '../../lib/images/like.png'}}"bindtap='doFavourite'></image>
-      <button style="height: 50%; width: 50%; border: none;" open-type='share'> <image  class = 'img-icon share' src='../../lib/images/share2.svg'></image></button>
+    <view class = 'icon-tab' bindtap='doFavourite'>
+      <image style="width: 25px; height: 25px;" class = "img-icon fav {{bFavourite ? 'ball' : ''}}" src="{{bFavourite ? '../../lib/images/likered.png' : '../../lib/images/like.png'}}">
+      </image>
     </view>
   <view class = 'spot-type'>{{spotType}}</view>
 </view>
 
 <!-- spot info -->
 <view class = "container-info">
-  <view class = "div-address">
+
+
+  <view class = "div-address" bindtap='navigateToMap'>
     <view class="loc-icon">
     <image class = 'img-location' src='../../lib/images/location2.png'></image>
     </view>
-    <view class="address" bindtap='navigateToMap'>{{address}}</view>
+    <view class="address" >{{address}}</view>
   </view>
-  <view class="avatar-container">
-    <w-avatar size="large" src="{{createdUserAvatar}}" class = 'user-avatar'></w-avatar>
+  
+  <view class="avatar-share-container">
+    <view class="avatar-container">
+      <w-avatar size="large" src="{{createdUserAvatar}}" class = 'user-avatar'></w-avatar>
+    </view>
   </view>
+
 </view>
-<view class = 'div-tags'>
-  <w-tag tagStyle="color:black;background-color:white;">{{spots.length}} comments</w-tag>
-  <w-tag tagStyle="color:black;background-color:white;">100 likes</w-tag>
-  <w-tag tagStyle="color:black;background-color:white;;">{{spot.distance}}</w-tag>
+
+<view class="share-tags">
+  <view class = 'div-tags'>
+    <w-tag tagStyle="color:black;background-color:white;">{{spots.length}} comments</w-tag>
+    <w-tag tagStyle="color:black;background-color:white;">{{numLikes}} likes</w-tag>
+    <w-tag tagStyle="color:black;background-color:white;;">{{spot.distance}} km</w-tag>
+     <button plain style="border: none;" class="share-btn" open-type='share'> <image style="width: 25px; height: 25px" class = 'img-icon' mode='aspectFit' src='../../lib/images/greenshare.png'></image>
+  </button>
 </view>
 <view class="line"></view>
 
@@ -65,18 +75,18 @@
   <view class="input" bindtap='showPostWindow'>
     <view class = 'div-comment'>
       <image class = 'img-comment' src='../../lib/images/comment1.svg'></image>
-      <input class="weui-input comment-input" auto-focus placeholder="Leave a comment"/>
+      <input disabled class="weui-input comment-input" placeholder="Leave a comment"/>
     </view>
   </view>
-
-  <w-popup
+  <w-popup style="top: 0!important;"
     visible="{{ popup6 }}"
     maskCancel="{{ false }}"
-    position="main"
-
-    width="100%"
-    height = '77%'
+    position="absolute"
+    
+    width="100vh"
+    height='100vh'
     padding="8"
+    position="top"
     bind:onClose="handleClose"
     wuss-class="wuss-popup"
     class = 'div-popup'
@@ -85,5 +95,7 @@
       <post bind:myevent="toggleToast" spot = '{{spot}}'></post>
     </view>
   </w-popup>
+
+
 
 </view>

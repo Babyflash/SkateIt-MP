@@ -7,6 +7,7 @@ const AV = require('../../utils/av-weapp-min.js')
 
 Page({
   data: {
+    numLikes: Math.floor(Math.random() * 10) + 2,
     liked: false,
     popup6 : false,
     defaultImage: '',
@@ -21,7 +22,6 @@ Page({
     nextMargin: 0,
     spots: [],
     postCount: 0,
-    bFavourite: false,
     createdUserAvatar: 'https://kitt.lewagon.com/placeholder/users/ClaraMorgen'
   },
   checkLike: function(){
@@ -141,6 +141,7 @@ Page({
         })
         
         if(datas) {
+          console.log(datas)
           datas.forEach(function (e) {
             e.post_contents.forEach(function(img) {
               imgs.push(img.media_url.url);
