@@ -14,17 +14,17 @@
 }
 .getUserInfo{
   position: absolute;
-  width: 100vw;
-  height: 20vh;
-  bottom: 0vh;
+  height: 40px;
+  width: 50vw;
+  bottom: 10vh;
   left: 0; 
   right: 0; 
   margin-left: auto; 
   margin-right: auto; 
-  background-color: #6735D3;
+  background-color: #F25517;
   color: white;
   font-weight: bold;
-  font-size: 36px;
+  font-size: 24px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -71,14 +71,16 @@
   position: relative;
   align-items: center;
   justify-content: center;
-
+  background-image: url(https://img.icons8.com/cotton/64/000000/skateboard.png);
+  background-position:top center;
+  background-repeat: no-repeat;
   color: #FFFFFF;
   font-size: 48rpx;
 }
 .demo-text-1:before{
   content: 'Create Spots';
   position: absolute;
-  top: 50%;
+  bottom: 0;
   left: 50%;
   transform: translate(-50%, -50%);
 }
@@ -88,11 +90,14 @@
   justify-content: center;
   color: #FFFFFF;
   font-size: 48rpx;
+  background-image: url(https://img.icons8.com/cotton/64/000000/skateboard.png);
+  background-position:top center;
+  background-repeat: no-repeat;
 }
 .demo-text-2:before{
   content: 'Find Spots';
   position: absolute;
-  top: 50%;
+  bottom: 0;
   left: 50%;
   transform: translate(-50%, -50%);
 }
@@ -102,12 +107,15 @@
   justify-content: center;
   color: #353535;
   font-size: 48rpx;
+  background-image: url(https://img.icons8.com/cotton/64/000000/skateboard.png);
+  background-position:top center;
+  background-repeat: no-repeat;
 }
 .demo-text-3:before{
   content: 'Share Spots';
   position: absolute;
   color: white;
-  top: 50%;
+  bottom: 0;
   left: 50%;
   transform: translate(-50%, -50%);
 }
