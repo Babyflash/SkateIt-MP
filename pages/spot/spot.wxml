@@ -40,7 +40,7 @@
 <view class = 'div-tags'>
   <w-tag tagStyle="color:black;background-color:white;">{{spots.length}} comments</w-tag>
   <w-tag tagStyle="color:black;background-color:white;">100 likes</w-tag>
-  <w-tag tagStyle="color:black;background-color:white;;">3 km</w-tag>
+  <w-tag tagStyle="color:black;background-color:white;;">{{spot.distance}}</w-tag>
 </view>
 <view class="line"></view>
 
