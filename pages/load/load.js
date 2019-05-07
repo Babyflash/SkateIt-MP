@@ -2,14 +2,14 @@
 const app = getApp();
 const myRequest = require('../../lib/api/request');
 
-function onGetUserInfo () {
-  wx.getUserInfo({
-    success: res => {
-      console.log("GET USER INFO", res)
-      app.globalData.userInfo = res.userInfo
-    }
-  })
-}
+// function getUser () {
+//   wx.getUserInfo({
+//     success: res => {
+//       console.log("GET USER INFO", res)
+//       app.globalData.userInfo = res.userInfo
+//     }
+//   })
+// }
 
 const distance = (la1, lo1, la2, lo2) => {
   var La1 = la1 * Math.PI / 180.0;
@@ -25,15 +25,46 @@ const distance = (la1, lo1, la2, lo2) => {
 
 Page({
   data: {
-    readyToStart: false,
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    background: ['demo-text-1', 'demo-text-2', 'demo-text-3'],
+    indicatorDots: true,
+    vertical: false,
+    autoplay: true,
+    circular: false,
+    interval: 2000,
+    duration: 500,
+    previousMargin: 0,
+    nextMargin: 0
   },
-
-  onGotUserInfo: function() {
+  changeProperty: function (e) {
+    var propertyName = e.currentTarget.dataset.propertyName
+    var newData = {}
+    newData[propertyName] = e.detail.value
+    this.setData(newData)
+  },
+  intervalChange: function (e) {
+    this.setData({
+      interval: e.detail.value
+    })
+  },
+  durationChange: function (e) {
+    this.setData({
+      duration: e.detail.value
+    })
+  },
+  getUserInfo: function(e) {
     let app = getApp();
     let that = this;
-
+    console.log(1111,e)
+    if(e.detail.userInfo){
+      app.globalData.userInfo = e.detail.userInfo
+      this.setData({
+        userInfo: e.detail.userInfo,
+        hasUserInfo: true
+      })
+    } else {
+      console.log('failed')
+      // this.openSetting();
+    }
     wx.login({
       success: function (res) {
         if (res.code) {
@@ -60,7 +91,7 @@ Page({
                 }
               },
 
-              url: 'http://localhost:3000' + '/api/v1/users',
+              url: 'https://skateit.wogengapp.cn/api/v1/users',
               method: "post",
               header: {
                 'content-type': 'application/json'
@@ -82,16 +113,18 @@ Page({
           // onGetUserInfo();
           
           console.log("Yes..We got code from RES")
+          wx.navigateTo({
+            url: '../sevan/sevan'
+          })
         } else {
           console.log('error' + res.errMsg)
         }
       }
     })
   },
- 
   onLoad: function (options) {
-    let that = this;
-    that.onGotUserInfo();
+    // let that = this;
+    // that.onGotUserInfo();
   },
 
   onReady: function () {
