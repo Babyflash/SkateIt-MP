@@ -16,7 +16,7 @@ function generateSpotsJson() {
         id: e.id,
         latitude: e.geo_lat,
         longitude: e.geo_lng,
-        width: 56,
+        width: 40,
         height: 56,
         callout: { content: e.address, fontSize: 14, color: "#000000", padding: 10 }
       })
@@ -226,12 +226,11 @@ Page({
     })
   },
   onLoad: function (e) {
+    let page = this
     console.log('ONLOAD MAP: ', e)
-    if(e.lat === undefined){
-      //get current location SEVAN
-    }
-    if (e) {
-      this.setData({
+    page._hanldeLocation();
+    if (e.lat && e.lng) {
+      page.setData({
         lt: e.lat,
         lg: e.lng
       })
@@ -241,7 +240,7 @@ Page({
       spotTypes: app.globalData.spotTypes,
       mk: generateSpotsJson()
     })
-    let page = this
+   
     //fetch items from rails api
 
     if (app.globalData.userInfo) {

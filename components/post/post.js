@@ -101,7 +101,6 @@ Component({
       })
 
       const checkImage = (path) =>{
-        console.log(333, path)
         return new Promise((resolve, reject) => {
           new AV.File('file-name', {
             blob: {
@@ -109,17 +108,15 @@ Component({
             },
           }).save()
           .then((file) => {
-            console.log(444,file.url())
             return resolve(file.url())
           })
           .catch((e) => {
-            console.log(666, e) 
             reject(e)
           });
-        });}
+        });
+      }
 
       const loadImg = (paths) => {
-        console.log(paths)
         return Promise.all(paths.map(checkImage))
       }
 
@@ -159,15 +156,12 @@ Component({
       .catch((err) => {
         console.log("RESULT ERROR =", err)
         wx.hideLoading();
-        that.data.imgs = []
-        console.log(res.data);
-        console.log('failed!' + res.statusCode);
+        wx.showToast({
+          title: 'Failed, check internet connection! Try again...',
+          duration: 3000,
+          icon: 'none'
+        })
       })
-
-      setTimeout(function () {
-        console.log("Promise log: ", res)
-      }, 1000 * 60);
-      
     },
 
     clearPhotos: function () {
