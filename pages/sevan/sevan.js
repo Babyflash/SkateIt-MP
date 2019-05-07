@@ -261,7 +261,23 @@ Page({
       // 在没有 open-type=getUserInfo 版本的兼容处理
 
     }
-   
+      let that = this
+      let spot = {
+        "user_id": app.globalData.currentUserId
+      }
+      myRequest.get({
+        header: {
+          'Content-Type': 'application/json',
+          'X-User-Email': wx.getStorageSync('userEmail'),
+          'X-User-Token': wx.getStorageSync('token')
+        },
+        path: 'users/profile',
+        data: spot,
+        success(res) {
+          console.log('Profile Fav Response: ', res)
+          getApp().globalData.favorites = res.data
+        }
+      })
   },
   firstChoice: function(e){
     this.setData({

@@ -7,6 +7,7 @@ const AV = require('../../utils/av-weapp-min.js')
 
 Page({
   data: {
+    liked: false,
     popup6 : false,
     defaultImage: '',
     imgs: [],
@@ -22,6 +23,16 @@ Page({
     postCount: 0,
     bFavourite: false,
     createdUserAvatar: 'https://kitt.lewagon.com/placeholder/users/ClaraMorgen'
+  },
+  checkLike: function(){
+    console.log("spot id on spot",this.data.spot.id)
+    getApp().globalData.favorites.forEach((x)=>{
+      if(x.id === this.data.spot.id){
+        this.setData({
+          bFavourite: true
+        })
+      }
+    })
   },
   onShareAppMessage: function (res) {
     if (res.from === 'button') {
@@ -85,6 +96,18 @@ Page({
         that.setData({
           bFavourite: (res.data.status === 'unliked') ? false : true
         })
+        if( that.data.bFavourite === true){
+          getApp().globalData.favorites.push(that.data.spot)
+          console.log('count fav',getApp().globalData.favorites.length)
+        } else {
+          let count = 0
+          getApp().globalData.favorites.forEach( (x) => {
+            if(x.id === that.data.spot.id){
+             getApp().globalData.favorites.splice(count, 1)
+            }
+            count++ 
+          })       
+        }
       }
     })
   },
@@ -236,6 +259,7 @@ Page({
   onShow: function () {
     // let that = this
     // that.addPostRequest();
+    this.checkLike()
   },
 
   onHide: function () {
