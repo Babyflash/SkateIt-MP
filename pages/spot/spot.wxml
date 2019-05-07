@@ -20,9 +20,10 @@
     </swiper>
     <view class = 'icon-tab' bindtap='doFavourite'>
       <image style="width: 25px; height: 25px;" class = "img-icon fav {{bFavourite ? 'ball' : ''}}" src="{{bFavourite ? '../../lib/images/likered.png' : '../../lib/images/like.png'}}">
-      </image>
+    </image>
     </view>
   <view class = 'spot-type'>{{spotType}}</view>
+</view>
 </view>
 
 <!-- spot info -->
@@ -95,7 +96,4 @@
       <post bind:myevent="toggleToast" spot = '{{spot}}'></post>
     </view>
   </w-popup>
-
-
-
 </view>
