@@ -28,7 +28,14 @@
 
 <!-- comment vertical scroll -->
   <scroll-view scroll-y style="height: 45vh;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
-     <spot-card-list slot="after" spotTypes='{{spotTypes}}'></spot-card-list>
+     <!-- <spot-card-list slot="after" spotTypes='{{spotTypes}}'></spot-card-list> -->
+     <block wx:for="{{favorites}}" wx:for-item="spot" wx:for-index="itemsIndex" wx:key="type">
+      <info-card spotObject="{{spot}}">
+        <view slot="type">{{spot.spot_type}}</view>
+        <view slot="address">{{spot.address}}</view>
+        <view slot="distance">{{spot.difficulty_rating}}</view>
+      </info-card>
+    </block>
   </scroll-view>
 
   <view class="input" bindtap='showPostWindow'>
