@@ -12,15 +12,17 @@ const myRequest = require('../../lib/api/request');
 // }
 
 const distance = (la1, lo1, la2, lo2) => {
-  var La1 = la1 * Math.PI / 180.0;
-  var La2 = la2 * Math.PI / 180.0;
-  var La3 = La1 - La2;
-  var Lb3 = lo1 * Math.PI / 180.0 - lo2 * Math.PI / 180.0;
-  var s = 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(La3 / 2), 2) + Math.cos(La1) * Math.cos(La2) * Math.pow(Math.sin(Lb3 / 2), 2)));
-  s = s * 6378.137; //地球半径
-  s = Math.round(s * 10000) / 10000;
-  // console.log("计算结果",s)
-  return s
+  var R = 6371; // km (change this constant to get miles)
+  var dLat = (la2 - la1) * Math.PI / 180;
+  var dLon = (lo2 - lo1) * Math.PI / 180;
+  var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+    Math.cos(la1 * Math.PI / 180) * Math.cos(la2 * Math.PI / 180) *
+    Math.sin(dLon / 2) * Math.sin(dLon / 2);
+  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  var d = R * c;
+  //   if(d> 1) return Math.round(d) + "km";
+  // else if (d <= 1) return Math.round(d * 1000) + "m";
+  return Math.round(d);
 }
 
 Page({
@@ -142,12 +144,35 @@ Page({
   onUpdate: function(){
 
   },
+
   onShow: function () {
+    const that = this
+
     myRequest.get({
       path: 'spots',
       success(res) {
         app.globalData.spotTypes = res.data
         console.log('GlobalData', res.data)
+        that.calcDistance();
+      }
+    })
+  },
+
+  calcDistance: function() {
+    wx.getLocation({
+      type: 'gcj02',
+      success: res => {
+        if (res.latitude && res.longitude) {
+          let spotTypes = app.globalData.spotTypes
+          for (let key in spotTypes) {
+            let spots = spotTypes[key];
+            spots.map(function (spot) {
+              let dist = distance(res.latitude, res.longitude, spot.geo_lat, spot.geo_lng)
+              spot["distance"] = dist
+            })
+            console.log("spots", spots)
+          }
+        }
       }
     })
   },
