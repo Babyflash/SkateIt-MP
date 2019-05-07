@@ -5,6 +5,18 @@ const AV = require('../../utils/av-weapp-min.js')
 const app = getApp()
 const myRequest = require('../../lib/api/request');
 
+const distance = (la1, lo1, la2, lo2) => {
+  var La1 = la1 * Math.PI / 180.0;
+  var La2 = la2 * Math.PI / 180.0;
+  var La3 = La1 - La2;
+  var Lb3 = lo1 * Math.PI / 180.0 - lo2 * Math.PI / 180.0;
+  var s = 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(La3 / 2), 2) + Math.cos(La1) * Math.cos(La2) * Math.pow(Math.sin(Lb3 / 2), 2)));
+  s = s * 6378.137; //地球半径
+  s = Math.round(s * 10000) / 10000;
+  // console.log("计算结果",s)
+  return parseInt(s)
+}
+
 function uploadToLeanCloud(tempFilePath) {
   new AV.File('file-name', { 
       blob: { 
@@ -22,7 +34,7 @@ Page({
     isClicked: false,
     type: '',
     isClicked: false,
-    difficulty_rating: '',
+    difficulty_rating: '1',
     address: ''
   },
 
@@ -183,6 +195,9 @@ Page({
                   spot = res.data;
                   spot.default_image.url = that.data.spotImg
                   spot["createdUserUrl"] = getApp().globalData.userInfo.avatarUrl
+                  let dist = distance(that.data.userLatitude, that.data.userLongitude, spot.geo_lat, spot.geo_lng)
+                  spot["distance"] = dist
+
                   console.log("ADDED SPOT", spot)
                   myRequest.get({
                     path: 'spots',
