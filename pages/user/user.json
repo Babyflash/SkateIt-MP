@@ -9,6 +9,7 @@
       "w-avatar": "wuss-weapp/w-avatar/index",
       "comment-card": "../../components/comment-card/comment-card",
       "post": "../../components/post/post",
-      "spot-card-list": "../../components/spot-card-list/spot-card-list"
+      "spot-card-list": "../../components/spot-card-list/spot-card-list",
+      "info-card": "../../components/info-card/info-card"
   }
 }

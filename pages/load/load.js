@@ -168,7 +168,26 @@ Page({
     }
 
   },
+  doFavourite: function () {
+    let that = this
+    let spot = {
+      "user_id": app.globalData.currentUserId
+    }
 
+    myRequest.get({
+      header: {
+        'Content-Type': 'application/json',
+        'X-User-Email': wx.getStorageSync('userEmail'),
+        'X-User-Token': wx.getStorageSync('token')
+      },
+      path: 'users/profile',
+      data: spot,
+      success(res) {
+        console.log('Profile Response: ', res)
+        getApp().globalData.favorites(res.data)
+      }
+    })
+  },
   onHide: function () {
 
   },
