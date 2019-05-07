@@ -48,11 +48,9 @@
   <view class = 'div-tags'>
     <w-tag tagStyle="color:black;background-color:white;">{{spots.length}} comments</w-tag>
     <w-tag tagStyle="color:black;background-color:white;">{{numLikes}} likes</w-tag>
-    <w-tag tagStyle="color:black;background-color:white;;">3 km</w-tag>
+    <w-tag tagStyle="color:black;background-color:white;;">{{spot.distance}} km</w-tag>
      <button plain style="border: none;" class="share-btn" open-type='share'> <image style="width: 25px; height: 25px" class = 'img-icon' mode='aspectFit' src='../../lib/images/greenshare.png'></image>
   </button>
-</view>
- 
 </view>
 <view class="line"></view>
 

@@ -4,6 +4,20 @@ const markerUrl = "https://img.icons8.com/color/48/000000/marker.png"
 const AV = require('../../utils/av-weapp-min.js')
 const myRequest = require('../../lib/api/request');
 
+const distance = (la1, lo1, la2, lo2) => {
+  var R = 6371; // km (change this constant to get miles)
+  var dLat = (la2 - la1) * Math.PI / 180;
+  var dLon = (lo2 - lo1) * Math.PI / 180;
+  var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+    Math.cos(la1 * Math.PI / 180) * Math.cos(la2 * Math.PI / 180) *
+    Math.sin(dLon / 2) * Math.sin(dLon / 2);
+  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  var d = R * c;
+  //   if(d> 1) return Math.round(d) + "km";
+  // else if (d <= 1) return Math.round(d * 1000) + "m";
+  return Math.round(d);
+}
+
 function generateSpotsJson() {
   const spots = app.globalData.spotTypes
   let markers = []
@@ -95,6 +109,18 @@ Page({
     })
   },
 
+  calcDistance: function (latitude, longitude) {
+    let spotTypes = app.globalData.spotTypes
+    for (let key in spotTypes) {
+      let spots = spotTypes[key];
+      spots.map(function (spot) {
+        let dist = distance(latitude, longitude, spot.geo_lat, spot.geo_lng)
+        spot["distance"] = dist
+      })
+      console.log("dinstance spots", spots)
+    }
+  },
+
   locating: false,
   spotCount: 0,
   
@@ -113,6 +139,8 @@ Page({
           wx.vibrateShort({
             
           })
+          that.calcDistance(res.latitude, res.longitude);
+
           console.log(res);
           if (res.latitude && res.longitude) {
             that.setData({
