@@ -1,6 +1,6 @@
 //index.js
 //获取应用实例
-const markerUrl = "https://img.icons8.com/color/48/000000/marker.png"
+const markerUrl = "https://res.cloudinary.com/doe2rb42f/image/upload/v1557301345/marker_b8h9gy.svg"
 const AV = require('../../utils/av-weapp-min.js')
 const myRequest = require('../../lib/api/request');
 
@@ -192,18 +192,24 @@ Page({
   },
 
   navigateToUserPage: function(){
+    wx.showLoading()
     wx.navigateTo({
       url: '../user/user',
       success: function(res) {},
       fail: function(res) {},
-      complete: function(res) {},
+      complete: function(res) {
+        wx.hideLoading()
+      },
     })
+
   },
 
   navigateToAddSpotPage: function () {
+    wx.showLoading()
     wx.navigateTo({
       url: '../addSpot/addSpot'
     })
+    wx.hideLoading()
   },
 
   uploadPromise: function (tempFilePath) {
@@ -271,6 +277,7 @@ Page({
     wx.setNavigationBarTitle({
       title: "Spot Map"
     })
+    wx.showLoading()
     let page = this
     console.log('ONLOAD MAP: ', e)
     page._hanldeLocation();
@@ -327,6 +334,7 @@ Page({
           getApp().globalData.favorites = res.data
         }
       })
+    wx.hideLoading()
   },
   firstChoice: function(e){
     this.setData({
@@ -560,6 +568,7 @@ distanceFilter: function(e){
     }
   },
   selectItem: function (e) {
+    let that = this
     this.setData({
       distance1: false,
       distance2: false,
@@ -567,85 +576,125 @@ distanceFilter: function(e){
       distance4: false,
       distance5: false,
     })
-    const target = e.currentTarget.dataset.id
-    console.log('from distance filter', target)
-    let object = { 
-      spotType: app.globalData.spotTypes.Ledge
-      }
-    if(target === '0'){
-      this.setData({
-        selecteditem1: false,
-        selecteditem2: false,
-        selecrteditem3: false,
-        selecteditem0: !this.data.selecteditem0,
-        selecteditem4: false,
-        typeFilter: 'Ledge',
-        spotTypes: object
-      })
-        // load markers for object ^
-    console.log(this.data.filteredSpots)
-    } else if(target === '1'){
-      let object = {
-        spotType: app.globalData.spotTypes.Stair
-      }
-      this.setData({
-        selecteditem0: false,
-        selecteditem2: false,
-        seleceditem3: false,
-        selecteditem1: !this.data.selecteditem1,
-        selecteditem4: false,
-        typeFilter: 'Stair',
-        spotTypes: object
-      })
-         // load markers for object ^
-    } else if(target === '2'){
-      let object = {
-        spotType: app.globalData.spotTypes.Park
-      }
-      this.setData({
-        selecteditem0: false,
-        selecteditem1: false,
-        selecteditem3: false,
-        selecteditem2: !this.data.selecteditem2,
-        selecteditem4: false,
-        typeFilter: 'Park',
-        spotTypes: object
-      })
-      // load markers for object ^
-    } else if(target === '3'){
-      let object = {
-        spotType: app.globalData.spotTypes.Rail
-      }
-      this.setData({
-        selecteditem0: false,
-        selecteditem1: false,
-        selecteditem2: false,
-        selecteditem3: !this.data.selecteditem3,
-        selecteditem4: false,
-        typeFilter: 'Rail',
-        spotTypes: object
-      })
-      // load markers for object ^
-    } else{
-      this.setData({
-        selecteditem4: true,
-        selecteditem0: false,
-        selecteditem1: false,
-        selecteditem2: false,
-        selecteditem3: false,
-        typeFilter: 'All',
-        spotTypes: app.globalData.spotTypes
-      })
+    let type = ''
+    switch(e.currentTarget.dataset.id){
+      case '1':
+      type = 'Ledge'
+      break;
+      case '2':
+      type = 'Stairs'
+      break;
+      case '3':
+      break;
+      case '4':
+      break;
     }
-    console.log('filter', this.data.typeFilter)
-    let spotCount = 0;
-    let total = this.data.spotTypes
-    for (let key in total) {
-      spotCount += total[key].length
+    if(getApp.globalData.spotTypes[type] != undefined) {
+      try {
+        //在这里运行代码
+        const target = e.currentTarget.dataset.id
+        console.log('from distance filter', target)
+        if (target === '0') {
+          let object = {
+            spotType: app.globalData.spotTypes.Ledge
+          }
+          this.setData({
+            selecteditem1: false,
+            selecteditem2: false,
+            selecrteditem3: false,
+            selecteditem0: !this.data.selecteditem0,
+            selecteditem4: false,
+            typeFilter: 'Ledge',
+            spotTypes: object
+          })
+          // load markers for object ^
+          console.log(this.data.filteredSpots)
+        } else if (target === '1') {
+          let object = {
+            spotType: app.globalData.spotTypes.Stair
+          }
+          this.setData({
+            selecteditem0: false,
+            selecteditem2: false,
+            seleceditem3: false,
+            selecteditem1: !this.data.selecteditem1,
+            selecteditem4: false,
+            typeFilter: 'Stair',
+            spotTypes: object
+          })
+          // load markers for object ^
+        } else if (target === '2') {
+          let object = {
+            spotType: app.globalData.spotTypes.Park
+          }
+          this.setData({
+            selecteditem0: false,
+            selecteditem1: false,
+            selecteditem3: false,
+            selecteditem2: !this.data.selecteditem2,
+            selecteditem4: false,
+            typeFilter: 'Park',
+            spotTypes: object
+          })
+          // load markers for object ^
+        } else if (target === '3') {
+          let object = {
+            spotType: app.globalData.spotTypes.Rail
+          }
+          this.setData({
+            selecteditem0: false,
+            selecteditem1: false,
+            selecteditem2: false,
+            selecteditem3: !this.data.selecteditem3,
+            selecteditem4: false,
+            typeFilter: 'Rail',
+            spotTypes: object
+          })
+          // load markers for object ^
+        } else {
+          this.setData({
+            selecteditem4: true,
+            selecteditem0: false,
+            selecteditem1: false,
+            selecteditem2: false,
+            selecteditem3: false,
+            typeFilter: 'All',
+            spotTypes: app.globalData.spotTypes
+          })
+        }
+        console.log('filter', this.data.typeFilter)
+        let spotCount = 0;
+        let total = this.data.spotTypes
+        for (let key in total) {
+          if (total[key] === undefined) {
+            wx.showToast({
+              title: 'No Spots Found',
+              icon: 'none',
+              duration: 3000,
+              mask: true,
+              success: function (res) { },
+              fail: function (res) { },
+              complete: function (res) {
+                that.setData({
+                  spotTypes: app.globalData.spotTypes
+                })
+              },
+            })
+          } else {
+            spotCount += total[key].length
+          }
+          this.setData({
+            spotCount: spotCount
+          })
+        }
+      }
+      catch (err) {
+        //在这里处理错误
+        console.log('filter failed')
+      }
+
     }
-    this.setData({
-      spotCount: spotCount
-    })
+    
   },
   loadType: function(type){
 

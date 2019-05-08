@@ -19,7 +19,7 @@
       </block>
     </swiper>
     <view class = 'icon-tab' bindtap='doFavourite'>
-      <image style="width: 25px; height: 25px;" class = "img-icon fav {{bFavourite ? 'ball' : ''}}" src="{{bFavourite ? '../../lib/images/likered.png' : '../../lib/images/like.png'}}">
+      <image style="width: 25px; height: 25px;" class = "img-icon fav {{bFavourite ? 'ball' : ''}}" src="{{bFavourite ? 'https://res.cloudinary.com/doe2rb42f/image/upload/v1557302203/likered_zmloi5.png' : 'https://res.cloudinary.com/doe2rb42f/image/upload/v1557305004/like_uc0ss2.png'}}">
     </image>
     </view>
   <view class = 'spot-type'>{{spotType}}</view>
@@ -29,7 +29,7 @@
 <view class = "container-info">
   <view class = "div-address" bindtap='navigateToMap'>
     <view class="loc-icon">
-    <image class = 'img-location' src='../../lib/images/location2.png'></image>
+    <image class = 'img-location' src='https://res.cloudinary.com/doe2rb42f/image/upload/v1557301345/marker_b8h9gy.svg'></image>
     </view>
     <view class="address" >{{address}}</view>
   </view>
@@ -43,10 +43,10 @@
 <view class="share-tags">
   <view class = 'div-tags'>
     <w-tag tagStyle="color:black;background-color:white;">{{spots.length}} comments</w-tag>
-    <w-tag tagStyle="color:black;background-color:white;">{{numLikes}} likes</w-tag>
+    <w-tag tagStyle="color:black;background-color:white;">{{favCount}} favorites</w-tag>
     <w-tag tagStyle="color:black;background-color:white;;">{{spot.distance}} km</w-tag>
      <button plain style="border: none;" class="share-btn" open-type='share'>
-      <image style="width: 25px; height: 25px" class = 'img-icon' mode='aspectFit' src='../../lib/images/greenshare.png'>
+      <image style="width: 25px; height: 25px" class = 'img-icon' mode='aspectFit' src='https://res.cloudinary.com/doe2rb42f/image/upload/v1557300028/greenshare_ymnsut.png'>
       </image>
     </button>
   </view>

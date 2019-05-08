@@ -17,6 +17,10 @@ Page({
     wx.setNavigationBarTitle({
       title: "Favorites"
     })
+    console.log(app.globalData.userInfo.nickName)
+    this.setData({
+      userName: app.globalData.userInfo.nickName
+    })
   },
 
   // doFavourite: function () {
