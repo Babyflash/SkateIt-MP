@@ -22,7 +22,8 @@ Page({
     nextMargin: 0,
     spots: [],
     postCount: 0,
-    createdUserAvatar: 'https://kitt.lewagon.com/placeholder/users/ClaraMorgen'
+    createdUserAvatar: 'https://kitt.lewagon.com/placeholder/users/ClaraMorgen',
+    favCount: 0
   },
   checkLike: function(){
     console.log("spot id on spot",this.data.spot.id)
@@ -77,9 +78,8 @@ Page({
       createdUserAvatar: userAvatarUrl
     })
 
-    
+    that.getFavoritesCount();
     that.updateComments();
- 
   },
 
   doFavourite: function () {
@@ -134,6 +134,25 @@ Page({
     })
     that.setData({
       createAt: newTimes
+    })
+  },
+
+  getFavoritesCount: function () {
+    const that = this;
+    myRequest.get({
+      header: {
+        'Content-Type': 'application/json',
+        'X-User-Email': wx.getStorageSync('userEmail'),
+        'X-User-Token': wx.getStorageSync('token')
+      },
+      path: 'spots/favorites',
+      data: { 'spotId': that.data.spotId },
+      success(res) {
+        console.log('Favorites count response: ', res)
+        that.setData({
+          favCount: res.data.favCount
+        })
+      }
     })
   },
   
