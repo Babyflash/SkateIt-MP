@@ -14,9 +14,9 @@
 }
 .getUserInfo{
   position: absolute;
-  height: 40px;
-  width: 50vw;
-  bottom: 10vh;
+  height: 10vh;
+  width: 100vw;
+  bottom: 0vh;
   left: 0; 
   right: 0; 
   margin-left: auto; 
@@ -34,23 +34,12 @@
   background-repeat: no-repeat;
   background-position: center center;          
 }
-.window{
-  position: absolute;
-  top: 20vh;
-  background: rgb(45,50,79);
-  background: linear-gradient(0deg, rgba(45,50,79,1) 33%, rgba(42,47,77,0) 100%);
-  width: 100vh;
-  height: 80vh;
 
-}
 .swiper-item{
   display: block;
   height: 150px;
 }
-.page-section{
-  width: 100%;
-  margin-bottom: 60rpx;
-}
+
 .page-section_center{
   display: flex;
   flex-direction: column;
@@ -118,4 +107,14 @@
   bottom: 0;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+.gradient-line {
+  /* background: linear-gradient(90deg, rgba(103,54,207,1) 16%, rgba(9,9,121,1) 52%, rgba(0,212,255,1) 100%); */
+background: linear-gradient(to right, #2d324f, #513868, #813572, #b22b69, #d9294f, #d9294f, #d9294f, #d9294f, #b22b69, #813572, #513868, #2d324f);
+  height: 5px;
+  width: 100vw;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 15rpx 15rpx 0 0;
 }

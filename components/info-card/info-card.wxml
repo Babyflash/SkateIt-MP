@@ -13,13 +13,13 @@
       <view bindtap="spot" class='address'>
         <slot name="address"></slot>
       </view>
-        <view class="gps-wrapper" style="z-index: 1;">
+    <view class="gps-wrapper" style="z-index: 1;">
     <view class="go-btn" bindtap='goThere'>
       <view>
       Go there
       </view>
-      <view style="display: flex; justify-content: center; align-items: center;">
-      <image style="width: 18px; height: 18px; margin-right: 8px;" src='../../lib/images/arrow.png'></image>
+      <view style="display: block; justify-content: center; align-items: center;">
+      <image style="width: 18px; height: 18px; margin: 3px;" src='../../lib/images/arrow.png'></image>
        <view class='distance' style="display: flex; justify-content: center;">
         <slot style="text-align: center;" name="distance"></slot>
       </view>

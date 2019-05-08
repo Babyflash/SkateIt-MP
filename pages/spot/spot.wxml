@@ -66,7 +66,7 @@
     <block wx:for="{{spots}}" wx:for-item="spot" wx:for-index="itemsIndex" wx:key="spot">
       <comment-card avatar="{{spot.user.avatar_url}}">
         <view slot="name">{{spot.user.name}}</view>
-        <view slot="date">{{spot.created_at}}</view>
+        <view slot="date">{{createdAt[itemsIndex]}} ago</view>
         <view slot="content-body">{{spot.description}}</view>
       </comment-card>
     </block>

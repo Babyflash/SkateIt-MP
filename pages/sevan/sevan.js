@@ -268,6 +268,9 @@ Page({
     })
   },
   onLoad: function (e) {
+    wx.setNavigationBarTitle({
+      title: "Spot Map"
+    })
     let page = this
     console.log('ONLOAD MAP: ', e)
     page._hanldeLocation();
