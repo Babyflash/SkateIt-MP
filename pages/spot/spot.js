@@ -50,6 +50,10 @@ Page({
   },
 
   onLoad: function (options) {
+    wx.setNavigationBarTitle({
+      title: "Spot Page"
+    })
+    
     let that = this
     let spot = JSON.parse(options.spot);
     console.log("Spot page's spot instance: ", spot)
@@ -72,8 +76,10 @@ Page({
       address: spot.address,
       createdUserAvatar: userAvatarUrl
     })
+
     
     that.updateComments();
+ 
   },
 
   doFavourite: function () {
@@ -115,11 +121,22 @@ Page({
   navigateToMap: function () {
     const that = this
 
-    wx.navigateTo({
+    wx.reLaunch({
       url: '/pages/sevan/sevan?lat=' + that.data.spot.geo_lat + '&lng=' + that.data.spot.geo_lng
     })
   },
-
+  updateTime: function(){
+    let that = this
+    let newTimes = []
+    that.data.spots.forEach((x) => {
+      console.log('this is a spot')
+     
+    })
+    that.setData({
+      createAt: newTimes
+    })
+  },
+  
   updateComments: function () {
     let that = this
 
@@ -133,6 +150,7 @@ Page({
       success(res) {
         const datas = res.data;
         const imgs = []
+        const newTimes = []
         imgs.push(that.data.defaultImage);
         console.log("GET POST RESPONSE: ",res.data)
         wx.hideLoading();
@@ -146,9 +164,16 @@ Page({
             e.post_contents.forEach(function(img) {
               imgs.push(img.media_url.url);
             })
+            const newtime = new Date(e.created_at)
+            const timeAgo = that.time(newtime)
+            console.log(timeAgo)
+            newTimes.push(timeAgo)
           })
         }
-        that.setData({ imgs: imgs })
+        that.setData({ 
+          imgs: imgs,
+          createdAt: newTimes
+          })
       }
     })
   },
@@ -252,9 +277,43 @@ Page({
       popup6: false
     });
   },
+  test: function () {
+    console.log('test works')
+  },
+  time: function (date) {
+    var seconds = Math.floor((new Date() - date) / 1000);
 
+    var interval = Math.floor(seconds / 31536000);
+
+    if (interval > 1) {
+      return interval + " years";
+    }
+    interval = Math.floor(seconds / 2592000);
+    if (interval > 1) {
+      return interval + " months";
+    }
+    interval = Math.floor(seconds / 86400);
+    if (interval > 1) {
+      return interval + " days";
+    }
+    interval = Math.floor(seconds / 3600);
+    if (interval > 1) {
+      return interval + " hours";
+    }
+    interval = Math.floor(seconds / 60);
+    if (interval > 1) {
+      return interval + " minutes";
+    }
+    return Math.floor(seconds) + " seconds";
+  },
   onReady: function () {
-
+   
+    // const newtime = new Date(this.properties.time)
+    // console.log('time------------- --------', newtime)
+    // console.log(this.time(newtime))
+    // console.log(this.time(newtime))
+    // console.log(this.data.timeAgo)
+    // console.log(this.properties.newtime)
   },
 
   onShow: function () {

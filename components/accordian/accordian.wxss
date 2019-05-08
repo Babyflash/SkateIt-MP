@@ -27,7 +27,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: lightgray;
+  color: white;
 }
 .card-container{
   border-top-left-radius: 8px;

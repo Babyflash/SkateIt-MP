@@ -268,6 +268,9 @@ Page({
     })
   },
   onLoad: function (e) {
+    wx.setNavigationBarTitle({
+      title: "Spot Map"
+    })
     let page = this
     console.log('ONLOAD MAP: ', e)
     page._hanldeLocation();
@@ -405,14 +408,175 @@ Page({
       hasUserInfo: true
     })
   },
-
+distanceFilter: function(e){
+    console.log(e.currentTarget.dataset.id)
+    let filter = e.currentTarget.dataset.id
+    let allSpots = getApp().globalData.spotTypes
+    let spotCount = 0;
+    for (let key in allSpots) {
+      spotCount += allSpots[key].length
+    }
+    let filteredSpots = {
+      spotTypes: []
+    }
+    this.selectItem({
+      currentTarget: {
+        dataset: {
+          id: '4'
+        }
+      }
+    })
+    switch(filter){
+      case '1':
+        if(this.data.distance1){
+          this.setData({
+            distance1: !this.data.distance1,
+            spotCount: spotCount,
+            spotTypes: allSpots
+          })
+          break;
+        }
+        console.log('1km')
+        console.log(this.data.spotTypes)
+        for (let key in allSpots) {
+          allSpots[key].forEach((x)=>{
+            console.log(x.distance)
+            x.distance <= 1 ? filteredSpots.spotTypes.push(x) : console.log('')
+          })
+        }
+        this.setData({
+          distance2: false,
+          distance3: false,
+          distance4: false,
+          distance5: false,
+          typeFilter: 'All',
+          distance1: !this.data.distance1,
+          spotCount: filteredSpots.spotTypes.length,
+          spotTypes: filteredSpots
+        })
+        console.log(this.data.spotTypes)
+        break;
+      case '2':
+        if (this.data.distance2) {
+          this.setData({
+            distance2: !this.data.distance2,
+            spotCount: spotCount,
+            spotTypes: allSpots
+          })
+          break;
+        }
+        console.log('2km')
+        console.log(this.data.spotTypes)
+        for (let key in allSpots) {
+          allSpots[key].forEach((x) => {
+            console.log(x.distance)
+            x.distance <= 2 ? filteredSpots.spotTypes.push(x) : console.log('')
+          })
+        }
+        this.setData({
+          distance1: false,
+          distance3: false,
+          distance4: false,
+          distance5: false,
+          typeFilter: 'All',
+          distance2: !this.data.distance2,
+          spotCount: filteredSpots.spotTypes.length,
+          spotTypes: filteredSpots
+        })
+        console.log(this.data.spotTypes)
+        break;
+      case '3':
+        if (this.data.distance3) {
+          this.setData({
+            distance3: !this.data.distance3,
+            spotCount: spotCount,
+            spotTypes: allSpots
+          })
+          break;
+        }
+        console.log('3km')
+        console.log(this.data.spotTypes)
+        for (let key in allSpots) {
+          allSpots[key].forEach((x) => {
+            console.log(x.distance)
+            x.distance <= 3 ? filteredSpots.spotTypes.push(x) : console.log('')
+          })
+        }
+        this.setData({
+          distance1: false,
+          distance2: false,
+          distance4: false,
+          distance5: false,
+          typeFilter: 'All',
+          distance3: !this.data.distance3,
+          spotCount: filteredSpots.spotTypes.length,
+          spotTypes: filteredSpots
+        })
+        console.log(this.data.spotTypes)
+        break;
+      case '4':
+        if (this.data.distance4) {
+          this.setData({
+            distance4: !this.data.distance4,
+            spotCount: spotCount,
+            spotTypes: allSpots
+          })
+          break;
+        }
+        console.log('4km')
+        console.log(this.data.spotTypes)
+        for (let key in allSpots) {
+          allSpots[key].forEach((x) => {
+            console.log(x.distance)
+            x.distance <= 4 ? filteredSpots.spotTypes.push(x) : console.log('')
+          })
+        }
+        this.setData({
+          distance1: false,
+          distance2: false,
+          distance3: false,
+          distance5: false,
+          distance4: !this.data.distance4,
+          typeFilter: 'All',
+          spotCount: filteredSpots.spotTypes.length,
+          spotTypes: filteredSpots
+        })
+        console.log(this.data.spotTypes)
+        break;
+      case '5':
+        console.log('all')
+        this.setData({
+          distance1: false,
+          distance2: false,
+          distance3: false,
+          distance4: false,
+          distance5: !this.data.distance5,
+          spotCount: spotCount,
+          spotTypes: allSpots
+        })
+        break;
+      default:
+        console.log('Not valid')
+    }
+  },
   selectItem: function (e) {
+    this.setData({
+      distance1: false,
+      distance2: false,
+      distance3: false,
+      distance4: false,
+      distance5: false,
+    })
     const target = e.currentTarget.dataset.id
+    console.log('from distance filter', target)
     let object = { 
       spotType: app.globalData.spotTypes.Ledge
       }
     if(target === '0'){
       this.setData({
+        selecteditem1: false,
+        selecteditem2: false,
+        selecrteditem3: false,
         selecteditem0: !this.data.selecteditem0,
         selecteditem4: false,
         typeFilter: 'Ledge',
@@ -425,6 +589,9 @@ Page({
         spotType: app.globalData.spotTypes.Stair
       }
       this.setData({
+        selecteditem0: false,
+        selecteditem2: false,
+        seleceditem3: false,
         selecteditem1: !this.data.selecteditem1,
         selecteditem4: false,
         typeFilter: 'Stair',
@@ -436,6 +603,9 @@ Page({
         spotType: app.globalData.spotTypes.Park
       }
       this.setData({
+        selecteditem0: false,
+        selecteditem1: false,
+        selecteditem3: false,
         selecteditem2: !this.data.selecteditem2,
         selecteditem4: false,
         typeFilter: 'Park',
@@ -447,6 +617,9 @@ Page({
         spotType: app.globalData.spotTypes.Rail
       }
       this.setData({
+        selecteditem0: false,
+        selecteditem1: false,
+        selecteditem2: false,
         selecteditem3: !this.data.selecteditem3,
         selecteditem4: false,
         typeFilter: 'Rail',
@@ -455,7 +628,7 @@ Page({
       // load markers for object ^
     } else{
       this.setData({
-        selecteditem4: !this.data.selecteditem4,
+        selecteditem4: true,
         selecteditem0: false,
         selecteditem1: false,
         selecteditem2: false,

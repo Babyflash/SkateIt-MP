@@ -48,24 +48,26 @@
   </cover-view>
   <!-- second choice dropdown -->
   <cover-view class='dropdown right' animation="{{distance}}">
-    <cover-view class="drop-item">
+    <cover-view data-id='1' bindtap="distanceFilter" class="drop-item {{distance1 ? 'active' : ''}}">
     1km
     </cover-view>
-    <cover-view class="drop-item">
+    <cover-view data-id='2' bindtap="distanceFilter" class="drop-item {{distance2 ? 'active' : ''}}">
     2km
     </cover-view>
-    <cover-view class="drop-item">
+    <cover-view data-id='3' bindtap="distanceFilter" class="drop-item {{distance3 ? 'active' : ''}}">
     3km
     </cover-view>
-    <cover-view class="drop-item">
+    <cover-view data-id='4' bindtap="distanceFilter" class="drop-item {{distance4 ? 'active' : ''}}">
     4km
     </cover-view>
+     <cover-view data-id='5' bindtap="distanceFilter" class="drop-item {{distance5 ? 'active' : ''}}">
+    All
+    </cover-view>
   </cover-view>
- 
   </map>
   <cover-view class="add-btn-container" style="top: {{clicked ? '35vh' : '60vh'}};">
     <cover-view class="add-btn"  loading="{{loading}}" plain="{{plain}}" disabled="{{disabled}}" bindtap="navigateToUserPage" over-class="other-button-hover">
-      <cover-image style="width: 50%; height: 50%;  margin: 0 auto;" src="../../lib/images/favorites.png" />
+      <cover-image style="width: 50%; height: 50%;  margin: 0 auto;" src="../../lib/images/likered.png" />
     </cover-view>
   </cover-view>
   <cover-view class="add-btn-container" style="top: {{clicked ? '35vh' : '70vh'}};">
