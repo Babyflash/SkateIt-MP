@@ -109,7 +109,7 @@ transition: 1 ease;
 }
 
 .drop-item{
-  margin: 16px 8px;
+  margin: 14px 8px;
 }
 .choice{
   width: 100%;

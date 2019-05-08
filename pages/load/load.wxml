@@ -2,7 +2,7 @@
 <!--index.wxml-->
 <view class="container">
   <view style="display: flex; justify-content: space-around; height: 45vh;">
-    <image class="image-rotate" style="margin-top: 5vh; z-index: 999; width:175px!important; height:175px!important;" src='../../lib/images/splashicon.svg'></image>
+    <image class="image-rotate" style="margin-top: 5vh; z-index: 999; width:175px!important; height:175px!important;" src='https://res.cloudinary.com/doe2rb42f/image/upload/v1557312541/splashicon_dkjkbv.svg'></image>
   </view>
       <swiper
         indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" circular="{{circular}}" vertical="{{vertical}}"

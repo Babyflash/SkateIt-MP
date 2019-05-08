@@ -1,30 +1,29 @@
 <view 
   class="container bg" 
   style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url({{spotImg}}); object-fit: scale-down;">
-
   <view class="popup" animation="{{animation}}">
     <view class="title-bar">
       <view class="gradient-line"></view>
       <view class="title-header">Create Spot</view>
-    </view>
-
+    </view> 
     <view style="margin: 5px 0; padding-top: 16px;">
-
+    <view class="grid-cont" >
+    <view>
     <w-row gutter="10">
       <block wx:for="{{ 6 }}" wx:key="index">
         <w-col span="8">
-          <view type="{{types[index]}}" bindtap='handleClick{{index + 1}}'  data-id='{{index}}'  style="padding: 10px 0;font-size:14px;text-align:center;{{  index%2 == 0 ? .8 : .6 }});">
-            <icon 
-              type="{{types[index]}}" 
-              image="{{types[index]}}"
-            >
-              {{types[index]}}
-            </icon>
+          <view data-id='{{index}}'  style="padding: 10px 0;font-size:14px;text-align:center;{{  index%2 == 0 ? .8 : .6 }});">
+            <view style-="z-index: 999" id="{{index}}" data-id="{{types[index]}}" bindtap='handleClick1' class="{{index == spot0 ? 'clicked_icon' : 'icon'}};">
+              <image class='img' src="{{spotUrl[index]}}" ></image>
+              <view>{{types[index]}}</view>
+            </view> 
           </view>
         </w-col>
       </block>
     </w-row>
+      </view>
 
+    </view>
     <view class="difficulty">Difficulty</view>
       <slider
         class="slider" 

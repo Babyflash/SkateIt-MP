@@ -1,17 +1,7 @@
 // pages/load/load.js
 const app = getApp();
 const myRequest = require('../../lib/api/request');
-// const BASE_URL = 'https://skateit.wogengapp.cn/api/v1/';
-const BASE_URL = 'http://localhost:3000/api/v1/';
-
-// function getUser () {
-//   wx.getUserInfo({
-//     success: res => {
-//       console.log("GET USER INFO", res)
-//       app.globalData.userInfo = res.userInfo
-//     }
-//   })
-// }
+const BASE_URL = 'https://skateit.wogengapp.cn/api/v1/';
 
 const distance = (la1, lo1, la2, lo2) => {
   var R = 6371; // km (change this constant to get miles)
@@ -22,8 +12,6 @@ const distance = (la1, lo1, la2, lo2) => {
     Math.sin(dLon / 2) * Math.sin(dLon / 2);
   var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
   var d = R * c;
-  //   if(d> 1) return Math.round(d) + "km";
-  // else if (d <= 1) return Math.round(d * 1000) + "m";
   return Math.round(d);
 }
 
@@ -56,9 +44,9 @@ Page({
     })
   },
   getUserInfo: function(e) {
+    wx.showLoading()
     let app = getApp();
     let that = this;
-    console.log(1111,e)
     if(e.detail.userInfo){
       app.globalData.userInfo = e.detail.userInfo
       this.setData({
@@ -67,7 +55,6 @@ Page({
       })
     } else {
       console.log('failed')
-      // this.openSetting();
     }
     wx.login({
       success: function (res) {
@@ -77,7 +64,6 @@ Page({
               success: function (res) {
                 try {
                   wx.setStorageSync('token', res.data.authentication_token)
-                  console.log('Token from backend', wx.getStorageSync('token'))
                   wx.setStorageSync('currentUserId', res.data.id)
                   wx.setStorageSync('userEmail', res.data.email)
                   app.globalData.token = res.data.authentication_token
@@ -91,10 +77,9 @@ Page({
                   wx.hideLoading();
                 } catch (e) {
                   wx.hideLoading();
-                  console.log("Didn't set storage")
+                  // console.log("Didn't set storage")
                 }
               },
-
               url: BASE_URL + 'users',
               method: "post",
               header: {
@@ -113,13 +98,6 @@ Page({
             })
           }
             , app)
-
-          // onGetUserInfo();
-          
-          console.log("Yes..We got code from RES")
-          // wx.navigateTo({
-          //   url: '../sevan/sevan'
-          // })
           wx.redirectTo({
             url: '../sevan/sevan'
           })
@@ -130,8 +108,6 @@ Page({
     })
   },
   onLoad: function (options) {
-    // let that = this;
-    // that.onGotUserInfo();
   },
 
   onReady: function () {
@@ -157,7 +133,6 @@ Page({
       path: 'spots',
       success(res) {
         app.globalData.spotTypes = res.data
-        console.log('GlobalData', res.data)
         that.calcDistance();
       }
     })
@@ -175,7 +150,6 @@ Page({
               let dist = distance(res.latitude, res.longitude, spot.geo_lat, spot.geo_lng)
               spot["distance"] = dist
             })
-            console.log("spots", spots)
           }
         }
       }
@@ -213,7 +187,6 @@ Page({
       path: 'users/profile',
       data: spot,
       success(res) {
-        console.log('Profile Response: ', res)
         getApp().globalData.favorites(res.data)
       }
     })

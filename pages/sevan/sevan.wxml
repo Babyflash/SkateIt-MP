@@ -3,8 +3,8 @@
     <!-- first choice -->
       <cover-view class="choice" bindtap='firstChoice'>
         <cover-view style="margin-right: 3px;" class="{{first ? 'active' : ''}}">Type</cover-view>
-        <cover-image style="{{first ? 'display: none' : '' }}" class="filter-arrow" class="img" src="../../lib/images/down.png" />
-         <cover-image style="{{first ? '' : 'display: none'}}" class="filter-arrow" class="img" src="../../lib/images/up.png" />
+        <cover-image style="{{first ? 'display: none' : '' }}" class="filter-arrow" class="img" src="https://res.cloudinary.com/doe2rb42f/image/upload/v1557313231/down_lut34x.png" />
+         <cover-image style="{{first ? '' : 'display: none'}}" class="filter-arrow" class="img" src="https://res.cloudinary.com/doe2rb42f/image/upload/v1557313231/up_aw4n00.png" />
       </cover-view> 
        <cover-view >
         |
@@ -12,8 +12,8 @@
        <!-- second choice -->
       <cover-view class="choice" bindtap='secondChoice'>
         <cover-view style="margin-right: 3px;" class="{{second ? 'active' : ''}}">Distance</cover-view>
-        <cover-image style="{{second ? 'display: none' : ''}}"class="filter-arrow" class="img" src="../../lib/images/down.png" />
-        <cover-image style="{{second ? '' : 'display: none'}}" class="filter-arrow" class="img" src="../../lib/images/up.png" />
+        <cover-image style="{{second ? 'display: none' : ''}}"class="filter-arrow" class="img" src="https://res.cloudinary.com/doe2rb42f/image/upload/v1557313231/down_lut34x.png" />
+        <cover-image style="{{second ? '' : 'display: none'}}" class="filter-arrow" class="img" src="https://res.cloudinary.com/doe2rb42f/image/upload/v1557313231/up_aw4n00.png" />
       </cover-view>
   </cover-view>
    <map 
@@ -27,26 +27,23 @@
       markers="{{mk}}"
       show-location
       >
-   
-        <!-- first choice dropdown -->
   <cover-view class='dropdown left' animation="{{type}}" data="yooo">
-    <cover-view data-id='0' bindtap="selectItem" class="drop-item {{selecteditem0 ? 'active' : ''}}">
+    <cover-view data-id='0' data-type="Ledge" bindtap="selectItem" class="drop-item {{typeFilter === 'Ledge' ? 'active' : ''}}">
     Ledge
     </cover-view>
-    <cover-view data-id='1' bindtap="selectItem" class="drop-item" class="drop-item {{selecteditem1 ? 'active' : ''}}">
+    <cover-view data-id='1' data-type="Stair set" bindtap="selectItem" class="drop-item" class="drop-item {{typeFilter === 'Stair set' ? 'active' : ''}}">
     Stairs
     </cover-view>
-    <cover-view data-id='2' bindtap="selectItem" class="drop-item" class="drop-item {{selecteditem2 ? 'active' : ''}}">
+    <cover-view data-id='2' data-type="Park" bindtap="selectItem" class="drop-item" class="drop-item {{typeFilter === 'Parks' ? 'active' : ''}}">
     Parks
     </cover-view>
-    <cover-view data-id='3' bindtap="selectItem" class="drop-item" class="drop-item {{selecteditem3 ? 'active' : ''}}">
+    <cover-view data-id='3' data-type="Rail" bindtap="selectItem" class="drop-item" class="drop-item {{typeFilter === 'Rail' ? 'active' : ''}}">
     Rails
     </cover-view>
-     <cover-view data-id='4' bindtap="selectItem" class="drop-item" class="drop-item {{selecteditem4 ? 'active' : ''}}">
+     <cover-view data-id='4' data-type="All" bindtap="selectItem" class="drop-item" class="drop-item {{typeFilter === 'All' ? 'active' : ''}}">
     All
     </cover-view>
   </cover-view>
-  <!-- second choice dropdown -->
   <cover-view class='dropdown right' animation="{{distance}}">
     <cover-view data-id='1' bindtap="distanceFilter" class="drop-item {{distance1 ? 'active' : ''}}">
     1km
@@ -72,7 +69,7 @@
   </cover-view>
   <cover-view class="add-btn-container" style="top: {{clicked ? '35vh' : '70vh'}};">
     <cover-view class="add-btn"  loading="{{loading}}" plain="{{plain}}" disabled="{{disabled}}" bindtap="navigateToAddSpotPage" over-class="other-button-hover">
-      <cover-image style="width: 50%; height: 50%;  margin: 0 auto;" src="https://res.cloudinary.com/doe2rb42f/image/upload/v1557301947/camera_ou2dqi.svg" />
+      <cover-image style="width: 50%; height: 50%;  margin: 0 auto;" src="https://res.cloudinary.com/doe2rb42f/image/upload/v1557313038/iconfinder_camera-alt_285649_wd2yp8.png" />
     </cover-view>
   </cover-view>
   <cover-view class="loc-btn-container" style="top: {{clicked ? '35vh' : '80vh'}}; {{clicked ? 'left: 5vw' : 'right: 5vw'}};">
@@ -82,14 +79,12 @@
   </cover-view>
     
   <accordian show="{{show}}" bind:myevent="move" bindlongpress="long" >
-    <!-- <view slot="before" bindtap="accordion" class="handle"></view> -->
     <view class="spotCount" slot="spotCount">{{spotCount}}</view>
     <w-icon
       slot="arrow"
       class="handle"
 		 type="{{show ? 'arrow-down' : 'arrow-top'}}"
    />
-    <!-- <logic slot="after" spotTypes='{{spotTypes}}'></logic> -->
     <spot-card-list slot="after" spotTypes='{{spotTypes}}'></spot-card-list>
   </accordian>
 </view>

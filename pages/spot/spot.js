@@ -26,7 +26,6 @@ Page({
     favCount: 0
   },
   checkLike: function(){
-    console.log("spot id on spot",this.data.spot.id)
     getApp().globalData.favorites.forEach((x)=>{
       if(x.id === this.data.spot.id){
         this.setData({
@@ -46,20 +45,16 @@ Page({
     }
   },
   toggleToast(e) {
-    console.log("CLICKED YESSSS")
-    console.log(e.detail)
+
   },
 
   onLoad: function (options) {
     wx.setNavigationBarTitle({
       title: "Spot Page"
     })
-    
     let that = this
     let spot = JSON.parse(options.spot);
-    console.log("Spot page's spot instance: ", spot)
     const spotId = spot.id
-    console.log(111,spotId)
     let userAvatarUrl = ''
     if(spot.user){
       userAvatarUrl = spot.user.avatar_url
@@ -98,14 +93,18 @@ Page({
       path: 'users/favorites',
       data: spot,
       success(res) {
-        console.log('Favourite Post Response: ', res.data.status)
         that.setData({
           bFavourite: (res.data.status === 'unliked') ? false : true
         })
         if( that.data.bFavourite === true){
+          that.setData({
+            favCount: that.data.favCount + 1
+          })
           getApp().globalData.favorites.push(that.data.spot)
-          console.log('count fav',getApp().globalData.favorites.length)
         } else {
+          that.setData({
+            favCount: that.data.favCount - 1
+          })
           let count = 0
           getApp().globalData.favorites.forEach( (x) => {
             if(x.id === that.data.spot.id){
@@ -130,7 +129,6 @@ Page({
     let newTimes = []
     that.data.spots.forEach((x) => {
       console.log('this is a spot')
-     
     })
     that.setData({
       createAt: newTimes
@@ -148,7 +146,6 @@ Page({
       path: 'spots/favorites',
       data: { 'spotId': that.data.spotId },
       success(res) {
-        console.log('Favorites count response: ', res)
         that.setData({
           favCount: res.data.favCount
         })
@@ -171,21 +168,18 @@ Page({
         const imgs = []
         const newTimes = []
         imgs.push(that.data.defaultImage);
-        console.log("GET POST RESPONSE: ",res.data)
         wx.hideLoading();
         that.setData({
           spots: datas,
         })
         
         if(datas) {
-          console.log(datas)
           datas.forEach(function (e) {
             e.post_contents.forEach(function(img) {
               imgs.push(img.media_url.url);
             })
             const newtime = new Date(e.created_at)
             const timeAgo = that.time(newtime)
-            console.log(timeAgo)
             newTimes.push(timeAgo)
           })
         }
@@ -205,7 +199,6 @@ Page({
       sizeType: ['original', 'compressed'],
       sourceType: ['album', 'camera'],
       success: function (res) {
-        console.log(res.tempFilePaths)
         res.tempFilePaths.forEach(function (e) {
           that.data.imgs.push(e);
         })
@@ -222,7 +215,6 @@ Page({
   },
 
   toggleToast(e) {
-    console.log("FROM POST PAGE: ", e)
     let that = this
     that.setData({
       popup6: false
@@ -239,7 +231,6 @@ Page({
     })
 
     const checkImage = (path) =>{
-      console.log(333, path)
       return new Promise(resolve => {
         new AV.File('file-name', {
           blob: {
@@ -251,7 +242,6 @@ Page({
     const loadImg = paths => Promise.all(paths.map(checkImage))
 
     let res = loadImg(that.data.imgs).then(result => {
-      console.log("ALL PROMISES RESULT=", result)
       
       let post = {
         "description": "Cool place i have ever seen. AMAZING!!!",
@@ -271,14 +261,11 @@ Page({
         success(res) {
           wx.hideLoading();
           that.data.imgs = []
-          console.log("CREATE POST RESULT:", res)
           that.handleClose();
         },
         fail: function (res) {
           wx.hideLoading();
           that.data.imgs = []
-          console.log(res.data);
-          console.log('failed!' + res.statusCode);
         }
       })
     })
@@ -295,9 +282,6 @@ Page({
     this.setData({
       popup6: false
     });
-  },
-  test: function () {
-    console.log('test works')
   },
   time: function (date) {
     var seconds = Math.floor((new Date() - date) / 1000);
@@ -326,13 +310,6 @@ Page({
     return Math.floor(seconds) + " seconds";
   },
   onReady: function () {
-   
-    // const newtime = new Date(this.properties.time)
-    // console.log('time------------- --------', newtime)
-    // console.log(this.time(newtime))
-    // console.log(this.time(newtime))
-    // console.log(this.data.timeAgo)
-    // console.log(this.properties.newtime)
   },
 
   onShow: function () {
