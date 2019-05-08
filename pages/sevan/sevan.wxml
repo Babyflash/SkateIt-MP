@@ -48,17 +48,20 @@
   </cover-view>
   <!-- second choice dropdown -->
   <cover-view class='dropdown right' animation="{{distance}}">
-    <cover-view class="drop-item">
+    <cover-view data-id='1' bindtap="distanceFilter" class="drop-item {{distance1 ? 'active' : ''}}">
     1km
     </cover-view>
-    <cover-view class="drop-item">
+    <cover-view data-id='2' bindtap="distanceFilter" class="drop-item {{distance2 ? 'active' : ''}}">
     2km
     </cover-view>
-    <cover-view class="drop-item">
+    <cover-view data-id='3' bindtap="distanceFilter" class="drop-item {{distance3 ? 'active' : ''}}">
     3km
     </cover-view>
-    <cover-view class="drop-item">
+    <cover-view data-id='4' bindtap="distanceFilter" class="drop-item {{distance4 ? 'active' : ''}}">
     4km
+    </cover-view>
+     <cover-view data-id='5' bindtap="distanceFilter" class="drop-item {{distance5 ? 'active' : ''}}">
+    All
     </cover-view>
   </cover-view>
  
