@@ -67,18 +67,18 @@
   </map>
   <cover-view class="add-btn-container" style="top: {{clicked ? '35vh' : '60vh'}};">
     <cover-view class="add-btn"  loading="{{loading}}" plain="{{plain}}" disabled="{{disabled}}" bindtap="navigateToUserPage" over-class="other-button-hover">
-      <cover-image style="width: 50%; height: 50%;  margin: 0 auto;" src="../../lib/images/likered.png" />
+      <cover-image style="width: 50%; height: 50%;  margin: 0 auto;" src="https://res.cloudinary.com/doe2rb42f/image/upload/v1557302203/likered_zmloi5.png" />
     </cover-view>
   </cover-view>
   <cover-view class="add-btn-container" style="top: {{clicked ? '35vh' : '70vh'}};">
     <cover-view class="add-btn"  loading="{{loading}}" plain="{{plain}}" disabled="{{disabled}}" bindtap="navigateToAddSpotPage" over-class="other-button-hover">
-      <cover-image style="width: 50%; height: 50%;  margin: 0 auto;" src="../../lib/images/camera2.png" />
+      <cover-image style="width: 50%; height: 50%;  margin: 0 auto;" src="https://res.cloudinary.com/doe2rb42f/image/upload/v1557301947/camera_ou2dqi.svg" />
     </cover-view>
   </cover-view>
   <cover-view class="loc-btn-container" style="top: {{clicked ? '35vh' : '80vh'}}; {{clicked ? 'left: 5vw' : 'right: 5vw'}};">
     <cover-view class="loc-btn" bindtap='_hanldeLocation' loading="{{loading}}" plain="{{plain}}"
 		disabled="{{disabled}}" hover-class="other-button-hover">
-    <cover-image style="width: 50%; height: 50%; margin: 0 auto;" src="../../lib/images/location2.png" /></cover-view>
+    <cover-image style="width: 50%; height: 50%; margin: 0 auto;" src="https://res.cloudinary.com/doe2rb42f/image/upload/v1557300049/location2_kswbnh.png" /></cover-view>
   </cover-view>
     
   <accordian show="{{show}}" bind:myevent="move" bindlongpress="long" >

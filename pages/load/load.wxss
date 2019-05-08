@@ -60,8 +60,9 @@
   position: relative;
   align-items: center;
   justify-content: center;
-  background-image: url(https://img.icons8.com/cotton/64/000000/skateboard.png);
-  background-position:top center;
+  background-size: 50px 50px;
+  background-image: url(https://res.cloudinary.com/doe2rb42f/image/upload/v1557301947/camera_ou2dqi.svg);
+  background-position: top center;
   background-repeat: no-repeat;
   color: #FFFFFF;
   font-size: 48rpx;
@@ -79,12 +80,13 @@
   justify-content: center;
   color: #FFFFFF;
   font-size: 48rpx;
-  background-image: url(https://img.icons8.com/cotton/64/000000/skateboard.png);
+  background-size: 50px 50px;
+  background-image: url(https://res.cloudinary.com/doe2rb42f/image/upload/v1557300028/greenshare_ymnsut.png);
   background-position:top center;
   background-repeat: no-repeat;
 }
 .demo-text-2:before{
-  content: 'Find Spots';
+  content: 'Share Spots';
   position: absolute;
   bottom: 0;
   left: 50%;
@@ -96,12 +98,13 @@
   justify-content: center;
   color: #353535;
   font-size: 48rpx;
-  background-image: url(https://img.icons8.com/cotton/64/000000/skateboard.png);
+  background-size: 50px 50px;
+  background-image: url(https://res.cloudinary.com/doe2rb42f/image/upload/v1557301345/marker_b8h9gy.svg);
   background-position:top center;
   background-repeat: no-repeat;
 }
 .demo-text-3:before{
-  content: 'Share Spots';
+  content: 'Find Spots';
   position: absolute;
   color: white;
   bottom: 0;
