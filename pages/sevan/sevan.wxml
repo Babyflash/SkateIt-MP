@@ -3,8 +3,8 @@
     <!-- first choice -->
       <cover-view class="choice" bindtap='firstChoice'>
         <cover-view style="margin-right: 3px;" class="{{first ? 'active' : ''}}">Type</cover-view>
-        <cover-image style="{{first ? 'display: none' : '' }}" class="filter-arrow" class="img" src="../../lib/images/down.png" />
-         <cover-image style="{{first ? '' : 'display: none'}}" class="filter-arrow" class="img" src="../../lib/images/up.png" />
+        <cover-image style="{{first ? 'display: none' : '' }}" class="filter-arrow" class="img" src="https://res.cloudinary.com/doe2rb42f/image/upload/v1557313231/down_lut34x.png" />
+         <cover-image style="{{first ? '' : 'display: none'}}" class="filter-arrow" class="img" src="https://res.cloudinary.com/doe2rb42f/image/upload/v1557313231/up_aw4n00.png" />
       </cover-view> 
        <cover-view >
         |
@@ -12,8 +12,8 @@
        <!-- second choice -->
       <cover-view class="choice" bindtap='secondChoice'>
         <cover-view style="margin-right: 3px;" class="{{second ? 'active' : ''}}">Distance</cover-view>
-        <cover-image style="{{second ? 'display: none' : ''}}"class="filter-arrow" class="img" src="../../lib/images/down.png" />
-        <cover-image style="{{second ? '' : 'display: none'}}" class="filter-arrow" class="img" src="../../lib/images/up.png" />
+        <cover-image style="{{second ? 'display: none' : ''}}"class="filter-arrow" class="img" src="https://res.cloudinary.com/doe2rb42f/image/upload/v1557313231/down_lut34x.png" />
+        <cover-image style="{{second ? '' : 'display: none'}}" class="filter-arrow" class="img" src="https://res.cloudinary.com/doe2rb42f/image/upload/v1557313231/up_aw4n00.png" />
       </cover-view>
   </cover-view>
    <map 
@@ -72,7 +72,7 @@
   </cover-view>
   <cover-view class="add-btn-container" style="top: {{clicked ? '35vh' : '70vh'}};">
     <cover-view class="add-btn"  loading="{{loading}}" plain="{{plain}}" disabled="{{disabled}}" bindtap="navigateToAddSpotPage" over-class="other-button-hover">
-      <cover-image style="width: 50%; height: 50%;  margin: 0 auto;" src="https://res.cloudinary.com/doe2rb42f/image/upload/v1557301947/camera_ou2dqi.svg" />
+      <cover-image style="width: 50%; height: 50%;  margin: 0 auto;" src="https://res.cloudinary.com/doe2rb42f/image/upload/v1557313038/iconfinder_camera-alt_285649_wd2yp8.png" />
     </cover-view>
   </cover-view>
   <cover-view class="loc-btn-container" style="top: {{clicked ? '35vh' : '80vh'}}; {{clicked ? 'left: 5vw' : 'right: 5vw'}};">

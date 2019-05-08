@@ -103,9 +103,15 @@ Page({
           bFavourite: (res.data.status === 'unliked') ? false : true
         })
         if( that.data.bFavourite === true){
+          that.setData({
+            favCount: that.data.favCount + 1
+          })
           getApp().globalData.favorites.push(that.data.spot)
           console.log('count fav',getApp().globalData.favorites.length)
         } else {
+          that.setData({
+            favCount: that.data.favCount - 1
+          })
           let count = 0
           getApp().globalData.favorites.forEach( (x) => {
             if(x.id === that.data.spot.id){

@@ -11,6 +11,10 @@ Component({
     type: {
       type: String,
       value: ''
+    },
+    info: {
+      type: String,
+      value: ''
     }
   },
 
@@ -21,16 +25,24 @@ Component({
     isClicked: false
 
   },
-
+  // active: function (e) {
+  //   var that = this;
+  //   this.triggerEvent('myevent') //myevent自定义名称事件，父组件中使用
+  //   that.setData({
+  //     isClicked: !this.data.isClicked
+  //   })
+  // },
   /**
    * Component methods
    */
   methods: {
-    active: function(e) {
-      console.log('im a componenet: ', this.properties.type)
-      this.setData({
+    active: function (e) {
+      let that = this;
+      console.log('from child', this.properties.info)
+      this.triggerEvent('icon{{this.properties.info}}') //myevent自定义名称事件，父组件中使用
+      that.setData({
         isClicked: !this.data.isClicked
       })
-    }
+    },
   }
 })

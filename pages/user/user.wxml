@@ -1,30 +1,22 @@
 <!--pages/spot/spot.wxml-->
 
 <view class = 'container'>
-  <view class="div-banner">
-    <view  class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url({{img}})">
-     </view>
-</view>
 <!-- spot info -->
 <view class = "container-info">
-  <view class = "div-address">
-    <view class="loc-icon">
-      <image class = 'img-location' src='../../lib/images/location2.png'></image>
-    </view>
-    <view class="address">{{city}}</view>
-  </view>
   <view class="avatar-container">
     <w-avatar size="large" src="{{userAvatar}}" class = 'user-avatar'></w-avatar>
   </view>
+
+    <view class="address">{{userName}}</view>
+    <view class = 'div-tags'>
+    <w-tag tagStyle="color:black;background-color:white;">{{favorites.length}} Favorites</w-tag>
+    </view>
 </view>
-<view class = 'div-tags'>
-  <w-tag tagStyle="color:black;background-color:white;">12 comments</w-tag>
-  <w-tag tagStyle="color:black;background-color:white;">31 favorites</w-tag>
-</view>
-<view class="line"></view>
+
+<view class="line" style="margin-top: 1vh; margin-bottom: 1vh;"></view>
 
 <!-- comment vertical scroll -->
-  <scroll-view scroll-y style="height: 50vh;">
+  <scroll-view scroll-y style="height: 88vh;">
      <!-- <spot-card-list slot="after" spotTypes='{{spotTypes}}'></spot-card-list> -->
      <block wx:for="{{favorites}}" wx:for-item="spot" wx:for-index="itemsIndex" wx:key="type">
       <info-card spotObject="{{spot}}">

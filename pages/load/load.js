@@ -1,8 +1,8 @@
 // pages/load/load.js
 const app = getApp();
 const myRequest = require('../../lib/api/request');
-// const BASE_URL = 'https://skateit.wogengapp.cn/api/v1/';
-const BASE_URL = 'http://localhost:3000/api/v1/';
+const BASE_URL = 'https://skateit.wogengapp.cn/api/v1/';
+// const BASE_URL = 'http://localhost:3000/api/v1/';
 
 // function getUser () {
 //   wx.getUserInfo({
@@ -56,6 +56,7 @@ Page({
     })
   },
   getUserInfo: function(e) {
+    wx.showLoading()
     let app = getApp();
     let that = this;
     console.log(1111,e)
