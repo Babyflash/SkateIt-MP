@@ -11,8 +11,6 @@ App({
     wx.getUserInfo({
       success: res => {
         that.globalData.userInfo = res.userInfo
-        console.log("User info")
-        console.log(that.globalData.userInfo)
         func(res.userInfo)
       }
     })
@@ -20,22 +18,4 @@ App({
   globalData: {
     userInfo: null
   }
-  // globalData: {
-  //   userInfo: {
-  //     nickName: "",
-  //     avatarUrl: "",
-  //     gender: "none",
-  //     province: "",
-  //     city: ""
-  //   },
-  //   salmon: "",
-  //   token: "",
-  //   currentUserId: "",
-  //   email: "",
-  //   user: {},
-  //   items: {},
-  //   item: {},
-  //   profileItem: {}
-
-  // }
 })

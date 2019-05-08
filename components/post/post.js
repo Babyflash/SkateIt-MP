@@ -73,7 +73,6 @@ Component({
       });
     },
     iChange(e) {
-      console.log('BICHEED L BN', e.detail.value);
       var that = this;
       that.setData({ postInput: e.detail.value })
     },
@@ -121,8 +120,6 @@ Component({
       }
 
       let res = loadImg(that.data.imgs).then(result => {
-        console.log("IMAGE ALL PROMISES RESULT=", result)
-
         let post = {
           "description": that.data.postInput,
           "user_id": app.globalData.currentUserId,
@@ -142,19 +139,15 @@ Component({
             wx.hideLoading();
             that.data.imgs = []
             that.clearPhotos();
-            console.log("CREATE POST RESULT:", res)
             that.cancelBut();
           },
           fail: function (res) {
             wx.hideLoading();
             that.data.imgs = []
-            console.log(res.data);
-            console.log('failed!' + res.statusCode);
           }
         })
       })
       .catch((err) => {
-        console.log("RESULT ERROR =", err)
         wx.hideLoading();
         wx.showToast({
           title: 'Failed, check internet connection! Try again...',
@@ -211,16 +204,12 @@ Component({
 
  
   ready: function () {
-    console.log("USER AVATAR: ", app.globalData.user.name)
     const spot = this.properties.spot
-    console.log("---created---", this.properties.spot.id);
     this.setData({
       imgs: [],
       spotId: spot.id,
       userAvatarUrl: app.globalData.userAvatarUrl,
       userName: app.globalData.user.name
     })
-    
-    console.log("ready");
   }
 })
