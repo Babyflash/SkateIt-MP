@@ -115,7 +115,10 @@ Page({
           // onGetUserInfo();
           
           console.log("Yes..We got code from RES")
-          wx.navigateTo({
+          // wx.navigateTo({
+          //   url: '../sevan/sevan'
+          // })
+          wx.redirectTo({
             url: '../sevan/sevan'
           })
         } else {

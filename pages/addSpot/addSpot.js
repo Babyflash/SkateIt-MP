@@ -104,9 +104,12 @@ Page({
         // })
       },
       fail: ex => {
-        wx.navigateTo({
+        // wx.navigateTo({
+        //   url: '/pages/sevan/sevan'
+        // });
+        wx.reLaunch({
           url: '/pages/sevan/sevan'
-        });
+        })
       }
     })
   },
@@ -206,10 +209,14 @@ Page({
                       console.log('ALL SPOTS RESPONSE SAVE INTO GLOBALDATA', res.data)
                     }
                   })
-                  wx.navigateTo({
+
+                  // wx.navigateTo({
+                  //   url: '/pages/spot/spot?spot=' + JSON.stringify(spot)
+                  //   // url: '/pages/servan/sevan'
+                  // });
+                  wx.redirectTo({
                     url: '/pages/spot/spot?spot=' + JSON.stringify(spot)
-                    // url: '/pages/servan/sevan'
-                  });
+                  })
                 },
                 fail: err => {
                   wx.hideLoading();

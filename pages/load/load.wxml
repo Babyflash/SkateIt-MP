@@ -1,13 +1,10 @@
 <!--pages/load/load.wxml-->
 <!--index.wxml-->
 <view class="container">
-  <view style="display: flex; justify-content: space-around; height: 60vh;">
+  <view style="display: flex; justify-content: space-around; height: 45vh;">
     <image class="image-rotate" style="margin-top: 5vh; z-index: 999; width:175px!important; height:175px!important;" src='../../lib/images/splashicon.svg'></image>
   </view>
-  <view class="window">
-  </view>
 
-   <view class="page-section page-section-spacing swiper">
       <swiper
         indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" circular="{{circular}}" vertical="{{vertical}}"
         interval="{{interval}}" duration="{{duration}}" previous-margin="{{previousMargin}}px" next-margin="{{nextMargin}}px">
@@ -17,20 +14,8 @@
           </swiper-item>
         </block>
       </swiper>
-    </view>
-    <button class="getUserInfo" open-type="getUserInfo" bindgetuserinfo="getUserInfo" lang="zh_CN">
+
+  <button class="getUserInfo" open-type="getUserInfo" bindgetuserinfo="getUserInfo" lang="zh_CN">
       Skate It!
-    </button>
-
- 
-
-  <!-- <w-button
-    type="custom"
-    styles="border-color: #b643cd!important;"
-    bgColor="#b643cd"
-    color="#ffffff"
-  >
-    Custom
-    Button
-  </w-button> -->
+  </button>
 </view>
