@@ -64,6 +64,7 @@ Page({
       console.log(this.data.type)
   },
   onLoad: function (options) {
+    this.animation = wx.createAnimation()
     let page = this
     wx.chooseImage({
       count: 1, // Default 9
@@ -236,10 +237,6 @@ Page({
   },
  
   onReady: function () {
-    this.animation = wx.createAnimation()
-  },
- 
-  onShow: function () {
     let height = 0;
     wx.getSystemInfo({
       success: function (res) {
@@ -248,6 +245,10 @@ Page({
     });
     this.animation.translateY(-1 * height * 0.75).step()
     this.setData({ animation: this.animation.export() })
+  },
+ 
+  onShow: function () {
+  
   },
 
   onHide: function () {

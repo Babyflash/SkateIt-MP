@@ -34,24 +34,6 @@ function generateSpotsJson() {
       })
     })
   }
-  console.log("SPOTS===", spots)
-
-  // if (spots) {
-  //   spots.forEach(function (e) {
-  //     console.log(e)
-  //     markers.push({
-  //       iconPath: markerUrl,
-  //       id: e.id,
-  //       latitude: e.geo_lat,
-  //       longitude: e.geo_lng,
-  //       width: 36,
-  //       height: 36,
-  //       callout: { content: e.address, fontSize: 14, color: "#000000", padding: 10 }
-  //     })
-  //   })
-  // }
-
-  console.log(spots);
   return markers;
 }
 
@@ -117,7 +99,6 @@ Page({
         let dist = distance(latitude, longitude, spot.geo_lat, spot.geo_lng)
         spot["distance"] = dist
       })
-      console.log("dinstance spots", spots)
     }
   },
 
@@ -140,8 +121,6 @@ Page({
             
           })
           that.calcDistance(res.latitude, res.longitude);
-
-          console.log(res);
           if (res.latitude && res.longitude) {
             that.setData({
               lt: res.latitude,
@@ -152,7 +131,6 @@ Page({
             that.locating = false;
             that.locationCount = 0;
           } else {
-            console.log(res);
             if (that.locationCount < 5) {
               that.locationCount++;
               that._hanldeLocation();
@@ -185,7 +163,6 @@ Page({
     let that = this
     wx.getLocation({
       success: function (res) {
-        console.log("USER LOCATION = ", res)
         that.setData({ userLatitude: res.latitude, userLongitude: res.longitude })
       },
     })
@@ -229,13 +206,11 @@ Page({
     })
   },
   handleTouchEnd: function(){
-    console.log('end')
     this.setData({
       longpress: false
     })
   },
   active: function (e) {
-    console.log(e.currentTarget.dataset)
     this.setData({
       isClicked: !this.data.isClicked
     })
@@ -247,22 +222,15 @@ Page({
       touch_start: e.timeStamp,
       longpress: true
     })
-    console.log(e.timeStamp + '- touch-start')
   },
 
-  accordion: function(e){
-    console.log('grow and shrink')
-    
+  accordion: function(e){    
     this.setData({
       clicked: this.data.clicked ? false : true,
       show: !this.data.clicked
     })
-    console.log(this.data.show)
-   
   },
   move: function(e){
-    console.log('from child', e)
-    // console.log(e.timeStamp)
     this.setData({
       clicked: this.data.clicked ? false : true,
       show: !this.data.clicked
@@ -279,26 +247,19 @@ Page({
     })
     wx.showLoading()
     let page = this
-    console.log('ONLOAD MAP: ', e)
     page._hanldeLocation();
     if (e.lat && e.lng) {
       page.setData({
         lt: e.lat,
         lg: e.lng
       })
-      console.log('Spot location -------------------------------------')
-      console.log(e.lat)
-      console.log(e.lng)
     }
     this.mapCtx = wx.createMapContext('map', this)
-    console.log('------------------generate spots json----------------',generateSpotsJson())
     this.setData({
       spotTypes: app.globalData.spotTypes,
       mk: generateSpotsJson()
     })
-   
     //fetch items from rails api
-
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -330,7 +291,6 @@ Page({
         path: 'users/profile',
         data: spot,
         success(res) {
-          console.log('Profile Fav Response: ', res)
           getApp().globalData.favorites = res.data
         }
       })
@@ -417,7 +377,6 @@ Page({
     })
   },
 distanceFilter: function(e){
-    console.log(e.currentTarget.dataset.id)
     let filter = e.currentTarget.dataset.id
     let allSpots = getApp().globalData.spotTypes
     let spotCount = 0;
@@ -430,7 +389,7 @@ distanceFilter: function(e){
     this.selectItem({
       currentTarget: {
         dataset: {
-          id: '4'
+          type: 'All'
         }
       }
     })
@@ -444,12 +403,9 @@ distanceFilter: function(e){
           })
           break;
         }
-        console.log('1km')
-        console.log(this.data.spotTypes)
         for (let key in allSpots) {
           allSpots[key].forEach((x)=>{
-            console.log(x.distance)
-            x.distance <= 1 ? filteredSpots.spotTypes.push(x) : console.log('')
+            if(x.distance <= 1) filteredSpots.spotTypes.push(x)
           })
         }
         this.setData({
@@ -462,7 +418,6 @@ distanceFilter: function(e){
           spotCount: filteredSpots.spotTypes.length,
           spotTypes: filteredSpots
         })
-        console.log(this.data.spotTypes)
         break;
       case '2':
         if (this.data.distance2) {
@@ -473,12 +428,9 @@ distanceFilter: function(e){
           })
           break;
         }
-        console.log('2km')
-        console.log(this.data.spotTypes)
         for (let key in allSpots) {
           allSpots[key].forEach((x) => {
-            console.log(x.distance)
-            x.distance <= 2 ? filteredSpots.spotTypes.push(x) : console.log('')
+            if(x.distance <= 2) filteredSpots.spotTypes.push(x)
           })
         }
         this.setData({
@@ -491,7 +443,6 @@ distanceFilter: function(e){
           spotCount: filteredSpots.spotTypes.length,
           spotTypes: filteredSpots
         })
-        console.log(this.data.spotTypes)
         break;
       case '3':
         if (this.data.distance3) {
@@ -502,12 +453,9 @@ distanceFilter: function(e){
           })
           break;
         }
-        console.log('3km')
-        console.log(this.data.spotTypes)
         for (let key in allSpots) {
           allSpots[key].forEach((x) => {
-            console.log(x.distance)
-            x.distance <= 3 ? filteredSpots.spotTypes.push(x) : console.log('')
+            if(x.distance <= 3) filteredSpots.spotTypes.push(x)
           })
         }
         this.setData({
@@ -520,7 +468,6 @@ distanceFilter: function(e){
           spotCount: filteredSpots.spotTypes.length,
           spotTypes: filteredSpots
         })
-        console.log(this.data.spotTypes)
         break;
       case '4':
         if (this.data.distance4) {
@@ -531,12 +478,9 @@ distanceFilter: function(e){
           })
           break;
         }
-        console.log('4km')
-        console.log(this.data.spotTypes)
         for (let key in allSpots) {
           allSpots[key].forEach((x) => {
-            console.log(x.distance)
-            x.distance <= 4 ? filteredSpots.spotTypes.push(x) : console.log('')
+            if(x.distance <= 4) filteredSpots.spotTypes.push(x)
           })
         }
         this.setData({
@@ -549,10 +493,8 @@ distanceFilter: function(e){
           spotCount: filteredSpots.spotTypes.length,
           spotTypes: filteredSpots
         })
-        console.log(this.data.spotTypes)
         break;
       case '5':
-        console.log('all')
         this.setData({
           distance1: false,
           distance2: false,
@@ -568,133 +510,48 @@ distanceFilter: function(e){
     }
   },
   selectItem: function (e) {
-    let that = this
+    const filter = e.currentTarget.dataset.type
+    let test = getApp().globalData.spotTypes.hasOwnProperty(filter);
+    if(test){
+      let object = {
+        spotType: app.globalData.spotTypes[filter]
+      }
+      this.setData({
+        typeFilter: filter,
+        spotTypes: object
+      })
+    } else if (filter === 'All'){
+      let object = {
+        spotType: getApp().globalData.spotTypes
+      }
+      this.setData({
+        typeFilter: 'All',
+        spotTypes: app.globalData.spotTypes
+      })
+    } else {
+      let object = {
+        spotType: getApp().globalData.spotTypes
+      }
+      this.setData({
+        typeFilter: 'All',
+        spotTypes: app.globalData.spotTypes
+      })
+      wx.showToast({
+        title: 'No ' + filter + 's found',
+        icon: 'none'
+      })
+    }
+    this.spotCount()
+  },
+  spotCount: function(){
+    let spotCount = 0;
+    let total = this.data.spotTypes
+    for(let key in total){
+      spotCount += total[key].length
+    }
     this.setData({
-      distance1: false,
-      distance2: false,
-      distance3: false,
-      distance4: false,
-      distance5: false,
+      spotCount: spotCount
     })
-    let type = ''
-    switch(e.currentTarget.dataset.id){
-      case '1':
-      type = 'Ledge'
-      break;
-      case '2':
-      type = 'Stairs'
-      break;
-      case '3':
-      break;
-      case '4':
-      break;
-    }
-    if(getApp.globalData.spotTypes[type] != undefined) {
-      try {
-        //在这里运行代码
-        const target = e.currentTarget.dataset.id
-        console.log('from distance filter', target)
-        if (target === '0') {
-          let object = {
-            spotType: app.globalData.spotTypes.Ledge
-          }
-          this.setData({
-            selecteditem1: false,
-            selecteditem2: false,
-            selecrteditem3: false,
-            selecteditem0: !this.data.selecteditem0,
-            selecteditem4: false,
-            typeFilter: 'Ledge',
-            spotTypes: object
-          })
-          // load markers for object ^
-          console.log(this.data.filteredSpots)
-        } else if (target === '1') {
-          let object = {
-            spotType: app.globalData.spotTypes.Stair
-          }
-          this.setData({
-            selecteditem0: false,
-            selecteditem2: false,
-            seleceditem3: false,
-            selecteditem1: !this.data.selecteditem1,
-            selecteditem4: false,
-            typeFilter: 'Stair',
-            spotTypes: object
-          })
-          // load markers for object ^
-        } else if (target === '2') {
-          let object = {
-            spotType: app.globalData.spotTypes.Park
-          }
-          this.setData({
-            selecteditem0: false,
-            selecteditem1: false,
-            selecteditem3: false,
-            selecteditem2: !this.data.selecteditem2,
-            selecteditem4: false,
-            typeFilter: 'Park',
-            spotTypes: object
-          })
-          // load markers for object ^
-        } else if (target === '3') {
-          let object = {
-            spotType: app.globalData.spotTypes.Rail
-          }
-          this.setData({
-            selecteditem0: false,
-            selecteditem1: false,
-            selecteditem2: false,
-            selecteditem3: !this.data.selecteditem3,
-            selecteditem4: false,
-            typeFilter: 'Rail',
-            spotTypes: object
-          })
-          // load markers for object ^
-        } else {
-          this.setData({
-            selecteditem4: true,
-            selecteditem0: false,
-            selecteditem1: false,
-            selecteditem2: false,
-            selecteditem3: false,
-            typeFilter: 'All',
-            spotTypes: app.globalData.spotTypes
-          })
-        }
-        console.log('filter', this.data.typeFilter)
-        let spotCount = 0;
-        let total = this.data.spotTypes
-        for (let key in total) {
-          if (total[key] === undefined) {
-            wx.showToast({
-              title: 'No Spots Found',
-              icon: 'none',
-              duration: 3000,
-              mask: true,
-              success: function (res) { },
-              fail: function (res) { },
-              complete: function (res) {
-                that.setData({
-                  spotTypes: app.globalData.spotTypes
-                })
-              },
-            })
-          } else {
-            spotCount += total[key].length
-          }
-          this.setData({
-            spotCount: spotCount
-          })
-        }
-      }
-      catch (err) {
-        //在这里处理错误
-        console.log('filter failed')
-      }
-
-    }
-    
   },
   loadType: function(type){
 
@@ -709,27 +566,20 @@ distanceFilter: function(e){
     this.setData({
       spotCount: spotCount
     })
-    console.log(spotCount)
   },
   onShow: function () {
-    let that = this
-    this.audioCtx = wx.createAudioContext('myAudio')
-    this.audioCtx.setSrc('http://ws.stream.qqmusic.qq.com/M500001VfvsJ21xFqb.mp3?guid=ffffffff82def4af4b12b3cd9337d5e7&uin=346897220&vkey=6292F51E1E384E06DCBDC9AB7C49FD713D632D313AC4858BACB8DDD29067D3C601481D36E62053BF8DFEAF74C0A5CCFADD6471160CAF3E6A&fromtag=46')
-    const innerAudioContext = wx.createInnerAudioContext();//新建一个createInnerAudioContext();
-    innerAudioContext.autoplay = true;//音频自动播放设置
-    innerAudioContext.src = '../../lib/audio/notice.mp3';//链接到音频的地址
-    innerAudioContext.onPlay(() => { });//播放音效
-    wx.onAccelerometerChange(function (e) {
-      console.log(e.x)
-      console.log(e.y)
-      console.log(e.z)
-      if (e.x > 1 && e.y > 1) {
-        that._hanldeLocation()
-      }
-    })
+    // let that = this    
+    // wx.onAccelerometerChange(function (e) {
+    //   console.log(e.x)
+    //   console.log(e.y)
+    //   console.log(e.z)
+    //   if (e.x > 1 && e.y > 1) {
+    //     that._hanldeLocation()
+    //   }
+    // })
   },
   onHide: function(){
-    wx.stopAccelerometer()
+    // wx.stopAccelerometer()
   }
   
 })
