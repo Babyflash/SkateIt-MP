@@ -52,6 +52,11 @@ Page({
     wx.setNavigationBarTitle({
       title: "Spot Page"
     })
+    if (getApp().globalData.userInfo === null){
+      this.setData({
+        nullSession: true
+      })
+    }
     let that = this
     let spot = JSON.parse(options.spot);
     const spotId = spot.id
@@ -76,45 +81,63 @@ Page({
     that.getFavoritesCount();
     that.updateComments();
   },
-
-  doFavourite: function () {
-    let that = this
-    let spot = {
-      "user_id": app.globalData.currentUserId,
-      "spot_id": that.data.spotId
-    }
-
-    myRequest.post({
-      header: {
-        'Content-Type': 'application/json',
-        'X-User-Email': wx.getStorageSync('userEmail'),
-        'X-User-Token': wx.getStorageSync('token')
-      },
-      path: 'users/favorites',
-      data: spot,
-      success(res) {
-        that.setData({
-          bFavourite: (res.data.status === 'unliked') ? false : true
-        })
-        if( that.data.bFavourite === true){
-          that.setData({
-            favCount: that.data.favCount + 1
-          })
-          getApp().globalData.favorites.push(that.data.spot)
-        } else {
-          that.setData({
-            favCount: that.data.favCount - 1
-          })
-          let count = 0
-          getApp().globalData.favorites.forEach( (x) => {
-            if(x.id === that.data.spot.id){
-             getApp().globalData.favorites.splice(count, 1)
-            }
-            count++ 
-          })       
-        }
-      }
+  load: function(){
+    wx.reLaunch({
+      url: '../load/load',
+      success: function(res) {},
+      fail: function(res) {},
+      complete: function(res) {},
     })
+  },
+  doFavourite: function () {
+    console.log(getApp().globalData.userInfo)
+    if (getApp().globalData.userInfo === null){
+      wx.showToast({
+        title: 'you need to log in',
+        icon: 'none',
+        duration: 2000
+      })
+    } else {
+      let that = this
+      let spot = {
+        "user_id": app.globalData.currentUserId,
+        "spot_id": that.data.spotId
+      }
+
+      myRequest.post({
+        header: {
+          'Content-Type': 'application/json',
+          'X-User-Email': wx.getStorageSync('userEmail'),
+          'X-User-Token': wx.getStorageSync('token')
+        },
+        path: 'users/favorites',
+        data: spot,
+        success(res) {
+          that.setData({
+            bFavourite: (res.data.status === 'unliked') ? false : true
+          })
+          console.log(res);
+          if (that.data.bFavourite === true) {
+            that.setData({
+              favCount: that.data.favCount + 1
+            })
+            getApp().globalData.favorites.push(that.data.spot)
+          } else {
+            that.setData({
+              favCount: that.data.favCount - 1
+            })
+            let count = 0
+            getApp().globalData.favorites.forEach((x) => {
+              if (x.id === that.data.spot.id) {
+                getApp().globalData.favorites.splice(count, 1)
+              }
+              count++
+            })
+          }
+        }
+      })
+    }
+  
   },
 
   navigateToMap: function () {

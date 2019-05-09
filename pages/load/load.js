@@ -12,7 +12,11 @@ const distance = (la1, lo1, la2, lo2) => {
     Math.sin(dLon / 2) * Math.sin(dLon / 2);
   var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
   var d = R * c;
-  return Math.round(d);
+  if (d > 1) {
+    return d.toFixed(2) + "km";
+  } else if (d <= 1) {
+    return (d * 1000).toFixed(2) + "m";
+  }
 }
 
 Page({
@@ -69,6 +73,7 @@ Page({
             wx.request({
               success: function (res) {
                 try {
+                  
                   wx.setStorageSync('token', res.data.authentication_token)
                   wx.setStorageSync('currentUserId', res.data.id)
                   wx.setStorageSync('userEmail', res.data.email)
@@ -77,6 +82,7 @@ Page({
                   app.globalData.email = res.data.email
                   app.globalData.user = res.data
                   app.globalData.userAvatarUrl = userInfoFromCallBackHell.avatarUrl
+                  console.log("1111", app.globalData.currentUserId)
                   that.setData({
                     readyToStart: true
                   })
@@ -120,12 +126,12 @@ Page({
         showFlag: false
       })
       //返回时重新刷新首页页面
-      wx.reLaunch({
+      wx.redirectTo({
         url: '../load/load'
       })
     }
   },
-  onLoad: function (options) {
+  onLoad: function () {
   },
 
   onReady: function () {

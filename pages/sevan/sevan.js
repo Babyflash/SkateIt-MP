@@ -13,9 +13,13 @@ const distance = (la1, lo1, la2, lo2) => {
     Math.sin(dLon / 2) * Math.sin(dLon / 2);
   var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
   var d = R * c;
-  //   if(d> 1) return Math.round(d) + "km";
-  // else if (d <= 1) return Math.round(d * 1000) + "m";
-  return Math.round(d);
+    if(d> 1) {
+      console.log(d.toFixed(2) + "km")
+      return d.toFixed(2) + "km";
+      } else if (d <= 1) {
+        return (d * 1000).toFixed(2) + "m";
+      }
+  // return d.toFixed(2);
 }
 
 function generateSpotsJson() {
@@ -89,13 +93,21 @@ Page({
       success(res) {
         app.globalData.spotTypes = res.data
         generateSpotsJson();
+        
+        that.calcDistance(that.data.lt, that.data.lg);
         that.setData({
           spotTypes: res.data
         })
       }
     })
   },
-
+  calcFavDistance: function (latitude, longitude) {
+    let spots = getApp().globalData.favorites
+      spots.forEach((x)=>{
+        let dist = distance(latitude, longitude, x.geo_lat, x.geo_lng)
+        x["distance"] = dist
+      })
+  },
   calcDistance: function (latitude, longitude) {
     let spotTypes = app.globalData.spotTypes
     for (let key in spotTypes) {
@@ -135,6 +147,7 @@ Page({
             wx.hideLoading();
             that.locating = false;
             that.locationCount = 0;
+            that.calcDistance();
           } else {
             if (that.locationCount < 5) {
               that.locationCount++;
@@ -284,22 +297,7 @@ Page({
       // 在没有 open-type=getUserInfo 版本的兼容处理
 
     }
-      let that = this
-      let spot = {
-        "user_id": app.globalData.currentUserId
-      }
-      myRequest.get({
-        header: {
-          'Content-Type': 'application/json',
-          'X-User-Email': wx.getStorageSync('userEmail'),
-          'X-User-Token': wx.getStorageSync('token')
-        },
-        path: 'users/profile',
-        data: spot,
-        success(res) {
-          getApp().globalData.favorites = res.data
-        }
-      })
+      
     wx.hideLoading()
   },
   firstChoice: function(e){
@@ -475,6 +473,27 @@ distanceFilter: function(e){
     this.setData({
       spotCount: spotCount
     })
+
+    this._hanldeLocation();
+
+    let that = this
+    console.log('fav res', app.globalData.currentUserId)
+    let spot = {
+      "user_id": app.globalData.currentUserId
+    }
+    myRequest.get({
+      header: {
+        'Content-Type': 'application/json',
+        'X-User-Email': wx.getStorageSync('userEmail'),
+        'X-User-Token': wx.getStorageSync('token')
+      },
+      path: 'users/profile',
+      data: spot,
+      success(res) {
+
+        getApp().globalData.favorites = res.data
+      }
+    })
   },
   onShow: function () {
     let spotCount = 0;
@@ -499,6 +518,7 @@ distanceFilter: function(e){
   },
   onHide: function(){
   this.updateSpots()
+  this.calcFavDistance(this.data.lt, this.data.lg)
     // wx.stopAccelerometer()
   }
   
