@@ -111,6 +111,7 @@ display: flex;
 .line{
   width: 100%;
   border: 0.05px solid rgba(221, 221, 221, 0.1);
+  height: 1px;
   margin-top: 24px;
   margin-bottom: 16px;
 }

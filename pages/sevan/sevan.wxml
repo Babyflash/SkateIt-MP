@@ -1,7 +1,7 @@
 <view style="position: relative;">
   <cover-view class="menuBar">
     <!-- first choice -->
-      <cover-view class="choice" bindtap='firstChoice'>
+      <cover-view style="z-index: 9999;" class="choice" bindtap='firstChoice'>
         <cover-view style="margin-right: 3px;" class="{{first ? 'active' : ''}}">Type</cover-view>
         <cover-image style="{{first ? 'display: none' : '' }}" class="filter-arrow" class="img" src="https://res.cloudinary.com/doe2rb42f/image/upload/v1557313231/down_lut34x.png" />
          <cover-image style="{{first ? '' : 'display: none'}}" class="filter-arrow" class="img" src="https://res.cloudinary.com/doe2rb42f/image/upload/v1557313231/up_aw4n00.png" />
@@ -10,7 +10,7 @@
         |
       </cover-view> 
        <!-- second choice -->
-      <cover-view class="choice" bindtap='secondChoice'>
+      <cover-view style="z-index: 9999;" class="choice" bindtap='secondChoice'>
         <cover-view style="margin-right: 3px;" class="{{second ? 'active' : ''}}">Distance</cover-view>
         <cover-image style="{{second ? 'display: none' : ''}}"class="filter-arrow" class="img" src="https://res.cloudinary.com/doe2rb42f/image/upload/v1557313231/down_lut34x.png" />
         <cover-image style="{{second ? '' : 'display: none'}}" class="filter-arrow" class="img" src="https://res.cloudinary.com/doe2rb42f/image/upload/v1557313231/up_aw4n00.png" />
@@ -45,19 +45,19 @@
     </cover-view>
   </cover-view>
   <cover-view class='dropdown right' animation="{{distance}}">
-    <cover-view data-id='1' bindtap="distanceFilter" class="drop-item {{distance1 ? 'active' : ''}}">
+    <cover-view data-id='1' bindtap="distanceFilter" class="drop-item {{distance === '1' ? 'active' : ''}}">
     1km
     </cover-view>
-    <cover-view data-id='2' bindtap="distanceFilter" class="drop-item {{distance2 ? 'active' : ''}}">
+    <cover-view data-id='2' bindtap="distanceFilter" class="drop-item {{distance === '2' ? 'active' : ''}}">
     2km
     </cover-view>
-    <cover-view data-id='3' bindtap="distanceFilter" class="drop-item {{distance3 ? 'active' : ''}}">
+    <cover-view data-id='3' bindtap="distanceFilter" class="drop-item {{distance === '3' ? 'active' : ''}}">
     3km
     </cover-view>
-    <cover-view data-id='4' bindtap="distanceFilter" class="drop-item {{distance4 ? 'active' : ''}}">
+    <cover-view data-id='4' bindtap="distanceFilter" class="drop-item {{distance === '4' ? 'active' : ''}}">
     4km
     </cover-view>
-     <cover-view data-id='5' bindtap="distanceFilter" class="drop-item {{distance5 ? 'active' : ''}}">
+     <cover-view data-id='5' bindtap="distanceFilter" class="drop-item {{distance === '5' ? 'active' : ''}}">
     All
     </cover-view>
   </cover-view>

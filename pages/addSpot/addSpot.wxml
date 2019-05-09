@@ -6,7 +6,7 @@
       <view class="gradient-line"></view>
       <view class="title-header">Create Spot</view>
     </view> 
-    <view style="margin: 5px 0; padding-top: 16px;">
+    <view style="margin: 5px 0; padding-top: 20%;">
     <view class="grid-cont" >
     <view>
     <w-row gutter="10">
@@ -22,19 +22,7 @@
       </block>
     </w-row>
       </view>
-
     </view>
-    <view class="difficulty">Difficulty</view>
-      <slider
-        class="slider" 
-        bindchange="setDifficulty" 
-        min="1" 
-        max="5" 
-        show-value selected-color="#F15403"
-        color="#464490"
-        block-size='15'
-        block-color="#F15403"
-      />
     </view>
       <view class="btn-container">
         <w-button
