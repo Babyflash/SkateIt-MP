@@ -45,7 +45,7 @@ image {
   border: 0.5px solid white;
   border-radius: 4px;
   padding: 4px 2px;
-  margin-top: 20%;
+  margin-top: 25%;
   line-height: 9px;
 
 }
@@ -53,6 +53,7 @@ image {
 .line{
   width: 100%;
   border: 0.05px solid rgba(221, 221, 221, 0.1);
+  height: 1px;
   margin-top: 24px;
   margin-bottom: 16px;
 }

@@ -13,7 +13,7 @@
     </view>
 </view>
 
-<view class="line" style="margin-top: 1vh; margin-bottom: 1vh;"></view>
+<view class="line"></view>
 
 <!-- comment vertical scroll -->
   <scroll-view scroll-y style="height: 88vh;">

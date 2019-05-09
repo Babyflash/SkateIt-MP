@@ -19,7 +19,7 @@ const distance = (la1, lo1, la2, lo2) => {
 }
 
 function generateSpotsJson() {
-  const spots = app.globalData.spotTypes
+  const spots = getApp().globalData.spotTypes
   let markers = []
   for(let key in spots){
     spots[key].forEach((e) =>{
@@ -34,6 +34,7 @@ function generateSpotsJson() {
       })
     })
   }
+
   return markers;
 }
 
@@ -82,11 +83,15 @@ Page({
   },
 
   updateSpots: function() {
+    const that = this
     myRequest.get({
       path: 'spots',
       success(res) {
         app.globalData.spotTypes = res.data
         generateSpotsJson();
+        that.setData({
+          spotTypes: res.data
+        })
       }
     })
   },
@@ -242,6 +247,7 @@ Page({
     })
   },
   onLoad: function (e) {
+    generateSpotsJson();
     wx.setNavigationBarTitle({
       title: "Spot Map"
     })
@@ -335,7 +341,7 @@ Page({
         height += res.windowHeight
       }
     });
-    this.animation.translateY(-1 * height * .40).step()
+    this.animation.translateY(-1 * height * .35).step()
     this.setData({ distance: this.animation.export() })
   },
   slideDownDistance: function () {
@@ -345,7 +351,7 @@ Page({
         height += res.windowHeight
       }
     });
-    this.animation.translateY(height * .30).step()
+    this.animation.translateY(height * .35).step()
     this.setData({ distance: this.animation.export() })
   },
   slideUpType: function(){
@@ -355,7 +361,7 @@ Page({
         height += res.windowHeight
       }
     });
-    this.animation.translateY(-1 * height * .30).step()
+    this.animation.translateY(-1 * height * .35).step()
     this.setData({ type: this.animation.export() })
   },
   slideDownType: function(){
@@ -365,7 +371,7 @@ Page({
         height += res.windowHeight
       }
     });
-    this.animation.translateY(height * .30).step()
+    this.animation.translateY(height * .35).step()
     this.setData({ type: this.animation.export() })
   },
   getUserInfo: function (e) {
@@ -393,120 +399,23 @@ distanceFilter: function(e){
         }
       }
     })
-    switch(filter){
-      case '1':
-        if(this.data.distance1){
-          this.setData({
-            distance1: !this.data.distance1,
-            spotCount: spotCount,
-            spotTypes: allSpots
-          })
-          break;
-        }
-        for (let key in allSpots) {
-          allSpots[key].forEach((x)=>{
-            if(x.distance <= 1) filteredSpots.spotTypes.push(x)
-          })
-        }
-        this.setData({
-          distance2: false,
-          distance3: false,
-          distance4: false,
-          distance5: false,
-          typeFilter: 'All',
-          distance1: !this.data.distance1,
-          spotCount: filteredSpots.spotTypes.length,
-          spotTypes: filteredSpots
-        })
-        break;
-      case '2':
-        if (this.data.distance2) {
-          this.setData({
-            distance2: !this.data.distance2,
-            spotCount: spotCount,
-            spotTypes: allSpots
-          })
-          break;
-        }
-        for (let key in allSpots) {
-          allSpots[key].forEach((x) => {
-            if(x.distance <= 2) filteredSpots.spotTypes.push(x)
-          })
-        }
-        this.setData({
-          distance1: false,
-          distance3: false,
-          distance4: false,
-          distance5: false,
-          typeFilter: 'All',
-          distance2: !this.data.distance2,
-          spotCount: filteredSpots.spotTypes.length,
-          spotTypes: filteredSpots
-        })
-        break;
-      case '3':
-        if (this.data.distance3) {
-          this.setData({
-            distance3: !this.data.distance3,
-            spotCount: spotCount,
-            spotTypes: allSpots
-          })
-          break;
-        }
-        for (let key in allSpots) {
-          allSpots[key].forEach((x) => {
-            if(x.distance <= 3) filteredSpots.spotTypes.push(x)
-          })
-        }
-        this.setData({
-          distance1: false,
-          distance2: false,
-          distance4: false,
-          distance5: false,
-          typeFilter: 'All',
-          distance3: !this.data.distance3,
-          spotCount: filteredSpots.spotTypes.length,
-          spotTypes: filteredSpots
-        })
-        break;
-      case '4':
-        if (this.data.distance4) {
-          this.setData({
-            distance4: !this.data.distance4,
-            spotCount: spotCount,
-            spotTypes: allSpots
-          })
-          break;
-        }
-        for (let key in allSpots) {
-          allSpots[key].forEach((x) => {
-            if(x.distance <= 4) filteredSpots.spotTypes.push(x)
-          })
-        }
-        this.setData({
-          distance1: false,
-          distance2: false,
-          distance3: false,
-          distance5: false,
-          distance4: !this.data.distance4,
-          typeFilter: 'All',
-          spotCount: filteredSpots.spotTypes.length,
-          spotTypes: filteredSpots
-        })
-        break;
-      case '5':
-        this.setData({
-          distance1: false,
-          distance2: false,
-          distance3: false,
-          distance4: false,
-          distance5: !this.data.distance5,
-          spotCount: spotCount,
-          spotTypes: allSpots
-        })
-        break;
-      default:
-        console.log('Not valid')
+  if(filter === '5'){
+    this.setData({
+      distance: '5',
+      spotCount: spotCount,
+      spotTypes: allSpots
+    })
+  } else {
+    for (let key in allSpots) {
+      allSpots[key].forEach((x) => {
+        if (x.distance <= parseInt(filter)) filteredSpots.spotTypes.push(x)
+      })
+    }
+      this.setData({
+        distance: filter,
+        spotCount: filteredSpots.spotTypes.length,
+        spotTypes: allSpots
+      })
     }
   },
   selectItem: function (e) {
@@ -568,6 +477,16 @@ distanceFilter: function(e){
     })
   },
   onShow: function () {
+    let spotCount = 0;
+    let object = getApp().globalData.spotTypes
+    for (let key in object) {
+      spotCount += object[key].length
+    }
+    this.setData({
+      spotTypes: app.globalData.spotTypes,
+      spotCount: spotCount
+    })
+  //  this.updateSpots()
     // let that = this    
     // wx.onAccelerometerChange(function (e) {
     //   console.log(e.x)
@@ -579,6 +498,7 @@ distanceFilter: function(e){
     // })
   },
   onHide: function(){
+  this.updateSpots()
     // wx.stopAccelerometer()
   }
   

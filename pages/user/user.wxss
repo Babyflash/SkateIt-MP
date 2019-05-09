@@ -1,4 +1,10 @@
-/* pages/spot/spot.wxss */
+.line{
+  width: 100%;
+  border: 0.05px solid rgba(221, 221, 221, 0.1);
+  height: 1px;
+  margin-top: 24px;
+  margin-bottom: 16px;
+}/* pages/spot/spot.wxss */
 .container {
   color: white;
   position: relative;
@@ -89,11 +95,11 @@ align-items: center;
 }
 .line{
   width: 100%;
-  border: 0.05px solid rgba(221,221,221,0.05);
+  border: 0.05px solid rgba(221, 221, 221, 0.1);
+  height: 1px;
   margin-top: 24px;
   margin-bottom: 16px;
 }
-
 .input{
   width: 100%;
   /* width: 90vw; */

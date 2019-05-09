@@ -25,7 +25,8 @@ Page({
     interval: 2000,
     duration: 500,
     previousMargin: 0,
-    nextMargin: 0
+    nextMargin: 0,
+    showFlag: false,
   },
   changeProperty: function (e) {
     var propertyName = e.currentTarget.dataset.propertyName
@@ -55,6 +56,11 @@ Page({
       })
     } else {
       console.log('failed')
+      wx.hideLoading()
+      wx.showToast({
+        title: 'Needs permission!!!',
+        icon: 'none'
+      })
     }
     wx.login({
       success: function (res) {
@@ -77,7 +83,7 @@ Page({
                   wx.hideLoading();
                 } catch (e) {
                   wx.hideLoading();
-                  // console.log("Didn't set storage")
+                  console.log("Didn't set storage")
                 }
               },
               url: BASE_URL + 'users',
@@ -96,16 +102,28 @@ Page({
                 }
               }
             })
-          }
-            , app)
-          wx.redirectTo({
+               wx.redirectTo({
             url: '../sevan/sevan'
           })
+          }
+            , app)
         } else {
           console.log('error' + res.errMsg)
         }
-      }
+      },
     })
+  },
+  //用户不允许时的提示,点击时去设置
+  handler: function (e) {
+    if (e.detail.authSetting["scope.userLocation"]) {
+      this.setData({
+        showFlag: false
+      })
+      //返回时重新刷新首页页面
+      wx.reLaunch({
+        url: '../load/load'
+      })
+    }
   },
   onLoad: function (options) {
   },
@@ -126,19 +144,20 @@ Page({
 
   },
 
-  onShow: function () {
+  onShow: function (options) {
     const that = this
 
     myRequest.get({
       path: 'spots',
       success(res) {
         app.globalData.spotTypes = res.data
-        that.calcDistance();
+        that.calcDistance(options);
       }
     })
   },
 
-  calcDistance: function() {
+  calcDistance: function(options) {
+    let _this = this
     wx.getLocation({
       type: 'gcj02',
       success: res => {
@@ -152,14 +171,22 @@ Page({
             })
           }
         }
+      },
+      fail: function () {
+        console.log('failed auth')
+        wx.hideToast();
+        _this.setData({
+          showFlag: true
+        })
       }
     })
   },
 
   index: function () {
     let that = this;
-
+    if(getApp().globalData.userInfo)
     if (that.data.readyToStart === true) {
+
       wx.navigateTo({
         url: '../sevan/sevan'
       })
