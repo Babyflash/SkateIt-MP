@@ -13,7 +13,21 @@
           </swiper-item>
         </block>
       </swiper>
-  <button class="getUserInfo" open-type="getUserInfo" bindgetuserinfo="getUserInfo" lang="zh_CN">
+  <view class="showFlag" wx:if="{{showFlag}}" >
+   <view class="showFg">
+     <button class="showF" style="width: 100vw; height: 10vh; color: white; background-color: #3698DE;" open-type="openSetting" bindopensetting="handler">Click to change location settings</button>
+   </view>
+  </view>
+  <button wx:if="{{!showFlag}}" class="getUserInfo" open-type="getUserInfo" bindopensetting="handler" bindgetuserinfo="getUserInfo" lang="zh_CN">
       Skate It!
   </button>
 </view>
+
+<!-- //不允许地理授权不一样时的页面
+	<view class="showFlag" wx:if="{{showFlag}}" >
+	  <view class="showFg">
+	    <view class="showg">您拒绝了地理位置授权</view>
+	      <view class="showg">需要重新设置</view>
+	      <button class="showF" open-type="openSetting" bindopensetting="handler">去设置</button>
+	    </view>
+	</view> -->

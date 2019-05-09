@@ -25,12 +25,14 @@ Page({
    * Lifecycle function--Called when page show
    */
   onShow: function () {
+ 
     let spots = getApp().globalData.spotTypes
     this.setData({
       userAvatar: getApp().globalData.userInfo.avatarUrl,
       city: getApp().globalData.userInfo.city,
       favorites: getApp().globalData.favorites
     })
+    console.log(this.data.favorites)
   },
 
   /**

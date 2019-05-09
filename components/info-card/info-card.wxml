@@ -14,7 +14,7 @@
         <slot name="address"></slot>
       </view>
     <view class="gps-wrapper" style="z-index: 1;">
-    <view class="go-btn" bindtap='goThere'>
+    <view class="go-btn" bindtap='goThere' style="background-color: rgba(243,243,243,0.1)">
       <view>
       Go there
       </view>
@@ -28,7 +28,6 @@
   </view>
   </view> 
     </view>
-
   </view>
 </view>
 <view class="line"></view>

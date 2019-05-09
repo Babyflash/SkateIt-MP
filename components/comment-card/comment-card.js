@@ -75,7 +75,7 @@ Component({
       if (interval > 1) {
         return interval + " minutes";
       }
-      return Math.floor(seconds) + " seconds";
+      return Math.abs(Math.floor(seconds)) + " seconds";
     }
   }
 })

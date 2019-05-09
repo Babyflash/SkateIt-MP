@@ -13,13 +13,13 @@ const distance = (la1, lo1, la2, lo2) => {
     Math.sin(dLon / 2) * Math.sin(dLon / 2);
   var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
   var d = R * c;
-  //   if(d> 1) return Math.round(d) + "km";
-  // else if (d <= 1) return Math.round(d * 1000) + "m";
-  return Math.round(d);
+  return d.toFixed(2);
+    
+  // return d.toFixed(2);
 }
 
 function generateSpotsJson() {
-  const spots = app.globalData.spotTypes
+  const spots = getApp().globalData.spotTypes
   let markers = []
   for(let key in spots){
     spots[key].forEach((e) =>{
@@ -34,6 +34,7 @@ function generateSpotsJson() {
       })
     })
   }
+
   return markers;
 }
 
@@ -82,15 +83,27 @@ Page({
   },
 
   updateSpots: function() {
+    const that = this
     myRequest.get({
       path: 'spots',
       success(res) {
         app.globalData.spotTypes = res.data
         generateSpotsJson();
+        
+        that.calcDistance(that.data.lt, that.data.lg);
+        that.setData({
+          spotTypes: res.data
+        })
       }
     })
   },
-
+  calcFavDistance: function (latitude, longitude) {
+    let spots = getApp().globalData.favorites
+      spots.forEach((x)=>{
+        let dist = distance(latitude, longitude, x.geo_lat, x.geo_lng)
+        x["distance"] = dist
+      })
+  },
   calcDistance: function (latitude, longitude) {
     let spotTypes = app.globalData.spotTypes
     for (let key in spotTypes) {
@@ -130,6 +143,7 @@ Page({
             wx.hideLoading();
             that.locating = false;
             that.locationCount = 0;
+            // that.calcDistance();
           } else {
             if (that.locationCount < 5) {
               that.locationCount++;
@@ -242,6 +256,7 @@ Page({
     })
   },
   onLoad: function (e) {
+    generateSpotsJson();
     wx.setNavigationBarTitle({
       title: "Spot Map"
     })
@@ -278,22 +293,7 @@ Page({
       // 在没有 open-type=getUserInfo 版本的兼容处理
 
     }
-      let that = this
-      let spot = {
-        "user_id": app.globalData.currentUserId
-      }
-      myRequest.get({
-        header: {
-          'Content-Type': 'application/json',
-          'X-User-Email': wx.getStorageSync('userEmail'),
-          'X-User-Token': wx.getStorageSync('token')
-        },
-        path: 'users/profile',
-        data: spot,
-        success(res) {
-          getApp().globalData.favorites = res.data
-        }
-      })
+      
     wx.hideLoading()
   },
   firstChoice: function(e){
@@ -335,7 +335,7 @@ Page({
         height += res.windowHeight
       }
     });
-    this.animation.translateY(-1 * height * .40).step()
+    this.animation.translateY(-1 * height * .35).step()
     this.setData({ distance: this.animation.export() })
   },
   slideDownDistance: function () {
@@ -345,7 +345,7 @@ Page({
         height += res.windowHeight
       }
     });
-    this.animation.translateY(height * .30).step()
+    this.animation.translateY(height * .35).step()
     this.setData({ distance: this.animation.export() })
   },
   slideUpType: function(){
@@ -355,7 +355,7 @@ Page({
         height += res.windowHeight
       }
     });
-    this.animation.translateY(-1 * height * .30).step()
+    this.animation.translateY(-1 * height * .35).step()
     this.setData({ type: this.animation.export() })
   },
   slideDownType: function(){
@@ -365,7 +365,7 @@ Page({
         height += res.windowHeight
       }
     });
-    this.animation.translateY(height * .30).step()
+    this.animation.translateY(height * .35).step()
     this.setData({ type: this.animation.export() })
   },
   getUserInfo: function (e) {
@@ -377,136 +377,39 @@ Page({
     })
   },
 distanceFilter: function(e){
-    let filter = e.currentTarget.dataset.id
-    let allSpots = getApp().globalData.spotTypes
-    let spotCount = 0;
-    for (let key in allSpots) {
-      spotCount += allSpots[key].length
-    }
-    let filteredSpots = {
-      spotTypes: []
-    }
-    this.selectItem({
-      currentTarget: {
-        dataset: {
-          type: 'All'
-        }
+  let filter = parseInt(e.currentTarget.dataset.id)
+  let allSpots = getApp().globalData.spotTypes
+  let spotCount = 0;
+  for (let key in allSpots) {
+    spotCount += allSpots[key].length
+  }
+  let filteredSpots = {
+    spotTypes: []
+  }
+  this.selectItem({
+    currentTarget: {
+      dataset: {
+        type: 'All'
       }
+    }
+  })
+  if(filter === 5){
+    this.setData({
+      distance: '5',
+      spotCount: spotCount,
+      spotTypes: allSpots
     })
-    switch(filter){
-      case '1':
-        if(this.data.distance1){
-          this.setData({
-            distance1: !this.data.distance1,
-            spotCount: spotCount,
-            spotTypes: allSpots
-          })
-          break;
-        }
-        for (let key in allSpots) {
-          allSpots[key].forEach((x)=>{
-            if(x.distance <= 1) filteredSpots.spotTypes.push(x)
-          })
-        }
-        this.setData({
-          distance2: false,
-          distance3: false,
-          distance4: false,
-          distance5: false,
-          typeFilter: 'All',
-          distance1: !this.data.distance1,
-          spotCount: filteredSpots.spotTypes.length,
-          spotTypes: filteredSpots
-        })
-        break;
-      case '2':
-        if (this.data.distance2) {
-          this.setData({
-            distance2: !this.data.distance2,
-            spotCount: spotCount,
-            spotTypes: allSpots
-          })
-          break;
-        }
-        for (let key in allSpots) {
-          allSpots[key].forEach((x) => {
-            if(x.distance <= 2) filteredSpots.spotTypes.push(x)
-          })
-        }
-        this.setData({
-          distance1: false,
-          distance3: false,
-          distance4: false,
-          distance5: false,
-          typeFilter: 'All',
-          distance2: !this.data.distance2,
-          spotCount: filteredSpots.spotTypes.length,
-          spotTypes: filteredSpots
-        })
-        break;
-      case '3':
-        if (this.data.distance3) {
-          this.setData({
-            distance3: !this.data.distance3,
-            spotCount: spotCount,
-            spotTypes: allSpots
-          })
-          break;
-        }
-        for (let key in allSpots) {
-          allSpots[key].forEach((x) => {
-            if(x.distance <= 3) filteredSpots.spotTypes.push(x)
-          })
-        }
-        this.setData({
-          distance1: false,
-          distance2: false,
-          distance4: false,
-          distance5: false,
-          typeFilter: 'All',
-          distance3: !this.data.distance3,
-          spotCount: filteredSpots.spotTypes.length,
-          spotTypes: filteredSpots
-        })
-        break;
-      case '4':
-        if (this.data.distance4) {
-          this.setData({
-            distance4: !this.data.distance4,
-            spotCount: spotCount,
-            spotTypes: allSpots
-          })
-          break;
-        }
-        for (let key in allSpots) {
-          allSpots[key].forEach((x) => {
-            if(x.distance <= 4) filteredSpots.spotTypes.push(x)
-          })
-        }
-        this.setData({
-          distance1: false,
-          distance2: false,
-          distance3: false,
-          distance5: false,
-          distance4: !this.data.distance4,
-          typeFilter: 'All',
-          spotCount: filteredSpots.spotTypes.length,
-          spotTypes: filteredSpots
-        })
-        break;
-      case '5':
-        this.setData({
-          distance1: false,
-          distance2: false,
-          distance3: false,
-          distance4: false,
-          distance5: !this.data.distance5,
-          spotCount: spotCount,
-          spotTypes: allSpots
-        })
-        break;
-      default:
-        console.log('Not valid')
+  } else {
+    for (let key in allSpots) {
+      allSpots[key].forEach((x) => {
+        if(Math.ceil(parseFloat(x.distance)) === filter) filteredSpots.spotTypes.push(x)
+      })
+    }
+      this.setData({
+        distance: e.currentTarget.dataset.id,
+        spotCount: filteredSpots.spotTypes.length,
+        spotTypes: filteredSpots
+      })
     }
   },
   selectItem: function (e) {
@@ -566,8 +469,39 @@ distanceFilter: function(e){
     this.setData({
       spotCount: spotCount
     })
+
+    this._hanldeLocation();
+
+    let that = this
+    console.log('fav res', app.globalData.currentUserId)
+    let spot = {
+      "user_id": app.globalData.currentUserId
+    }
+    myRequest.get({
+      header: {
+        'Content-Type': 'application/json',
+        'X-User-Email': wx.getStorageSync('userEmail'),
+        'X-User-Token': wx.getStorageSync('token')
+      },
+      path: 'users/profile',
+      data: spot,
+      success(res) {
+
+        getApp().globalData.favorites = res.data
+      }
+    })
   },
   onShow: function () {
+    let spotCount = 0;
+    let object = getApp().globalData.spotTypes
+    for (let key in object) {
+      spotCount += object[key].length
+    }
+    this.setData({
+      spotTypes: app.globalData.spotTypes,
+      spotCount: spotCount
+    })
+  //  this.updateSpots()
     // let that = this    
     // wx.onAccelerometerChange(function (e) {
     //   console.log(e.x)
@@ -579,6 +513,8 @@ distanceFilter: function(e){
     // })
   },
   onHide: function(){
+  this.updateSpots()
+  this.calcFavDistance(this.data.lt, this.data.lg)
     // wx.stopAccelerometer()
   }
   
