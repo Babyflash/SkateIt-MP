@@ -22,7 +22,7 @@
       <info-card spotObject="{{spot}}">
         <view slot="type">{{spot.spot_type}}</view>
         <view slot="address">{{spot.address}}</view>
-        <view slot="distance">{{spot.distance}}</view>
+        <view slot="distance">{{spot.distance}}km</view>
       </info-card>
     </block>
   </scroll-view>

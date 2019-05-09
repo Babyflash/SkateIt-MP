@@ -232,11 +232,19 @@ Page({
   },
 
   showPostWindow: function () {
+    if(this.data.nullSession){
+      wx.showToast({
+        title: 'you need to log in',
+        icon: 'none',
+        duration: 2000
+      })
+    } else{
     let that = this
 
     that.setData({
       popup6: true
     })
+    }
   },
 
   toggleToast(e) {
