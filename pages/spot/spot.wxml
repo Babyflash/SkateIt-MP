@@ -26,7 +26,7 @@
 </view>
 
 <!-- spot info -->
-<view class = "container-info">
+<view class = "container-info" wx:if="{{!nullSession}}">
   <view class = "div-address" bindtap='navigateToMap'>
     <view class="loc-icon">
     <image class = 'img-location' src='https://res.cloudinary.com/doe2rb42f/image/upload/v1557301345/marker_b8h9gy.svg'></image>
@@ -40,17 +40,20 @@
   </view>
 </view>
 
-<view class="share-tags">
+<view class="share-tags" wx:if="{{!nullSession}}">
   <view class = 'div-tags'>
     <w-tag tagStyle="color:black;background-color:white;">{{spots.length}} comments</w-tag>
     <w-tag tagStyle="color:black;background-color:white;">{{favCount}} favorites</w-tag>
-    <w-tag tagStyle="color:black;background-color:white;;">{{spot.distance}} km</w-tag>
+    <w-tag tagStyle="color:black;background-color:white;;">{{spot.distance}}</w-tag>
      <button plain style="border: none;" class="share-btn" open-type='share'>
       <image style="width: 25px; height: 25px" class = 'img-icon' mode='aspectFit' src='https://res.cloudinary.com/doe2rb42f/image/upload/v1557300028/greenshare_ymnsut.png'>
       </image>
     </button>
   </view>
 </view>
+  <view class="nullSession" wx:if="{{nullSession}}" >
+     <button bindtap="load" style="color:white;background-color:#F15403;">Login!</button>
+     </view>
 
 <view class="line"></view>
 
