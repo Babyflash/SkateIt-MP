@@ -12,11 +12,7 @@ const distance = (la1, lo1, la2, lo2) => {
     Math.sin(dLon / 2) * Math.sin(dLon / 2);
   var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
   var d = R * c;
-  if (d > 1) {
-    return d.toFixed(2) + "km";
-  } else if (d <= 1) {
-    return (d * 1000).toFixed(2) + "m";
-  }
+    return d.toFixed(2);
 }
 
 Page({
@@ -108,7 +104,12 @@ Page({
                 }
               }
             })
-               wx.redirectTo({
+            if(that.data.spot != null){
+              wx.redirectTo({
+                url: '../spot/spot' + that.data.spot
+              })
+            }
+            wx.redirectTo({
             url: '../sevan/sevan'
           })
           }
@@ -131,7 +132,12 @@ Page({
       })
     }
   },
-  onLoad: function () {
+  onLoad: function (options) {
+    if(options.spot != null){
+      this.setData({
+        spot: options.spot
+      })
+    }
   },
 
   onReady: function () {

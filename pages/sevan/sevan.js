@@ -13,12 +13,8 @@ const distance = (la1, lo1, la2, lo2) => {
     Math.sin(dLon / 2) * Math.sin(dLon / 2);
   var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
   var d = R * c;
-    if(d> 1) {
-      console.log(d.toFixed(2) + "km")
-      return d.toFixed(2) + "km";
-      } else if (d <= 1) {
-        return (d * 1000).toFixed(2) + "m";
-      }
+  return d.toFixed(2);
+    
   // return d.toFixed(2);
 }
 
@@ -147,7 +143,7 @@ Page({
             wx.hideLoading();
             that.locating = false;
             that.locationCount = 0;
-            that.calcDistance();
+            // that.calcDistance();
           } else {
             if (that.locationCount < 5) {
               that.locationCount++;
@@ -381,23 +377,23 @@ Page({
     })
   },
 distanceFilter: function(e){
-    let filter = e.currentTarget.dataset.id
-    let allSpots = getApp().globalData.spotTypes
-    let spotCount = 0;
-    for (let key in allSpots) {
-      spotCount += allSpots[key].length
-    }
-    let filteredSpots = {
-      spotTypes: []
-    }
-    this.selectItem({
-      currentTarget: {
-        dataset: {
-          type: 'All'
-        }
+  let filter = parseInt(e.currentTarget.dataset.id)
+  let allSpots = getApp().globalData.spotTypes
+  let spotCount = 0;
+  for (let key in allSpots) {
+    spotCount += allSpots[key].length
+  }
+  let filteredSpots = {
+    spotTypes: []
+  }
+  this.selectItem({
+    currentTarget: {
+      dataset: {
+        type: 'All'
       }
-    })
-  if(filter === '5'){
+    }
+  })
+  if(filter === 5){
     this.setData({
       distance: '5',
       spotCount: spotCount,
@@ -406,13 +402,13 @@ distanceFilter: function(e){
   } else {
     for (let key in allSpots) {
       allSpots[key].forEach((x) => {
-        if (x.distance <= parseInt(filter)) filteredSpots.spotTypes.push(x)
+        if(Math.ceil(parseFloat(x.distance)) === filter) filteredSpots.spotTypes.push(x)
       })
     }
       this.setData({
-        distance: filter,
+        distance: e.currentTarget.dataset.id,
         spotCount: filteredSpots.spotTypes.length,
-        spotTypes: allSpots
+        spotTypes: filteredSpots
       })
     }
   },

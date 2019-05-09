@@ -59,6 +59,7 @@ Page({
     }
     let that = this
     let spot = JSON.parse(options.spot);
+    console.log('spot',spot)
     const spotId = spot.id
     let userAvatarUrl = ''
     if(spot.user){
@@ -82,8 +83,9 @@ Page({
     that.updateComments();
   },
   load: function(){
+    let spot = JSON.stringify(this.data.spot);
     wx.reLaunch({
-      url: '../load/load',
+      url: '../load/load' + spot,
       success: function(res) {},
       fail: function(res) {},
       complete: function(res) {},
