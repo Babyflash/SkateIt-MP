@@ -100,13 +100,16 @@ Page({
   markertap: function(e){
     console.log('tap', e)
   },
+
   calcFavDistance: function (latitude, longitude) {
     let spots = getApp().globalData.favorites
+    console.log("calcFavDistance", spots)
       spots.forEach((x)=>{
         let dist = distance(latitude, longitude, x.geo_lat, x.geo_lng)
         x["distance"] = dist
       })
   },
+
   calcDistance: function (latitude, longitude) {
     let spotTypes = app.globalData.spotTypes
     for (let key in spotTypes) {
