@@ -39,11 +39,13 @@ Page({
       interval: e.detail.value
     })
   },
+
   durationChange: function (e) {
     this.setData({
       duration: e.detail.value
     })
   },
+
   getUserInfo: function(e) {
     wx.showLoading()
     let app = getApp();
@@ -104,14 +106,30 @@ Page({
                 }
               }
             })
-            if(that.data.spot != null){
-              wx.redirectTo({
-                url: '../spot/spot' + that.data.spot
-              })
+
+            let spot = {
+              "user_id": res.data.id
             }
-            wx.redirectTo({
-            url: '../sevan/sevan'
-          })
+            console.log("user id: ", app.globalData.currentUserId)
+            myRequest.get({
+              header: {
+                'Content-Type': 'application/json',
+                'X-User-Email': wx.getStorageSync('userEmail'),
+                'X-User-Token': wx.getStorageSync('token')
+              },
+              path: 'users/profile',
+              data: spot,
+              success(res) {
+                getApp().globalData.favorites = res.data
+                console.log(res.data)
+                console.log('to map')
+                wx.redirectTo({
+                  url: '../sevan/sevan'
+                })
+              }
+            })
+            
+           
           }
             , app)
         } else {
@@ -132,12 +150,10 @@ Page({
       })
     }
   },
+
   onLoad: function (options) {
-    if(options.spot != null){
-      this.setData({
-        spot: options.spot
-      })
-    }
+    const that = this
+    // that.doFavourite();
   },
 
   onReady: function () {
@@ -211,6 +227,7 @@ Page({
     }
 
   },
+
   doFavourite: function () {
     let that = this
     let spot = {
@@ -230,6 +247,7 @@ Page({
       }
     })
   },
+
   onHide: function () {
 
   },
