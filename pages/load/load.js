@@ -27,6 +27,7 @@ Page({
     previousMargin: 0,
     nextMargin: 0,
     showFlag: false,
+    userId: -1
   },
   changeProperty: function (e) {
     var propertyName = e.currentTarget.dataset.propertyName
@@ -39,11 +40,13 @@ Page({
       interval: e.detail.value
     })
   },
+
   durationChange: function (e) {
     this.setData({
       duration: e.detail.value
     })
   },
+
   getUserInfo: function(e) {
     wx.showLoading()
     let app = getApp();
@@ -69,7 +72,6 @@ Page({
             wx.request({
               success: function (res) {
                 try {
-                  
                   wx.setStorageSync('token', res.data.authentication_token)
                   wx.setStorageSync('currentUserId', res.data.id)
                   wx.setStorageSync('userEmail', res.data.email)
@@ -82,6 +84,29 @@ Page({
                   that.setData({
                     readyToStart: true
                   })
+
+                  let spot = {
+                    "user_id": wx.getStorageSync('currentUserId')
+                  }
+
+                  myRequest.get({
+                    header: {
+                      'Content-Type': 'application/json',
+                      'X-User-Email': wx.getStorageSync('userEmail'),
+                      'X-User-Token': wx.getStorageSync('token')
+                    },
+                    path: 'users/profile',
+                    data: spot,
+                    success(res) {
+                      getApp().globalData.favorites = res.data
+                      console.log(res.data)
+                      console.log('to map')
+                      wx.redirectTo({
+                        url: '../sevan/sevan'
+                      })
+                    }
+                  })
+
                   wx.hideLoading();
                 } catch (e) {
                   wx.hideLoading();
@@ -104,14 +129,6 @@ Page({
                 }
               }
             })
-            if(that.data.spot != null){
-              wx.redirectTo({
-                url: '../spot/spot' + that.data.spot
-              })
-            }
-            wx.redirectTo({
-            url: '../sevan/sevan'
-          })
           }
             , app)
         } else {
@@ -132,12 +149,9 @@ Page({
       })
     }
   },
+
   onLoad: function (options) {
-    if(options.spot != null){
-      this.setData({
-        spot: options.spot
-      })
-    }
+   
   },
 
   onReady: function () {
@@ -211,6 +225,7 @@ Page({
     }
 
   },
+
   doFavourite: function () {
     let that = this
     let spot = {
@@ -230,6 +245,7 @@ Page({
       }
     })
   },
+
   onHide: function () {
 
   },

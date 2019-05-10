@@ -83,9 +83,8 @@ Page({
     that.updateComments();
   },
   load: function(){
-    let spot = JSON.stringify(this.data.spot);
     wx.reLaunch({
-      url: '../load/load' + spot,
+      url: '../load/load',
       success: function(res) {},
       fail: function(res) {},
       complete: function(res) {},
@@ -340,7 +339,7 @@ Page({
     if (interval > 1) {
       return interval + " minutes";
     }
-    return Math.floor(seconds) + " seconds";
+    return Math.abs(Math.floor(seconds)) + " seconds";
   },
   onReady: function () {
   },
@@ -348,6 +347,7 @@ Page({
   onShow: function () {
     // let that = this
     // that.addPostRequest();
+    console.log('comment', this.properties.spot)
     this.checkLike()
   },
 
