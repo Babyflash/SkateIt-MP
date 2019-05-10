@@ -52,12 +52,15 @@ Component({
       });
     },
     goThere: function(){
+      let that = this
+      let spot = this.properties.spotObject;
+      console.log('gps spot', spot)
       wx.openLocation({
-        latitude: 23.362490,
-        longitude: 116.715790,
+        latitude: spot.geo_lat,
+        longitude: spot.geo_lng,
         scale: 18,
-        name: '华乾大厦',
-        address: '金平区长平路93号'
+        name: spot.spot_type + ' spot',
+        address: 'Near ' + spot.address
       })
     },
   }
