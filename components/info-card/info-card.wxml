@@ -7,10 +7,10 @@
       </image>
     </view>
     <view  class="card-product-infos">
-      <view bindtap="spot" class="type">
+      <view class="type">
          <slot name="type"></slot>
       </view>
-      <view bindtap="spot" class='address'>
+      <view class='address'>
         <slot name="address"></slot>
       </view>
     <view class="gps-wrapper" style="z-index: 1;">

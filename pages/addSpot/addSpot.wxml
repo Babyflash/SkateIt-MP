@@ -6,9 +6,18 @@
       <view class="gradient-line"></view>
       <view class="title-header">Create Spot</view>
     </view> 
+      <!-- public or private -->
+      <w-tabs
+      bind:onChange="handleChange"
+      options="{{ tabs4 }}"
+      currentIndex="{{ index }}"
+    />
+    <!-- public or private tabs -->
+    
     <view style="margin: 5px 0; padding-top: 20%;">
     <view class="grid-cont" >
     <view>
+  
     <w-row gutter="10">
       <block wx:for="{{ 6 }}" wx:key="index">
         <w-col span="8">
