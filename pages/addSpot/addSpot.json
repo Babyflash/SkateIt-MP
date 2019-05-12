@@ -10,6 +10,7 @@
     "icon": "../../components/type-icon/type-icon",
     "w-row": "wuss-weapp/w-row/index",
     "w-col": "wuss-weapp/w-col/index",
-    "title": "../../components/accordian/accordian"
+    "title": "../../components/accordian/accordian",
+    "w-tabs": "wuss-weapp/w-tabs/index"
   }
 }

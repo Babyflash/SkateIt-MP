@@ -28,6 +28,11 @@ function uploadToLeanCloud(tempFilePath) {
 Page({
   data: {
     customItem: '全部',
+    tabs4: [
+      'Private',
+      'Public'
+    ],
+    index: 1,
     spotImg: '',
     types: ['Ledge', 'Manual pad', 'Rail', 'Stair set', 'Transition', 'handrail'],
     isVisible: true,
@@ -49,10 +54,19 @@ Page({
   //     popup6: false,
   //   });
   // },
+  handleChange(e) {
+    const index = e.detail.index;
+    console.log(e);
+  },
   setDifficulty: function(e){
     this.setData({
       difficulty_rating: e.detail.value
     })
+  },
+  handleSelected() {
+    this.setData({
+      index: 2,
+    });
   },
   handleClick1(e) {
     console.log('click event one', e.currentTarget.dataset.id)
