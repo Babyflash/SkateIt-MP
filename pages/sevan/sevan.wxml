@@ -78,7 +78,7 @@
     <cover-image style="width: 50%; height: 50%; margin: 0 auto;" src="https://res.cloudinary.com/doe2rb42f/image/upload/v1557300049/location2_kswbnh.png" /></cover-view>
   </cover-view>
     
-  <accordian show="{{show}}" bind:myevent="move" bindlongpress="long" >
+  <accordian show="{{show}}" bind:myevent="move">
     <view class="spotCount" slot="spotCount">{{spotCount}}</view>
     <w-icon
       slot="arrow"
