@@ -13,9 +13,8 @@ const distance = (la1, lo1, la2, lo2) => {
     Math.sin(dLon / 2) * Math.sin(dLon / 2);
   var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
   var d = R * c;
+  // toFixed returns a string
   return d.toFixed(2);
-    
-  // return d.toFixed(2);
 }
 
 function generateSpotsJson() {
@@ -235,14 +234,6 @@ Page({
       isClicked: !this.data.isClicked
     })
   },
-  long: function (e) {
-    let that = this;
-
-    that.setData({
-      touch_start: e.timeStamp,
-      longpress: true
-    })
-  },
 
   accordion: function(e){    
     this.setData({
@@ -268,13 +259,18 @@ Page({
     })
     wx.showLoading()
     let page = this
-    page._hanldeLocation();
+  
     if (e.lat && e.lng) {
+      console.log('from spot page')
       page.setData({
         lt: e.lat,
         lg: e.lng
       })
+
+    } else {
+      page._hanldeLocation();
     }
+   
     this.mapCtx = wx.createMapContext('map', this)
     this.setData({
       spotTypes: app.globalData.spotTypes,
@@ -467,6 +463,7 @@ distanceFilter: function(e){
 
   },
   onReady: function () {
+    let page = this
     this.animation = wx.createAnimation()
     let spotCount = 0;
     let object = getApp().globalData.spotTypes
@@ -477,7 +474,15 @@ distanceFilter: function(e){
       spotCount: spotCount
     })
 
-    this._hanldeLocation();
+    if (page.data.lt != undefined && page.data.lg != undefined ) {
+      console.log('from spot page')
+    
+
+    } else {
+      console.log('shit failed')
+      page._hanldeLocation();
+    }
+
 
   
   },

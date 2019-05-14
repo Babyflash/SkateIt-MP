@@ -2,6 +2,7 @@
 const app = getApp();
 const myRequest = require('../../lib/api/request');
 const BASE_URL = 'https://skateit.wogengapp.cn/api/v1/';
+// const BASE_URL = 'http://localhost:3000/api/v1/';
 
 const distance = (la1, lo1, la2, lo2) => {
   var R = 6371; // km (change this constant to get miles)
