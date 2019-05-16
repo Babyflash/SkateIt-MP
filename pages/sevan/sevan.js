@@ -483,8 +483,6 @@ distanceFilter: function(e){
       page._hanldeLocation();
     }
 
-
-  
   },
   onShow: function () {
     let spotCount = 0;

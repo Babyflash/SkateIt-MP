@@ -15,7 +15,7 @@
       </swiper>
   <view class="showFlag" wx:if="{{showFlag}}" >
    <view class="showFg">
-     <button class="showF" style="width: 100vw; height: 10vh; color: white; background-color: #3698DE;" open-type="openSetting" bindopensetting="handler">Click to change location settings</button>
+     <button class="showF" style="width: 100vw; height: 20vh; color: white; background-color: #3698DE;" open-type="openSetting" bindopensetting="handler">Click to change location settings</button>
    </view>
   </view>
   <button wx:if="{{!showFlag}}" class="getUserInfo" open-type="getUserInfo" bindopensetting="handler" bindgetuserinfo="getUserInfo" lang="zh_CN">
