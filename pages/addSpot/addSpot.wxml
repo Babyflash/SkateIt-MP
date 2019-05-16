@@ -7,11 +7,11 @@
       <view class="title-header">Create Spot</view>
     </view> 
       <!-- public or private -->
-      <w-tabs
+      <!-- <w-tabs
       bind:onChange="handleChange"
       options="{{ tabs4 }}"
       currentIndex="{{ index }}"
-    />
+    /> -->
     <!-- public or private tabs -->
     
     <view style="margin: 5px 0; padding-top: 20%;">

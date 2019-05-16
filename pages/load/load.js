@@ -101,9 +101,9 @@ Page({
                     success(res) {
                       getApp().globalData.favorites = res.data
                       console.log(res.data)
-                      console.log('to map')
+                      console.log('to map with current lat and long', that.data.geo_lat, that.data.geo_lng)
                       wx.redirectTo({
-                        url: '../sevan/sevan'
+                        url: '../sevan/sevan?lat=' + that.data.geo_lat + '&lng=' + that.data.geo_lng
                       })
                     }
                   })
@@ -197,6 +197,10 @@ Page({
               spot["distance"] = dist
             })
           }
+          _this.setData({
+            geo_lat: res.latitude,
+            geo_lng: res.longitude
+          })
         }
       },
       fail: function () {
@@ -213,9 +217,9 @@ Page({
     let that = this;
     if(getApp().globalData.userInfo)
     if (that.data.readyToStart === true) {
-
+    console.log('current lat', that.data.geo_lat)
       wx.navigateTo({
-        url: '../sevan/sevan'
+        url: '../sevan/sevan' + that.data.geo_lat + '&lng=' + that.data.geo_lng
       })
     }
     else {
