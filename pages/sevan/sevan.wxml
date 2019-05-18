@@ -34,7 +34,7 @@
     <cover-view data-id='1' data-type="Stair set" bindtap="selectItem" class="drop-item" class="drop-item {{typeFilter === 'Stair set' ? 'active' : ''}}">
     Stairs
     </cover-view>
-    <cover-view data-id='2' data-type="Park" bindtap="selectItem" class="drop-item" class="drop-item {{typeFilter === 'Parks' ? 'active' : ''}}">
+    <cover-view data-id='2' data-type="Park" bindtap="selectItem" class="drop-item" class="drop-item {{typeFilter === 'Park' ? 'active' : ''}}">
     Parks
     </cover-view>
     <cover-view data-id='3' data-type="Rail" bindtap="selectItem" class="drop-item" class="drop-item {{typeFilter === 'Rail' ? 'active' : ''}}">
@@ -62,6 +62,7 @@
     </cover-view>
   </cover-view>
   </map>
+  <!-- <cover-view bindtap='hSlide' animation='{{scale}}' class="favoriteDes">Spot Collection</cover-view> -->
   <cover-view class="add-btn-container" style="top: {{clicked ? '35vh' : '60vh'}};">
     <cover-view class="add-btn"  loading="{{loading}}" plain="{{plain}}" disabled="{{disabled}}" bindtap="navigateToUserPage" over-class="other-button-hover">
       <cover-image style="width: 50%; height: 50%;  margin: 0 auto;" src="https://res.cloudinary.com/doe2rb42f/image/upload/v1557302203/likered_zmloi5.png" />

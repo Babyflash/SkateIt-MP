@@ -188,5 +188,13 @@ cover-image{
   background-color: #FE6B6C;
   padding: 8px;
 }
+.favoriteDes{
+  position: absolute;
+  right: 8vh;
+  top: 61vh;
+  background-color: #2A2E45;
+  color: white;
+  padding: 8px 16px;
+}
 /* difficulty buttons ^ */
 /* sevans popup ^ */

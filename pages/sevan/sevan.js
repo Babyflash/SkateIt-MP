@@ -36,6 +36,25 @@ function generateSpotsJson() {
 
   return markers;
 }
+function generateFilterSpots(filteredSpots) {
+  const spots = filteredSpots
+  let markers = []
+  for (let key in spots) {
+    spots[key].forEach((e) => {
+      markers.push({
+        iconPath: markerUrl,
+        id: e.id,
+        latitude: e.geo_lat,
+        longitude: e.geo_lng,
+        width: 36,
+        height: 36,
+        callout: { content: e.address, fontSize: 14, color: "#000000", padding: 10 }
+      })
+    })
+  }
+
+  return markers;
+}
 
 const app = getApp()
 Page({
@@ -371,6 +390,10 @@ Page({
     this.animation.translateY(height * .35).step()
     this.setData({ type: this.animation.export() })
   },
+  hSlide: function(){
+    this.animation.opacity(0).step()
+    this.setData({scale: this.animation.export()})
+  },
   getUserInfo: function (e) {
     // console.log(e)
     app.globalData.userInfo = e.detail.userInfo
@@ -424,15 +447,19 @@ distanceFilter: function(e){
       }
       this.setData({
         typeFilter: filter,
-        spotTypes: object
+        spotTypes: object,
+        mk: generateFilterSpots(object)
       })
+     
+   
     } else if (filter === 'All'){
       let object = {
         spotType: getApp().globalData.spotTypes
       }
       this.setData({
         typeFilter: 'All',
-        spotTypes: app.globalData.spotTypes
+        spotTypes: app.globalData.spotTypes,
+        mk: generateSpotsJson()
       })
     } else {
       let object = {
@@ -440,7 +467,8 @@ distanceFilter: function(e){
       }
       this.setData({
         typeFilter: 'All',
-        spotTypes: app.globalData.spotTypes
+        spotTypes: app.globalData.spotTypes,
+        mk: generateSpotsJson()
       })
       wx.showToast({
         title: 'No ' + filter + 's found',
@@ -504,6 +532,7 @@ distanceFilter: function(e){
     //     that._hanldeLocation()
     //   }
     // })
+    // setTimeout(this.hSlide, 4000)
   },
   onHide: function(){
   this.updateSpots()
