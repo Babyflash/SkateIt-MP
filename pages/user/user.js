@@ -6,11 +6,20 @@ Page({
    * Page initial data
    */
   data: {
-    favorites: []
+    favorites: [],
+    tabs4: [
+      'Favorites',
+      'Created Spots'
+    ],
+    index: 1
   },
   /**
    * Lifecycle function--Called when page load
    */
+  handleChange(e) {
+    const index = e.detail.index;
+    console.log(e);
+  },
   onLoad: function (options) {
     wx.setNavigationBarTitle({
       title: "Favorites"

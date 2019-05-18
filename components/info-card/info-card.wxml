@@ -19,7 +19,7 @@
       Go there
       </view>
       <view style="display: block; justify-content: center; align-items: center;">
-      <image style="width: 18px; height: 18px; margin: 3px;" src='https://res.cloudinary.com/doe2rb42f/image/upload/v1557302297/arrow_gmasnc.png'></image>
+      <image style="width: 18px; height: 18px; margin: 3px;" src='https://res.cloudinary.com/doe2rb42f/image/upload/v1558090976/gps_t1sfuk.png'></image>
        <view class='distance' style="display: flex; justify-content: center;">
         <slot style="text-align: center;" name="distance"></slot>
       </view>

@@ -34,14 +34,14 @@ Page({
     ],
     index: 1,
     spotImg: '',
-    types: ['Ledge', 'Manual pad', 'Rail', 'Stair set', 'Transition', 'handrail'],
+    types: ['Ledge', 'Manual pad', 'Rail', 'Stair set', 'Transition','Park'],
     isVisible: true,
     type: '',
     difficulty_rating: '1',
     address: '',
     spotUrl:['https://res.cloudinary.com/doe2rb42f/image/upload/v1557313230/Ledge_yew9or.png', 'https://res.cloudinary.com/doe2rb42f/image/upload/v1557313230/Manual_pad_w4e66v.png', 'https://res.cloudinary.com/doe2rb42f/image/upload/v1557313231/Rail_cxftov.png', 'https://res.cloudinary.com/doe2rb42f/image/upload/v1557313232/Stair_set_yhgqpa.png',
 'https://res.cloudinary.com/doe2rb42f/image/upload/v1557313231/Transition_mk55tv.png',
-'https://res.cloudinary.com/doe2rb42f/image/upload/v1557313230/handrail_xrgu3e.png' ]
+'https://res.cloudinary.com/doe2rb42f/image/upload/v1558093514/obstacle-pool-white_kdihgm.png' ]
   },
 
   // handleClose() {

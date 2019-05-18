@@ -144,7 +144,7 @@ Page({
   navigateToMap: function () {
     const that = this
 
-    wx.reLaunch({
+    wx.navigateTo({
       url: '/pages/sevan/sevan?lat=' + that.data.spot.geo_lat + '&lng=' + that.data.spot.geo_lng
     })
   },
@@ -229,7 +229,19 @@ Page({
       }
     })
   },
-
+  goThere: function () {
+    let that = this
+    console.log(that.data.spot)
+    let spot = that.data.spot
+    console.log('gps spot', spot)
+    wx.openLocation({
+      latitude: spot.geo_lat,
+      longitude: spot.geo_lng,
+      scale: 18,
+      name: spot.spot_type + ' spot',
+      address: 'Near ' + spot.address
+    })
+  },
   showPostWindow: function () {
     if(this.data.nullSession){
       wx.showToast({

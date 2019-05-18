@@ -14,6 +14,12 @@
 </view>
 
 <view class="line"></view>
+    <!-- fav or created -->
+      <!-- <w-tabs
+      bind:onChange="handleChange"
+      options="{{ tabs4 }}"
+      currentIndex="{{ index }}"
+    /> -->
 
 <!-- comment vertical scroll -->
   <scroll-view scroll-y style="height: 88vh;">

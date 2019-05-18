@@ -31,7 +31,9 @@
     <view class="loc-icon">
     <image class = 'img-location' src='https://res.cloudinary.com/doe2rb42f/image/upload/v1557301345/marker_b8h9gy.svg'></image>
     </view>
-    <view class="address" >{{address}}</view>
+    <view class="address" >{{address}}<w-icon
+		 type="arrow-right"
+   /></view>
   </view>
   <view class="avatar-share-container">
     <view class="avatar-container">
@@ -45,10 +47,11 @@
     <w-tag tagStyle="color:black;background-color:white;">{{spots.length}} comments</w-tag>
     <w-tag tagStyle="color:black;background-color:white;">{{favCount}} favorites</w-tag>
     <w-tag tagStyle="color:black;background-color:white;;">{{spot.distance}}km</w-tag>
-     <button plain style="border: none;" class="share-btn" open-type='share'>
+     <button plain style="border: none; margin-right: 11rpx;" class="share-btn" open-type='share'>
       <image style="width: 25px; height: 25px" class = 'img-icon' mode='aspectFit' src='https://res.cloudinary.com/doe2rb42f/image/upload/v1557300028/greenshare_ymnsut.png'>
       </image>
     </button>
+   <image bindtap='goThere' style="width: 28px; height: 28px; margin-top: 1px;" src='https://res.cloudinary.com/doe2rb42f/image/upload/v1558090976/gps_t1sfuk.png'></image>
   </view>
 </view>
   <view class="nullSession" wx:if="{{nullSession}}" >
@@ -78,7 +81,7 @@
   <view class="input" bindtap='showPostWindow'>
     <view class = 'div-comment'>
       <image class = 'img-comment' src='../../lib/images/comment1.svg'></image>
-      <input disabled class="weui-input comment-input" placeholder="Leave a comment"/>
+      <view style="color: grey; text-align: center; margin-left:20%;" class="weui-input comment-input">Leave a comment</view>
     </view>
   </view>
   <w-popup style="top: 0!important;"

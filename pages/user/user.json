@@ -10,6 +10,7 @@
       "comment-card": "../../components/comment-card/comment-card",
       "post": "../../components/post/post",
       "spot-card-list": "../../components/spot-card-list/spot-card-list",
-      "info-card": "../../components/info-card/info-card"
+      "info-card": "../../components/info-card/info-card",
+      "w-tabs": "wuss-weapp/w-tabs/index"
   }
 }
